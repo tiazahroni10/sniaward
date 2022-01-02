@@ -178,7 +178,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
                             <a href="#" class="logo">
-                                <h2>Colugo</h2>
+                                <h2>SNI AWARDS</h2>
                             </a>
                             <p>Plan ahead by day, week, or month, and see project status at a glance. Search and filter to focus in on anything form a single project individual.</p>
                             <ul class="social-list">
