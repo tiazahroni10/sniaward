@@ -12,7 +12,7 @@
                         <h3>
                             <span class="odometer" data-count="1020">00</span>
                         </h3>
-                        <p>Usersr</p>
+                        <p>Users</p>
                     </div>
                 </div>
 
