@@ -3,7 +3,7 @@
        <!-- Start Fun Facts Area -->
        <section class="fun-facts-area pt-100 pb-70">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row d-flex justify-content-center ">
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
@@ -56,14 +56,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h3>Our process is simple, Our App is powerful</h3>
+                        <h3>Unduh Berkas</h3>
                         <div class="bar"></div>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-
+                        <p>Kebebasan mengunduh berkas untuk mempermudah pendaftaran ajang SNI Award</p>
+                       
                         <div class="about-btn">
                             <a href="#" class="default-btn">
-                                Download Now
+                                Download Sekarang
                                 <span></span>
                             </a>
                         </div>
@@ -72,7 +71,7 @@
 
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="assets/img/about.png" alt="image">
+                        <img src="assets/img/vector_download.png" alt="image">
                     </div>
                 </div>
             </div>
