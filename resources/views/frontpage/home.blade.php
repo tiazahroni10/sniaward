@@ -191,29 +191,17 @@
     <!-- End Features Area -->
 
     <!-- Start Linimasa Area -->
-    <section class="overview-area ptb-100">
+    <section class="overview-area p-4" id="linimasa">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="overview-content">
+                    <div class="section-title">
                         <h3>Linimasa</h3>
                         <div class="bar"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo.</p>
-                        <div class="overview-btn">
-                            <a href="#" class="default-btn">
-                                Get It Now
-                                <span></span>
-                            </a>
-                        </div>
                     </div>
-                </div>
+                    <div class="about-image d-flex justify-content-center">
+                        <img src="assets/img/linimasa.png" alt="linimasa">
+                    </div>
 
-                <div class="col-lg-6">
-                    <div class="overview-image">
-                        <img src="assets/img/overview.png" alt="image">
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
     <!-- End Overview Area -->
