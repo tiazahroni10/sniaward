@@ -7,48 +7,36 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
-                            <i class="fa fa-users"></i>
+                            <img src="assets/img/icon/lamp.png" alt="lamp">
                         </div>
                         <h3>
-                            <span class="odometer" data-count="1020">00</span>
+                            {{-- <span class="odometer" data-count="345">00</span> --}}
                         </h3>
-                        <p>Users</p>
+                        <p>Seputar SNI Awards</p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
-                            <i class="fa fa-heart"></i>
+                            <img src="assets/img/icon/user.png" alt="lamp">
                         </div>
                         <h3>
-                            <span class="odometer" data-count="5679">00</span>
+                            {{-- <span class="odometer" data-count="10">00</span> --}}
                         </h3>
-                        <p>Happy Clients</p>
+                        <p>Dewan Juri</p>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
-                            <i class="fa fa-star"></i>
+                            <img src="assets/img/icon/star.png" alt="lamp">
                         </div>
                         <h3>
-                            <span class="odometer" data-count="2660">00</span>
+                            {{-- <span class="odometer" data-count="1234">00</span> --}}
                         </h3>
-                        <p>Reviews</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-fun-fact">
-                        <div class="icon">
-                            <i class="fa fa-download"></i>
-                        </div>
-                        <h3>
-                            <span class="odometer" data-count="6789">00</span>
-                        </h3>
-                        <p>App Downloads</p>
+                        <p>Peraih SNI Awards</p>
                     </div>
                 </div>
             </div>
@@ -60,9 +48,9 @@
     <section id="about" class="about-area pb-100">
         <div class="container">
             <div class="section-title">
-                <h2>About Our App</h2>
+                <h2>Tentang SNI Awards</h2>
                 <div class="bar"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt  labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                <p>SNI Award merupakan sebuah pemberian penghargaan tertinggi dari Pemerintah Repubik Indonesia bagi organisasi yang menerapkan Standar Nasional Indonesia (SNI) secara konsisten, berkinerja tinggi, memiliki kemampuan mengelola dinamisasi perubahan dan melakukan transformasi yang diperlukan secara tepat.</p>
             </div>
 
             <div class="row align-items-center">

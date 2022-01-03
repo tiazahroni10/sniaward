@@ -59,7 +59,7 @@ a {
 
 a:hover, a:focus {
   text-decoration: none;
-  color: #2f5bea;
+  color: #F1D6AB;
   outline: 0;
 }
 
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   color: #ffffff;
   text-transform: capitalize;
-  background-color: #2f5bea;
+  background-color: #E3B04B;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 50px;
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 .section-title .bar {
   height: 4px;
   width: 85px;
-  background: #2f5bea;
+  background: #E3B04B;
   margin: 20px auto 20px;
   position: relative;
   border-radius: 5px;

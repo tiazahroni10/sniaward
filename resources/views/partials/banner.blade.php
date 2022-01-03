@@ -9,14 +9,14 @@
                                     <h1>Selamat Datang di Website SNI Award 2022</h1>
                                     <p>SNI Award dicanangkan sebagai The National Quality Award of Indonesia sejak tahun 2005</p>
         
-                                    <div class="banner-holder">
+                                    {{-- <div class="banner-holder">
                                         <a href="#">
                                             <img src="assets/img/store/1.png" alt="image">
                                         </a>
                                         <a href="#">
                                             <img src="assets/img/store/2.png" alt="image">
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 

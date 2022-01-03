@@ -34,7 +34,7 @@
 
                         <li class="nav-item">
                             <a href="#screenshots" class="nav-link">
-                                Timeline
+                                Linimasa
                             </a>
                         </li>
 
@@ -46,7 +46,7 @@
 
                         <li class="nav-item">
                             <a href="blog.html" class="nav-link">
-                                Event
+                                Acara
                             </a>
                         </li>
 
