@@ -1,7 +1,7 @@
 @extends('layouts.frontend.master')
 @section('content')
-       <!-- Start Fun Facts Area -->
-       <section class="fun-facts-area pt-100 pb-70">
+    <!-- Start Fun Facts Area -->
+    <section class="fun-facts-area pt-100 pb-70">
         <div class="container">
             <div class="row d-flex justify-content-center ">
                 <div class="col-lg-3 col-sm-6">
@@ -59,7 +59,6 @@
                         <h3>Unduh Berkas</h3>
                         <div class="bar"></div>
                         <p>Kebebasan mengunduh berkas untuk mempermudah pendaftaran ajang SNI Award</p>
-                       
                         <div class="about-btn">
                             <a href="#" class="default-btn">
                                 Download Sekarang
@@ -103,73 +102,65 @@
 
     <!-- Start Features Area -->
     <section id="features" class="features-area pb-70">
+        <section id="features" class="features-area pb-70">
         <div class="container">
-            <div class="section-title">
+            {{-- <div class="section-title">
                 <h2>Awsome Features</h2>
                 <div class="bar"></div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt  labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
-            </div>
+            </div> --}}
 
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-features">
                         <div class="icon">
-                            <i class="fa fa-sun"></i>
+                            <img src="assets/img/icon/book.png" alt="image">
                         </div>
-                        <h3>High Resolution</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        <h3>Syarat & Aturan SNI Award</h3>
+                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="single-features">
                         <div class="icon">
-                            <i class="fa fa-lightbulb"></i>
+                            <img src="assets/img/icon/check.png" alt="image">
                         </div>
-                        <h3>Unique Design</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        <h3>Kriteria SNI Award</h3>
+                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="single-features">
                         <div class="icon">
-                            <i class="fa fa-desktop"></i>
+                            <img src="assets/img/icon/order.png" alt="image">
                         </div>
-                        <h3>Full Responsive</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        <h3>Surat Pertanyaan Tak Terlibat Hukum</h3>
+                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="single-features">
                         <div class="icon">
-                            <i class="fa fa-code"></i>
+                            <img src="assets/img/icon/img_box.png" alt="image">
                         </div>
-                        <h3>Clean Codes</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        <h3>Logo SNI Award</h3>
+                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6">
                     <div class="single-features">
                         <div class="icon">
-                            <i class="fa fa-eye"></i>
+                            <img src="assets/img/icon/date.png" alt="image">
                         </div>
-                        <h3>Retina Ready</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
+                        <h3>Berita</h3>
+                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <i class="fa fa-camera"></i>
-                        </div>
-                        <h3>Unlimited Features</h3>
-                        <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p>
-                    </div>
-                </div>
             </div>
         </div>
 
