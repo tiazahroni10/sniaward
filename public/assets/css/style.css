@@ -944,6 +944,7 @@ About Area CSS
     position: relative;
     z-index: 1;
     overflow: hidden;
+    background-color: #f3f3f3;
 }
 
 .about-content h3 {

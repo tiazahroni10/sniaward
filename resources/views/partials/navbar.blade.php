@@ -1,8 +1,8 @@
 <!-- Start Navbar Area -->
         <nav class=" navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="#">
                         <h3>Sni Awards</h3>
                     </a>
                 </div>
@@ -27,26 +27,26 @@
                         
 
                         <li class="nav-item">
-                            <a href="#features" class="nav-link">
+                            <a href="#download" class="nav-link">
                                 Download
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#screenshots" class="nav-link">
+                            <a href="#linimasa" class="nav-link">
                                 Linimasa
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#acara" class="nav-link">
+                                Acara
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="#faq" class="nav-link">
                                 FAQ
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="blog.html" class="nav-link">
-                                Acara
                             </a>
                         </li>
 

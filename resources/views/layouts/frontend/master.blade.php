@@ -31,7 +31,7 @@
 
     <body data-spy="scroll" data-offset="120">
 
-        <div class="container">
+        
         @include('partials.preloader')
         @include('partials.navbar')
         @include('partials.banner')
@@ -42,7 +42,7 @@
         @include('partials.footer')
         @include('partials.copyright')
         @include('partials.gotop')
-        </div>
+        
         
 
         <!-- jQuery Min JS -->
