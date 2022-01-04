@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Master_Dokumen extends Model
+class MasterDokumen extends Model
 {
     use HasFactory;
-    
+    protected $table = "master_dokumen";
     protected $fillable = [
         'tipe_dokumen',
         'format_file',

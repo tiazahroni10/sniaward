@@ -5,11 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Master_Provinsi extends Model
+class MasterSni extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'nama_provinsi'
-    ];
+    protected $table = "master_sni";
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePesertasTable extends Migration
+class CreateMasterKotaKabupatenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePesertasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pesertas', function (Blueprint $table) {
+        Schema::create('master_kota_kabupaten', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('nama_organisasi',50)->nullable(false)->unique();
-            $table->string('alamat_organisasi',50);
+            $table->string('nama_kota_kabupaten',50)->unique()->nullable(false);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreatePesertasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pesertas');
+        Schema::dropIfExists('master_kota_kabupaten');
     }
 }

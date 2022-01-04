@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterSnisTable extends Migration
+class CreateMasterPertanyaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMasterSnisTable extends Migration
      */
     public function up()
     {
-        Schema::create('master__snis', function (Blueprint $table) {
+        Schema::create('master_pertanyaan', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_sni',20)->unique()->nullable(false);
-            $table->string('tipe_sni',20)->nullable(false);
+            $table->string('tipe_pertanyaan',20)->nullable(false);
+            $table->string('pertanyaan',100)->nullable(false);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateMasterSnisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master__snis');
+        Schema::dropIfExists('master_pertanyaan');
     }
 }

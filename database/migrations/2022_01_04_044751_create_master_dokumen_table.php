@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterDokumensTable extends Migration
+class CreateMasterDokumenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMasterDokumensTable extends Migration
      */
     public function up()
     {
-        Schema::create('master__dokumens', function (Blueprint $table) {
+        Schema::create('master_dokumen', function (Blueprint $table) {
             $table->id();
             $table->string('tipe_dokumen',20)->nullable(false);
             $table->string('format_file',5)->nullable(false);
@@ -31,6 +31,6 @@ class CreateMasterDokumensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master__dokumens');
+        Schema::dropIfExists('master_dokumen');
     }
 }

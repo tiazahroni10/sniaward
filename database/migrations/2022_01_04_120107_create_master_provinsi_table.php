@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterSektorKategorisTable extends Migration
+class CreateMasterProvinsiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMasterSektorKategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('master__sektor__kategoris', function (Blueprint $table) {
+        Schema::create('master_provinsi', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kategori', 100)->nullable(false)->unique();
+            $table->string('nama_provinsi',50)->nullable(false)->unique();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateMasterSektorKategorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master__sektor__kategoris');
+        Schema::dropIfExists('master_provinsi');
     }
 }

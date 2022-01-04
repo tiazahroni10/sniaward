@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterKotaKabupatensTable extends Migration
+class CreateMasterSniTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMasterKotaKabupatensTable extends Migration
      */
     public function up()
     {
-        Schema::create('master__kota__kabupatens', function (Blueprint $table) {
+        Schema::create('master_sni', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kota_kabupaten',50)->unique()->nullable(false);
+            $table->string('nomor_sni',20)->unique()->nullable(false);
+            $table->string('tipe_sni',20)->nullable(false);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateMasterKotaKabupatensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master__kota__kabupatens');
+        Schema::dropIfExists('master_sni');
     }
 }
