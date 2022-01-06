@@ -12,4 +12,14 @@ class MasterProvinsi extends Model
     protected $fillable = [
         'nama_provinsi'
     ];
+
+    public function peserta()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function evaluator()
+    {
+        $this->belongsTo(User::class);
+    }
 }

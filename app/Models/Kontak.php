@@ -14,4 +14,8 @@ class Kontak extends Model
         'jabatan',
         'nomor_telepon'
     ];
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

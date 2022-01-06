@@ -15,4 +15,10 @@ class Berita extends Model
         'konten',
         'gambar'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+    
 }

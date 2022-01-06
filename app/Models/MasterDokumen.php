@@ -16,4 +16,29 @@ class MasterDokumen extends Model
         'wajib',
         'deskripsi'
     ];
+
+    public function dokumenPeserta()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenEvaluator()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenBerita()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenCapacityBuilding()
+    {
+        $this->belongsTo(User::class);
+    }
+    
+    public function dokumenSniAward()
+    {
+        $this->belongsTo(User::class);
+    }
 }

@@ -13,4 +13,8 @@ class Sertifikat extends Model
         'nama_sertifikat',
         'nama_file'
     ];
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

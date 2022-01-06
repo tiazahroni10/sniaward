@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class HistoryLogin extends Model
 {
     use HasFactory;
+    protected $table = "history_login";
+
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

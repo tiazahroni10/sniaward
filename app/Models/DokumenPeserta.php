@@ -12,4 +12,12 @@ class DokumenPeserta extends Model
     protected $fillable = [
         'nama_file'
     ];
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+    public function masterDokumen()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

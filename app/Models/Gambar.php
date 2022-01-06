@@ -14,4 +14,9 @@ class Gambar extends Model
         'judul',
         'nama_file'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

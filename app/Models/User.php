@@ -36,5 +36,84 @@ class User extends Authenticatable
     {
         $this->belongsTo(User::class);
     }
-    
+
+    public function evaluator()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function pendidikan()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function pekerjaan()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function pelatihan()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function sertifikat()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function berita()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function gambar()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function sekretariat()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function historyLogin()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function kontak()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function pertanyaanPeserta()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenPeserta()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenEvaluator()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenBerita()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenCapacityBuilding()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function dokumenSniAward()
+    {
+        $this->belongsTo(User::class);
+    }
 }

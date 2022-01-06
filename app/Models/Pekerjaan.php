@@ -15,4 +15,9 @@ class Pekerjaan extends Model
         'tgl_mulai',
         'tgl_selesai'
     ];
+
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

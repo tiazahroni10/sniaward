@@ -13,4 +13,8 @@ class MasterPertanyaan extends Model
         'tipe_pertanyaan',
         'pertanyaan',
     ];
+    public function pertanyaanPeserta()
+    {
+        $this->belongsTo(User::class);
+    }
 }

@@ -12,4 +12,9 @@ class MasterSektorKategori extends Model
     protected $fillable =[
         'nama_kategori'
     ];
+
+    public function peserta()
+    {
+        $this->belongsTo(User::class);
+    }
 }
