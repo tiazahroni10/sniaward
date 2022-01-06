@@ -32,16 +32,18 @@
     <body data-spy="scroll" data-offset="120">
 
         
-        @include('partials.preloader')
-        @include('partials.navbar')
-        @include('partials.banner')
+            @include('partials.preloader')
+            <div class="container">
+                @include('partials.navbar')
+                @include('partials.banner')
+            </div>
         
             @yield('content')
         
 
-        @include('partials.footer')
-        @include('partials.copyright')
-        @include('partials.gotop')
+            @include('partials.footer')
+            @include('partials.copyright')
+            @include('partials.gotop')
         
         
 

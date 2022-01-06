@@ -1,6 +1,6 @@
 <!-- Start Navbar Area -->
         <nav class=" navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="logo">
                     <a href="#">
                         <h3>Sni Awards</h3>
