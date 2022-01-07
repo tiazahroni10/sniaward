@@ -14,7 +14,7 @@ class CreatePertanyaanPesertaTable extends Migration
     public function up()
     {
         Schema::create('pertanyaan_peserta', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId('master_pertanyaan_id');
             $table->string('nama_file',15);

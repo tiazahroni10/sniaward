@@ -14,7 +14,7 @@ class CreateMasterKotaKabupatenTable extends Migration
     public function up()
     {
         Schema::create('master_kota_kabupaten', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->string('nama_kota_kabupaten',50)->unique()->nullable(false);
             $table->timestamps();
         });

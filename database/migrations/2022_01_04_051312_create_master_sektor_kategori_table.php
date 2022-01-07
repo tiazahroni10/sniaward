@@ -14,7 +14,7 @@ class CreateMasterSektorKategoriTable extends Migration
     public function up()
     {
         Schema::create('master_sektor_kategoris', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->string('nama_kategori', 100)->nullable(false)->unique();
         });
     }

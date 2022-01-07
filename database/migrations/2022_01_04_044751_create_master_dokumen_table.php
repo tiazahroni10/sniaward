@@ -14,7 +14,7 @@ class CreateMasterDokumenTable extends Migration
     public function up()
     {
         Schema::create('master_dokumen', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->string('tipe_dokumen',20)->nullable(false);
             $table->string('format_file',5)->nullable(false);
             $table->integer('maks_ukuran')->default(5)->nullable(false);

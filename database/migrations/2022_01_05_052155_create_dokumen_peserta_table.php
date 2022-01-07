@@ -14,7 +14,7 @@ class CreateDokumenPesertaTable extends Migration
     public function up()
     {
         Schema::create('dokumen_peserta', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId('master_dokumen_id');
             $table->string('nama_file',15);

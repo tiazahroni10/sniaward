@@ -14,7 +14,7 @@ class CreatePelatihanTable extends Migration
     public function up()
     {
         Schema::create('pelatihan', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->foreignId('user)id');
             $table->string('nama_pelatihan',15)->nullable(false);
             $table->dateTime('tgl_mulai',0)->nullable(false);

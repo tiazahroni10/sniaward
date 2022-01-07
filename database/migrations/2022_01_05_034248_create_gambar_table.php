@@ -14,7 +14,7 @@ class CreateGambarTable extends Migration
     public function up()
     {
         Schema::create('gambar', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->string('judul',15)->nullable(false);
             $table->string('nama_file',15)->nullable(false);
             $table->timestamps();
