@@ -12,4 +12,14 @@ class MasterKotaKabupaten extends Model
     protected $fillable = [
         'nama_kota_kabupaten'
     ];
+
+    public function peserta()
+    {
+        $this->belongsTo(User::class);
+    }
+    
+    public function evaluator()
+    {
+        $this->belongsTo(User::class);
+    }
 }

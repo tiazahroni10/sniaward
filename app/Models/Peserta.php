@@ -14,4 +14,17 @@ class Peserta extends Model
     {
         return $this->hasOne(Peserta::class);
     }
+    public function masterSektorKategori()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+
+    public function masterKotaKabupaten()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+    public function masterSni()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

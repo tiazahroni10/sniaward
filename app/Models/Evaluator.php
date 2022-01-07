@@ -21,4 +21,14 @@ class Evaluator extends Model
     {
         return $this->hasOne(Peserta::class);
     }
+
+    public function masterProvinsi()
+    {
+        return $this->hasMany(Peserta::class);
+    }
+
+    public function masterKotaKabupaten()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

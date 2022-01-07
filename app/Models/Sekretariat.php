@@ -13,4 +13,9 @@ class Sekretariat extends Model
         'nama_lengkap',
         'gambar',
     ];
+
+    public function user()
+    {
+        return $this->hasOne(Peserta::class);
+    }
 }

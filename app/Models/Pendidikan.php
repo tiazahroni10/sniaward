@@ -14,4 +14,9 @@ class Pendidikan extends Model
         'nama_kampus',
         'tgl_lulus'
     ];
+    
+    public function user()
+    {
+        return $this->hasMany(Peserta::class);
+    }
 }

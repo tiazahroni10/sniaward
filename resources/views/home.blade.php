@@ -1,11 +1,11 @@
 @extends('layouts.frontend.master')
 @section('content')
-    
     {{-- Informasi --}}
     @include('frontpage.informasi')
     
     @include('frontpage.download')
     @include('frontpage.linimasa')
+    @include('frontpage.kumpulanacara')
     @include('frontpage.dokumentasi')
     
 
