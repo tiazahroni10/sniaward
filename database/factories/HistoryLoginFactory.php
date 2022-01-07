@@ -14,7 +14,7 @@ class HistoryLoginFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->randomDigit(1,5)
         ];
     }
 }

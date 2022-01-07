@@ -15,7 +15,7 @@ class MasterProvinsiFactory extends Factory
     public function definition()
     {
         return [
-            'nama_provinsi' => Str::random(10)
+            'nama_provinsi' => $this->faker->sentence(2)
         ];
     }
 }

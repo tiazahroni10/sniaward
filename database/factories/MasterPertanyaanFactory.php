@@ -16,7 +16,7 @@ class MasterPertanyaanFactory extends Factory
     public function definition()
     {
         return [
-            'tipe_pertanyaan' =>$this->faker->name(),
+            'tipe_pertanyaan' =>$this->faker->sentence(1),
             'pertanyaan' => $this->faker->sentence(5)
         ];
     }

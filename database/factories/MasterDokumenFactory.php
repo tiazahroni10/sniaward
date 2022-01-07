@@ -14,7 +14,8 @@ class MasterDokumenFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tipe_dokumen'=>$this-> faker->unique()->word(),
+        'format_file' => $this->faker-> randomElement(['pdf','jpeg','jpg','xlsx','docx']),
         ];
     }
 }

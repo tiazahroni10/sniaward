@@ -7,8 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Peserta extends Model
 {
-    protected $table = "peserta";
+    
     use HasFactory;
+    protected $table = "peserta";
+    protected $fillable = [
+        'user',
+        'master_kota_kabupaten_id',
+        'master_sektor_kategori_id',
+        'master_sni_id',
+        'master_provinsi_id',
+        'nama_organisasi'
+    ];
 
     public function user()
     {

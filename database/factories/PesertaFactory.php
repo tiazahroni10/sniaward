@@ -14,7 +14,12 @@ class PesertaFactory extends Factory
     public function definition()
     {
         return [
-            //
+        'user_id'=>$this->faker->randomDigit(1,10),
+        'nama_organisasi'=>$this->faker->unique()->company(),
+        'master_kota_kabupaten_id'=>$this->faker->randomDigit(1,5),
+        'master_sektor_kategori_id'=>$this->faker->randomDigit(1,5),
+        'master_sni_id'=>$this->faker->randomDigit(1,5),
+        'master_provinsi_id'=>$this->faker->randomDigit(1,5),
         ];
     }
 }

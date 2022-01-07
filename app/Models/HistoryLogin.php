@@ -9,6 +9,9 @@ class HistoryLogin extends Model
 {
     use HasFactory;
     protected $table = "history_login";
+    protected $fillable = [
+        'user_id'
+    ];
 
     public function user()
     {

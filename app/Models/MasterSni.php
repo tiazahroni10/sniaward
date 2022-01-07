@@ -9,6 +9,10 @@ class MasterSni extends Model
 {
     use HasFactory;
     protected $table = "master_sni";
+    protected $fillable = [
+        'nomor_sni',
+        'tipe_sni'
+    ];
 
     public function peserta()
     {

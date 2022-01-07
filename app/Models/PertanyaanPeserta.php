@@ -10,6 +10,8 @@ class PertanyaanPeserta extends Model
     use HasFactory;
     protected $table = "pertanyaan_peserta";
     protected $fillable = [
+        'user_id',
+        'master_pertanyaan_id',
         'nama_file'
     ];
     public function user()

@@ -14,7 +14,7 @@ class MasterSektorKategoriFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nama_kategori' => $this->faker->sentence(1)
         ];
     }
 }

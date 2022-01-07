@@ -13,9 +13,10 @@ class CreateMasterSektorKategoriTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_sektor_kategoris', function (Blueprint $table) {
+        Schema::create('master_sektor_kategori', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('nama_kategori', 100)->nullable(false)->unique();
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateMasterSektorKategoriTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_sektor_kategoris');
+        Schema::dropIfExists('master_sektor_kategori');
     }
 }

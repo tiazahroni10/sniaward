@@ -11,10 +11,11 @@ class MasterKotaKabupatenFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
         return [
-            //
+            'nama_kota_kabupaten' => $this->faker->sentence(2)
         ];
     }
 }

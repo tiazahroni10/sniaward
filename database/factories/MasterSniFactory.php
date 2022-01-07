@@ -14,7 +14,8 @@ class MasterSniFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nomor_sni'=> $this->faker->randomNumber(5,true),
+        'tipe_sni' => $this->faker->randomElement(['produk','universitas','distributor'])
         ];
     }
 }

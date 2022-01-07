@@ -14,7 +14,10 @@ class KontakFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'=>$this->faker->randomDigit(1,10),
+        'nama_lengkap'=>$this->faker->firstName(),
+        'jabatan'=>$this->faker->randomElement(['Direktur','CEO','Sekretaris','Bendahara']),
+        'nomor_telepon'=>$this->faker->numerify('628#########')
         ];
     }
 }

@@ -10,6 +10,8 @@ class DokumenPeserta extends Model
     use HasFactory;
     protected $table = "dokumen_peserta";
     protected $fillable = [
+        'user_id',
+        'master_dokumen_id',
         'nama_file'
     ];
     public function user()
