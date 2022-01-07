@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Question\Question;
 
 class MasterPertanyaanFactory extends Factory
 {
@@ -14,7 +16,8 @@ class MasterPertanyaanFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'tipe_pertanyaan' =>$this->faker->name(),
+            'pertanyaan' => $this->faker->sentence(5)
         ];
     }
 }
