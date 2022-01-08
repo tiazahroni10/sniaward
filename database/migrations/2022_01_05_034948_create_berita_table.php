@@ -18,6 +18,7 @@ class CreateBeritaTable extends Migration
             $table->foreignId('user_id');
             $table->string('judul',50)->nullable(false);
             $table->string('slug',70)->nullable(false);
+            $table->text('konten')->nullable(false);
             $table->string('gambar',15)->nullable(false);            
             $table->timestamps();
         });

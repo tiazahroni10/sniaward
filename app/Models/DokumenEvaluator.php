@@ -10,6 +10,8 @@ class DokumenEvaluator extends Model
     use HasFactory;
     protected $table = "dokumen_evaluator";
     protected $fillable = [
+        'user_id',
+        'master_dokumen_id',
         'nama_file'
     ];
 

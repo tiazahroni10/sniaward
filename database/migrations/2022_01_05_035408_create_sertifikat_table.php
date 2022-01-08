@@ -16,8 +16,8 @@ class CreateSertifikatTable extends Migration
         Schema::create('sertifikat', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id');
-            $table->string('nama_sertifikat',20)->nullable(false);
-            $table->string('nama_file',20)->nullable(false);
+            $table->string('nama_sertifikat',50)->nullable(false);
+            $table->string('nama_file',50)->nullable(false);
             $table->timestamps();
         });
     }

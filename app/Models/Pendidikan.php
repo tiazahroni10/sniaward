@@ -10,9 +10,10 @@ class Pendidikan extends Model
     use HasFactory;
     protected $table = "pendidikan";
     protected $fillable = [
+        'user_id',
         'jenjang',
         'nama_kampus',
-        'tgl_lulus'
+        'tahun_lulus'
     ];
     
     public function user()

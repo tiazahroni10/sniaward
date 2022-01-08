@@ -14,7 +14,9 @@ class SertifikatFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'=>$this->faker->randomDigit(1,10),
+        'nama_sertifikat' => $this->faker->lexify('?????? ?????'),
+        'nama_file' => $this->faker->lexify('?????? ?????')
         ];
     }
 }

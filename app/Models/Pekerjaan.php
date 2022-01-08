@@ -10,10 +10,11 @@ class Pekerjaan extends Model
     use HasFactory;
     protected $table= "pekerjaan";
     protected $fillable = [
+        'user_id',
         'jabatan',
         'instansi',
-        'tgl_mulai',
-        'tgl_selesai'
+        'tahun_mulai',
+        'tahun_selesai'
     ];
 
     public function user()

@@ -16,9 +16,10 @@ class CreatePekerjaanTable extends Migration
         Schema::create('pekerjaan', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id');
-            $table->string('instansi',20)->nullable(false);
-            $table->dateTime('tgl_mulai')->nullable(false);
-            $table->dateTime('tgl_selesai')->nullable(false);
+            $table->string('jabatan',50);
+            $table->string('instansi',50)->nullable(false);
+            $table->year('tahun_mulai')->nullable(false);
+            $table->year('tahun_selesai')->nullable(false);
             $table->timestamps();
         });
     }

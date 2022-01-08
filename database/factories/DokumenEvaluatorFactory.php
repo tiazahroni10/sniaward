@@ -14,7 +14,9 @@ class DokumenEvaluatorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->randomDigit(1,10),
+        'master_dokumen_id' => $this->faker->randomDigit(1,5),
+        'nama_file' => $this->faker->lexify()
         ];
     }
 }

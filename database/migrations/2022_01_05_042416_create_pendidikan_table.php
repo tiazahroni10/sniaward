@@ -17,7 +17,7 @@ class CreatePendidikanTable extends Migration
             $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->string('jenjang',2)->nullable(false);
-            $table->string('nama_kampus',20)->nullable(false);
+            $table->string('nama_kampus',50)->nullable(false);
             $table->year('tahun_lulus')->nullable(false);
             $table->timestamps();
         });

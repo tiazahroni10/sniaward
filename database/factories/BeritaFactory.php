@@ -14,7 +14,11 @@ class BeritaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' =>$this->faker->randomDigit(1,10),
+        'judul' => $this->faker->title(),
+        'slug' =>$this->faker->slug(),
+        'konten'=>$this->faker->paragraph(mt_rand(4,6)),
+        'gambar' => $this->faker->randomElement(['gambar1','gambar2','gambar3'])
         ];
     }
 }

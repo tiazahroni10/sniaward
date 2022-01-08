@@ -10,6 +10,7 @@ class Sertifikat extends Model
     use HasFactory;
     protected $table = "sertifikat";
     protected $fillable = [
+        'user_id',
         'nama_sertifikat',
         'nama_file'
     ];

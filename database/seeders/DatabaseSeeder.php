@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Berita;
+use App\Models\DokumenBerita;
 use App\Models\DokumenCapacityBuilding;
 use App\Models\DokumenEvaluator;
 use App\Models\DokumenPeserta;
@@ -48,15 +49,16 @@ class DatabaseSeeder extends Seeder
         Kontak::factory(20)->create();
         PertanyaanPeserta::factory(20)->create();
         DokumenPeserta::factory(20)->create();
-        // DokumenEvaluator::factory(20)->create();
-        // DokumenCapacityBuilding::factory(20)->create();
-        // DokumenSniAward::factory(20)->create();
+        DokumenEvaluator::factory(20)->create();
+        DokumenBerita::factory(20)->create();
+        DokumenCapacityBuilding::factory(20)->create();
+        DokumenSniAward::factory(20)->create();
         // Evaluator::factory(20)->create();
-        // Pendidikan::factory(20)->create();
-        // Pekerjaan::factory(20)->create();
-        // Pelatihan::factory(20)->create();
-        // Sertifikat::factory(20)->create();
-        // Berita::factory(20)->create();
+        Pendidikan::factory(20)->create();
+        Pekerjaan::factory(20)->create();
+        Pelatihan::factory(20)->create();
+        Sertifikat::factory(20)->create();
+        Berita::factory(20)->create();
         // Gambar::factory(20)->create();
         // Sekretariat::factory(20)->create();
 
