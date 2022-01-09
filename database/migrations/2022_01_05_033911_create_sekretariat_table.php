@@ -15,7 +15,7 @@ class CreateSekretariatTable extends Migration
     {
         Schema::create('sekretariat', function (Blueprint $table) {
             $table->foreignId('user_id');
-            $table->string('nama_lengkap',20)->nullable(false);
+            $table->string('nama_lengkap',50)->nullable(false);
             $table->string('gambar',15);
             $table->timestamps();
         });

@@ -15,21 +15,21 @@ class CreateEvaluatorTable extends Migration
     {
         Schema::create('evaluator', function (Blueprint $table) {
             $table->foreignId('user_id');
-            $table->string('nama_lengkap',20)->nullable(false);
-            $table->string('gelar_sebelum_nama',5);
-            $table->string('gelar_setelah_nama',5);
-            $table->string('status',5)->nullable(false);
-            $table->datetime('tgl_lahir');
-            $table->string('pekerjaan',20);
-            $table->string('nama_instansi',20);
-            $table->string('jenis_kelamin',1);
-            $table->string('alamat',50);
-            $table->foreignId('master_provinsi_id');
-            $table->foreignId('master_kota_kabupaten_id');
-            $table->string('nomor_telepon',13);
-            $table->string('gambar',15);
+            $table->string('nama_lengkap',50)->nullable(false);
+            $table->string('gelar_sebelum_nama',5)->nullable(true);
+            $table->string('gelar_setelah_nama',5)->nullable(true);
+            $table->string('status',20)->nullable(false);
+            $table->datetime('tgl_lahir')->nullable(true);
+            $table->string('pekerjaan',20)->nullable(true);
+            $table->string('nama_instansi',20)->nullable(true);
+            $table->string('jenis_kelamin',1)->nullable(true);
+            $table->string('alamat',50)->nullable(true);
+            $table->foreignId('master_provinsi_id')->nullable(true);
+            $table->foreignId('master_kota_kabupaten_id')->nullable(true);
+            $table->string('nomor_telepon',13)->nullable(true);
+            $table->string('gambar',15)->nullable(true);
             $table->string('npwp',15)->nullable(false);   
-            $table->string('ktp',15)->nullable(false); 
+            $table->string('ktp',20)->nullable(false); 
             $table->string('cv',15)->nullable(false); 
             $table->timestamps();
         });

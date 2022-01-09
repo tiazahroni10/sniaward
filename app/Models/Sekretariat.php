@@ -10,8 +10,9 @@ class Sekretariat extends Model
     use HasFactory;
     protected $table = "sekretariat";
     protected $fillable = [
+        'user_id',
         'nama_lengkap',
-        'gambar',
+        'gambar'
     ];
 
     public function user()

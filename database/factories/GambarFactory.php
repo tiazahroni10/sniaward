@@ -14,7 +14,9 @@ class GambarFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'=> $this->faker->randomDigit(1,10),
+        'judul'=>$this->faker->title(),
+        'nama_file'=> $this->faker->lexify()
         ];
     }
 }
