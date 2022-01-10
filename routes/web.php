@@ -22,9 +22,7 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/dashboard1', function () {
-    return view('evaluator');
-});
+
 
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'login']);

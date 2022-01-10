@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-        
     <h1>Welcome, {{ $data->nama_organisasi}}</h1>
     <form action="/logout" method="POST">
         @csrf

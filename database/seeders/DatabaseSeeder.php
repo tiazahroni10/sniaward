@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        // User::factory(10)->create();
         MasterProvinsi::factory(5)->create();
         MasterPertanyaan::factory(5)->create();
         MasterDokumen::factory(5)->create();
@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         MasterKotaKabupaten::factory(5)->create();
         MasterSni::factory(5)->create();
         HistoryLogin::factory(20)->create();
-        Peserta::factory(20)->create();
+        // Peserta::factory(20)->create();
         Kontak::factory(20)->create();
         PertanyaanPeserta::factory(20)->create();
         DokumenPeserta::factory(20)->create();

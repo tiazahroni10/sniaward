@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Peserta extends Model
 {
@@ -34,6 +35,14 @@ class Peserta extends Model
     public function getPeserta($id) 
     {
         return $this->firstWhere('user_id',$id);
+    }
+
+    public function dataPesertanDanUser($id)
+    {
+        $usersData = DB::table('users')
+            ->leftJoin('peserta', 'users.id', '=', 'peserta.user_id') ->where('users.id','=',$id)
+            ->get();
+        return $usersData;
     }
 
 }
