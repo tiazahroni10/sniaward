@@ -26,7 +26,6 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
-
             //mengisi tabel history
             $history = [
                 'user_id' => auth()->user()->id,
@@ -35,8 +34,8 @@ class LoginController extends Controller
             ];
             HistoryLogin::create($history); //mengisi kolom user_id dan login_terakhir
             
-            return redirect()->intended('/dashboard'); 
 
+            return redirect()->intended('/dashboard'); 
         }
 
         return back()->with('loginError','Login Gagal');

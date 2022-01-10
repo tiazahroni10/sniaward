@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         Gambar::factory(20)->create();
         Sekretariat::factory(20)->create();
 
-
+        
 
     }
 }
