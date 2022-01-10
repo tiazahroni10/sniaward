@@ -10,14 +10,8 @@ class Peserta extends Model
     
     use HasFactory;
     protected $table = "peserta";
-    protected $fillable = [
-        'user',
-        'master_kota_kabupaten_id',
-        'master_sektor_kategori_id',
-        'master_sni_id',
-        'master_provinsi_id',
-        'nama_organisasi'
-    ];
+
+    protected $guarded = [''];
 
     public function user()
     {
@@ -36,4 +30,10 @@ class Peserta extends Model
     {
         return $this->hasMany(Peserta::class);
     }
+
+    public function getPeserta($id) 
+    {
+        return $this->firstWhere('user_id',$id);
+    }
+
 }
