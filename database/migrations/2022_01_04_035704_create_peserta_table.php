@@ -16,10 +16,10 @@ class CreatePesertaTable extends Migration
         Schema::create('peserta', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id');
-            $table->foreignId('master_sni_id');
-            $table->foreignId('master_provinsi_id');
-            $table->foreignId('master_kota_kabupaten_id');
-            $table->foreignId('master_sektor_kategori_id');
+            $table->foreignId('master_sni_id')->nullable(true);
+            $table->foreignId('master_provinsi_id')->nullable(true);
+            $table->foreignId('master_kota_kabupaten_id')->nullable(true);
+            $table->foreignId('master_sektor_kategori_id')->nullable(true);
             $table->string('nama_organisasi',50)->nullable(false)->unique();
             $table->string('alamat_organisasi',50)->nullable(true);
             $table->string('alamat_pabrik',50)->nullable(true);

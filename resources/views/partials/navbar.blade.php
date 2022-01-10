@@ -60,7 +60,7 @@
                     <div class="others-option">
                         <div class="d-flex align-items-center">
                             <div class="option-item">
-                                <a href="#" class="default-btn">
+                                <a href="/login" class="default-btn">
                                     Masuk
                                     <span></span>
                                 </a>
