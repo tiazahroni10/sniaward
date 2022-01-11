@@ -12,7 +12,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('register');
+        return view('daftar');
         
     }
     
@@ -40,6 +40,6 @@ class RegisterController extends Controller
 
         
         // return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang'); 
-        return redirect('/pertanyaan'); 
+        return redirect('/login'); 
     }
 }

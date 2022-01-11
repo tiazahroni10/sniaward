@@ -8,27 +8,43 @@
 <body>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
-			<form action="#">
+			<form action="/register" method="POST">
+				@csrf
 				<h1>SNI AWARD</h1>
 				<h5>Daftarkan Akun Anda</h5>
                         <div class="form-group">
                             <label class="mb-1 text-white"><strong>Nama Organisasi</strong></label>
-                            <input type="nama_organisasi" class="form-control" value="PT Pertamina">
+                            <input type="text" class="form-control @error('nama_organisasi') is-invalid @enderror" name="nama_organisasi" id="nama_organisasi" required value="{{ old('nama_organisasi') }}">
+							@error('nama_organisasi')
+							<div class="invalid-feedback">
+								{{ $message }}
+							</div>
+							@enderror
                         </div>
                         <div class="form-group">
                             <label class="mb-1 text-white"><strong>Email</strong></label>
-                            <input type="email" class="form-control" value="hello@example.com">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" required value="{{ old('email') }}">
+							@error('email')
+							<div class="invalid-feedback">
+								{{ $message }}
+							</div>
+							@enderror
                         </div>
                         <div class="form-group">
                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                            <input type="password" class="form-control" value="Password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required>
+							@error('password')
+							<div class="invalid-feedback">
+								{{ $message }}
+							</div>
+							@enderror
                         </div>
                         
                         <!-- <div class="text-center"> -->
                             <button type="submit" class="btn bg-white text-primary btn-block mt-3">Selanjutnya</button>
                         <!-- </div> -->
                     
-                        <p class="text-white">Sudah memiliki akun ? <a class="text-white" href="./page-register.html">Masuk</a></p>
+                        <p class="text-white">Sudah memiliki akun ? <a class="text-white" href="/login">Masuk</a></p>
 			</form>
 		</div>
 		<div class="overlay-container">
