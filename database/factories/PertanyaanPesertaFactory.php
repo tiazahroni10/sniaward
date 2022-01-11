@@ -16,7 +16,7 @@ class PertanyaanPesertaFactory extends Factory
         return [
             'user_id'=>$this->faker->randomDigit(1,10),
             'master_pertanyaan_id'=>$this->faker->randomDigit(1,5),
-            'nama_file' => $this->faker->word()
+            'jawaban' => $this->faker->word()
         ];
     }
 }

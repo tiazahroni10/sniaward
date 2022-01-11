@@ -27,11 +27,10 @@ class RegisterController extends Controller
 
         $validatedData['password'] = bcrypt($validatedData['password']); //enkripsi password
 
-        User::create($validatedData); //input data ke tabel users
-
-        $idTerakhir = User::latest()->first()->id; // mengambil id terakhir yang ada pada tabel user
+         $ret_val =  User::create($validatedData); //input data ke tabel users
+        $id = $ret_val->id; // mengambil id terakhir yang ada pada tabel user
         $dataPeserta = ([
-            'user_id'=> $idTerakhir,
+            'user_id'=> $id,
             'nama_organisasi' => $validatedData['nama_organisasi']
         ]);
 
@@ -40,6 +39,8 @@ class RegisterController extends Controller
 
         
         // return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang'); 
-        return redirect('/login'); 
+        // return redirect('/login'); 
+        // return redirect('/pertanyaan'); 
+        return redirect('/pertanyaan')->with('userid', $id);
     }
 }

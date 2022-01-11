@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,7 +13,7 @@ class PertanyaanPeserta extends Model
     protected $fillable = [
         'user_id',
         'master_pertanyaan_id',
-        'nama_file'
+        'jawaban'
     ];
     public function user()
     {
@@ -21,5 +22,15 @@ class PertanyaanPeserta extends Model
     public function masterPertanyaan()
     {
         return $this->hasMany(Peserta::class);
+    }
+
+    public function inputDataPertanyaanPeserta($item,$data)
+    {
+
+        $pertanyaan =  DB::table('pertanyaan_peserta')->insert([
+            'user_id' => '',
+            'master_pertanyaan_id' => $item->id,
+            'jawaban' => $item,
+        ]);
     }
 }

@@ -16,7 +16,7 @@ class CreateMasterPertanyaanTable extends Migration
         Schema::create('master_pertanyaan', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('tipe_pertanyaan',50)->nullable(false);
-            $table->string('pertanyaan',1000)->nullable(false);
+            $table->string('pertanyaan',255)->nullable(false);
             $table->timestamps();
         });
     }

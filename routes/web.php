@@ -37,5 +37,6 @@ Route::post('/register', [RegisterController::class,'simpanData']);
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/pertanyaan',[PertanyaanController::class,'index']);
+Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
 
 
