@@ -17,4 +17,8 @@ class MasterPertanyaan extends Model
     {
         $this->belongsTo(User::class);
     }
+    public function getPertanyaan()
+    {
+        return $this->firstWhere();
+    }
 }

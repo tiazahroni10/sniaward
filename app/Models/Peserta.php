@@ -37,12 +37,5 @@ class Peserta extends Model
         return $this->firstWhere('user_id',$id);
     }
 
-    public function dataPesertanDanUser($id)
-    {
-        $usersData = DB::table('users')
-            ->leftJoin('peserta', 'users.id', '=', 'peserta.user_id') ->where('users.id','=',$id)
-            ->get();
-        return $usersData;
-    }
 
 }

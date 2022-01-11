@@ -34,8 +34,12 @@ class RegisterController extends Controller
             'user_id'=> $idTerakhir,
             'nama_organisasi' => $validatedData['nama_organisasi']
         ]);
+
         Peserta::create($dataPeserta); //input data ke tabel peserta
         $request->session()->flash('sukses','Registrasi berhasil, login sekarang');
-        return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang'); 
+
+        
+        // return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang'); 
+        return redirect('/pertanyaan'); 
     }
 }
