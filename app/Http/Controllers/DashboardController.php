@@ -8,12 +8,10 @@ use App\Models\User;
 class DashboardController extends Controller
 {
     private $peserta;
-    private $user;
 
     function __construct()
     {
         $this->peserta = new Peserta();
-        $this->user = new User();
     }
     public function index()
     {

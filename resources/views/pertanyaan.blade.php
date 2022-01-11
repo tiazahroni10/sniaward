@@ -7,24 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-    <div class="container">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-    </div>
-    <div class="container">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-    </div>
-    <div class="container">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-    </div>
+<body>    
+    <form action="/pertanyaan" method="POST" class="mt-4">
+        @csrf
+        @foreach ($data as $item)
+            <div class="container">
+                <div class="mb-3">
+                    <label for="pertanyaan" class="form-label">{{ $item->pertanyaan }}</label>
+                    <input type="text" name="jawaban{{ $item->id }}" class="form-control" id="jawaban{{ $item->id }}" placeholder="Jawaban">
+                </div>
+            </div>
+        @endforeach
+        
+        <button type="submit" class="btn btn-primary">Primary</button>
+    </form>
 </body>
 </html>

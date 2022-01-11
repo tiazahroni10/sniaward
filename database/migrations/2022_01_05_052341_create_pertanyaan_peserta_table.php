@@ -17,7 +17,7 @@ class CreatePertanyaanPesertaTable extends Migration
             $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId('master_pertanyaan_id');
-            $table->string('nama_file',15);
+            $table->string('jawaban',100);
             $table->timestamps();
         });
     }
