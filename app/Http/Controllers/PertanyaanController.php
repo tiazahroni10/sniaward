@@ -26,21 +26,42 @@ class PertanyaanController extends Controller
     
     public function pertanyaan(Request $request)
     {
-        $validateData = $request->validate([
-            'jawaban1' =>['required'],
-            'jawaban2' =>['required'],
-            'jawaban3' =>['required'],
-        ]);
-        $tipe_pertanyaan = 'Register';
-        $validateData['user_id'] = User::latest()->first()->id; //memasukkan id pada variabel validateData
+        //  dd($request->collect('p'));
+        // $input = $request->all();
+        $userId = $request->user_id;
+        // $quantities = Request::get('qty');
+        $arr = $request->collect('pertanyaan');
 
-        $validateData = collect($validateData);     //menjadikan validateData collection
-
-        $data = $this->pertanyaan->getPertanyaan($tipe_pertanyaan); //mengambil data id dan pertanyaan pada tabel master pertanyaan
-        dd($validateData);
-        foreach ($data as $item) { 
-            return $this->jawaban->inputDataPertanyaanPeserta($item,$validateData);
+        foreach($arr as $key=>$value){
+            $array['user_id'] = $userId;
+            $array['master_pertanyaan_id'] = $key;
+            $array['jawaban'] = $value;
+            PertanyaanPeserta::create($array);
         }
+        return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang');
+
+
+        // $arr->each(function ($item, $key) {
+        //     dd( $key, $item);
+        // });
+
+        
+        // return $request;
+        // $validateData = $request->validate([
+        //     'jawaban1' =>['required'],
+        //     'jawaban2' =>['required'],
+        //     'jawaban3' =>['required'],
+        // ]);
+        // $tipe_pertanyaan = 'Register';
+        // $validateData['user_id'] = User::latest()->first()->id; //memasukkan id pada variabel validateData
+
+        // $validateData = collect($validateData);     //menjadikan validateData collection
+
+        // $data = $this->pertanyaan->getPertanyaan($tipe_pertanyaan); //mengambil data id dan pertanyaan pada tabel master pertanyaan
+        // dd($validateData);
+        // foreach ($data as $item) { 
+        //     return $this->jawaban->inputDataPertanyaanPeserta($item,$validateData);
+        // }
 
         
     }
