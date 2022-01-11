@@ -38,3 +38,4 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 
 Route::get('/pertanyaan',[PertanyaanController::class,'index']);
 
+
