@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<link rel="stylesheet" href="{{ asset('assets') }}/css/pertanyaan.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>SNI AWARD | Pertanyaan</title>
 </head>
-<body>    
-    <form action="/pertanyaan" method="POST" class="mt-4">
-        @csrf
-        @if (session()->has('userid'))
-        <input type="text" name="user_id" value="{{ session('userid') }}" hidden>
-        @endif
-        @foreach ($data as $item)
-            <div class="container">
-                <div class="mb-3">
-                    <label for="pertanyaan" class="form-label">{{ $item->pertanyaan }}</label>
-                    <input type="text" name="pertanyaan[{{ $item->id }}]" class="form-control" id="j_{{ $item->id }}" placeholder="Jawaban" required maxlength="100">
-                </div>
-            </div>
-        @endforeach
-        
-        <button type="submit" class="btn btn-primary">Primary</button>
-    </form>
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			<form action="/pertanyaan" method="POST">
+				@csrf
+				<h1 class="center" >SNI AWARD</h1>
+				<h5>Lengkapi Pertanyaan berikut!</h5>
+				@if (session()->has('userid'))
+				<input type="text" name="user_id" value="{{ session('userid') }}" hidden>
+				@endif
+				@foreach ($data as $item)
+					<div class="form-group">
+						<label class="mb-1 text-white"><strong>{{ $item->pertanyaan }}</strong></label>
+						<input type="text" name="pertanyaan[{{ $item->id }}]" class="form-control" id="j_{{ $item->id }}"  placeholder="jawaban ..." required maxlength="100">
+					</div>
+				@endforeach
+
+                        
+                        <!-- <div class="text-center"> -->
+                            <button type="submit" class="btn bg-white text-primary btn-block mt-3">Submit</button>
+                        <!-- </div> -->
+                
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<img src="{{ asset('assets') }}/img/daftar.png" >
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

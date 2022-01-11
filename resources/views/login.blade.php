@@ -1,83 +1,61 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>Signin Template · Bootstrap v5.0</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="assets/css/signin.css" rel="stylesheet">
-
-
-    <style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-    }
-
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-        }
-    }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('assets') }}/css/login.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>SNI AWARD | Login</title>
 </head>
-
-
-<body class="text-center justify-content-center ">
-    <main class="form-signin">
-        @if (session()->has('sukses'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('sukses') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session()->has('loginError'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ session('loginError') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        <form action="/login" method="POST">
-            @csrf 
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-        
-            <div class="form-floating">
-                <input type="email" name="email" class="form-control @error('email')is-invalid  @enderror" id="email" placeholder="name@example.com" value="{{ old('email') }}" autofocus required>
-                <label for="email">Alamat Email</label>
-                @error('email')
-                    <div class="invalid-feedback">
-                        {{  $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="form-floating">
-                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-                <label for="password">Password</label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
-            <small><a href="/register">REGISTER</a></small>
-        </form>
-        </main>o
-    
-
-
-    
+<body>
+	<div class="container" id="container">
+		<div class="form-container log-in-container">
+			@if (session()->has('sukses'))
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					{{ session('sukses') }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			@endif
+			@if (session()->has('loginError'))
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					{{ session('loginError') }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			@endif
+			<form action="/login" method="POST">
+				@csrf
+				<h1 >SNI AWARD</h1>
+				<h5>Login Akun Anda</h5>
+                        <div class="form-group">
+                            <label class="mb-1 text-white"><strong>Email</strong></label>
+                            <input type="email" name="email" id="email" class="form-control @error('email')is-invalid  @enderror" value="{{ old('email') }}" autofocus required>
+							@error('email')
+								<div class="invalid-feedback">
+									{{  $message }}
+								</div>
+							@enderror
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-1 text-white"><strong>Password</strong></label>
+                            <input type="password" name="password" id="password" class="form-control" required>
+                        </div>
+                        <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                            <div class="form-group">
+                                <a class="text-white" href="page-forgot-password.html">Lupa Password?</a>
+                            </div>
+                        </div>
+                        <!-- <div class="text-center"> -->
+                            <button type="submit" class="btn bg-white text-primary btn-block mt-3">Masuk</button>
+                        <!-- </div> -->
+                    
+                        <p class="text-white">Belum memiliki akun ? <a class="text-white" href="/register">Daftar</a></p>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<img src="{{ asset('assets') }}/img/login.png" >
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
