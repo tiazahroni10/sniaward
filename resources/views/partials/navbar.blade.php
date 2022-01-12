@@ -24,6 +24,12 @@
                                 Informasi
                             </a>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a href="#berita" class="nav-link">
+                                Berita
+                            </a>
+                        </li>
                         
 
                         <li class="nav-item">

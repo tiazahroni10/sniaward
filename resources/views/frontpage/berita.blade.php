@@ -1,5 +1,5 @@
  <!-- Start Berita Area -->
-    <section class="blog-area pt-100 pb-70">
+    <section class="blog-area pt-100 pb-70" id="berita">
         <div class="container">
             <div class="section-title">
                 <h2>Berita</h2>

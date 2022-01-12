@@ -2,7 +2,7 @@
 @section('content')
     {{-- Informasi --}}
     @include('frontpage.informasi')
-    
+    @include('frontpage.berita')
     @include('frontpage.download')
     @include('frontpage.linimasa')
     @include('frontpage.kumpulanacara')
