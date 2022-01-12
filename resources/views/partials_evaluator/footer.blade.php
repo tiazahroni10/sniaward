@@ -3,7 +3,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
+                <p>Copyright © <a href="http://dexignzone.com/" target="_blank">SNI AWARD</a> 2022</p>
             </div>
         </div>
         <!--**********************************
@@ -83,5 +83,12 @@
 			}, 1000); 
 		});
 	</script>
+
+	<!-- Calender -->
+	<script src="{{ asset('evaluator') }}/vendor/jqueryui/js/jquery-ui.min.js"></script>
+    <script src="{{ asset('evaluator') }}/vendor/moment/moment.min.js"></script>
+
+    <script src="{{ asset('evaluator') }}/vendor/fullcalendar/js/fullcalendar.min.js"></script>
+    <script src="{{ asset('evaluator') }}/js/plugins-init/fullcalendar-init.js"></script>
 </body>
 </html>
