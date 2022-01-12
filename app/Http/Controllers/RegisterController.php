@@ -26,7 +26,6 @@ class RegisterController extends Controller
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']); //enkripsi password
-
          $ret_val =  User::create($validatedData); //input data ke tabel users
         $id = $ret_val->id; // mengambil id terakhir yang ada pada tabel user
         $dataPeserta = ([

@@ -38,7 +38,7 @@ class PertanyaanController extends Controller
             $array['jawaban'] = $value;
             PertanyaanPeserta::create($array);
         }
-        return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang');
+        return redirect('/login')->with('sukses','Registrasi berhasil,');
 
 
         // $arr->each(function ($item, $key) {
