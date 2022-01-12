@@ -16,8 +16,8 @@
 			@endif
 			@if (session()->has('loginError'))
 				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					{{ session('loginError') }}
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					<button type="button" class="close h-100" data-bs-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span></button>
+					<strong>{{ session('loginError') }}</strong>
 				</div>
 			@endif
 			<form action="/login" method="POST">
