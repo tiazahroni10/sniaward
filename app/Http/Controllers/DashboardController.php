@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ]);
         }
         else {
-            return view('evaluator/dashboard',
+            return view('admin/dashboard',
             [   
             'data' => $data,
             'peran' => auth()->user()->peran

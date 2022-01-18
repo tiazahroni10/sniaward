@@ -27273,6 +27273,7 @@ code {
     color: #fff !important; }
 .table thead th {
   border-bottom-width: 1px;
+  width: auto;
   font-size: 14px;
   font-weight: 600;
   padding: 20px 20px;

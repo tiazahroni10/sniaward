@@ -1,4 +1,4 @@
-@extends('layouts.peserta.master')
+@extends('layouts.admin.master')
 @section('content')
 
 <!--**********************************
