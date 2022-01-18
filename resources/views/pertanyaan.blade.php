@@ -2,6 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="{{ asset('assets') }}/css/pertanyaan.css">
+	<link href="./vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>SNI AWARD | Pertanyaan</title>
 </head>
@@ -17,10 +18,35 @@
 				@endif
 				@foreach ($data as $item)
 					<div class="form-group">
-						<label class="mb-1 text-white"><strong>{{ $item->pertanyaan }}</strong></label>
-						<input type="text" name="pertanyaan[{{ $item->id }}]" class="form-control" id="j_{{ $item->id }}"  placeholder="jawaban ..." required maxlength="100">
+						<label class="mb-1 text-white"><strong>{{ $item->pertanyaan }}</strong></label> <br>
+						{{-- <input type="text" name="pertanyaan[{{ $item->id }}]" class="form-control" id="j_{{ $item->id }}"  placeholder="jawaban ..." required maxlength="100"> --}}
+						@if ($item->id === 1)
+						<select class="d-block w-100 default-select form-control" id="j_{{ $item->id }}" name="pertanyaan[{{ $item->id }}]" required >
+							<option value="">Choose...</option>
+							<option value="facebook">Facebook</option>
+							<option value="line">Line</option>
+							<option value="instagram">Instagram</option>
+							<option value="website sni">Website BSN</option>
+						</select>
+						@elseif ($item->id ===2)
+						<select class="d-block w-100 default-select form-control" id="j_{{ $item->id }}" name="pertanyaan[{{ $item->id }}]" required >
+							<option value="">Choose...</option>
+							<option value="mendapatkan penghargaan">Mendapatkan penghargaan</option>
+							<option value="mendapatkan hadiah">Mendapatkan hadiah</option>
+							<option value="menjadi terkenal">Menjadi terkenal</option>
+						</select>
+						@elseif ($item->id ===3)
+						<select class="d-block w-100 default-select form-control" id="j_{{ $item->id }}" name="pertanyaan[{{ $item->id }}]" required >
+							<option value="">Choose...</option>
+							<option value="mengetahui lebih lanjut tentang sni award">Mengetahui lebih lanjut tentang SNI award</option>
+							<option value="meningkatkan performa perusahaan di bidang sni">Meningkatkan performa perusahaan di bidang SNI</option>
+						</select>
+						@endif
 					</div>
 				@endforeach
+
+
+				
 
                         
                         <!-- <div class="text-center"> -->
