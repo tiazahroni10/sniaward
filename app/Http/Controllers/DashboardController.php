@@ -19,21 +19,21 @@ class DashboardController extends Controller
         $data = $this->peserta->getPeserta($id);
         if(auth()->user()->peran ==='peserta')
         {
-            return view('peserta',
+            return view('peserta/dashboard',
             [   
             'data' => $data,
             'peran' => auth()->user()->peran
             ]);
         }
         elseif (auth()->user()->peran ==='evaluator') {
-            return view('evaluator',
+            return view('evaluator/dashboard',
             [   
             'data' => $data,
             'peran' => auth()->user()->peran
             ]);
         }
         else {
-            return view('admin',
+            return view('evaluator/dashboard',
             [   
             'data' => $data,
             'peran' => auth()->user()->peran
