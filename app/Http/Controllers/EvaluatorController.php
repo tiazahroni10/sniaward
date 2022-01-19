@@ -18,6 +18,18 @@ class EvaluatorController extends Controller
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);
         return view('admin/evaluator',$data = [
+            'menu' => 'Evaluator',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+
+    public function tambahEvaluator()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('admin/tambahevaluator', $data = [
+            'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

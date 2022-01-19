@@ -21,20 +21,23 @@ class DashboardController extends Controller
         {
             return view('peserta/dashboard',
             [   
+            'menu' => 'Dashboard',
             'data' => $data,
             'peran' => auth()->user()->peran
             ]);
         }
         elseif (auth()->user()->peran ==='evaluator') {
             return view('evaluator/dashboard',
-            [   
+            [  
+            'menu' => 'Dashboard',
             'data' => $data,
             'peran' => auth()->user()->peran
             ]);
         }
         else {
             return view('admin/dashboard',
-            [   
+            [
+            'menu' => 'Dashboard',
             'data' => $data,
             'peran' => auth()->user()->peran
             ]);

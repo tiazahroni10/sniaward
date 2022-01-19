@@ -17,6 +17,7 @@ class PesertaController extends Controller
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);
         return view('admin/peserta',$data = [
+            'menu' => 'Peserta',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

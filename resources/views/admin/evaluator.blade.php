@@ -12,7 +12,7 @@
                             <input type="text" class="form-control" placeholder="Cari Evaluator . . .">
                         </div>
                         </li>
-                        <li><a href="javascript:void()" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                        <li><a href="/admin/tambahevaluator" class="btn btn-primary btn-event w-100" style="color: #ffffff">
                             <span class="align-middle"><i class="ti-plus"></i></span> Tambah Evaluator
                         </a></li>
                         

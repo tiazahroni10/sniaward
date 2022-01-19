@@ -17,6 +17,7 @@ class DokumenPersyaratanController extends Controller
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);
         return view('admin/persyaratan',$data = [
+            'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

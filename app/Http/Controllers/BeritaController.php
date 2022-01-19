@@ -18,6 +18,7 @@ class BeritaController extends Controller
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);
         return view('admin/berita',$data = [
+            'menu' => 'Berita',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

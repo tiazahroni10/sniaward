@@ -44,6 +44,7 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
 Route::get('/profil',[ProfilController::class,'index'])->middleware('auth');
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
+Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');
 Route::get('/admin/berita',[BeritaController::class,'index'])->middleware('auth');
 Route::get('/admin/persyaratan',[DokumenPersyaratanController::class,'index'])->middleware('auth');
 Route::get('/admin/capacitybuilding',[DokumenCapacityBuildingController::class,'index'])->middleware('auth');
