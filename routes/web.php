@@ -4,6 +4,9 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DokumenCapacityBuildingController;
+use App\Http\Controllers\DokumenPersyaratanController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\EvaluatorController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PesertaController;
@@ -42,6 +45,9 @@ Route::get('/profil',[ProfilController::class,'index'])->middleware('auth');
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
 Route::get('/admin/berita',[BeritaController::class,'index'])->middleware('auth');
+Route::get('/admin/persyaratan',[DokumenPersyaratanController::class,'index'])->middleware('auth');
+Route::get('/admin/capacitybuilding',[DokumenCapacityBuildingController::class,'index'])->middleware('auth');
+Route::get('/evaluator/download',[DownloadController::class,'index'])->middleware('auth');
 
 
 

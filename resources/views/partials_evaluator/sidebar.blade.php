@@ -9,7 +9,7 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a class="has-arrow ai-icon" href="/evaluator/download" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Download</span>
 						</a>

@@ -28,6 +28,10 @@
                         <i class="flaticon-381-television"></i>
                         <span class="nav-text">Dokumen</span>
                     </a>
+                    <ul aria-expanded="false">
+                        <li><a href="/admin/persyaratan">Persyaratan SNI Award</a></li>
+                        <li><a href="/admin/capacitybuilding">Materi Capacity Building</a></li>
+                    </ul>
                 </li>
 				<div class="copyright">
 					<p><strong>SNI AWARD</strong> © 2022 All Rights Reserved</p>
