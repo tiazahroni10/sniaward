@@ -55,11 +55,31 @@ class EvaluatorController extends Controller
         ]);
     }
 
-    public function editPendidikan()
+    public function tambahPendidikan()
     {
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);
-        return view('evaluator/editpendidikan', $data = [
+        return view('evaluator/tambahpendidikan', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+    public function tambahPekerjaan()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('evaluator/tambahpekerjaan', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+    public function tambahSertifikat()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('evaluator/tambahsertifikat', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran

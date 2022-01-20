@@ -27,8 +27,9 @@
                                         <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <a href="/evaluator/editprofil"><li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i>Edit Profil</li></a>
-                                            <a href="/evaluator/editpendidikan"><li class="dropdown-item"><i class="fa fa-graduation-cap text-primary mr-2"></i>Pendidikan</li></a>
-                                            <a href="/evaluator/pekerjaan"><li class="dropdown-item"><i class="fa fa-briefcase text-primary mr-2"></i>Pekerjaan</li></a>
+                                            <a href="/evaluator/tambahpendidikan"><li class="dropdown-item"><i class="fa fa-graduation-cap text-primary mr-2"></i>Pendidikan</li></a>
+                                            <a href="/evaluator/tambahpekerjaan"><li class="dropdown-item"><i class="fa fa-briefcase text-primary mr-2"></i>Pekerjaan</li></a>
+                                            <a href="/evaluator/tambahsertifikat"><li class="dropdown-item"><i class="fa fa-certificate text-primary mr-2"></i>Sertifikat</li></a>
                                         </ul>
                                     </div>
                                 </div>

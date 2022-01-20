@@ -12,8 +12,9 @@ use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SekretariatController;
-use App\Models\Berita;
-use App\Models\Sekretariat;
+use App\Http\Controllers\MasterPertanyaanController;
+use App\Http\Controllers\MasterDokumenController;
+use App\Http\Controllers\DokumentasiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,12 +56,20 @@ Route::get('/admin/persyaratan',[DokumenPersyaratanController::class,'index'])->
 Route::get('/admin/capacitybuilding',[DokumenCapacityBuildingController::class,'index'])->middleware('auth');
 Route::get('/admin/uploadcapacitybuilding',[DokumenCapacityBuildingController::class,'uploadCapacityBuilding'])->middleware('auth');
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth');
+Route::get('/admin/masterpertanyaan',[MasterPertanyaanController::class,'index'])->middleware('auth');
+Route::get('/admin/tambahpertanyaan',[MasterPertanyaanController::class,'tambahPertanyaan'])->middleware('auth');
+Route::get('/admin/masterdokumen',[MasterDokumenController::class,'index'])->middleware('auth');
+Route::get('/admin/tambahdokumen',[MasterDokumenController::class,'tambahDokumen'])->middleware('auth');
+Route::get('/admin/dokumentasi',[DokumentasiController::class,'index'])->middleware('auth');
+Route::get('/admin/tambahdokumentasi',[DokumentasiController::class,'tambahDokumentasi'])->middleware('auth');
 
 // bagian evaluator
 Route::get('/evaluator/download',[DownloadController::class,'index'])->middleware('auth');
 Route::get('/evaluator/profil',[EvaluatorController::class,'profil'])->middleware('auth');
 Route::get('/evaluator/editprofil',[EvaluatorController::class,'editProfil'])->middleware('auth');
-Route::get('/evaluator/editpendidikan',[EvaluatorController::class,'editPendidikan'])->middleware('auth');
+Route::get('/evaluator/tambahpendidikan',[EvaluatorController::class,'tambahPendidikan'])->middleware('auth');
+Route::get('/evaluator/tambahpekerjaan',[EvaluatorController::class,'tambahPekerjaan'])->middleware('auth');
+Route::get('/evaluator/tambahsertifikat',[EvaluatorController::class,'tambahSertifikat'])->middleware('auth');
 
 
 
