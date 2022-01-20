@@ -22,4 +22,14 @@ class DokumenPersyaratanController extends Controller
             'peran' => auth()->user()->peran
         ]);
     }
+    public function uploadDokumen(){
+
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('admin/uploadpersyaratan',$data = [
+            'menu' => 'Dokumen',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
 }

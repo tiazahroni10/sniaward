@@ -34,4 +34,35 @@ class EvaluatorController extends Controller
             'peran' => auth()->user()->peran
         ]);
     }
+    public function profil()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('evaluator/profil', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+    public function editProfil()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('evaluator/editprofil', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+
+    public function editPendidikan()
+    {
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('evaluator/editpendidikan', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
 }

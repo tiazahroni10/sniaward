@@ -29,7 +29,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="country">Status<span class="text-danger">*</span></label>
+                                    <label for="status">Status<span class="text-danger">*</span></label>
                                     <select class="d-block w-50 default-select" id="country" required="">
                                         <option value="">Pilih...</option>
                                         <option value="calon evaluator">Calon Evaluator</option>

@@ -22,4 +22,14 @@ class DokumenCapacityBuildingController extends Controller
             'peran' => auth()->user()->peran
         ]);
     }
+    public function uploadCapacityBuilding(){
+
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('admin/uploadcapacitybuilding',$data = [
+            'menu' => 'Dokumen',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
 }
