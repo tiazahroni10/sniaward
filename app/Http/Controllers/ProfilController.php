@@ -13,7 +13,7 @@ class ProfilController extends Controller
     {
         $this->peserta = new Peserta();
     }
-    public function index(){
+    public function profil(){
 
         $id = auth()->user()->id;
         $data = $this->peserta->getPeserta($id);

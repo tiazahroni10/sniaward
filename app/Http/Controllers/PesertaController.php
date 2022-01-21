@@ -22,4 +22,31 @@ class PesertaController extends Controller
             'peran' => auth()->user()->peran
         ]);
     }
+    public function profil(){
+
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('peserta/profil',$data = [
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+    public function editProfil(){
+
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('peserta/editprofil',$data = [
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+    public function editKontak(){
+
+        $id = auth()->user()->id;
+        $data = $this->peserta->getPeserta($id);
+        return view('peserta/editkontak',$data = [
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
 }

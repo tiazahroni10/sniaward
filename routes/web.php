@@ -44,7 +44,11 @@ Route::post('/register', [RegisterController::class,'simpanData']);
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
 Route::get('/pertanyaan',[PertanyaanController::class,'index']);
 Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
-Route::get('/profil',[ProfilController::class,'index'])->middleware('auth');
+
+//peserta
+Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth');
+Route::get('/peserta/editprofil',[PesertaController::class,'editprofil'])->middleware('auth');
+Route::get('/peserta/editkontak',[PesertaController::class,'editkontak'])->middleware('auth');
 
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
