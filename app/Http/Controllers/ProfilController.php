@@ -18,6 +18,7 @@ class ProfilController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('peserta/profil',$data = [
+            'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

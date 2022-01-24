@@ -27,6 +27,7 @@ class PesertaController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('peserta/profil',$data = [
+            'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
@@ -36,6 +37,7 @@ class PesertaController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('peserta/editprofil',$data = [
+            'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
@@ -45,6 +47,7 @@ class PesertaController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('peserta/editkontak',$data = [
+            'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

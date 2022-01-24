@@ -15,7 +15,7 @@ class SekretariatController extends Controller
     public function profil(){
 
         $id = auth()->user()->id;
-        $data = $this->user->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('admin/profil',$data = [
             'menu' => 'Profil',
             'data' => $data,

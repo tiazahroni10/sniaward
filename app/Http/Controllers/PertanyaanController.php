@@ -19,6 +19,7 @@ class PertanyaanController extends Controller
         $tipe_pertanyaan = 'Register';
         $data = $this->pertanyaan->getPertanyaan($tipe_pertanyaan);
         return view('pertanyaan',[
+            'menu' => 'Pertanyaan',
             'title' => 'Pertanyaan',
             'data' => $data
         ]);

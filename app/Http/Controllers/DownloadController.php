@@ -17,6 +17,7 @@ class DownloadController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('evaluator/download',$data = [
+            'menu' => 'Download',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
