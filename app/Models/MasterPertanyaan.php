@@ -10,10 +10,7 @@ class MasterPertanyaan extends Model
 {
     use HasFactory;
     protected $table = "master_pertanyaan";
-    protected $fillable = [
-        'tipe_pertanyaan',
-        'pertanyaan',
-    ];
+    protected $guarded = [''];
     public function pertanyaanPeserta()
     {
         $this->belongsTo(User::class);

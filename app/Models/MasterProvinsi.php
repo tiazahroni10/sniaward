@@ -9,9 +9,7 @@ class MasterProvinsi extends Model
 {
     use HasFactory;
     protected $table = "master_provinsi";
-    protected $fillable = [
-        'nama_provinsi'
-    ];
+    protected $guarded = [''];
 
     public function peserta()
     {

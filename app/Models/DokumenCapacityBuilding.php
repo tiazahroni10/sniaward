@@ -9,11 +9,7 @@ class DokumenCapacityBuilding extends Model
 {
     use HasFactory;
     protected $table = "dokumen_capacity_building";
-    protected $fillable = [
-        'user_id',
-        'master_dokumen_id',
-        'nama_file'
-    ];
+    protected $guarded = [''];
     public function user()
     {
         return $this->hasMany(Peserta::class);

@@ -9,9 +9,7 @@ class MasterKotaKabupaten extends Model
 {
     use HasFactory;
     protected $table = "master_kota_kabupaten";
-    protected $fillable = [
-        'nama_kota_kabupaten'
-    ];
+    protected $guarded = [''];
 
     public function peserta()
     {

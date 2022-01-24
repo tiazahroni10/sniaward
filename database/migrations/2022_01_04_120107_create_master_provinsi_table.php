@@ -13,11 +13,11 @@ class CreateMasterProvinsiTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_provinsi', function (Blueprint $table) {
-            $table->integerIncrements('id');
-            $table->string('nama_provinsi',50)->nullable(false)->unique();
-            $table->timestamps();
-        });
+        // Schema::create('master_provinsi', function (Blueprint $table) {
+        //     $table->integerIncrements('id');
+        //     $table->string('nama_provinsi',50)->nullable(false)->unique();
+        //     $table->timestamps();
+        // });
     }
 
     /**

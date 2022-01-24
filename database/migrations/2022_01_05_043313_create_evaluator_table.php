@@ -31,6 +31,7 @@ class CreateEvaluatorTable extends Migration
             $table->string('npwp',15)->nullable(false);   
             $table->string('ktp',20)->nullable(false); 
             $table->string('cv',15)->nullable(false); 
+            $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
         });
     }

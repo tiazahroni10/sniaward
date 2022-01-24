@@ -33,6 +33,7 @@ class CreatePesertaTable extends Migration
             $table->decimal('hasil_penjualan_organisasi',12,3)->nullable(true);
             $table->string('tipe_organisasi',10)->nullable(true);
             $table->string('gambar',10)->nullable(true);
+            $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
         });
     }

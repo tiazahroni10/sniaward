@@ -9,12 +9,7 @@ class Kontak extends Model
 {
     use HasFactory;
     protected $table="kontak";
-    protected $fillable = [
-        'user_id',
-        'nama_lengkap',
-        'jabatan',
-        'nomor_telepon'
-    ];
+    protected $guarded = [''];
     public function user()
     {
         return $this->hasMany(Peserta::class);

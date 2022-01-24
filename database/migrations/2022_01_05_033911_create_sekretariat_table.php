@@ -17,7 +17,9 @@ class CreateSekretariatTable extends Migration
             $table->foreignId('user_id');
             $table->string('nama_lengkap',50)->nullable(false);
             $table->string('gambar',15);
+            $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
+
         });
     }
 

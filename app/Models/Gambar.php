@@ -10,11 +10,7 @@ class Gambar extends Model
     use HasFactory;
     protected $table = "gambar";
 
-    protected $fillable = [
-        'user_id',
-        'judul',
-        'nama_file'
-    ];
+    protected $guarded = [''];
 
     public function user()
     {

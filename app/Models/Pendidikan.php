@@ -9,12 +9,7 @@ class Pendidikan extends Model
 {
     use HasFactory;
     protected $table = "pendidikan";
-    protected $fillable = [
-        'user_id',
-        'jenjang',
-        'nama_kampus',
-        'tahun_lulus'
-    ];
+    protected $guarded = [''];
     
     public function user()
     {

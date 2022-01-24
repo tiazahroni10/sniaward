@@ -9,9 +9,7 @@ class MasterSektorKategori extends Model
 {
     use HasFactory;
     protected $table = "master_sektor_kategori";
-    protected $fillable =[
-        'nama_kategori'
-    ];
+    protected $guarded = [''];
 
     public function peserta()
     {

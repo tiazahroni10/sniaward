@@ -9,13 +9,7 @@ class Evaluator extends Model
 {
     use HasFactory;
     protected $table = "evaluator";
-    protected $fillble = [
-        'nama_lengkap',
-        'status',
-        'npwp',
-        'ktp',
-        'cv'
-    ];
+    protected $guarded = [''];
 
     public function user()
     {

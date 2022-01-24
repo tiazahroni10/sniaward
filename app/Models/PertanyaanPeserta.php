@@ -10,11 +10,7 @@ class PertanyaanPeserta extends Model
 {
     use HasFactory;
     protected $table = "pertanyaan_peserta";
-    protected $fillable = [
-        'user_id',
-        'master_pertanyaan_id',
-        'jawaban'
-    ];
+    protected $guarded = [''];
     public function user()
     {
         return $this->hasMany(Peserta::class);

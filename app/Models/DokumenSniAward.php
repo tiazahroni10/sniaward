@@ -9,11 +9,7 @@ class DokumenSniAward extends Model
 {
     use HasFactory;
     protected $table = "dokumen_sni_award";
-    protected $fillable = [
-        'user_id',
-        'master_dokumen_id',
-        'nama_file'
-    ];
+    protected $guarded = [''];
 
     public function user()
     {

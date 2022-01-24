@@ -9,13 +9,7 @@ class MasterDokumen extends Model
 {
     use HasFactory;
     protected $table = "master_dokumen";
-    protected $fillable = [
-        'tipe_dokumen',
-        'format_file',
-        'maks_ukuran',
-        'wajib',
-        'deskripsi'
-    ];
+    protected $guarded = [''];
 
     public function dokumenPeserta()
     {

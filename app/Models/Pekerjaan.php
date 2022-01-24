@@ -9,13 +9,7 @@ class Pekerjaan extends Model
 {
     use HasFactory;
     protected $table= "pekerjaan";
-    protected $fillable = [
-        'user_id',
-        'jabatan',
-        'instansi',
-        'tahun_mulai',
-        'tahun_selesai'
-    ];
+    protected $guarded = [''];
 
     public function user()
     {
