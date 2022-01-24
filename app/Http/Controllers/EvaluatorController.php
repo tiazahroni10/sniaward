@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterKotaKabupaten;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\MasterProvinsi;
 
 
 class EvaluatorController extends Controller
@@ -45,11 +47,15 @@ class EvaluatorController extends Controller
         ]);
     }
     public function editProfil()
-    {
+    {   
+        $dataProvinsi = MasterProvinsi::all();
+        $dataKabupaten = MasterKotaKabupaten::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('evaluator/editprofil', $data = [
             'menu' => 'Profil',
+            'dataKabupaten' => $dataKabupaten,
+            'dataProvinsi' => $dataProvinsi,
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

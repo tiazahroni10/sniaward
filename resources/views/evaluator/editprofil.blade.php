@@ -87,12 +87,11 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="provinsi">Provinsi</label>
-                                        <select class="d-block w-100 default-select" id="provinsi" required="">
+                                        <select class="d-block w-100 default-select" id="provinsi" name="provinsi" required="">
                                             <option value="">Pilih...</option>
-                                            <option value="Aceh">Aceh</option>
-                                            <option value="Sumatera Utara">Sumatera Utara</option>
-                                            <option value="Sumatera Barat">Sumatera Barat</option>
-                                            <option value="Riau">Riau</option>
+                                            @foreach ($dataProvinsi as $provinsi)
+                                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
