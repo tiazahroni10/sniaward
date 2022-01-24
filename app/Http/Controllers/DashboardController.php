@@ -7,16 +7,16 @@ use App\Models\User;
 
 class DashboardController extends Controller
 {
-    private $peserta;
+    private $user;
 
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new User();
     }
     public function index()
     {
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         if(auth()->user()->peran ==='peserta')
         {
             return view('peserta/dashboard',

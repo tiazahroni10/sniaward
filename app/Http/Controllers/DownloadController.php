@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Peserta;
+use App\Models\User;
 
 class DownloadController extends Controller
 {
-    private $peserta;
+    private $user;
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new user();
     }
     public function index(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('evaluator/download',$data = [
             'data' => $data,
             'peran' => auth()->user()->peran

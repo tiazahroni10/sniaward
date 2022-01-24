@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Peserta;
+use App\Models\User;
 
 class MasterPertanyaanController extends Controller
 {
-    private $peserta;
+    private $user;
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new User();
     }
     public function index(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getPeserta($id);
         return view('admin/masterpertanyaan',$data = [
             'menu' => 'Data Master',
             'data' => $data,
@@ -25,7 +25,7 @@ class MasterPertanyaanController extends Controller
     public function tambahPertanyaan(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getPeserta($id);
         return view('admin/tambahPertanyaan',$data = [
             'menu' => 'Data Master',
             'data' => $data,

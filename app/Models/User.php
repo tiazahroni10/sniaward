@@ -116,4 +116,8 @@ class User extends Authenticatable
     {
         $this->belongsTo(User::class);
     }
+    public function getUser($id)
+    {
+        return $this->firstWhere('id',$id);
+    }
 }

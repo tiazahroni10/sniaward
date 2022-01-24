@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Peserta;
+use App\Models\User;
 
 class DokumenCapacityBuildingController extends Controller
 {
-    private $peserta;
+    private $user;
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new User();
     }
     public function index(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('admin/capacitybuilding',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
@@ -25,7 +25,7 @@ class DokumenCapacityBuildingController extends Controller
     public function uploadCapacityBuilding(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('admin/uploadcapacitybuilding',$data = [
             'menu' => 'Dokumen',
             'data' => $data,

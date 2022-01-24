@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peserta;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SekretariatController extends Controller
 {
-    private $peserta;
+    private $user;
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new User();
     }
     public function profil(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getPeserta($id);
         return view('admin/profil',$data = [
             'menu' => 'Profil',
             'data' => $data,

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peserta;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PesertaController extends Controller
 {
-    private $peserta;
+    private $user;
     function __construct()
     {
-        $this->peserta = new Peserta();
+        $this->user = new User();
     }
     public function index(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('admin/peserta',$data = [
             'menu' => 'Peserta',
             'data' => $data,
@@ -25,7 +25,7 @@ class PesertaController extends Controller
     public function profil(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('peserta/profil',$data = [
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -34,7 +34,7 @@ class PesertaController extends Controller
     public function editProfil(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('peserta/editprofil',$data = [
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -43,7 +43,7 @@ class PesertaController extends Controller
     public function editKontak(){
 
         $id = auth()->user()->id;
-        $data = $this->peserta->getPeserta($id);
+        $data = $this->user->getUser($id);
         return view('peserta/editkontak',$data = [
             'data' => $data,
             'peran' => auth()->user()->peran
