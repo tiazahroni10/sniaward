@@ -34,7 +34,7 @@
                                                 <label class="custom-control-label" for="checkAll"></label>
                                             </div>
                                         </th>
-                                        <th>Id</th>
+                                        <th>No</th>
                                         <th class="pl-5">Tipe Pertanyaan</th>
                                         <th class="pl-5" style="width: 70%">Pertanyaan</th>
                                     </tr>
@@ -51,7 +51,7 @@
                                             <td class="py-3">
                                                 <a href="#">
                                                     <div class="media-body">
-                                                        <h5 class="mb-0 fs--1">{{ $pertanyaan->id }}</h5>
+                                                        <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
                                                     </div>
                                                 </a>
                                             </td>
