@@ -14,7 +14,7 @@
         <div class="page-titles ">
             <ol class="breadcrumb d-flex justify-content-between align-items-center">
                 <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Pertanyaan</a></li>
-                <li><a href="/admin/tambahpertanyaan" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                <li><a href="{{ route('masterpertanyaan.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
                     <span class="align-middle"><i class="ti-plus"></i></span> Tambah Pertanyaan
                 </a></li>
                 
@@ -61,7 +61,20 @@
                                             <td class="py-2 text-right">
                                                 <div class="dropdown"><button class="btn btn-primary tp-btn-light sharp" type="button" data-toggle="dropdown"><span class="fs--1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></span></button>
                                                     <div class="dropdown-menu dropdown-menu-right border py-0">
-                                                        <div class="py-2"><a class="dropdown-item"  href="#!">Ubah</a><a class="dropdown-item text-danger" href="#!">Hapus</a></div>
+                                                        <div class="py-2">
+                                                            {{-- <a class="dropdown-item"  href="#!">Ubah</a> --}}
+                                                            <form action="{{ route('masterpertanyaan.edit', $pertanyaan->id) }}" method="GET">
+                                                                @csrf 
+                                                                <button type="submit"  class="dropdown-item"><span>Ubah</span>
+                                                                </button>
+                                                            </form>
+                                                            <form action="{{ route('masterpertanyaan.destroy', $pertanyaan->id) }}" method="POST">
+                                                                @csrf 
+                                                                @method('delete')
+                                                                <button type="submit"  class="dropdown-item text-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>

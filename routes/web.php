@@ -15,6 +15,7 @@ use App\Http\Controllers\SekretariatController;
 use App\Http\Controllers\MasterPertanyaanController;
 use App\Http\Controllers\MasterDokumenController;
 use App\Http\Controllers\DokumentasiController;
+use App\Models\MasterPertanyaan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,13 +61,12 @@ Route::get('/admin/persyaratan',[DokumenPersyaratanController::class,'index'])->
 Route::get('/admin/capacitybuilding',[DokumenCapacityBuildingController::class,'index'])->middleware('auth');
 Route::get('/admin/uploadcapacitybuilding',[DokumenCapacityBuildingController::class,'uploadCapacityBuilding'])->middleware('auth');
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth');
-Route::get('/admin/masterpertanyaan',[MasterPertanyaanController::class,'index'])->middleware('auth');
-Route::get('/admin/tambahpertanyaan',[MasterPertanyaanController::class,'formTambahPertanyaan'])->middleware('auth');
 Route::post('/admin/tambahpertanyaan',[MasterPertanyaanController::class,'tambahPertanyaan'])->middleware('auth');
 Route::get('/admin/masterdokumen',[MasterDokumenController::class,'index'])->middleware('auth');
 Route::get('/admin/tambahdokumen',[MasterDokumenController::class,'tambahDokumen'])->middleware('auth');
 Route::get('/admin/dokumentasi',[DokumentasiController::class,'index'])->middleware('auth');
 Route::get('/admin/tambahdokumentasi',[DokumentasiController::class,'tambahDokumentasi'])->middleware('auth');
+Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth');
 
 // bagian evaluator
 Route::get('/evaluator/download',[DownloadController::class,'index'])->middleware('auth');
