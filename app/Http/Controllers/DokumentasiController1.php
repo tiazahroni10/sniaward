@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class DokumenCapacityBuildingController extends Controller
+class DokumentasiController extends Controller
 {
     private $user;
     function __construct()
@@ -16,18 +16,18 @@ class DokumenCapacityBuildingController extends Controller
 
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/capacitybuilding',$data = [
-            'menu' => 'Dokumen',
+        return view('admin/dokumentasi/index',$data = [
+            'menu' => 'Dokumentasi',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
     }
-    public function uploadCapacityBuilding(){
+    public function tambahDokumentasi(){
 
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/uploadcapacitybuilding',$data = [
-            'menu' => 'Dokumen',
+        return view('admin/dokumentasi/create',$data = [
+            'menu' => 'Dokumentasi',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);

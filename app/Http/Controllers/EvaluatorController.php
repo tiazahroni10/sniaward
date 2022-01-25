@@ -3,56 +3,84 @@
 namespace App\Http\Controllers;
 
 use App\Models\MasterKotaKabupaten;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\MasterProvinsi;
-
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class EvaluatorController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     private $user;
     function __construct()
     {
         $this->user = new User();
     }
-    public function index(){
-
+    public function index()
+    {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/evaluator',$data = [
+        return view('admin/evaluator/index',$data = [
             'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
     }
 
-    public function tambahEvaluator()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/tambahevaluator', $data = [
+        return view('admin/evaluator/create', $data = [
             'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
     }
-    public function profil()
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('evaluator/profil', $data = [
-            'menu' => 'Profil',
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
+        //
     }
-    public function editProfil()
-    {   
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
         $dataProvinsi = MasterProvinsi::all();
         $dataKabupaten = MasterKotaKabupaten::all();
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('evaluator/editprofil', $data = [
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        return view('evaluator/edit', $data = [
             'menu' => 'Profil',
             'dataKabupaten' => $dataKabupaten,
             'dataProvinsi' => $dataProvinsi,
@@ -61,31 +89,33 @@ class EvaluatorController extends Controller
         ]);
     }
 
-    public function tambahPendidikan()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('evaluator/tambahpendidikan', $data = [
-            'menu' => 'Profil',
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
+        //
     }
-    public function tambahPekerjaan()
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('evaluator/tambahpekerjaan', $data = [
-            'menu' => 'Profil',
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
+        //
     }
-    public function tambahSertifikat()
+    public function profil()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('evaluator/tambahsertifikat', $data = [
+        return view('evaluator/profil', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran

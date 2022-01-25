@@ -5,7 +5,7 @@
         <div class="page-titles">
             <ol class="breadcrumb d-flex justify-content-between align-items-center">
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Daftar Dokumentasi</a></li>
-                <li><a href="/admin/tambahdokumentasi" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                <li><a href="{{ route('dokumentasi.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
                     <span class="align-middle"><i class="ti-plus"></i></span> Tambah Dokumen
                 </a></li>
             </ol>

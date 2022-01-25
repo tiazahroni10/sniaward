@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="page-titles ">
             <ol class="breadcrumb d-flex justify-content-between align-items-center">
-                <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Dokumen Capacity Building</a></li>
+                <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Dokumen Persyaratan SNI Award</a></li>
                 <li><div class="input-group search-area d-xl-inline-flex d-none mr-3">
                     <div class="input-group-append">
                         <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
@@ -13,7 +13,7 @@
                     <input type="text" class="form-control" placeholder="Cari Dokumen . . .">
                 </div>
                 </li>
-                <li><a href="/admin/uploadcapacitybuilding" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                <li><a href="{{ route('persyaratan.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
                     <span class="align-middle"><i class="ti-plus"></i></span> Tambah Dokumen
                 </a></li>
                 
@@ -34,7 +34,7 @@
                                             </div>
                                         </th>
                                         <th>Dokumen Id</th>
-                                        <th class="pl-5 width200">Capacity Building</th>
+                                        <th class="pl-5 width200">Persyaratan SNI Award</th>
                                         <th class="pl-5 width200">Tanggal Publish</th>
                                     </tr>
                                 </thead>

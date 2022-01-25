@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class DokumentasiController extends Controller
+class PekerjaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +19,7 @@ class DokumentasiController extends Controller
     }
     public function index()
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('admin/dokumentasi/index',$data = [
-            'menu' => 'Dokumentasi',
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
+        //
     }
 
     /**
@@ -37,8 +31,8 @@ class DokumentasiController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/dokumentasi/create',$data = [
-            'menu' => 'Dokumentasi',
+        return view('evaluator/pekerjaan/create', $data = [
+            'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
