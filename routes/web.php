@@ -53,7 +53,8 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
 
 
 //peserta
-Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('peserta.profil');
+Route::get('/peserta',[PesertaController::class,'profil'])->middleware('auth')->name('peserta.profil');
+
 Route::resource('/peserta/profil', PesertaController::class)->middleware('auth');
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 
