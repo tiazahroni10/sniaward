@@ -67,6 +67,16 @@ class DatabaseSeeder extends Seeder
             'password'=>bcrypt('1111'),
             'peran' => 'admin' 
         ]);
+        MasterDokumen::create([
+            'tipe_dokumen' =>'persyaratan',
+            'format_file' => 'pdf',
+            'maks_ukuran' => 2048
+        ]);
+        MasterDokumen::create([
+            'tipe_dokumen' =>'capacity building',
+            'format_file' => 'pdf',
+            'maks_ukuran' => 2048
+        ]);
 
     }
 }

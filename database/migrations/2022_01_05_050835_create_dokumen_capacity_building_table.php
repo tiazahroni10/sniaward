@@ -17,7 +17,8 @@ class CreateDokumenCapacityBuildingTable extends Migration
             $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId('master_dokumen_id');
-            $table->string('nama_file',15);
+            $table->string('nama_dokumen');
+            $table->string('nama_file');
             $table->timestamps();
         });
     }

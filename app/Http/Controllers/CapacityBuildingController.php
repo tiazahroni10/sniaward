@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DokumenCapacityBuilding;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,14 @@ class CapacityBuildingController extends Controller
     }
     public function index()
     {
+        $dataCapacityBuilding = DokumenCapacityBuilding::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin/capacitybuilding/index',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataCapacityBuilding' => $dataCapacityBuilding
         ]);
     }
 
@@ -52,7 +55,17 @@ class CapacityBuildingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_file' => ['required'],
+            'nama_dokumen' => ['required','mimes:pdf','file ','max:2048']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['master_dokumen_id'] = 2;
+        $validatedData['nama_dokumen'] =$request->file('nama_dokumen')->store('dokumen-capacitybuilding');
+        $ret_val = DokumenCapacityBuilding::create($validatedData);
+        // return $request->file('dokumen')->store('dokumen-persyaratan'); 
+        $request->session()->flash('sukses','Dokumen Capacity Building berhasil ditambahkan');
+        return redirect()->route('capacitybuilding.index');
     }
 
     /**
@@ -74,7 +87,15 @@ class CapacityBuildingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataCapacityBuilding = DokumenCapacityBuilding::findOrFail($id);
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        return view('admin.persyaratan/edit',$data=[
+            'menu' => 'Data Master',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataCapacityBuilding' => $dataCapacityBuilding
+        ]);
     }
 
     /**
@@ -86,7 +107,10 @@ class CapacityBuildingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $dataCapacityBuilding = DokumenCapacityBuilding::findOrFail($id);
+        $dataCapacityBuilding->update($data);
+        return redirect()->route('capacitybuilding.index')->with('sukses','Data berhasi diubah');
     }
 
     /**
@@ -97,6 +121,15 @@ class CapacityBuildingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data   = DokumenCapacityBuilding::findOrFail($id);
+        $file = public_path('storage/').$data->nama_dokumen;
+        if (file_exists($file))
+        {
+            @unlink($file);
+        }
+        $data->delete();
+
+        return redirect()->route('capacitybuilding.index')->with('sukses','Dokumen Persyaratan berhasil dihapus');
+        
     }
 }
