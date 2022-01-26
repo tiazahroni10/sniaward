@@ -62,7 +62,11 @@ class DatabaseSeeder extends Seeder
         // Gambar::factory(20)->create();
         // Sekretariat::factory(20)->create();
 
-        
+        User::create([
+            'email' => 'admin@gmail.com',
+            'password'=>bcrypt('1111'),
+            'peran' => 'admin' 
+        ]);
 
     }
 }

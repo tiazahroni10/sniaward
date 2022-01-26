@@ -13,32 +13,39 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" novalidate="">
+                            <form class="needs-validation" action="{{ route('evaluator.store') }}" method="POST" novalidate="">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="namalengkap">Nama Lengkap<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                    <label for="nama_lengkap">Nama Lengkap<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror" id="nama_lengkap" name="nama_lengkap" placeholder="" value="{{ old('nama_lengkap') }}" required="">
+                                    @error('nama_lengkap')
                                     <div class="invalid-feedback">
-                                        Valid first name is required.
+                                        {{ $message }}
                                     </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Email<span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="you@example.com" value="{{ old('email') }}">
+                                    @error('email')
                                     <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
+                                        {{ $message }}
                                     </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="status">Status<span class="text-danger">*</span></label>
-                                    <select class="d-block w-50 default-select" id="country" required="">
+                                    <select class="d-block w-50 default-select @error('status') is-invalid @enderror" id="status" name="status" required="">
                                         <option value="">Pilih...</option>
                                         <option value="calon evaluator">Calon Evaluator</option>
                                         <option value="evaluator">Evaluator</option>
                                         <option value="ketua evaluator">Ketua Evaluator</option>
                                     </select>
+                                    @error('status')
                                     <div class="invalid-feedback">
-                                        Please select a valid country.
+                                        {{ $message }}
                                     </div>
+                                    @enderror
                                 </div>
                                 <hr class="mb-4">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>

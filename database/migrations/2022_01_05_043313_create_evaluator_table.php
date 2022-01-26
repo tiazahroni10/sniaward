@@ -15,10 +15,10 @@ class CreateEvaluatorTable extends Migration
     {
         Schema::create('evaluator', function (Blueprint $table) {
             $table->foreignId('user_id');
-            $table->string('nama_lengkap',50)->nullable(false);
+            $table->string('nama_lengkap',50)->nullable(true);
             $table->string('gelar_sebelum_nama',5)->nullable(true);
             $table->string('gelar_setelah_nama',5)->nullable(true);
-            $table->string('status',20)->nullable(false);
+            $table->string('status',20)->nullable(true);
             $table->datetime('tgl_lahir')->nullable(true);
             $table->string('pekerjaan',20)->nullable(true);
             $table->string('nama_instansi',20)->nullable(true);
@@ -28,9 +28,9 @@ class CreateEvaluatorTable extends Migration
             $table->foreignId('master_kota_kabupaten_id')->nullable(true);
             $table->string('nomor_telepon',13)->nullable(true);
             $table->string('gambar',15)->nullable(true);
-            $table->string('npwp',15)->nullable(false);   
-            $table->string('ktp',20)->nullable(false); 
-            $table->string('cv',15)->nullable(false); 
+            $table->string('npwp',15)->nullable(true);   
+            $table->string('ktp',20)->nullable(true); 
+            $table->string('cv',15)->nullable(true); 
             $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
         });

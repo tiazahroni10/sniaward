@@ -24,7 +24,7 @@ class MasterPertanyaanController extends Controller
         $id = auth()->user()->id;
         $dataPertanyaan = MasterPertanyaan::all(); 
         $data = $this->user->getUser($id);
-        return view('admin/masterpertanyaan/index',$data = [
+        return view('admin.masterpertanyaan.index',$data = [
             'dataPertanyaan' => $dataPertanyaan,
             'menu' => 'Data Master',
             'data' => $data,
@@ -41,7 +41,7 @@ class MasterPertanyaanController extends Controller
     {
         $id = auth()->user()->id;
             $data = $this->user->getUser($id);
-            return view('admin/masterpertanyaan/create',$data = [
+            return view('admin.masterpertanyaan.create',$data = [
                 'menu' => 'Data Master',
                 'data' => $data,
                 'peran' => auth()->user()->peran

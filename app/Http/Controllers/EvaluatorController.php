@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluator;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\User;
@@ -23,10 +24,12 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+        $dataEvaluator = Evaluator::all();
         return view('admin/evaluator/index',$data = [
             'menu' => 'Evaluator',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataEvaluator' => $dataEvaluator
         ]);
     }
 
@@ -42,7 +45,7 @@ class EvaluatorController extends Controller
         return view('admin/evaluator/create', $data = [
             'menu' => 'Evaluator',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
         ]);
     }
 
@@ -54,7 +57,24 @@ class EvaluatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_lengkap' =>['required'],
+            'email' => ['required','email:dns'],
+            'status' => ['required']
+        ]);
+        $validatedData['password'] = bcrypt('1111');
+        $validatedData['peran'] = 'evaluator';
+        $ret_val = User::create($validatedData);
+        $id = $ret_val->id;
+        $dataEvaluator = ([
+            'user_id' => $id,
+            'status' =>$validatedData['status'],
+            'nama_lengkap' => $validatedData['nama_lengkap']
+
+        ]);
+        Evaluator::create($dataEvaluator);
+        $request->session()->flash('sukses','Evaluator berhasil ditambahkan');
+        return redirect()->route('evaluator.index');
     }
 
     /**
