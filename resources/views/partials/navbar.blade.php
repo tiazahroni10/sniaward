@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="logo">
                     <a href="#">
-                        <h3>Sni Awards</h3>
+                        <img src="assets/img/logosniaward.png" width="100px" alt="logo">
                     </a>
                 </div>
 

@@ -21,6 +21,18 @@
 						<label class="mb-1 text-white"><strong>{{ $item->pertanyaan }}</strong></label> <br>
 						{{-- <input type="text" name="pertanyaan[{{ $item->id }}]" class="form-control" id="j_{{ $item->id }}"  placeholder="jawaban ..." required maxlength="100"> --}}
 						@if ($item->id === 1)
+						{{-- <div class="basic-dropdown" id="j_{{ $item->id }}" name="pertanyaan[{{ $item->id }}]" required>
+							<div class="dropdown">
+								<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+									Pilih jawaban
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">facebook</a>
+									<a class="dropdown-item" href="#">Line</a>
+									<a class="dropdown-item" href="#">Instagram</a>
+								</div>
+							</div>
+						</div> --}}
 						<select class="d-block w-100 default-select form-control" id="j_{{ $item->id }}" name="pertanyaan[{{ $item->id }}]" required >
 							<option value="">Choose...</option>
 							<option value="facebook">Facebook</option>
