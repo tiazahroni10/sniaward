@@ -13,11 +13,12 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" novalidate="" method="POST" action="{{ route('masterdokumen.store') }}">
+                            <form class="needs-validation" novalidate="" method="POST" action="{{ route('masterdokumen.update',$dataMasterDokumen->id) }}">
                                 @csrf
+                                @method('PUT')
                                 <div class="mb-3">
                                     <label for="tipe_dokumen">Tipe Dokumen</label>
-                                    <input type="text" class="form-control @error('tipe_dokumen') is-invalid @enderror" id="tipe_dokumen" name="tipe_dokumen" placeholder="" value="{{ old('tipe_dokumen') }}" required="">
+                                    <input type="text" class="form-control @error('tipe_dokumen') is-invalid @enderror" id="tipe_dokumen" name="tipe_dokumen" placeholder="" value="{{ $dataMasterDokumen->tipe_dokumen }}" required="">
                                     @error('tipe_dokumen')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -27,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="format_file">Format File</label>
-                                        <input type="text" class="form-control" id="format_file" name="format_file" placeholder="" value="{{ old('format_file') }}" required="" >
+                                        <input type="text" class="form-control" id="format_file" name="format_file" placeholder="" value="{{ $dataMasterDokumen->format_file }}" required="" >
                                         @error('format_file')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -36,7 +37,7 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="maks_ukuran">Maksimal Ukuran</label>
-                                        <input type="text" class="form-control @error('maks_ukuran') is-invalid @enderror" id="maks_ukuran" name="maks_ukuran" placeholder="" value="2048" required="">
+                                        <input type="text" class="form-control @error('maks_ukuran') is-invalid @enderror" id="maks_ukuran" name="maks_ukuran" placeholder="" value="{{ $dataMasterDokumen->maks_ukuran }}" required="" disabled>
                                         @error('format_file')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -58,7 +59,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" class="form-control @error('maks_ukuran') is-invalid @enderror" name="deskripsi" id="deskripsi" placeholder="" value="{{ old('deskripsi') }}" required="">
+                                    <input type="text" class="form-control @error('maks_ukuran') is-invalid @enderror" name="deskripsi" id="deskripsi" placeholder="" value="{{ $dataMasterDokumen->deskripsi }}" required="">
                                     @error('deskripsi')
                                     <div class="invalid-feedback">
                                         {{ $message }}

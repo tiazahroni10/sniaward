@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterDokumen;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,14 @@ class MasterDokumenController extends Controller
     }
     public function index()
     {
+        $dataMasterDokumen = MasterDokumen::all();
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
-        return view('admin/masterdokumen/index',$data = [
+        return view('admin.masterdokumen.index',$data = [
             'menu' => 'Data Master',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataMasterDokumen' => $dataMasterDokumen
         ]);
     }
 
@@ -37,7 +40,7 @@ class MasterDokumenController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/masterdokumen/create',$data = [
+        return view('admin.masterdokumen.create',$data = [
             'menu' => 'Data Master',
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -52,7 +55,16 @@ class MasterDokumenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tipe_dokumen' => ['required'],
+            'format_file' => ['required'],
+            'maks_ukuran' => ['required'],
+            'wajib' => ['required'],
+            'deskripsi' => ['']
+        ]);
+        $ret_val = MasterDokumen::create($validatedData);
+        $request->session()->flash('sukses','Master Dokumen berhasil ditambahkan');
+        return redirect()->route('masterdokumen.index');
     }
 
     /**
@@ -74,7 +86,15 @@ class MasterDokumenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataMasterDokumen = MasterDokumen::findOrFail($id);
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        return view('admin.masterdokumen.edit',$data=[
+            'menu' => 'Data Master',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataMasterDokumen' => $dataMasterDokumen
+        ]);
     }
 
     /**
@@ -86,7 +106,10 @@ class MasterDokumenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $dataPertanyaan = MasterDokumen::findOrFail($id);
+        $dataPertanyaan->update($data);
+        return redirect()->route('masterdokumen.index')->with('sukses','Master Dokumen berhasi diubah');
     }
 
     /**
@@ -97,6 +120,8 @@ class MasterDokumenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data   = MasterDokumen::findOrFail($id);
+        $data->delete();
+        return redirect('/admin/masterdokumen')->with('sukses','Master Dokumen berhasil dihapus');
     }
 }
