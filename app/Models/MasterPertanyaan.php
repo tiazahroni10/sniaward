@@ -13,8 +13,9 @@ class MasterPertanyaan extends Model
     protected $guarded = [''];
     public function pertanyaanPeserta()
     {
-        $this->belongsTo(User::class);
+        $this->belongsTo(PertanyaanPeserta::class);
     }
+    
     public function getPertanyaan($tipe_pertanyaan)
     {
         $pertanyaan =  DB::table('master_pertanyaan')

@@ -11,42 +11,16 @@
                 <div class="col-lg-6">
                     <div class="faq-accordion-content">
                         <ul class="accordion">
-                            <li class="accordion-item">
+                            @foreach ($dataFaq as $item)
+                                <li class="accordion-item">
                                 <a class="accordion-title active" href="javascript:void(0)">
                                     <i class="fa fa-chevron-down"></i>
-                                    Apa yang dimaksud SNI Award ?
+                                    {{ $item->pertanyaan }}
                                 </a>
     
-                                <p class="accordion-content show">SNI Award adalah apresiasi bagi industri/perusahaan yang menerapkan Standar Nasional Indonesia (SNI) atau standar lainnya dalam kegiatan usahannya.</p>
+                                <p class="accordion-content show">{{ $item->jawaban }}</p>
                             </li>
-                            
-                            <li class="accordion-item">
-                                <a class="accordion-title" href="javascript:void(0)">
-                                    <i class="fa fa-chevron-down"></i>
-                                    Apa saja kategori pesertanya ?
-                                </a>
-    
-                                <p class="accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
-                            </li>
-                            
-                            <li class="accordion-item">
-                                <a class="accordion-title" href="javascript:void(0)">
-                                    <i class="fa fa-chevron-down"></i>
-                                    Apa saja kriteria yang dinilai ?
-                                </a>
-    
-                                <p class="accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
-                            </li>
-    
-                            <li class="accordion-item">
-                                <a class="accordion-title" href="javascript:void(0)">
-                                    <i class="fa fa-chevron-down"></i>
-                                    Bagaimana prosedurnya ?
-                                </a>
-    
-                                <p class="accordion-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida</p>
-                            </li>
-                            
+                            @endforeach
                         </ul>
                     </div>
                 </div>

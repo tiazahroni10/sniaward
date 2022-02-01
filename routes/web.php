@@ -15,12 +15,14 @@ use App\Http\Controllers\SekretariatController;
 use App\Http\Controllers\MasterPertanyaanController;
 use App\Http\Controllers\MasterDokumenController;
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Models\DokumenBerita;
+use App\Models\Faq;
 use App\Models\Kontak;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +71,7 @@ Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->m
 Route::resource('/admin/persyaratan', PersyaratanController::class)->middleware('auth');
 Route::resource('/admin/dokumentasi', DokumentasiController::class)->middleware('auth');
 Route::resource('/admin/berita', BeritaController::class)->middleware('auth');
+Route::resource('/admin/faq', FaqController::class)->middleware('auth');
 
 
 

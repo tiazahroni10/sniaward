@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use App\Models\Frontpage;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -160,9 +161,11 @@ class FrontpageController extends Controller
     }
     public function showFrontpage(){
         $dataFrontpage = FrontPage::all();
+        $dataFaq = Faq::all();
         $dataFrontpage = $dataFrontpage->last();
         return view('home', $dataFrontpage =[
-            'data' => $dataFrontpage
+            'data' => $dataFrontpage,
+            'dataFaq' => $dataFaq
         ]);
     }
 }
