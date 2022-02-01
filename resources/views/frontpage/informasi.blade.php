@@ -40,9 +40,9 @@
                 </div>
 
                 <div class="section-title mt-5">
-                    <h2>Tentang SNI Awards</h2>
+                    <h2>{{ $data->tentang_sniaward }}</h2>
                     <div class="bar"></div>
-                    <p>SNI Award merupakan sebuah pemberian penghargaan tertinggi dari Pemerintah Repubik Indonesia bagi organisasi yang menerapkan Standar Nasional Indonesia (SNI) secara konsisten, berkinerja tinggi, memiliki kemampuan mengelola dinamisasi perubahan dan melakukan transformasi yang diperlukan secara tepat.</p>
+                    <p>{{ $data->ket_sniaward }}</p>
                 </div>
             </div>
         </div>

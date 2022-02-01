@@ -9,6 +9,7 @@ use App\Models\DokumenEvaluator;
 use App\Models\DokumenPeserta;
 use App\Models\DokumenSniAward;
 use App\Models\Evaluator;
+use App\Models\Frontpage;
 use App\Models\Gambar;
 use App\Models\HistoryLogin;
 use App\Models\Kontak;
@@ -77,6 +78,35 @@ class DatabaseSeeder extends Seeder
             'format_file' => 'pdf',
             'maks_ukuran' => 2048
         ]);
+        
+
+        Frontpage::create([
+            'judul' => 'Selamat Datang Di Website SNI Award 2022',
+            'gambar_judul' => '/assets/img/satu.png',
+            'ket_judul' => '/SNI Award dicanangkan sebagai The National Quality Award of Indonesia sejak tahun 2005',
+            'tentang_sniaward' =>'Tentang SNI Awards',
+            'ket_sniaward'=> 'SNI Award merupakan sebuah pemberian penghargaan tertinggi dari Pemerintah Repubik Indonesia bagi organisasi yang menerapkan Standar Nasional Indonesia (SNI) secara konsisten, berkinerja tinggi, memiliki kemampuan mengelola dinamisasi perubahan dan melakukan transformasi yang diperlukan secara tepat.',
+            'berita' => 'Berita',
+            'ket_berita' => 'Berita terbaru seputar SNI Award',
+            'unduhberkas' => 'Unduh Berkas',
+            'ket_unduhberkas' => 'Beberapa acara yang telah dilaksanakan sebelumnya',
+            'gambar_unduhberkas' => '/assets/img/vector_download.png',
+            'linimasa' => 'Linimasa',
+            'gambar_linimasa' => '/assets/img/vector_download.png',
+            'kumpulanacara' => 'Kumpulan Acara',
+            'gambar_kumpulanacara' => '/assets/img/vector_kumpulanacara.png',
+            'ket_kumpulanacara' => 'Beberapa acara yang telah dilaksanakan sebelumnya',
+            'dokumentasi' => 'Dokumentasi',
+            'pertanyaan' => 'Frequently Asked Questions',
+            'ket_pertanyaan' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.',
+            'kontakkami' => 'Kontak Kami',
+            'ket_kontakkami' => 'Tujuan dari Kontak BSN adalah untuk menampung permintaan layanan, pertanyaan maupun masukan yang berhubungan dengan kegiatan SNI Award. Semua masukan dari Kontak BSN akan diteruskan kepada pihak/narasumber yang mempunyai kompetensi sesuai dengan cakupan pertanyaan',
+            'linkfacebook' => 'facebook.com',
+            'linktwitter' => 'twitter.com',
+            'linkinstagram' => 'instagram.com',
+            'webbsn' => 'bsn.go.id'
+        ]);
+
 
     }
 }

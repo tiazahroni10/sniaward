@@ -35,7 +35,6 @@
             @include('partials.preloader')
             <div class="container">
                 @include('partials.navbar')
-                @include('partials.banner')
             </div>
         
             @yield('content')

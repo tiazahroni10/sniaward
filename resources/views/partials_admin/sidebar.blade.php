@@ -9,6 +9,11 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                     </li>
+                    <li><a  href="{{ route('frontpage.edit',1) }}" aria-expanded="false">
+							<i class="flaticon-381-networking"></i>
+							<span class="nav-text">Frontpage</span>
+						</a>
+                    </li>
                     <li><a class="has-arrow ai-icon" href="/admin/peserta" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Peserta</span>

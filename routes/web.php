@@ -15,6 +15,7 @@ use App\Http\Controllers\SekretariatController;
 use App\Http\Controllers\MasterPertanyaanController;
 use App\Http\Controllers\MasterDokumenController;
 use App\Http\Controllers\DokumentasiController;
+use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PersyaratanController;
@@ -34,14 +35,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-
+Route::get('/', [FrontPageController::class,'showFrontpage'])->middleware('guest')->name('showFrontpage');
+Route::resource('/frontpage', FrontpageController::class)->middleware('auth');
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'login']);
 Route::post('/logout', [LoginController::class,'logout']);

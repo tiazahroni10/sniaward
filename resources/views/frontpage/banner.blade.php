@@ -6,8 +6,8 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="banner-content">
-                                    <h1>Selamat Datang di Website SNI Award 2022</h1>
-                                    <p>SNI Award dicanangkan sebagai The National Quality Award of Indonesia sejak tahun 2005</p>
+                                    <h1>{{ $data->judul }}</h1>
+                                    <p>{{ $data->ket_judul }}</p>
         
                                     {{-- <div class="banner-holder">
                                         <a href="#">
@@ -22,7 +22,7 @@
 
                             <div class="col-lg-6">
                                 <div class="banner-image">
-                                    <img src="assets/img/satu.png" alt="image">
+                                    <img src="/storage/{{ $data->gambar_judul }}" alt="image">
                                 </div>
                             </div>
                         </div>

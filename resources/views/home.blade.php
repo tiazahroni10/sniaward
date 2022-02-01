@@ -1,6 +1,9 @@
 @extends('layouts.frontend.master')
 @section('content')
     {{-- Informasi --}}
+    <div class="container">
+        @include('frontpage.banner')
+    </div>
     @include('frontpage.informasi')
     @include('frontpage.berita')
     @include('frontpage.download')

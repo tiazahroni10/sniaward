@@ -6,9 +6,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h3>Kumpulan Acara</h3>
+                        <h3>{{ $data->kumpulanacara }}</h3>
                         <div class="bar "></div>
-                        <p>Beberapa acara yang telah dilaksanakan sebelumnya</p>
+                        <p>{{ $data->ket_kumpulanacara }}</p>
                         <div class="about-btn">
                             <a href="#" class="default-btn">
                                 Lihat selengkapnya
@@ -20,7 +20,7 @@
 
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="assets/img/vector_kumpulanacara.png" alt="image">
+                        <img src="/storage/{{ $data->gambar_kumpulanacara }}" alt="image">
                     </div>
                 </div>
                 <div class="col-lg-6">

@@ -2,9 +2,9 @@
     <section class="blog-area pt-100 pb-70" id="berita">
         <div class="container">
             <div class="section-title">
-                <h2>Berita</h2>
+                <h2>{{ $data->berita }}</h2>
                 <div class="bar"></div>
-                <p>Berita terbaru seputar SNI Award</p>
+                <p>{{ $data->ket_berita }}</p>
             </div>
 
             <div class="row">

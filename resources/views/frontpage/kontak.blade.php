@@ -2,9 +2,9 @@
     <section id="contact" class="contact-area ptb-100">
         <div class="container">
             <div class="section-title">
-                <h2>Kontak Kami</h2>
+                <h2>{{ $data->kontakkami }}</h2>
                 <div class="bar"></div>
-                <p>Tujuan dari Kontak BSN adalah untuk menampung permintaan layanan, pertanyaan maupun masukan yang berhubungan dengan kegiatan SNI Award. Semua masukan dari Kontak BSN akan diteruskan kepada pihak/narasumber yang mempunyai kompetensi sesuai dengan cakupan pertanyaan</p>
+                <p>{{ $data->ket_kontakkami }}</p>
             </div>
 
             <div class="row align-items-center">

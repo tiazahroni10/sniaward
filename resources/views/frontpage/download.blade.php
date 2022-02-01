@@ -6,9 +6,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h3>Unduh Berkas</h3>
+                        <h3>{{ $data->unduhberkas }}</h3>
                         <div class="bar"></div>
-                        <p>Kebebasan mengunduh berkas untuk mempermudah pendaftaran ajang SNI Award</p>
+                        <p>{{ $data->ket_unduhberkas }}</p>
                         <div class="about-btn">
                             <a href="#" class="default-btn">
                                 Download Sekarang
@@ -20,7 +20,7 @@
 
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="assets/img/vector_download.png" alt="image">
+                        <img src="/storage/{{ $data->gambar_unduhberkas }}" alt="image">
                     </div>
                 </div>
             </div>
