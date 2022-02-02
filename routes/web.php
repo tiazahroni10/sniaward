@@ -22,6 +22,7 @@ use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Models\DokumenBerita;
+use App\Models\Evaluator;
 use App\Models\Faq;
 use App\Models\Kontak;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,9 @@ Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
+Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator')->middleware('auth');
+
+
 Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth');
 Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth');

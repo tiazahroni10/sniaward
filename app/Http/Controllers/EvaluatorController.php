@@ -7,6 +7,8 @@ use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Contracts\DataTable;
+use Yajra\DataTables\Facades\DataTables;
 
 class EvaluatorController extends Controller
 {
@@ -96,17 +98,18 @@ class EvaluatorController extends Controller
      */
     public function edit($id)
     {
-        $dataProvinsi = MasterProvinsi::all();
-        $dataKabupaten = MasterKotaKabupaten::all();
-        $idUser = auth()->user()->id;
-        $data = $this->user->getUser($idUser);
-        return view('evaluator/edit', $data = [
-            'menu' => 'Profil',
-            'dataKabupaten' => $dataKabupaten,
-            'dataProvinsi' => $dataProvinsi,
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
+        // $dataProvinsi = MasterProvinsi::all();
+        // $dataKabupaten = MasterKotaKabupaten::all();
+        // $idUser = auth()->user()->id;
+        // $data = $this->user->getUser($idUser);
+        // return view('evaluator/edit', $data = [
+        //     'menu' => 'Profil',
+        //     'dataKabupaten' => $dataKabupaten,
+        //     'dataProvinsi' => $dataProvinsi,
+        //     'data' => $data,
+        //     'peran' => auth()->user()->peran
+        // ]);
+        dd($id);
     }
 
     /**
@@ -141,4 +144,14 @@ class EvaluatorController extends Controller
             'peran' => auth()->user()->peran
         ]);
     }
+
+    public function dataTables()
+    {
+        return DataTables ::of(Evaluator::query())
+        ->addColumn('action',function($model){
+            return '<a href="#">Edit</> <a href="##">Hapus</>';
+        })
+        ->make(true); 
+    }
+
 }

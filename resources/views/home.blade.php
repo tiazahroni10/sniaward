@@ -11,6 +11,6 @@
     @include('frontpage.kumpulanacara')
     @include('frontpage.dokumentasi')
     @include('frontpage.faq')
-    @include('frontpage.kontak')
+    {{-- @include('frontpage.kontak') --}}
 
 @stop

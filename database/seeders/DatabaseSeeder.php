@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // MasterKotaKabupaten::factory(5)->create();
         // MasterSni::factory(5)->create();
         // HistoryLogin::factory(20)->create();
-        // // Peserta::factory(20)->create();
+        // eserta::factory(1000)->create();
         // Kontak::factory(20)->create();
         // PertanyaanPeserta::factory(20)->create();
         // DokumenPeserta::factory(20)->create();

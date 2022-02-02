@@ -7,7 +7,7 @@
                             <a href="#" class="logo">
                                 <h2>SNI AWARDS</h2>
                             </a>
-                                <p>Plan ahead by day, week, or month, and see project status at a glance. Search and filter to focus in on anything form a single project individual.</p>
+                                <p>{{ $data->ket_judul }}</p>
                         </div>
                     </div>
 
@@ -55,25 +55,25 @@
                             <h3>Sosial Media</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{{ $data->linkfacebook }}" target="_blank">
                                         <i class="fab fa-facebook-f"></i>
                                         Facebook
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{{ $data->linktwitter }}" target="_blank">
                                         <i class="fab fa-twitter"></i>
                                         Twitter
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
-                                        <i class="fab fa-linkedin-in"></i>
-                                        Linkedin
+                                    <a href="{{ $data->webbsn }}" target="_blank">
+                                        <i class="fas fa-link"></i>
+                                        BSN
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{{ $data->linkinstagram }}" target="_blank">
                                         <i class="fab fa-instagram"></i>
                                         Instagram   
                                     </a>

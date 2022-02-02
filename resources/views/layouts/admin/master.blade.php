@@ -13,6 +13,7 @@
 	<link href="{{ asset('admin') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>
 </head>
 
     <body>
@@ -25,6 +26,8 @@
 
         @include('partials_admin.footer')
 
+
+        
         <!-- jQuery Min JS -->
         <script src="{{ asset('admin') }}/js/jquery-3.5.1.min.js"></script>
         <!-- Popper Min JS -->
@@ -55,5 +58,25 @@
         <script src="{{ asset('admin') }}/js/contact-form-script.js"></script>
         <!-- Main JS -->
         <script src="{{ asset('admin') }}/js/main.js"></script>
+
+        {{-- datatables --}} 
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+
+        {{-- evaluator --}}
+        <script>
+            $(document).ready( function () {
+                $('#evaluatorTable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('dataevaluator') !!}',
+                    columns: [
+                        { data: 'nama_lengkap', name: 'nama_lengkap' },
+                        { data: 'status', name: 'status' },
+                        { data: 'nomor_telepon', name: 'nomor_telepon' },
+                        { data: 'action', name: 'action' },
+                    ]
+                });
+            });
+        </script>            
 
     </body>

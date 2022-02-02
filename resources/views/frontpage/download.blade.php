@@ -85,7 +85,7 @@
                         <div class="icon">
                             <img src="assets/img/icon/order.png" alt="image">
                         </div>
-                        <h3>Surat Pertanyaan Tak Terlibat Hukum</h3>
+                        <h3>Surat Pernyataan Tak Terlibat Hukum</h3>
                         {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
@@ -96,16 +96,6 @@
                             <img src="assets/img/icon/img_box.png" alt="image">
                         </div>
                         <h3>Logo SNI Award</h3>
-                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <img src="assets/img/icon/date.png" alt="image">
-                        </div>
-                        <h3>Berita</h3>
                         {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
                     </div>
                 </div>
