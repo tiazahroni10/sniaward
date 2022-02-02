@@ -60,45 +60,7 @@
             </div> --}}
 
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <img src="assets/img/icon/book.png" alt="image">
-                        </div>
-                        <h3>Syarat & Aturan SNI Award</h3>
-                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <img src="assets/img/icon/check.png" alt="image">
-                        </div>
-                        <h3>Kriteria SNI Award</h3>
-                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <img src="assets/img/icon/order.png" alt="image">
-                        </div>
-                        <h3>Surat Pernyataan Tak Terlibat Hukum</h3>
-                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-features">
-                        <div class="icon">
-                            <img src="assets/img/icon/img_box.png" alt="image">
-                        </div>
-                        <h3>Logo SNI Award</h3>
-                        {{-- <p>Lorem ipsum dolor sit amet, con se ctetur adipiscing elit. In sagittis eg esta ante, sed viverra nunc tinci dunt nec elei fend et tiram.</p> --}}
-                    </div>
-                </div>
+                
 
             </div>
         </div>
