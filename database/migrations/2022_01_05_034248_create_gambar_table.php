@@ -16,8 +16,9 @@ class CreateGambarTable extends Migration
         Schema::create('gambar', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id');
-            $table->string('judul',15)->nullable(false);
-            $table->string('nama_file',15)->nullable(false);
+            $table->string('judul',100)->nullable(false);
+            $table->text('deskripsi')->nullable(false);
+            $table->string('nama_file')->nullable(false);
             $table->timestamps();
         });
     }

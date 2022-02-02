@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gambar;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,14 @@ class DokumentasiController extends Controller
     }
     public function index()
     {
+        $dataGambar = Gambar::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin/dokumentasi/index',$data = [
             'menu' => 'Dokumentasi',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataGambar' => $dataGambar
         ]);
     }
 
@@ -52,7 +55,17 @@ class DokumentasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'judul' => ['required'],
+            'deskripsi' => ['required'],
+            'nama_file' => 'required|file|mimes:jpg,png,jpeg|max:2048'
+        ]);
+        $validateData['user_id'] = auth()->user()->id;
+        $validateData['nama_file'] = $request->file('nama_file')->store('dokumentasi');
+        $ret_val = Gambar::create($validateData);
+        $request->session()->flash('sukses','Dokumentasi berhasil ditambahkan');
+        return redirect()->route('dokumentasi.index');
+
     }
 
     /**

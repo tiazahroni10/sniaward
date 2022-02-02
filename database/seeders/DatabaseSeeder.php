@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         // MasterKotaKabupaten::factory(5)->create();
         // MasterSni::factory(5)->create();
         // HistoryLogin::factory(20)->create();
-        // eserta::factory(1000)->create();
+        // Peserta::factory(1000)->create();
         // Kontak::factory(20)->create();
         // PertanyaanPeserta::factory(20)->create();
         // DokumenPeserta::factory(20)->create();
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
         // DokumenBerita::factory(20)->create();
         // DokumenCapacityBuilding::factory(20)->create();
         // DokumenSniAward::factory(20)->create();
-        // Evaluator::factory(20)->create();
+        Evaluator::factory(3000)->create();
         // Pendidikan::factory(20)->create();
         // Pekerjaan::factory(20)->create();
         // Pelatihan::factory(20)->create();

@@ -19,6 +19,7 @@ class EvaluatorFactory extends Factory
         'master_kota_kabupaten_id'=>$this->faker->randomDigit(1,5),
         'nama_lengkap'=>$this->faker->name(),
         'status'=>$this->faker->randomElement(['Calon Evaluator','Evaluator','Ketua Evaluator']),
+        'nomor_telepon' =>$this->faker->phoneNumber(),
         'npwp' => $this->faker->numerify('001#########'),
         'ktp'=>$this->faker->nik(),
         'cv'=>$this->faker->randomElement(['cv1','cv2','cv3','cv4'])
