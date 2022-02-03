@@ -31,6 +31,21 @@
                                 <div class="new-arrival-content text-center mt-3">
                                     <h4>{{ $data->judul }}</h4>
                                     <p>{{ $data->deskripsi }}</p>
+                                    <div class="dropdown "><button class="btn btn-primary tp-btn-light sharp "  type="button" data-toggle="dropdown"><span class="fs--1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></span></button>
+                                        <div class="dropdown-menu dropdown-menu-right border py-0">
+                                            <form action="{{ route('dokumentasi.edit',$data->id)}}" method="GET">
+                                                @csrf 
+                                                <button type="submit"  class="dropdown-item"><span>Ubah</span>
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('dokumentasi.destroy',$data->id )}}" method="POST">
+                                                @csrf 
+                                                @method('delete')
+                                                <button type="submit"  class="dropdown-item text-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

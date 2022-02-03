@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Gambar;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use function Ramsey\Uuid\v1;
 
 class DokumentasiController extends Controller
 {
@@ -87,7 +90,15 @@ class DokumentasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataGambar = Gambar::findOrFail($id);
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        return view('admin.dokumentasi.edit',$data=[
+            'menu' => 'Edit Dokumentasi',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataGambar' => $dataGambar
+        ]);
     }
 
     /**
@@ -99,7 +110,16 @@ class DokumentasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if($request->file('nama_file')){
+            if($request->oldNama_file){
+                Storage::delete($request->oldNama_file);
+            }
+            $data['nama_file']=$request->file('nama_file')->store('dokumentasi');
+        }
+        $dataGambar = Gambar::findOrFail($id);
+        $dataGambar->update($data);
+        return redirect()->route('dokumentasi.index')->with('sukses', 'Data Gambar berhasil diubah');
     }
 
     /**
@@ -110,6 +130,13 @@ class DokumentasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataGambar = Gambar::findOrFail($id);
+        $file = public_path('storage/').$dataGambar->nama_file;
+        if(file_exists($file)){
+            @unlink($file);
+        }
+        $dataGambar->delete();
+        return redirect()->route('dokumentasi.index')->with('sukses','Dokumentasi berhasil dihapus');
+
     }
 }

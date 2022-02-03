@@ -8,77 +8,14 @@
             </div>
 
             <div class="screenshot-slider owl-carousel owl-theme">
+                @foreach ($dataGambar as $data)
                 <div class="screenshot-item">
                     <div class="image">
-                        <img src="assets/img/screenshot/1.png" alt="image">
+                        <img src="/storage/{{ $data->nama_file }}" alt="image">
+                        <h6>{{ $data->judul }}</h6>
                     </div>
                 </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/2.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/3.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/4.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/5.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/6.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/1.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/2.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/3.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/4.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/5.png" alt="image">
-                    </div>
-                </div>
-
-                <div class="screenshot-item">
-                    <div class="image">
-                        <img src="assets/img/screenshot/6.png" alt="image">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

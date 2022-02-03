@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use App\Models\Frontpage;
+use App\Models\Gambar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -161,11 +162,13 @@ class FrontpageController extends Controller
     }
     public function showFrontpage(){
         $dataFrontpage = FrontPage::all();
+        $dataGambar = Gambar::all();
         $dataFaq = Faq::all();
         $dataFrontpage = $dataFrontpage->last();
         return view('home', $dataFrontpage =[
             'data' => $dataFrontpage,
-            'dataFaq' => $dataFaq
+            'dataFaq' => $dataFaq,
+            'dataGambar' => $dataGambar
         ]);
     }
 }
