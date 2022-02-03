@@ -17,7 +17,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="judul">Judul</label>
-                                    <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="" value="" required="">
+                                    <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="" value="{{ old('judul') }}" required="">
                                     @error('judul')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder="" value="" required="">
+                                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder="" value="{{ old('deskripsi') }}" required="">
                                     @error('deskripsi')
                                         <div class="invalid-feedback">
                                             {{ $message }}

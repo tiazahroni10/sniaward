@@ -64,6 +64,7 @@ Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator')->middleware('auth');
+Route::get('/admin/peserta/data',[PesertaController::class,'dataTables'])->name('datapeserta')->middleware('auth');
 
 
 Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');
@@ -76,6 +77,7 @@ Route::resource('/admin/persyaratan', PersyaratanController::class)->middleware(
 Route::resource('/admin/dokumentasi', DokumentasiController::class)->middleware('auth');
 Route::resource('/admin/berita', BeritaController::class)->middleware('auth');
 Route::resource('/admin/faq', FaqController::class)->middleware('auth');
+Route::resource('/admin/peserta', PesertaController::class)->middleware('auth');
 
 
 

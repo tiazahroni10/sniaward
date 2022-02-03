@@ -77,6 +77,23 @@
                     ]
                 });
             });
-        </script>            
+        </script>   
+        
+        {{-- peserta --}}
+        <script>
+            $(document).ready( function () {
+                $('#pesertaTable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('datapeserta') !!}',
+                    columns: [
+                        { data: 'nama_organisasi', name: 'nama_organisasi' },
+                        { data: 'alamat_organisasi', name: 'alamat_organisasi' },
+                        { data: 'nomor_telepon', name: 'nomor_telepon' },
+                        { data: 'action', name: 'action' },
+                    ]
+                });
+            });
+        </script>
 
     </body>

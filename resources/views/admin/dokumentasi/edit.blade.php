@@ -16,6 +16,7 @@
                             <form class="needs-validation" action="{{ route('dokumentasi.update',$dataGambar->id) }}" method="POST" enctype="multipart/form-data" >
                                 @method('PUT')
                                 @csrf
+                                <input type="hidden" name="oldNama_file" value="{{ $dataGambar->nama_file }}">
                                 <div class="mb-3">
                                     <label for="judul">Judul</label>
                                     <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" placeholder="" value="{{ $dataGambar->judul }}" required="">

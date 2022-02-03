@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class PesertaController extends Controller
 {
@@ -18,13 +20,14 @@ class PesertaController extends Controller
         $this->user = new User();
     }
     public function index()
-    {
+    {   $dataPeserta = Peserta::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin/peserta/index',$data = [
             'menu' => 'Peserta',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataPeserta' => $dataPeserta
         ]);
     }
 
@@ -108,5 +111,13 @@ class PesertaController extends Controller
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
+    }
+    public function dataTables()
+    {
+        return DataTables ::of(Peserta::query())
+        ->addColumn('action',function($model){
+            return '<a href="#">Edit</> <a href="##">Hapus</>';
+        })
+        ->make(true); 
     }
 }
