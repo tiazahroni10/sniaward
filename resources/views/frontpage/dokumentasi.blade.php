@@ -13,6 +13,7 @@
                     <div class="image">
                         <img src="/storage/{{ $data->nama_file }}" alt="image">
                         <h6>{{ $data->judul }}</h6>
+                        <p>{{ $data->deskripsi }}</p>
                     </div>
                 </div>
                 @endforeach
