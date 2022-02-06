@@ -21,7 +21,6 @@
                                 </li>
                             </ul>
                             <h3>{{ $data->judul }}</h3>
-                            <p>Acara SNI Award tahun 2021 diikuti oleh banyak peserta</p>
                             <a href="/detailberita" class="read-more">
                                 Baca selengkapnya
                             </a>
