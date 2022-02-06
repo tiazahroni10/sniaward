@@ -40,40 +40,7 @@
                         <p>Peraih SNI Awards</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-6" >
-                    <div class="single-fun-fact">
-                        <div class="icon">
-                            <img src="assets/img/icon/lamp.png" alt="lamp">
-                        </div>
-                        <h3>
-                            {{-- <span class="odometer" data-count="345">00</span> --}}
-                        </h3>
-                        <p>Kriteria SNI Award</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-fun-fact">
-                        <div class="icon">
-                            <img src="assets/img/icon/lamp.png" alt="lamp">
-                        </div>
-                        <h3>
-                            {{-- <span class="odometer" data-count="345">00</span> --}}
-                        </h3>
-                        <p>Syarat & ketentuan SNI Award</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="single-fun-fact">
-                        <div class="icon">
-                            <img src="assets/img/icon/lamp.png" alt="lamp">
-                        </div>
-                        <h3>
-                            {{-- <span class="odometer" data-count="345">00</span> --}}
-                        </h3>
-                        <p>Surat pernyataan tak terlibat hukum</p>
-                    </div>
-                </div>
+               
                 <div class="section-title mt-5">
                     <h2>{{ $data->tentang_sniaward }}</h2>
                     <div class="bar"></div>

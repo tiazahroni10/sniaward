@@ -53,6 +53,9 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 Route::get('/pertanyaan',[PertanyaanController::class,'index']);
 Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
 
+Route::get('/detailberita', function () {
+    return view('detailberita');
+});
 
 //peserta
 Route::get('/peserta',[PesertaController::class,'profil'])->middleware('auth')->name('peserta.profil');
