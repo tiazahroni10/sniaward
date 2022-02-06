@@ -14,6 +14,14 @@
     <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css"/>
+    {{-- trix editor  --}}
+    <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+    <script type="text/javascript" src="/assets/js/trix.js"></script>
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"]{
+            display: none;
+        }
+    </style>
 </head>
 
     <body>
@@ -90,6 +98,22 @@
                         { data: 'nama_organisasi', name: 'nama_organisasi' },
                         { data: 'alamat_organisasi', name: 'alamat_organisasi' },
                         { data: 'nomor_telepon', name: 'nomor_telepon' },
+                        { data: 'action', name: 'action' },
+                    ]
+                });
+            });
+        </script>
+
+        {{-- berita --}}
+        <script>
+            $(document).ready( function () {
+                $('#beritaTable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: '{!! route('databerita') !!}',
+                    columns: [
+                        { data: 'judul', name: 'judul' },
+                        {data: 'rilis', name:'rilis'},
                         { data: 'action', name: 'action' },
                     ]
                 });

@@ -13,7 +13,7 @@ class Berita extends Model
 
     public function user()
     {
-        return $this->hasMany(Peserta::class);
+        return $this->hasMany(User::class);
     }
     
 }

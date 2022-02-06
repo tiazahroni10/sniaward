@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Http\Request;
+use League\CommonMark\Normalizer\SlugNormalizer;
+use Yajra\DataTables\Facades\DataTables;
 
 class BeritaController extends Controller
 {
@@ -20,11 +24,13 @@ class BeritaController extends Controller
     public function index()
     {
         $id = auth()->user()->id;
+        $dataBerita = Berita::all();
         $data = $this->user->getUser($id);
         return view('admin/berita/index',$data = [
             'menu' => 'Berita',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataBerita' => $dataBerita
         ]);
     }
 
@@ -35,7 +41,13 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        return view('admin.berita.create',$data = [
+            'menu' => 'Berita',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
     }
 
     /**
@@ -46,7 +58,20 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => ['required','unique:berita'],
+            'konten' => ['required'],
+            'gambar' => 'required|file|mimes:jpg,png,jpeg|max:2048'
+        ]);
+        $validatedData['slug'] = Str::slug($request->judul,'-');
+        $validatedData['slug'] = Str::lower($validatedData['slug']);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['rilis'] = now();
+        $validatedData['gambar'] =$request->file('gambar')->store('dokumentasi-berita');
+
+        Berita::create($validatedData);
+        $request->session()->flash('sukses','Berita berhasil ditambahkan');
+        return redirect()->route('berita.index');
     }
 
     /**
@@ -92,5 +117,14 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataTables()
+    {
+        return DataTables() ::of(Berita::query())
+        ->addColumn('action',function($model){
+            return '<a href="#">Edit</a> <a href="##">Hapus</a>';
+        })
+        ->make(true); 
     }
 }

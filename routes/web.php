@@ -68,6 +68,7 @@ Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('aut
 Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator')->middleware('auth');
 Route::get('/admin/peserta/data',[PesertaController::class,'dataTables'])->name('datapeserta')->middleware('auth');
+Route::get('/admin/berita/data',[BeritaController::class,'dataTables'])->name('databerita')->middleware('auth');
 
 
 Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');

@@ -16,10 +16,11 @@ class CreateBeritaTable extends Migration
         Schema::create('berita', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id');
-            $table->string('judul',100)->nullable(false);
-            $table->string('slug',100)->nullable(false);
-            $table->text('konten')->nullable(false);
-            $table->string('gambar',15)->nullable(false);            
+            $table->string('judul',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->text('konten')->nullable();
+            $table->string('gambar')->nullable();
+            $table->date('rilis')->format('d/M/Y') ;           
             $table->timestamps();
         });
     }

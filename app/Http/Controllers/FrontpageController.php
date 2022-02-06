@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Faq;
 use App\Models\Frontpage;
 use App\Models\Gambar;
@@ -164,11 +165,15 @@ class FrontpageController extends Controller
         $dataFrontpage = FrontPage::all();
         $dataGambar = Gambar::all();
         $dataFaq = Faq::all();
+        $dataBerita = Berita::all();
+        $lastId = $dataBerita->last()->id;
+        $dataBerita = $dataBerita->whereBetween('id', [$lastId-2, $lastId]);
         $dataFrontpage = $dataFrontpage->last();
         return view('home', $dataFrontpage =[
             'data' => $dataFrontpage,
             'dataFaq' => $dataFaq,
-            'dataGambar' => $dataGambar
+            'dataGambar' => $dataGambar,
+            'dataBerita' =>$dataBerita
         ]);
     }
 }
