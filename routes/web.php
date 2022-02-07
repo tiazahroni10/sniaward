@@ -21,10 +21,12 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
+use App\Models\Berita;
 use App\Models\DokumenBerita;
 use App\Models\Evaluator;
 use App\Models\Faq;
 use App\Models\Kontak;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,8 +55,12 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 Route::get('/pertanyaan',[PertanyaanController::class,'index']);
 Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
 
-Route::get('/detailberita', function () {
-    return view('detailberita');
+// Route::get('/berita/{slug}', [BeritaController::class,'detailBerita'])->middleware('guest');
+Route::get('/{slug}', function($slug){
+    $dataBerita = DB::table('berita')->where('slug', $slug)->first();
+    return view('detailberita', $data=[
+        'data' => $dataBerita
+    ]);
 });
 
 //peserta

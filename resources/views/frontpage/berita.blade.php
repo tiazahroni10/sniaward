@@ -21,7 +21,7 @@
                                 </li>
                             </ul>
                             <h3>{{ $data->judul }}</h3>
-                            <a href="/detailberita" class="read-more">
+                            <a href="/{{ $data->slug }}" class="read-more">
                                 Baca selengkapnya
                             </a>
                         </div>

@@ -127,4 +127,9 @@ class BeritaController extends Controller
         })
         ->make(true); 
     }
+    public function detailBerita($slug)
+    {
+        $dataBerita = Berita::findOrFail($slug);
+        dd($dataBerita);
+    }
 }

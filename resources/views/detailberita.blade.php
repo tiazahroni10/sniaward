@@ -126,11 +126,7 @@
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Detail Berita</h2>
-                            <ul>
-                                <li><a href="/home">Beranda</a></li>
-                                <li>detail berita</li>
-                            </ul>
+                            <h2>{{$data->judul }}</h2>
                         </div>
                     </div>
                 </div>
@@ -167,26 +163,21 @@
                     <div class="col-lg-8 col-md-12">
                         <div class="blog-details-desc">
                             <div class="article-image">
-                                <img src="{{ asset('assets') }}/img/blog-details.jpg" alt="image">
+                                <img src="/storage/{{ $data->gambar }}" alt="image">
                             </div>
                             <div class="article-content">
                                 <div class="entry-meta">
                                     <ul>
                                         <li>
-                                            <span>Posted On:</span> 
-                                            <a href="index.html">September 31, 2021</a>
-                                        </li>
-                                        <li>
-                                            <span>Posted By:</span> 
-                                            <a href="index.html">John Anderson</a>
+                                            <span>Diterbitkan :</span> 
+                                            <a href="index.html">{{ $data->rilis }}</a>
                                         </li>
                                     </ul>
                                 </div>
-
-                                <h3>Weather Evident Smiling Bed Against</h3>
-                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                <blockquote class="wp-block-quote">
+                                <div class="mt-5">
+                                    {!! $data->konten !!}
+                                </div>
+                                {{-- <blockquote class="wp-block-quote">
                                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                                     <cite>Tom Cruise</cite>
                                 </blockquote>
@@ -233,9 +224,10 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                                 <h3>The Rise Of Marketing And Why You Need It</h3>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                             --}}
                             </div>
 
-                            <div class="article-footer">
+                            {{-- <div class="article-footer">
                                 <div class="article-tags">
                                     <span>
                                         <i class="fa fa-bookmark"></i>
@@ -281,7 +273,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>    
 

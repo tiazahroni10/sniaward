@@ -8,6 +8,7 @@ use App\Models\Frontpage;
 use App\Models\Gambar;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class FrontpageController extends Controller
@@ -165,15 +166,14 @@ class FrontpageController extends Controller
         $dataFrontpage = FrontPage::all();
         $dataGambar = Gambar::all();
         $dataFaq = Faq::all();
-        $dataBerita = Berita::all();
-        $lastId = $dataBerita->last()->id;
-        $dataBerita = $dataBerita->whereBetween('id', [$lastId-2, $lastId]);
+        $berita = DB::table('berita')
+        ->orderByDesc('created_at')->take(3)->get();
         $dataFrontpage = $dataFrontpage->last();
         return view('home', $dataFrontpage =[
             'data' => $dataFrontpage,
             'dataFaq' => $dataFaq,
             'dataGambar' => $dataGambar,
-            'dataBerita' =>$dataBerita
+            'dataBerita' =>$berita
         ]);
     }
 }
