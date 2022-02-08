@@ -9,6 +9,7 @@ use App\Models\MasterSni;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class PesertaController extends Controller
@@ -80,6 +81,7 @@ class PesertaController extends Controller
         $dataProvinsi = MasterProvinsi::all();
         $dataKabupaten = MasterKotaKabupaten::all();
         $dataSektorKategori = MasterSektorKategori::all();
+        $dataProfil = DB::table('peserta')->where('user_id',$idUser)->get()->first();
         $dataSni = MasterSni::all();
         return view('peserta/edit',$data = [
             'menu' => 'Profil',
@@ -88,7 +90,8 @@ class PesertaController extends Controller
             'dataProvinsi' => $dataProvinsi,
             'dataKabupaten' => $dataKabupaten,
             'dataSni' => $dataSni,
-            'dataSektorKategori' => $dataSektorKategori
+            'dataSektorKategori' => $dataSektorKategori,
+            'dataProfil'=> $dataProfil
         ]);
     }
 
@@ -101,7 +104,29 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+
+    //     $validatedData = $request->validate([
+    //         'nama_organisasi' => 'required',
+    //         'master_sni_id' => 'required',
+    //         'alamat_organisasi' =>'required',
+    //         'alamat_pabrik' =>'required',
+    //         'master_provinsi_id'=>'required',
+    //         'master_kota_kabupaten_id'=>'required',
+    //         'email_perusahaan'=>'required',
+    //         'nomor_telepon'=>'required',
+    //         'website'=>'required',
+    //         'tahun_berdiri'=>'required',
+    //         'status_kepemilikan'=>'required',
+    //         'tipe_produk'=>'required',
+    //         'master_sektor_kategori_id'=>'required',
+    //         'kekayaan_organisasi'=>'required',
+    //         'hasil_penjualan_organisasi'=>'required',
+    //         'tipe_organisasi'=>'required'
+    //     ]);
+        $data = $request->all();
+        $dataProfil = Peserta::where('user_id',$id)->get()->first();
+        $dataProfil->update($data);
+        return redirect()->route('profil.index')->with('sukses','Data Profil berhasi diubah');
     }
 
     /**
