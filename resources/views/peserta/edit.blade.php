@@ -14,183 +14,208 @@
                         <div class="col-lg-8 col-md-7 order-md-1">
                             <form class="needs-validation" novalidate="">
                                 <div class="mb-3">
-                                    <label for="namaorganisasi">Nama Organisasi</label>
-                                    <input type="text" class="form-control" id="namaorganisasi" placeholder="" value="" required="">
-                                    <div class="invalid-feedback">
-                                        Valid first name is required.
-                                    </div>
+                                    <label for="nama_organisasi">Nama Organisasi</label>
+                                    <input type="text" class="form-control @error('nama_organisasi') is-invalid @enderror" id="nama_organisasi" name="nama_organisasi" placeholder="" value="" required="">
+                                    @error('nama_organisasi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="sniid">No SNI</label>
-                                    <select name="sniid" id="sniid">
+                                    <label for="master_sni_id">No SNI</label>
+                                    <select name="master_sni_id" class="@error('master_sni_id') is-invalid @enderror" id="master_sni_id">
                                         <option value="">Pilih...</option>
                                         @foreach ($dataSni as $sni)
                                             <option value="{{ $sni->id }}">{{ $sni->no_sni }}</option>
                                         @endforeach
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Valid first name is required.
-                                    </div>
+                                    @error('master_sni_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="alamatorganisasi">Alamat Organisasi</label>
-                                    <input type="text" class="form-control" id="alamatorganisasi" placeholder="">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    <label for="alamat_organisasi">Alamat Organisasi</label>
+                                    <input type="text" class="form-control @error('alamat_organisasi') is-invalid @enderror" id="alamat_organisasi" name="alamat_organisasi" placeholder="">
+                                    @error('alamat_organisasi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="alamatpabrik">Alamat Pabrik</label>
-                                    <input type="text" class="form-control" id="alamatpabrik" placeholder="">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    <label for="alamat_pabrik">Alamat Pabrik</label>
+                                    <input type="text" class="form-control @error('alamat_pabrik') is-invalid @enderror" id="alamat_pabrik" name="alamat_pabrik" placeholder="">
+                                    @error('alamat_pabrik')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="provinsi">Provinsi</label>
-                                        <select class="" id="provinsi" name="provinsi" required="">
+                                        <label for="master_provinsi_id">Provinsi</label>
+                                        <select class="@error('master_provinsi') is-invalid @enderror" id="master_provinsi_id" name="master_provinsi_id" required="">
                                             <option value="">Pilih...</option>
                                             @foreach ($dataProvinsi as $provinsi)
                                             <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback">
-                                            Please select a valid country.
-                                        </div>
+                                        @error('master_provinsi_id')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="kabupaten">Kabupaten</label>
-                                        <select class="" id="kabupaten" required="">
+                                        <label for="master_kota_kabupaten_id">Kabupaten</label>
+                                        <select class="@error('master_kota_kabupaten_id') is-invalid @enderror" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id" required="">
                                             <option value="">Pilih...</option>
                                             @foreach ($dataKabupaten as $kabupaten)
                                             <option value="{{ $kabupaten->id }}">{{ $kabupaten->nama }}</option>
                                             @endforeach
                                         </select>
+                                        @error('master_kota_kabupaten_id')
                                         <div class="invalid-feedback">
-                                            Please select a valid country.
+                                            {{ $message }}
                                         </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="email">Email Perusahaan</label>
-                                        <input type="email" class="form-control" id="email" placeholder="">
+                                        <label for="email_perusahaan">Email Perusahaan</label>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email_perusahaan" name="email_perusahaan" placeholder="">
+                                        @error('email_perusahaan')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="notelepon">No Telepon</label>
-                                        <input type="text" class="form-control" id="notelepon" placeholder="">
+                                        <label for="nomor_telepon">No Telepon</label>
+                                        <input type="text" class="form-control @error('nomor_telepon') is-invalid @enderror" id="nomor_telepon" name="nomor_telepon" placeholder="">
+                                        @error('nomor_telepon')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="website">Website</label>
-                                    <input type="text" class="form-control" id="website" placeholder="">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    <input type="text" class="form-control @error('website') is-invalid @enderror" id="website" name="website" placeholder="">
+                                    @error('website')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tahunberdiri">Tahun Berdiri</label>
-                                    <select class="" id="tahunberdiri" required="">
+                                    <label for="tahun_berdiri">Tahun Berdiri</label>
+                                    <select class="@error('tahun_berdiri') is-invalid @enderror" id="tahun_berdiri" name="tahun_berdiri" required="">
                                         <option value="">Pilih...</option>
-                                        <option value="2000">2000</option>
-                                        <option value="2001">2001</option>
-                                        <option value="2002">2002</option>
-                                        <option value="2003">2003</option>
-                                        <option value="2004">2004</option>
-                                        <option value="2005">2005</option>
-                                        <option value="2006">2006</option>
-                                        <option value="2007">2007</option>
+                                        @for ($tahun = date("Y"); $tahun > 1900; $tahun--)
+                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                        @endfor
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid country.
-                                    </div>
+                                    @error('tahun_berdiri')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="statuskepemilikan">Status Kepemilikan</label>
-                                    <input type="text" class="form-control" id="statuskepemilikan" placeholder="">
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    <label for="status_kepemilikan">Status Kepemilikan</label>
+                                    <input type="text" class="form-control @error('status_kepemilikan') is-invalid @enderror" id="status_kepemilikan" name="status_kepemilikan" placeholder="">
+                                    @error('status_kepemilikan')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="tipeproduk">Tipe Produk</label>
-                                        <select class="" id="tipeproduk" name="tipeproduk" required="">
+                                        <label for="tipe_produk">Tipe Produk</label>
+                                        <select class="@error('tipe_produk') is-invalid @enderror" id="tipe_produk" name="tipe_produk" required="">
                                             <option value="">Pilih...</option>
                                             <option value="Induk">Induk</option>
                                             <option value="Organisasi Menengah Jasa">Anak</option>
                                             <option value="Cabang">Cabang</option>
                                             <option value="Tunggal">Tunggal</option>
                                         </select>
+                                        @error('tipe_produk')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="sektorkategori">Sektor atau Kategori</label>
-                                        <select class="" id="sektorkategori" name="sektorkategori" required="">
+                                        <label for="master_sektor_kategori_id">Sektor atau Kategori</label>
+                                        <select class="@error('master_sektor_kategori_id') is-invalid @enderror" id="master_sektor_kategori_id" name="master_sektor_kategori_id" required="">
                                             <option value="">Pilih...</option>
                                             @foreach ($dataSektorKategori as $sektor)
                                                 <option value="{{ $sektor->id }}">{{ $sektor->nama_kategori }}</option>
                                             @endforeach
                                         </select>
+                                        @error('master_sektor_kategori_id')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="kekayaanorganisasi">Kekayaan Organisasi</label>
-                                        <input type="text" class="form-control" id="kekayaanorganisasi" placeholder="">
+                                        <label for="kekayaan_organisasi">Kekayaan Organisasi</label>
+                                        <input type="text" class="form-control @error('kekayaan_organisasi') is-invalid @enderror" id="kekayaan_organisasi" name="kekayaan_organisasi" placeholder="">
+                                        @error('kekayaan_organisasi')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="hasilpenjulan">Hasil Penjualan Organisasi</label>
-                                        <input type="text" class="form-control" id="hasilpenjulan" placeholder="">
+                                        <label for="hasil_penjualan_organisasi">Hasil Penjualan Organisasi</label>
+                                        <input type="text" class="form-control @error('hasil_penjualan_organisasi') is-invalid @enderror" id="hasil_penjualan_organisasi" name="hasil_penjualan_organisasi" placeholder="">
+                                        @error('hasil_penjualan_organisasi')
                                         <div class="invalid-feedback">
-                                            Please enter a valid email address for shipping updates.
+                                            {{ $message }}
                                         </div>
+                                    @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tipeorganisasi">Tipe Organisasi</label>
-                                    <select class="w-50" id="tipeorganisasi" required="">
+                                    <label for="tipe_organisasi">Tipe Organisasi</label>
+                                    <select class="@error('tipe_organisasi') is-invalid @enderror" id="tipe_organisasi" name="tipe_organisasi" required="">
                                         <option value="">Pilih...</option>
                                         <option value="Induk">Induk</option>
                                         <option value="Organisasi Menengah Jasa">Anak</option>
                                         <option value="Cabang">Cabang</option>
                                         <option value="Tunggal">Tunggal</option>
                                     </select>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address for shipping updates.
-                                    </div>
+                                    @error('tipe_organisasi')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-2 d-flex align-items-center">
-                                        <label for="gambar">Gambar</label>
-                                    </div>
-                                    <div class="col-md">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input">
-                                                <label class="custom-file-label">Choose file</label>
-                                            </div>
+                                <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
+                                            <label class="custom-file-label">Pilih file</label>
+                                        @error('gambar')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                         </div>
                                     </div>
-                                </div>
                                 <hr class="mb-4">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
                             </form>

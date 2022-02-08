@@ -61,42 +61,37 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#tipeproduk').select2();
+                $('#tipe_produk').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#sektorkategori').select2();
+                $('#tahun_berdiri').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#tahunberdiri').select2();
+                $('#master_provinsi_id').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#provinsi').select2();
+                $('#master_kota_kabupaten_id').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#kabupaten').select2();
+                $('#master_sni_id').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#sniid').select2();
+                $('#tipe_organisasi').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#tipeorganisasi').select2();
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#sektorkategori').select2();
+                $('#master_sektor_kategori_id').select2();
             });
         </script>
 
