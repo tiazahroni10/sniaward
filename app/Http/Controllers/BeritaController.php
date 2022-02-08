@@ -65,6 +65,7 @@ class BeritaController extends Controller
         ]);
         $validatedData['slug'] = Str::slug($request->judul,'-');
         $validatedData['slug'] = Str::lower($validatedData['slug']);
+        $validatedData['potongan_berita'] = Str::limit(strip_tags($validatedData['konten']),100);
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['rilis'] = now();
         $validatedData['gambar'] =$request->file('gambar')->store('dokumentasi-berita');

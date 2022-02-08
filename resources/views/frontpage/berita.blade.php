@@ -21,6 +21,7 @@
                                 </li>
                             </ul>
                             <h3>{{ $data->judul }}</h3>
+                            <p>{{ $data->potongan_berita }}</p>
                             <a href="/{{ $data->slug }}" class="read-more">
                                 Baca selengkapnya
                             </a>
