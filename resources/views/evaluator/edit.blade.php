@@ -12,25 +12,27 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" novalidate="">
+                            <form class="needs-validation" action="{{ route('profilevaluator.update',$data->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="mb-3">
-                                    <label for="namalengkap">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                    <label for="nama_lengkap">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap"  value="{{ old('nama_lengkap',$dataEvaluator->nama_lengkap) }}">
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="gelarsebelumnama">Gelar Sebelum Nama</label>
-                                        <input type="text" class="form-control" id="gelarSebelumNama" placeholder="" value="" required="">
+                                        <label for="gelar_sebelum_nama">Gelar Sebelum Nama</label>
+                                        <input type="text" class="form-control" id="gelar_sebelum_nama" name="gelar_sebelum_nama"  value="{{ old('gelar_sebelum_nama',$dataEvaluator->gelar_sebelum_nama) }}">
                                         <div class="invalid-feedback">
                                             Valid first name is required.
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="lastName">Gelar Sesudah Nama</label>
-                                        <input type="text" class="form-control" id="gelarSesudahNama" placeholder="" value="" required="">
+                                        <input type="text" class="form-control" id="gelar_setelah_nama" name="gelar_setelah_nama"  value="{{ old('gelar_setelah_nama',$dataEvaluator->gelar_setelah_nama) }}">
                                         <div class="invalid-feedback">
                                             Valid last name is required.
                                         </div>
@@ -38,7 +40,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="you@example.com" disabled>
+                                    <input type="email" class="form-control" id="email"  value="{{ $data->email }}" disabled>
                                     <div class="invalid-feedback">
                                         Please enter a valid email address for shipping updates.
                                     </div>
@@ -46,31 +48,43 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                             <label for="status">Status</label>
-                                            <input type="text" class="form-control" id="status" placeholder="status" disabled>
+                                            <input type="text" class="form-control" id="status" name="status" value="{{ old('status',$dataEvaluator->status) }}" disabled>
                                             <div class="invalid-feedback">
                                                 Please select a valid country.
                                             </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="tanggalLahir">Tanggal Lahir</label>
-                                    <input type="text" class="form-control" id="tanggalLahir" placeholder="" value="" required="">
+                                    <label for="tgl_lahir">Tanggal Lahir</label>
+                                    <input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="{{ old('tgl_lahir', $dataEvaluator->tgl_lahir) }}" >
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="namaInstansi">Nama Instansi</label>
-                                    <input type="text" class="form-control" id="namaInstansi" placeholder="" value="" required="">
+                                    <label for="nama_instansi">Nama Instansi</label>
+                                    <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" value="{{ old('nama_instansi',$dataEvaluator->nama_instansi) }}" >
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="jeniskelamin">Jenis Kelamin</label>
+                                    <label for="pekerjaan">Pekerjaan</label>
+                                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="{{ old('pekerjaan',$dataEvaluator->pekerjaan) }}" >
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jenis_kelamin">Jenis Kelamin</label>
                                     <div class="form-group mb-0">
-                                        <label class="radio-inline mr-3"><input type="radio" name="optradio"> Laki Laki</label>
-                                        <label class="radio-inline mr-3"><input type="radio" name="optradio"> Perempuan</label>
+                                        @if ($dataEvaluator->jenis_kelamin== "P")
+                                            <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="L"> Laki Laki</label>
+                                            <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="P" checked> Perempuan</label>
+                                        @else
+                                            <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="L" checked> Laki Laki</label>
+                                            <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="P"> Perempuan</label>
+                                        @endif
                                     </div>
                                     <div class="invalid-feedback">
                                         Valid first name is required.
@@ -78,18 +92,22 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat" placeholder="" value="" required="">
+                                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat',$dataEvaluator->alamat) }}" >
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="provinsi">Provinsi</label>
-                                        <select class="d-block w-100 default-select" id="provinsi" name="provinsi" required="">
+                                        <label for="master_provinsi_id">Provinsi</label>
+                                        <select  id="master_provinsi_id" name="master_provinsi_id" >
                                             <option value="">Pilih...</option>
                                             @foreach ($dataProvinsi as $provinsi)
-                                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                                            @if (old('master_provinsi_id',$dataEvaluator->master_provinsi_id)==$provinsi->id)
+                                                <option value="{{ $provinsi->id }}" selected>{{ $provinsi->nama }}</option>
+                                            @else
+                                                <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                                            @endif
                                             @endforeach
                                         </select>
                                         <div class="invalid-feedback">
@@ -97,13 +115,16 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="kabupaten">Kabupaten</label>
-                                        <select class="d-block w-100 default-select" id="kabupaten" required="">
+                                        <label for="master_kota_kabupaten_id">Kabupaten</label>
+                                        <select  id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
                                             <option value="">Pilih...</option>
-                                            <option value="Tanah Datar">Tanah Datar</option>
-                                            <option value="Solok">Solok</option>
-                                            <option value="Lima Puluh Kota">Lima Puluh Kota</option>
-                                            <option value="Padang Panjang">Padang Panjang</option>
+                                            @foreach ($dataKabupaten as $kabupaten)
+                                            @if (old('master_kota_kabupaten_id',$dataEvaluator->master_kota_kabupaten_id)==$kabupaten->id)
+                                                <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->nama }}</option>
+                                            @else
+                                                <option value="{{ $kabupaten->id }}">{{ $kabupaten->nama }}</option>
+                                            @endif
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
@@ -111,8 +132,8 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="notelepon">No Telepon</label>
-                                    <input type="text" class="form-control" id="notelepon" placeholder="" value="" required="">
+                                    <label for="nomor_telepon">No Telepon</label>
+                                    <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon"  value="{{ old('nomor_telepon',$dataEvaluator->nomor_telepon) }}" >
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>

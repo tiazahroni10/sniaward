@@ -1,6 +1,14 @@
 @extends('layouts.evaluator.master')
 @section('content')
     <div class="content-body">
+        @if (session()->has('sukses'))
+    <div class="alert alert-success solid alert-dismissible fade show">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        <strong>{{ session('sukses') }}</strong>
+        <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+        </button>
+    </div>
+    @endif
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -26,7 +34,7 @@
                                     <div class="dropdown ml-auto">
                                         <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></a>
                                         <ul class="dropdown-menu dropdown-menu-right">
-                                            <a href="{{ route('evaluator.edit',$data->id) }}"><li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i>Edit Profil</li></a>
+                                            <a href="{{ route('profilevaluator.edit',$data->id) }}"><li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i>Edit Profil</li></a>
                                             <a href="{{ route('pendidikan.create') }}"><li class="dropdown-item"><i class="fa fa-graduation-cap text-primary mr-2"></i>Pendidikan</li></a>
                                             <a href="{{ route('pekerjaan.create') }}"><li class="dropdown-item"><i class="fa fa-briefcase text-primary mr-2"></i>Pekerjaan</li></a>
                                             <a href="{{ route('sertifikat.create') }}"><li class="dropdown-item"><i class="fa fa-certificate text-primary mr-2"></i>Sertifikat</li></a>

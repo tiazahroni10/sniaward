@@ -13,6 +13,9 @@
 	<link href="{{ asset('evaluator') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="{{ asset('evaluator') }}/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    {{-- SELECT2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
     <body>
@@ -56,4 +59,17 @@
         <!-- Main JS -->
         <script src="{{ asset('evaluator') }}/js/main.js"></script>
 
+
+        {{-- SELECT2 --}}
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#master_provinsi_id').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#master_kota_kabupaten_id').select2();
+            });
+        </script>
     </body>

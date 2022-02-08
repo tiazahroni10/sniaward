@@ -81,7 +81,7 @@ class PesertaController extends Controller
         $dataProvinsi = MasterProvinsi::all();
         $dataKabupaten = MasterKotaKabupaten::all();
         $dataSektorKategori = MasterSektorKategori::all();
-        $dataProfil = DB::table('peserta')->where('user_id',$idUser)->get()->first();
+        $dataProfil = DB::table('peserta')->where('user_id',$id)->get()->first();
         $dataSni = MasterSni::all();
         return view('peserta/edit',$data = [
             'menu' => 'Profil',

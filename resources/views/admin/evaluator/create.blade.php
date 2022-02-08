@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" action="{{ route('evaluator.store') }}" method="POST" novalidate="">
+                            <form class="needs-validation" action="{{ route('storeEvaluator') }}" method="POST" novalidate="">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nama_lengkap">Nama Lengkap<span class="text-danger">*</span></label>

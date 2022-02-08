@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
         // DokumenBerita::factory(20)->create();
         // DokumenCapacityBuilding::factory(20)->create();
         // DokumenSniAward::factory(20)->create();
-        Evaluator::factory(3000)->create();
+        // Evaluator::factory(3000)->create();
         // Pendidikan::factory(20)->create();
         // Pekerjaan::factory(20)->create();
         // Pelatihan::factory(20)->create();

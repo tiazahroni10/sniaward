@@ -71,17 +71,18 @@ Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
-Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
+// Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator')->middleware('auth');
 Route::get('/admin/peserta/data',[PesertaController::class,'dataTables'])->name('datapeserta')->middleware('auth');
 Route::get('/admin/berita/data',[BeritaController::class,'dataTables'])->name('databerita')->middleware('auth');
-
+Route::get('/admin/evaluator/create',[EvaluatorController::class,'createEvaluator'])->name('createEvaluator')->middleware('auth');
+Route::post('/admin/evaluator/store',[EvaluatorController::class,'storeEvaluator'])->name('storeEvaluator')->middleware('auth');
+Route::get('/admin/evaluator/',[EvaluatorController::class,'showDataEvaluator'])->name('showDataEvaluator')->middleware('auth');
 
 Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth');
 Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth');
 Route::resource('/admin/masterdokumen', MasterDokumenController::class)->middleware('auth');
-Route::resource('/admin/evaluator', EvaluatorController::class)->middleware('auth');
 Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->middleware('auth');
 Route::resource('/admin/persyaratan', PersyaratanController::class)->middleware('auth');
 Route::resource('/admin/dokumentasi', DokumentasiController::class)->middleware('auth');
@@ -95,6 +96,7 @@ Route::resource('/admin/peserta', PesertaController::class)->middleware('auth');
 
 
 // bagian evaluator
+Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->middleware('auth')->except(['create','show','destroy', 'store']);
 Route::get('/evaluator/download',[DownloadController::class,'index'])->middleware('auth');
 Route::get('/evaluator/profil',[EvaluatorController::class,'profil'])->middleware('auth')->name('evaluator.profil');
 Route::resource('/evaluator/pekerjaan', PekerjaanController::class)->middleware('auth');

@@ -14,12 +14,13 @@ class CreateEvaluatorTable extends Migration
     public function up()
     {
         Schema::create('evaluator', function (Blueprint $table) {
+            $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->string('nama_lengkap',50)->nullable(true);
             $table->string('gelar_sebelum_nama',5)->nullable(true);
             $table->string('gelar_setelah_nama',5)->nullable(true);
             $table->string('status',20)->nullable(true);
-            $table->datetime('tgl_lahir')->nullable(true);
+            $table->date('tgl_lahir')->nullable(true);
             $table->string('pekerjaan',20)->nullable(true);
             $table->string('nama_instansi',20)->nullable(true);
             $table->string('jenis_kelamin',1)->nullable(true);
