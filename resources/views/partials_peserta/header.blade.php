@@ -157,9 +157,7 @@
                                     <img src="images/profile/17.jpg" width="20" alt=""/>
 									<div class="header-info">
 										<span class="text-black"><strong>
-											@if ($peran === 'peserta')
-											{{ $data['nama_organisasi']; }}
-											@endif</strong></span>
+											</strong></span>
 										<p class="fs-12 mb-0">{{ $peran }}</p>
 									</div>
                                 </a>
