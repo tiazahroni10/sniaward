@@ -13,6 +13,8 @@
 	<link href="{{ asset('peserta') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="{{ asset('peserta') }}/css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    {{-- Select2 --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
     <body>
@@ -55,5 +57,47 @@
         <script src="{{ asset('peserta') }}/js/contact-form-script.js"></script>
         <!-- Main JS -->
         <script src="{{ asset('peserta') }}/js/main.js"></script>
+        {{-- Select 2 --}}
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#tipeproduk').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#sektorkategori').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#tahunberdiri').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#provinsi').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#kabupaten').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#sniid').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#tipeorganisasi').select2();
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#sektorkategori').select2();
+            });
+        </script>
 
     </body>

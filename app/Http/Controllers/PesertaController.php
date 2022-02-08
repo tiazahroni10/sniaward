@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterKotaKabupaten;
+use App\Models\MasterProvinsi;
+use App\Models\MasterSektorKategori;
+use App\Models\MasterSni;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +27,7 @@ class PesertaController extends Controller
     {   $dataPeserta = Peserta::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/peserta/index',$data = [
+        return view('peserta.profil',$data = [
             'menu' => 'Peserta',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -73,10 +77,18 @@ class PesertaController extends Controller
     {
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
+        $dataProvinsi = MasterProvinsi::all();
+        $dataKabupaten = MasterKotaKabupaten::all();
+        $dataSektorKategori = MasterSektorKategori::all();
+        $dataSni = MasterSni::all();
         return view('peserta/edit',$data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataProvinsi' => $dataProvinsi,
+            'dataKabupaten' => $dataKabupaten,
+            'dataSni' => $dataSni,
+            'dataSektorKategori' => $dataSektorKategori
         ]);
     }
 

@@ -21,8 +21,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="sniid">SNI Id</label>
-                                    <input type="text" class="form-control w-50" id="sniid" placeholder="" value="" required="">
+                                    <label for="sniid">No SNI</label>
+                                    <select name="sniid" id="sniid">
+                                        <option value="">Pilih...</option>
+                                        @foreach ($dataSni as $sni)
+                                            <option value="{{ $sni->id }}">{{ $sni->no_sni }}</option>
+                                        @endforeach
+                                    </select>
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -44,12 +49,11 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="provinsi">Provinsi</label>
-                                        <select class="d-block w-100 default-select" id="provinsi" required="">
+                                        <select class="" id="provinsi" name="provinsi" required="">
                                             <option value="">Pilih...</option>
-                                            <option value="Aceh">Aceh</option>
-                                            <option value="Sumatera Utara">Sumatera Utara</option>
-                                            <option value="Sumatera Barat">Sumatera Barat</option>
-                                            <option value="Riau">Riau</option>
+                                            @foreach ($dataProvinsi as $provinsi)
+                                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
@@ -57,12 +61,11 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="kabupaten">Kabupaten</label>
-                                        <select class="d-block w-100 default-select" id="kabupaten" required="">
+                                        <select class="" id="kabupaten" required="">
                                             <option value="">Pilih...</option>
-                                            <option value="Tanah Datar">Tanah Datar</option>
-                                            <option value="Solok">Solok</option>
-                                            <option value="Lima Puluh Kota">Lima Puluh Kota</option>
-                                            <option value="Padang Panjang">Padang Panjang</option>
+                                            @foreach ($dataKabupaten as $kabupaten)
+                                            <option value="{{ $kabupaten->id }}">{{ $kabupaten->nama }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid country.
@@ -94,7 +97,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="tahunberdiri">Tahun Berdiri</label>
-                                    <select class="d-block w-50 default-select" id="tahunberdiri" required="">
+                                    <select class="" id="tahunberdiri" required="">
                                         <option value="">Pilih...</option>
                                         <option value="2000">2000</option>
                                         <option value="2001">2001</option>
@@ -119,7 +122,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="tipeproduk">Tipe Produk</label>
-                                        <select class="d-block w-100 default-select" id="tipeproduk" required="">
+                                        <select class="" id="tipeproduk" name="tipeproduk" required="">
                                             <option value="">Pilih...</option>
                                             <option value="Induk">Induk</option>
                                             <option value="Organisasi Menengah Jasa">Anak</option>
@@ -132,20 +135,11 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="sektorkategori">Sektor atau Kategori</label>
-                                        <select class="d-block w-100 default-select" id="tahunberdiri" required="">
+                                        <select class="" id="sektorkategori" name="sektorkategori" required="">
                                             <option value="">Pilih...</option>
-                                            <option value="1">Organisasi Kecil Jasa</option>
-                                            <option value="2">Organisasi Menengah Jasa</option>
-                                            <option value="3">Organisasi Besar Jasa</option>
-                                            <option value="4">Organisasi Kecil Barang</option>
-                                            <option value="5">Organisasi Menengah Barang Sektor Agro</option>
-                                            <option value="6">Organisasi Menengah Barang Sektor Logam Mesin, Alat Transportasi, dan Elektronika</option>
-                                            <option value="7">Organisasi Menengah Barang Sektor Kimia, Farmasi, Tekstil dan Pertambangan</option>
-                                            <option value="8">Organisasi Besar Barang Sektor Agro</option>
-                                            <option value="9">Organisasi Besar Barang Sektor Logam, Mesin, Alat Transportasi, dan Elektronika</option>
-                                            <option value="10">Organisasi Besar Barang Sektor Kimia, Farmasi, Tekstil dan Pertambangan</option>
-                                            <option value="11">Organisasi Pendidikan Tinggi</option>
-                                            <option value="12">Organisasi Pendidikan Menengah</option>
+                                            @foreach ($dataSektorKategori as $sektor)
+                                                <option value="{{ $sektor->id }}">{{ $sektor->nama_kategori }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please enter a valid email address for shipping updates.
@@ -170,7 +164,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="tipeorganisasi">Tipe Organisasi</label>
-                                    <select class="d-block w-50 default-select" id="tipeorganisasi" required="">
+                                    <select class="w-50" id="tipeorganisasi" required="">
                                         <option value="">Pilih...</option>
                                         <option value="Induk">Induk</option>
                                         <option value="Organisasi Menengah Jasa">Anak</option>
