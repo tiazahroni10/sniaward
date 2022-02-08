@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $data = $this->user->getUser($id);
         if(auth()->user()->peran ==='peserta')
         {
-            return view('peserta/dashboard',
+            return view('peserta.dashboard',
             [   
             'menu' => 'Dashboard',
             'data' => $data,
@@ -27,7 +27,7 @@ class DashboardController extends Controller
             ]);
         }
         elseif (auth()->user()->peran ==='evaluator') {
-            return view('evaluator/dashboard',
+            return view('evaluator.dashboard',
             [  
             'menu' => 'Dashboard',
             'data' => $data,
@@ -35,7 +35,7 @@ class DashboardController extends Controller
             ]);
         }
         else {
-            return view('admin/dashboard',
+            return view('admin.dashboard',
             [
             'menu' => 'Dashboard',
             'data' => $data,

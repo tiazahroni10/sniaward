@@ -96,7 +96,7 @@
                     ajax: '{!! route('datapeserta') !!}',
                     columns: [
                         { data: 'nama_organisasi', name: 'nama_organisasi' },
-                        { data: 'alamat_organisasi', name: 'alamat_organisasi' },
+                        { data: 'tipe_organisasi', name: 'tipe_organisasi' },
                         { data: 'nomor_telepon', name: 'nomor_telepon' },
                         { data: 'action', name: 'action' },
                     ]

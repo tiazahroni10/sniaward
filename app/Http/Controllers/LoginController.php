@@ -35,7 +35,7 @@ class LoginController extends Controller
             HistoryLogin::create($history); //mengisi kolom user_id dan login_terakhir
             
 
-            return redirect()->intended('/dashboard'); 
+            return redirect()->intended('dashboard'); 
         }
 
         return back()->with('loginError','Login Gagal');

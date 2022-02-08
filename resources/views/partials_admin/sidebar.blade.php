@@ -4,7 +4,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
-                    <li><a  href="/dashboard" aria-expanded="false">
+                    <li><a  href="{{ route('dashboard') }}" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
@@ -17,7 +17,7 @@
                         <li><a href="{{ route('faq.index') }}">FaQ</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="/admin/peserta" aria-expanded="false">
+                    <li><a class="has-arrow ai-icon" href="{{ route('showDataPeserta') }}" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Peserta</span>
 						</a>

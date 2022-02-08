@@ -126,7 +126,7 @@ class PesertaController extends Controller
         $data = $request->all();
         $dataProfil = Peserta::where('user_id',$id)->get()->first();
         $dataProfil->update($data);
-        return redirect()->route('profil.index')->with('sukses','Data Profil berhasi diubah');
+        return redirect()->route('profilpeserta.index')->with('sukses','Data Profil berhasi diubah');
     }
 
     /**
@@ -139,16 +139,8 @@ class PesertaController extends Controller
     {
         //
     }
-    public function profil()
-    {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('peserta/profil',$data = [
-            'menu' => 'Profil',
-            'data' => $data,
-            'peran' => auth()->user()->peran
-        ]);
-    }
+    
+    
     public function dataTables()
     {
         return DataTables ::of(Peserta::query())
@@ -157,4 +149,19 @@ class PesertaController extends Controller
         })
         ->make(true); 
     }
+
+    public function showDataPeserta()
+    {
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $dataPeserta = Peserta::all();
+        return view('admin.peserta.index',$data = [
+            'menu' => 'Peserta',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataPeserta' => $dataPeserta
+        ]);
+    }
+
+    
 }

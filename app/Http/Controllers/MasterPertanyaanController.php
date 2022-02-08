@@ -89,7 +89,7 @@ class MasterPertanyaanController extends Controller
         $dataPertanyaan = MasterPertanyaan::findOrFail($id);
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
-        return view('admin.masterpertanyaan/edit',$data=[
+        return view('admin.masterpertanyaan.edit',$data=[
             'menu' => 'Data Master',
             'data' => $data,
             'peran' => auth()->user()->peran,

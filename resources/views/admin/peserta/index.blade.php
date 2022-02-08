@@ -24,7 +24,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Nama Organisasi</th>
-                                                <th>Status</th>
+                                                <th>Tipe Organisasi</th>
                                                 <th>No Telepon</th>
                                                 <th>Aksi</th>
                                             </tr>

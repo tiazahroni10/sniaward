@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" action="{{ route('profil.update',$data->id) }}" method="POST" enctype="multipart/form-data">
+                            <form class="needs-validation" action="{{ route('profilpeserta.update',$data->id) }}" method="POST" enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
                                 <div class="mb-3">

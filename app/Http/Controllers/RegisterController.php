@@ -40,6 +40,6 @@ class RegisterController extends Controller
         // return redirect('/login')->with('sukses','Registrasi berhasil, login sekarang'); 
         // return redirect('/login'); 
         // return redirect('/pertanyaan'); 
-        return redirect('/pertanyaan')->with('userid', $id);
+        return redirect()->route('showPertanyaan')->with('userid', $id);
     }
 }

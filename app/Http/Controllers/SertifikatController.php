@@ -31,7 +31,7 @@ class SertifikatController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('evaluator/sertifikat/create', $data = [
+        return view('evaluator.sertifikat.create', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran

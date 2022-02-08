@@ -26,7 +26,7 @@ class DokumentasiController extends Controller
         $dataGambar = Gambar::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/dokumentasi/index',$data = [
+        return view('admin.dokumentasi.index',$data = [
             'menu' => 'Dokumentasi',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -43,7 +43,7 @@ class DokumentasiController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/dokumentasi/create',$data = [
+        return view('admin.dokumentasi.create',$data = [
             'menu' => 'Dokumentasi',
             'data' => $data,
             'peran' => auth()->user()->peran

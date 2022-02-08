@@ -532,7 +532,6 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DokumentasiController' => __DIR__ . '/../..' . '/app/Http/Controllers/DokumentasiController.php',
-        'App\\Http\\Controllers\\DownloadController' => __DIR__ . '/../..' . '/app/Http/Controllers/DownloadController.php',
         'App\\Http\\Controllers\\EvaluatorController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvaluatorController.php',
         'App\\Http\\Controllers\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/FaqController.php',
         'App\\Http\\Controllers\\FrontpageController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontpageController.php',

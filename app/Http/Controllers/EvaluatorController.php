@@ -27,7 +27,7 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('evaluator/profil', $data = [
+        return view('evaluator.profil', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -79,7 +79,7 @@ class EvaluatorController extends Controller
         $idUser = auth()->user()->id;
         $dataEvaluator = Evaluator::where('user_id',$id)->get()->first();
         $data = $this->user->getUser($idUser);
-        return view('evaluator/edit', $data = [
+        return view('evaluator.edit', $data = [
             'menu' => 'Profil',
             'dataKabupaten' => $dataKabupaten,
             'dataProvinsi' => $dataProvinsi,
@@ -167,7 +167,7 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/evaluator/create', $data = [
+        return view('admin.evaluator.create', $data = [
             'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -178,7 +178,7 @@ class EvaluatorController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataEvaluator = Evaluator::all();
-        return view('admin/evaluator/index',$data = [
+        return view('admin.evaluator.index',$data = [
             'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran,

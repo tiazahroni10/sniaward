@@ -31,7 +31,7 @@ class KontakController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('peserta/kontak/create',$data = [
+        return view('peserta.kontak.create',$data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran

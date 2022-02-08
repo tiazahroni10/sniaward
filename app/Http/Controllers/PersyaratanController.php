@@ -25,7 +25,7 @@ class PersyaratanController extends Controller
         $dataPersyaratan = DokumenSniAward::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/persyaratan/index',$data = [
+        return view('admin.persyaratan.index',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -42,7 +42,7 @@ class PersyaratanController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/persyaratan/create',$data = [
+        return view('admin.persyaratan.create',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran

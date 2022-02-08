@@ -19,6 +19,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\PekerjaanController;
+use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Models\Berita;
@@ -51,44 +52,37 @@ Route::post('/login', [LoginController::class,'login']);
 Route::post('/logout', [LoginController::class,'logout']);
 Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class,'simpanData']);
-Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth');
-Route::get('/pertanyaan',[PertanyaanController::class,'index']);
-Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan']);
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/pertanyaan',[PertanyaanController::class,'index'])->name('pertanyaan');
+Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('showPertanyaan');
 
-// Route::get('/berita/{slug}', [BeritaController::class,'detailBerita'])->middleware('guest');
-Route::get('/{slug}', function($slug){
-    $dataBerita = DB::table('berita')->where('slug', $slug)->first();
-    return view('detailberita', $data=[
-        'data' => $dataBerita
-    ]);
-});
+Route::get('/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
 //peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
-
-Route::resource('/peserta/profil', PesertaController::class,)->middleware('auth');
+Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
-// Route::get('/admin/evaluator',[EvaluatorController::class,'index'])->middleware('auth');
 Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator')->middleware('auth');
 Route::get('/admin/peserta/data',[PesertaController::class,'dataTables'])->name('datapeserta')->middleware('auth');
 Route::get('/admin/berita/data',[BeritaController::class,'dataTables'])->name('databerita')->middleware('auth');
+
+Route::get('/admin/peserta',[PesertaController::class,'showDataPeserta'])->name('showDataPeserta')->middleware('auth');
+
 Route::get('/admin/evaluator/create',[EvaluatorController::class,'createEvaluator'])->name('createEvaluator')->middleware('auth');
 Route::post('/admin/evaluator/store',[EvaluatorController::class,'storeEvaluator'])->name('storeEvaluator')->middleware('auth');
 Route::get('/admin/evaluator/',[EvaluatorController::class,'showDataEvaluator'])->name('showDataEvaluator')->middleware('auth');
 
-Route::get('/admin/tambahevaluator',[EvaluatorController::class,'tambahEvaluator'])->middleware('auth');
-Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth');
-Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth');
-Route::resource('/admin/masterdokumen', MasterDokumenController::class)->middleware('auth');
-Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->middleware('auth');
-Route::resource('/admin/persyaratan', PersyaratanController::class)->middleware('auth');
-Route::resource('/admin/dokumentasi', DokumentasiController::class)->middleware('auth');
-Route::resource('/admin/berita', BeritaController::class)->middleware('auth');
-Route::resource('/admin/faq', FaqController::class)->middleware('auth');
-Route::resource('/admin/peserta', PesertaController::class)->middleware('auth');
+Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth')->name('adminProfil');
+Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/masterdokumen', MasterDokumenController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/persyaratan', PersyaratanController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/dokumentasi', DokumentasiController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/berita', BeritaController::class)->middleware('auth')->except(['show']);
+Route::resource('/admin/faq', FaqController::class)->middleware('auth')->except(['show']);
 
 
 
@@ -97,15 +91,10 @@ Route::resource('/admin/peserta', PesertaController::class)->middleware('auth');
 
 // bagian evaluator
 Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->middleware('auth')->except(['create','show','destroy', 'store']);
-Route::get('/evaluator/download',[DownloadController::class,'index'])->middleware('auth');
-Route::get('/evaluator/profil',[EvaluatorController::class,'profil'])->middleware('auth')->name('evaluator.profil');
+Route::get('/evaluator/download',[CapacityBuildingController::class,'showCapacityBuildingDownload'])->middleware('auth')->name('showCapacityBuildingDownload');
 Route::resource('/evaluator/pekerjaan', PekerjaanController::class)->middleware('auth');
 Route::resource('/evaluator/sertifikat', SertifikatController::class)->middleware('auth');
-Route::resource('/evaluator/pendidikan', SertifikatController::class)->middleware('auth');
-// Route::get('/evaluator/editprofil',[EvaluatorController::class,'editProfil'])->middleware('auth');
-// Route::get('/evaluator/tambahpendidikan',[EvaluatorController::class,'tambahPendidikan'])->middleware('auth');
-// Route::get('/evaluator/tambahpekerjaan',[EvaluatorController::class,'tambahPekerjaan'])->middleware('auth');
-// Route::get('/evaluator/tambahsertifikat',[EvaluatorController::class,'tambahSertifikat'])->middleware('auth');
+Route::resource('/evaluator/pendidikan', PendidikanController::class)->middleware('auth');
 
 
 

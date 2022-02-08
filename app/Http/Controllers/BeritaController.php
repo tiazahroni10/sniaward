@@ -6,6 +6,7 @@ use App\Models\Berita;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use League\CommonMark\Normalizer\SlugNormalizer;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -130,7 +131,9 @@ class BeritaController extends Controller
     }
     public function detailBerita($slug)
     {
-        $dataBerita = Berita::findOrFail($slug);
-        dd($dataBerita);
+        $dataBerita = DB::table('berita')->where('slug', $slug)->first();
+        return view('detailberita', $data=[
+        'data' => $dataBerita
+    ]);
     }
 }

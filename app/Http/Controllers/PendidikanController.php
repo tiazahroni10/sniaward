@@ -31,7 +31,7 @@ class PendidikanController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('evaluator/pendidikan/create', $data = [
+        return view('evaluator.pendidikan.create', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran

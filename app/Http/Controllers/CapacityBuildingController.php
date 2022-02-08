@@ -23,7 +23,7 @@ class CapacityBuildingController extends Controller
         $dataCapacityBuilding = DokumenCapacityBuilding::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/capacitybuilding/index',$data = [
+        return view('admin.capacitybuilding.index',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -40,7 +40,7 @@ class CapacityBuildingController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin/capacitybuilding/create',$data = [
+        return view('admin.capacitybuilding.create',$data = [
             'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -132,4 +132,16 @@ class CapacityBuildingController extends Controller
         return redirect()->route('capacitybuilding.index')->with('sukses','Dokumen Persyaratan berhasil dihapus');
         
     }
+
+    public function showCapacityBuildingDownload()
+    {
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        return view('evaluator.download',$data = [
+            'menu' => 'Download',
+            'data' => $data,
+            'peran' => auth()->user()->peran
+        ]);
+    }
+
 }
