@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pekerjaan;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,15 @@ class PekerjaanController extends Controller
     }
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $dataPekerjaan = Pekerjaan::where('user_id',$id)->get();
+        return view('evaluator.pekerjaan.index', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataPekerjaan' => $dataPekerjaan
+        ]);
     }
 
     /**
@@ -46,7 +55,15 @@ class PekerjaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'instansi' => ['required'],
+            'jabatan' => ['required'],
+            'tahun_mulai' => ['required'],
+            'tahun_selesai' => ['required']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        Pekerjaan::create($validatedData);
+        return redirect()->route('pekerjaan.index')->with('sukses','Data pekerjaan berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +85,15 @@ class PekerjaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        $dataPekerjaan = Pekerjaan::findOrFail($id);
+        return view('evaluator.pekerjaan.edit', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataPekerjaan' => $dataPekerjaan
+        ]);
     }
 
     /**
@@ -80,7 +105,16 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'instansi' => ['required'],
+            'jabatan' => ['required'],
+            'tahun_mulai' => ['required'],
+            'tahun_selesai' => ['required']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $dataPekerjaan = Pekerjaan::findOrFail($id);
+        $dataPekerjaan->update($validatedData);
+        return redirect()->route('pekerjaan.index')->with('sukses','Data pekerjaan berhasil diubah');
     }
 
     /**
@@ -91,6 +125,9 @@ class PekerjaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data   = Pekerjaan::findOrFail($id);
+        $data->delete();
+        return redirect()->route('pekerjaan.index')->with('sukses','Pekerjaan berhasil dihapus');
+    
     }
 }
