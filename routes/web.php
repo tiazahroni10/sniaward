@@ -22,8 +22,10 @@ use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
+use App\Http\Controllers\UnggahLampiranController;
 use App\Models\Berita;
 use App\Models\DokumenBerita;
+use App\Models\DokumenPeserta;
 use App\Models\Evaluator;
 use App\Models\Faq;
 use App\Models\Kontak;
@@ -62,6 +64,7 @@ Route::get('/{slug}',[BeritaController::class,'detailBerita'])->middleware('gues
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
+Route::resource('/peserta/lampiran', UnggahLampiranController::class)->middleware('auth');
 
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
