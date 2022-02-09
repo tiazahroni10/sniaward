@@ -17,7 +17,7 @@ class CreateSertifikatTable extends Migration
             $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->string('nama_sertifikat',50)->nullable(false);
-            $table->string('nama_file',50)->nullable(false);
+            $table->string('nama_file')->nullable(false);
             $table->timestamps();
         });
     }

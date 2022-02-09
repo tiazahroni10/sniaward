@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Tambah Sertifikat Evaluator</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Sertifikat Evaluator</a></li>
             </ol>
         </div>
         <div class="row">
@@ -13,11 +13,13 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" method="POST" action="{{ route('sertifikat.store') }}" enctype="multipart/form-data">
+                            <form class="needs-validation" method="POST" action="{{ route('sertifikat.update',$dataSertifikat->id) }}" enctype="multipart/form-data">
+                                @method('PUT')
                                 @csrf
+                                <input type="hidden" name="oldSertifikat" value="{{ $dataSertifikat->nama_file }}">
                                 <div class="mb-3">
                                     <label for="nama_sertifikat">Nama Sertifikat</label>
-                                    <input type="text" class="form-control" name="nama_sertifikat" id="nama_sertifikat" placeholder="" value="" required="">
+                                    <input type="text" class="form-control" name="nama_sertifikat" id="nama_sertifikat" placeholder="" value="{{ old('nama_sertifikat',$dataSertifikat->nama_sertifikat) }}" required="">
                                     <div class="invalid-feedback">
                                         Valid first name is required.
                                     </div>

@@ -37,7 +37,7 @@
                                             <a href="{{ route('profilevaluator.edit',$data->id) }}"><li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i>Edit Profil</li></a>
                                             <a href="{{ route('pendidikan.index') }}"><li class="dropdown-item"><i class="fa fa-graduation-cap text-primary mr-2"></i>Pendidikan</li></a>
                                             <a href="{{ route('pekerjaan.index') }}"><li class="dropdown-item"><i class="fa fa-briefcase text-primary mr-2"></i>Pekerjaan</li></a>
-                                            <a href="{{ route('sertifikat.create') }}"><li class="dropdown-item"><i class="fa fa-certificate text-primary mr-2"></i>Sertifikat</li></a>
+                                            <a href="{{ route('sertifikat.index') }}"><li class="dropdown-item"><i class="fa fa-certificate text-primary mr-2"></i>Sertifikat</li></a>
                                         </ul>
                                     </div>
                                 </div>

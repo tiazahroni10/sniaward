@@ -56,7 +56,7 @@
                                                     </div>
                                                 </a>
                                             </td>
-                                            <td class="py-2 pl-5 wspace-no">{{ $pendidikan->nama_kampus }}</a></td>
+                                            <td class="py-2 pl-5 wspace-no"><a href="/storage/{{ $pendidikan->nama_file }}">{{ $pendidikan->nama_kampus }}</a></td>
                                             <td class="py-2 pl-5 wspace-no">{{ $pendidikan->jenjang }}</td>
                                             <td class="py-2 pl-5 wspace-no">{{ $pendidikan->tahun_lulus }}</td>
                                             <td class="py-2 text-right">

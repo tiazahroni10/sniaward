@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sertifikat;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SertifikatController extends Controller
 {
@@ -19,7 +21,15 @@ class SertifikatController extends Controller
     }
     public function index()
     {
-        //
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $dataSertifikat = Sertifikat::where('user_id',$id)->get();
+        return view('evaluator.sertifikat.index', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataSertifikat' => $dataSertifikat
+        ]);
     }
 
     /**
@@ -46,7 +56,14 @@ class SertifikatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_sertifikat' => ['required'],
+            'nama_file' =>['required']
+        ]);
+        $validatedData['nama_file'] = $request->file('nama_file')->store('sertifikat-evaluator');
+        $validatedData['user_id'] = auth()->user()->id;
+        Sertifikat::create($validatedData);
+        return redirect()->route('sertifikat.index')->with('sukses','Sertifikat berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +85,15 @@ class SertifikatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        $dataSertifikat = Sertifikat::findOrFail($id);
+        return view('evaluator.sertifikat.edit', $data = [
+            'menu' => 'Profil',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataSertifikat' => $dataSertifikat
+        ]);
     }
 
     /**
@@ -80,7 +105,20 @@ class SertifikatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_sertifikat' => ['required'],
+            'nama_file' =>['required']
+        ]);
+        if($request->file('nama_file')){
+            if($request->oldSertifikat){
+                Storage::delete($request->oldSertifikat); 
+            }
+            $validatedData['nama_file'] = $request->file('nama_file')->store('sertifikat-evaluator');
+        }
+        $validatedData['user_id'] = auth()->user()->id;
+        $dataSertifikat = Sertifikat::findOrFail($id);
+        $dataSertifikat->update($validatedData);
+        return redirect()->route('sertifikat.index')->with('sukses','Sertifikat berhasil diubah');
     }
 
     /**
@@ -91,6 +129,12 @@ class SertifikatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data   = Sertifikat::findOrFail($id);
+        $file = public_path('storage/').$data->nama_file;
+        if(file_exists($file)){
+            @unlink($file);
+        }
+        $data->delete();
+        return redirect()->route('sertifikat.index')->with('sukses','Sertifikat berhasil dihapus');
     }
 }

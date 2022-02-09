@@ -118,9 +118,8 @@ class PendidikanController extends Controller
             if($request->oldGambar){
                 Storage::delete($request->oldIjazah); 
             }
-            $data['ijazah']= $request->file('ijazah')->store('pendidikan-evaluator');
+            $validatedData['ijazah'] = $request->file('ijazah')->store('pendidikan-evaluator');
         }
-        $validatedData['ijazah'] = $request->file('ijazah')->store('pendidikan-evaluator');
         $validatedData['user_id'] = auth()->user()->id;
         $dataPendidikan = Pendidikan::findOrFail($id);
         $dataPendidikan->update($validatedData);
