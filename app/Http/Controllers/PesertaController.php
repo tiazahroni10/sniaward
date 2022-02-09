@@ -10,6 +10,7 @@ use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class PesertaController extends Controller
@@ -123,7 +124,15 @@ class PesertaController extends Controller
     //         'hasil_penjualan_organisasi'=>'required',
     //         'tipe_organisasi'=>'required'
     //     ]);
+
+        
         $data = $request->all();
+        if($request->file('gambar')){
+            if($request->oldGambar){
+                Storage::delete($request->oldGambar); 
+            }
+            $data['gambar']= $request->file('gambar')->store('profil-peserta');
+        }
         $dataProfil = Peserta::where('user_id',$id)->get()->first();
         $dataProfil->update($data);
         return redirect()->route('profilpeserta.index')->with('sukses','Data Profil berhasi diubah');

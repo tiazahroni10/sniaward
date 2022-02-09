@@ -16,6 +16,7 @@
                             <form class="needs-validation" action="{{ route('profilpeserta.update',$data->id) }}" method="POST" enctype="multipart/form-data">
                                 @method('PUT')
                                 @csrf
+                                <input type="hidden" name="oldGambar" value="{{ $dataProfil->gambar }}">
                                 <div class="mb-3">
                                     <label for="nama_organisasi">Nama Organisasi</label>
                                     <input type="text" class="form-control @error('nama_organisasi') is-invalid @enderror" id="nama_organisasi" name="nama_organisasi"  value="{{ $dataProfil->nama_organisasi }}">
@@ -225,6 +226,13 @@
                                         </div>
                                     @enderror
                                 </div>
+                                <div class="form-group" id="imagePreview">
+                                        @if ($dataProfil->gambar)
+                                        <img src="/storage/{{ $dataProfil->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                                        @else
+                                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                                        @endif
+                                    </div>
                                 <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
@@ -240,7 +248,7 @@
                                         </div>
                                     </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
+                                <button class="btn btn-primary btn-lg btn-block w-25" type="submit">Simpan</button>
                             </form>
                         </div>
                     </div>

@@ -31,8 +31,8 @@ class CreatePesertaTable extends Migration
             $table->string('tipe_produk',50)->nullable(true);
             $table->decimal('kekayaan_organisasi',12,3)->nullable(true);
             $table->decimal('hasil_penjualan_organisasi',12,3)->nullable(true);
-            $table->string('tipe_organisasi',10)->nullable(true);
-            $table->string('gambar',10)->nullable(true);
+            $table->string('tipe_organisasi',100)->nullable(true);
+            $table->string('gambar',100)->nullable(true);
             $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
         });

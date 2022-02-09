@@ -8,6 +8,7 @@ use App\Models\MasterProvinsi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -98,6 +99,37 @@ class EvaluatorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->file('gambar')){
+            if($request->oldGambar){
+                Storage::delete($request->oldGambar); 
+            }
+            $data['gambar']= $request->file('gambar')->store('profil-evaluator');
+        }
+        else $data['gambar']= null;
+
+        if($request->file('npwp')){
+            if($request->oldNpwp){
+                Storage::delete($request->oldNpwp); 
+            }
+            $data['npwp']= $request->file('npwp')->store('profil-evaluator');
+        }
+        else $data['npwp']= null;
+        
+        if($request->file('ktp')){
+            if($request->oldKtp){
+                Storage::delete($request->oldKtp); 
+            }
+            $data['ktp']= $request->file('ktp')->store('profil-evaluator');
+        }
+        else $data['ktp'] = null;
+
+        if($request->file('cv')){
+            if($request->oldCv){
+                Storage::delete($request->oldCv); 
+            }
+            $data['cv']= $request->file('cv')->store('profil-evaluator');
+        }
+        else $data['cv']= null;
         DB::table('evaluator')
                 ->where('user_id', $id)
                 ->update(['nama_lengkap' => $request->nama_lengkap,
@@ -111,6 +143,10 @@ class EvaluatorController extends Controller
                         'master_provinsi_id' => $request->master_provinsi_id,
                         'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
                         'nomor_telepon' => $request->nomor_telepon,
+                        'gambar' => $data['gambar'],
+                        'npwp' => $data['npwp'],
+                        'ktp' => $data['ktp'],
+                        'cv' => $data['cv']
                     ]);
         return redirect()->route('profilevaluator.index')->with('sukses','Data profil berhasi diubah');
     }

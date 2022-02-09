@@ -28,10 +28,10 @@ class CreateEvaluatorTable extends Migration
             $table->foreignId('master_provinsi_id')->nullable(true);
             $table->foreignId('master_kota_kabupaten_id')->nullable(true);
             $table->string('nomor_telepon',20)->nullable(true);
-            $table->string('gambar',15)->nullable(true);
-            $table->string('npwp',15)->nullable(true);   
-            $table->string('ktp',20)->nullable(true); 
-            $table->string('cv',15)->nullable(true); 
+            $table->string('gambar',100)->nullable(true);
+            $table->string('npwp',100)->nullable(true);   
+            $table->string('ktp',100)->nullable(true); 
+            $table->string('cv',100)->nullable(true); 
             $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();
         });
