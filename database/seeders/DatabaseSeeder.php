@@ -21,6 +21,7 @@ use App\Models\MasterDokumen;
 use App\Models\MasterSektorKategori;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterSni;
+use App\Models\MasterUnggahLampiran;
 use App\Models\Pekerjaan;
 use App\Models\Pelatihan;
 use App\Models\Pendidikan;
@@ -105,6 +106,24 @@ class DatabaseSeeder extends Seeder
             'linktwitter' => 'twitter.com',
             'linkinstagram' => 'instagram.com',
             'webbsn' => 'bsn.go.id'
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'Scan legalitas hukum organisasi (SIUP/Akte Perusahaan)',
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'Lembar Pernyataan Tidak Terlibat Hukum Selama 3 Tahun Terakhir',
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'Sertifikat SNI yang dimiliki',
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'SK Kemenkumham (untuk organisasi Pendidikan)',
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'Sertifikat Akreditasi BAN/BAN-PT (untuk organisasi Pendidikan)',
+        ]);
+        MasterUnggahLampiran::create([
+            'nama_dokumen' =>'Dokumen Jawaban Kriteria Penilaian SNI Award 2020',
         ]);
 
 

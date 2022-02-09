@@ -56,6 +56,7 @@ return array(
     'App\\Models\\MasterProvinsi' => $baseDir . '/app/Models/MasterProvinsi.php',
     'App\\Models\\MasterSektorKategori' => $baseDir . '/app/Models/MasterSektorKategori.php',
     'App\\Models\\MasterSni' => $baseDir . '/app/Models/MasterSni.php',
+    'App\\Models\\MasterUnggahLampiran' => $baseDir . '/app/Models/MasterUnggahLampiran.php',
     'App\\Models\\Pekerjaan' => $baseDir . '/app/Models/Pekerjaan.php',
     'App\\Models\\Pelatihan' => $baseDir . '/app/Models/Pelatihan.php',
     'App\\Models\\Pendidikan' => $baseDir . '/app/Models/Pendidikan.php',

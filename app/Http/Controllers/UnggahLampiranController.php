@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
+use App\Models\MasterUnggahLampiran;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class UnggahLampiranController extends Controller
     }
     public function index()
     {
+        $dataDokumen = MasterUnggahLampiran::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dokumenPeserta = DokumenPeserta::where('user_id',$id)->get();
@@ -27,7 +29,8 @@ class UnggahLampiranController extends Controller
             'menu' => 'Unggah Lampiran',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dokumenPeserta' => $dokumenPeserta
+            'dokumenPeserta' => $dokumenPeserta,
+            'dataDokumen' => $dataDokumen
         ]);
     }
 
@@ -38,13 +41,7 @@ class UnggahLampiranController extends Controller
      */
     public function create()
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('peserta.lampiran.create', $data = [
-            'menu' => 'Unggah Lampiran',
-            'data' => $data,
-            'peran' => auth()->user()->peran,
-        ]);
+        
     }
 
     /**
@@ -77,7 +74,15 @@ class UnggahLampiranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dokumen = MasterUnggahLampiran::findOrFail($id);
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        return view('peserta.lampiran.create', $data = [
+            'menu' => 'Unggah Lampiran',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dokumen' => $dokumen
+        ]);
     }
 
     /**
@@ -89,7 +94,15 @@ class UnggahLampiranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_file' => ['required'],
+        ]);
+        $validatedData['nama_file'] =$request->file('nama_file')->store('dokumen-peserta');
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['master_dokumen_id'] = 3;
+        $validatedData['master_unggah_lampiran_id'] = $id;
+        DokumenPeserta::create($validatedData);
+        return redirect()->route('lampiran.index')->with('sukses','Dokumen berhasil diunggah');
     }
 
     /**

@@ -12,12 +12,10 @@
                 <div class="card">
                     <div class="card-body d-flex justify-content-center">
                         <div class="col-lg-8 col-md-7 order-md-1">
-                            <form class="needs-validation" action="{{ route('lampiran.store') }}" method="POST">
+                            <form class="needs-validation" action="{{ route('lampiran.update',$dokumen->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="mb-3">
-                                    <label for="nama_dokumen">Nama Dokumen</label>
-                                    <input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen" placeholder="" value="{{ old('nama_lengkap') }}" required="">
-                                </div>
+                                @method('PUT')
+                                <label for="nama_dokumen">{{ $dokumen->nama_dokumen }}</label>
                                 <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>

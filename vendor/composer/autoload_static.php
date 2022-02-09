@@ -575,6 +575,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Models\\MasterProvinsi' => __DIR__ . '/../..' . '/app/Models/MasterProvinsi.php',
         'App\\Models\\MasterSektorKategori' => __DIR__ . '/../..' . '/app/Models/MasterSektorKategori.php',
         'App\\Models\\MasterSni' => __DIR__ . '/../..' . '/app/Models/MasterSni.php',
+        'App\\Models\\MasterUnggahLampiran' => __DIR__ . '/../..' . '/app/Models/MasterUnggahLampiran.php',
         'App\\Models\\Pekerjaan' => __DIR__ . '/../..' . '/app/Models/Pekerjaan.php',
         'App\\Models\\Pelatihan' => __DIR__ . '/../..' . '/app/Models/Pelatihan.php',
         'App\\Models\\Pendidikan' => __DIR__ . '/../..' . '/app/Models/Pendidikan.php',
