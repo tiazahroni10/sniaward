@@ -32,12 +32,7 @@
     <body data-spy="scroll" data-offset="120">
 
         <!-- Start Preloader Area -->
-        <div class="preloader">
-            <div class="preloader">
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+        
         <!-- End Preloader Area -->
 
         <!-- Start Navbar Area -->

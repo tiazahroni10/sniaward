@@ -136,4 +136,9 @@ class BeritaController extends Controller
         'data' => $dataBerita
     ]);
     }
+
+    public function kumpulanBerita()
+    {
+        return view('kumpulanberita');
+    }
 }

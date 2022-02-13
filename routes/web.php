@@ -60,15 +60,17 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('sho
 
 Route::get('/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
-Route::get('/kumpulanberita', function () {
-    return view('kumpulanberita');
-});
+// Route::get('/kumpulanberita', function () {
+//     return view('kumpulanberita');
+// });
+Route::get('/berita/kumpulanberita1',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita1')->middleware('guest');
 
 //peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 Route::resource('/peserta/lampiran', UnggahLampiranController::class)->middleware('auth');
+
 
 // bagian admin
 Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('auth');
