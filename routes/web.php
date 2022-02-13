@@ -58,12 +58,12 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 Route::get('/pertanyaan',[PertanyaanController::class,'index'])->name('pertanyaan');
 Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('showPertanyaan');
 
-Route::get('/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
+Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
 // Route::get('/kumpulanberita', function () {
 //     return view('kumpulanberita');
 // });
-Route::get('/berita/kumpulanberita1',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita1')->middleware('guest');
+Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
 
 //peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');

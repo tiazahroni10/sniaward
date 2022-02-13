@@ -32,12 +32,12 @@
     <body data-spy="scroll" data-offset="120">
 
         <!-- Start Preloader Area -->
-        <div class="preloader">
+        {{-- <div class="preloader">
             <div class="preloader">
                 <span></span>
                 <span></span>
             </div>
-        </div>
+        </div> --}}
         <!-- End Preloader Area -->
 
         <!-- Start Navbar Area -->
@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="logo">
                     <a href="/">
-                        <img src="assets/img/logosniaward.png" width="100px" alt="logo">
+                        <img src="{{ asset('assets') }}/img/logosniaward.png" width="100px" alt="logo">
                     </a>
                 </div>
 

@@ -24,7 +24,7 @@
                             </ul>
                             <h3>{{ $data->judul }}</h3>
                             <p>{{ $data->potongan_berita }}</p>
-                            <a href="/{{ $data->slug }}" class="read-more">
+                            <a href="/berita/{{ $data->slug }}" class="read-more">
                                 Baca selengkapnya
                             </a>
                         </div>
@@ -32,7 +32,7 @@
                 </div>
                 @endforeach
             </div>
-            <a href="{{ route('kumpulanBerita1') }}" class="shadow-sm d-flex align-items-center justify-content-center" style="position:absolute;bottom:-2.2vh;right:0;border:2px solid #E3B04B;border-radius:50px;padding:5px 15px;background:white;color:#E3B04B;font-weight:550">Lihat Semua <i class="lni lni-arrow-right ml-2 mt-1" style="font-size:22px"></i></a>
+            <a href="{{ route('kumpulanBerita') }}" class="shadow-sm d-flex align-items-center justify-content-center" style="position:absolute;bottom:-2.2vh;right:0;border:2px solid #E3B04B;border-radius:50px;padding:5px 15px;background:white;color:#E3B04B;font-weight:550">Lihat Semua <i class="lni lni-arrow-right ml-2 mt-1" style="font-size:22px"></i></a>
 
         </div>
 
