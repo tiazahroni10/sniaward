@@ -2,7 +2,7 @@
         <nav class=" navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <div class="logo">
-                    <a href="#">
+                    <a href="/">
                         <img src="assets/img/logosniaward.png" width="100px" alt="logo">
                     </a>
                 </div>

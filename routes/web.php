@@ -60,6 +60,10 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('sho
 
 Route::get('/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
+Route::get('/kumpulanberita', function () {
+    return view('kumpulanberita');
+});
+
 //peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
