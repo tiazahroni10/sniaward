@@ -24,9 +24,9 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('assets') }}/css/responsive.css">
 
-        <title>SNI Award -  Detail Berita</title>
+        <title>SNI Award - Kumpulan Acara</title>
 
-        <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
+        <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
     </head>
 
     <body data-spy="scroll" data-offset="120">
@@ -45,7 +45,7 @@
             <div class="container">
                 <div class="logo">
                     <a href="/">
-                        <img src="assets/img/logosniaward.png" width="100px" alt="logo">
+                        <img src="{{ asset('assets') }}/img/logosniaward.png" width="100px" alt="logo">
                     </a>
                 </div>
 
@@ -126,10 +126,10 @@
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Detail Berita</h2>
+                            <h2>Kumpulan Berita</h2>
                             <ul>
                                 <li><a href="/">Beranda</a></li>
-                                <li>detail berita</li>
+                                <li>Kumpulan Berita</li>
                             </ul>
                         </div>
                     </div>
@@ -160,191 +160,266 @@
         </div>
         <!-- End Page Title Area -->
 
-        <!-- Start Single Blog Area -->
-        <section class="single-blog-area pt-100 pb-100">
+        <!-- Start Blog Area -->
+        <section id="blog" class="blog-area pt-100 pb-100">
             <div class="container">
+                <div class="section-title">
+                    <h2>Berita Terbaru</h2>
+                    <div class="bar"></div>
+                    <p>Kumpulan Berita Seputar SNI Award</p>
+                </div>
+
                 <div class="row">
-                    <div class="col-lg-8 col-md-12">
-                        <div class="blog-details-desc">
-                            <div class="article-image">
-                                <img src="{{ asset('assets') }}/img/blog-details.jpg" alt="image">
-                            </div>
-                            <div class="article-content">
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li>
-                                            <span>Posted On:</span> 
-                                            <p>September 31, 2021</p>
-                                        </li>
-                                        <li>
-                                            <span>Posted By:</span> 
-                                            <p>John Anderson</p>
-                                        </li>
-                                    </ul>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="/detailberita">
+                                    <img src="{{ asset('assets') }}/img/blog/image1.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="/detailberita">App Development</a>
                                 </div>
-
-                                <h3>Weather Evident Smiling Bed Against</h3>
-                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                <blockquote class="wp-block-quote">
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                    <cite>Tom Cruise</cite>
-                                </blockquote>
-                                <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam dolor sit amet, consectetur adipisicing.</p>
-                                <ul class="wp-block-gallery columns-3">
-                                    <li class="blocks-gallery-item">
-                                        <figure>
-                                            <img src="{{ asset('assets') }}/img/blog/image1.jpg" alt="image">
-                                        </figure>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        12 March 2021
                                     </li>
-
-                                    <li class="blocks-gallery-item">
-                                        <figure>
-                                            <img src="{{ asset('assets') }}/img/blog/image2.jpg" alt="image">
-                                        </figure>
-                                    </li>
-
-                                    <li class="blocks-gallery-item">
-                                        <figure>
-                                            <img src="{{ asset('assets') }}/img/blog/image3.jpg" alt="image">
-                                        </figure>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">3 Comment</a>
                                     </li>
                                 </ul>
-                                <h3>Four major elements that we offer:</h3>
-                                <ul class="features-list">
-                                    <li>
-                                        <i class="fa fa-check"></i>
-                                        Scientific Skills For getting a better result
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-check"></i>
-                                        Communication Skills to getting in touch
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-check"></i>
-                                        A Career Overview opportunity Available
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-check"></i>
-                                        A good Work Environment For work
-                                    </li>
-                                </ul>
-                                <h3>Setting the mood with incense</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                                <h3>The Rise Of Marketing And Why You Need It</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                            </div>
 
-                            <div class="article-footer">
-                                <div class="article-tags">
-                                    <span>
-                                        <i class="fa fa-bookmark"></i>
-                                    </span>
-                                    <a href="">Fashion</a>,
-                                    <a href="">Travel</a>
-                                </div>
-
-                                <div class="article-share">
-                                    <ul class="social">
-                                        <li><span>Bagikan:</span></li>
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <i class="fab fa-facebook-f"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <i class="fab fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" target="_blank">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="post-navigation">
-                                <div class="navigation-links">
-                                    <div class="nav-previous">
-                                        <a href="index.html">
-                                            <i class="flaticon-left"></i> 
-                                            Sebelumnya
-                                        </a>
-                                    </div>
-                                    <div class="nav-next">
-                                        <a href="index.html">
-                                            Selanjutnya
-                                            <i class="flaticon-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                <h3>
+                                    <a href="/detailberita">
+                                        The Most Popular New Business Apps
+                                    </a>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="/detailberita" class="read-more">
+                                    Read More
+                                </a>
                             </div>
                         </div>
-                    </div>    
+                    </div>
 
-                           
-                    <div class="col-lg-4 col-md-12">
-                        <aside class="widget-area" id="secondary">
-                            <section class="widget widget_search">
-                                <form class="search-form search-top">
-                                    <label>
-                                        <span class="screen-reader-text">Search for:</span>
-                                        <input type="search" class="search-field" placeholder="Search...">
-                                    </label class="">
-                                    <button type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </form>
-                            </section>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="single-blog.html">
+                                    <img src="assets/img/blog/image2.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="#">Web Development</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        18 March 2021
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">6 Comment</a>
+                                    </li>
+                                </ul>
 
-                            <section class="widget widget_colugo_posts_thumb">
-                                <h3 class="widget-title">Berita Terkini</h3>
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg1" role="img"></span>
+                                <h3>
+                                    <a href="single-blog.html">
+                                        The Most Popular New Apps in 2021
                                     </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 10, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Making Peace With The Feast Or Famine Of Freelancing</a>
-                                        </h4>
-                                    </div>
-                                </article>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="single-blog.html" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg2" role="img"></span>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="single-blog.html">
+                                    <img src="assets/img/blog/image3.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="#">Design Development</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        28 March 2021
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">0 Comment</a>
+                                    </li>
+                                </ul>
+
+                                <h3>
+                                    <a href="single-blog.html">
+                                        The Best Marketing Management Tools
                                     </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 21, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Be healthy, Enjoy life with Colugo organic</a>
-                                        </h4>
-                                    </div>
-                                </article>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="single-blog.html" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg3" role="img"></span>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="single-blog.html">
+                                    <img src="assets/img/blog/image4.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="#">App Development</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        12 March 2021
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">3 Comment</a>
+                                    </li>
+                                </ul>
+
+                                <h3>
+                                    <a href="single-blog.html">
+                                        It’s Time To Think Differently About App
                                     </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 30, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Buy organic food online and be healthy</a>
-                                        </h4>
-                                    </div>
-                                </article>
-                            </section>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="single-blog.html" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                        </aside>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="single-blog.html">
+                                    <img src="assets/img/blog/image5.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="#">Web Development</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        18 March 2021
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">6 Comment</a>
+                                    </li>
+                                </ul>
+
+                                <h3>
+                                    <a href="single-blog.html">
+                                        The Most Popular New Business Apps
+                                    </a>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="single-blog.html" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="single-blog.html">
+                                    <img src="assets/img/blog/image6.jpg" alt="image">
+                                </a>
+                                <div class="btn">
+                                    <a href="#">Design Development</a>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <ul class="post-meta">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        28 March 2021
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-comments"></i>
+                                        <a href="#">0 Comment</a>
+                                    </li>
+                                </ul>
+
+                                <h3>
+                                    <a href="single-blog.html">
+                                        3 WooCommerce Plugins to Boost Sales
+                                    </a>
+                                </h3>
+                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
+                                <a href="single-blog.html" class="read-more">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="pagination-area">
+                            <a href="#" class="prev page-numbers">
+                                <i class="fa fa-chevron-left"></i>
+                            </a>
+                            <a href="#" class="page-numbers">1</a>
+                            <span class="page-numbers current" aria-current="page">2</span>
+                            <a href="#" class="page-numbers">3</a>
+                            <a href="#" class="page-numbers">4</a>
+                            <a href="#" class="next page-numbers">
+                                <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="default-shape">
+                <div class="shape-1">
+                    <img src="{{ asset('assets') }}/img/shape/1.png" alt="image">
+                </div>
+
+                <div class="shape-2 rotateme">
+                    <img src="{{ asset('assets') }}/img/shape/2.png" alt="image">
+                </div>
+
+                <div class="shape-3">
+                    <img src="{{ asset('assets') }}/img/shape/3.svg" alt="image">
+                </div>
+
+                <div class="shape-4">
+                    <img src="{{ asset('assets') }}/img/shape/4.svg" alt="image">
+                </div>
+
+                <div class="shape-5">
+                    <img src="{{ asset('assets') }}/img/shape/5.png" alt="image">
+                </div>
+            </div>
         </section>
-        <!-- End Single Blog Area -->
+        <!-- End Blog Area -->
 
 
         <!-- Start Footer Area -->
@@ -353,7 +428,7 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="single-footer-widget">
-                            <a href="#" class="logo">
+                            <a href="/" class="logo">
                                 <h2>SNI AWARDS</h2>
                             </a>
                                 {{-- <p>{{ $data->ket_judul }}</p> --}}
@@ -365,32 +440,32 @@
                             <h3>Tautan</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         Beranda
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         Informasi
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         Download
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         Linimasa
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         Acara
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="/">
                                         FaQ
                                     </a>
                                 </li>

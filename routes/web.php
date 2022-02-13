@@ -57,6 +57,10 @@ Route::get('/detailberita', function () {
     return view('detailberita');
 });
 
+Route::get('/kumpulanberita', function () {
+    return view('kumpulanberita');
+});
+
 //peserta
 Route::get('/peserta',[PesertaController::class,'profil'])->middleware('auth')->name('peserta.profil');
 
