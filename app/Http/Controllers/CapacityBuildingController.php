@@ -135,12 +135,14 @@ class CapacityBuildingController extends Controller
 
     public function showCapacityBuildingDownload()
     {
+        $dataCapacityBuilding = DokumenCapacityBuilding::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('evaluator.download',$data = [
             'menu' => 'Download',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'dataCapacityBuilding' => $dataCapacityBuilding
         ]);
     }
 

@@ -11,7 +11,7 @@
                     </li>
                     <li><a class="has-arrow ai-icon" href="{{ route('showCapacityBuildingDownload') }}" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
-							<span class="nav-text">Download</span>
+							<span class="nav-text">Capacity Building</span>
 						</a>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

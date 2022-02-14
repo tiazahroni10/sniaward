@@ -134,4 +134,17 @@ class PersyaratanController extends Controller
         return redirect()->route('persyaratan.index')->with('sukses','Dokumen Persyaratan berhasil dihapus');
         // MasterPertanyaan::destroy($masterPertanyaan->id);
     }
+
+    public function persyaratanSniAward()
+    {
+        $dataPersyaratan = DokumenSniAward::all();
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        return view('peserta.persyaratan.index',$data = [
+            'menu' => 'Dokumen',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataPersyaratan' => $dataPersyaratan
+        ]);
+    }
 }

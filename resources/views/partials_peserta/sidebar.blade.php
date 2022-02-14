@@ -14,6 +14,11 @@
 							<span class="nav-text">Unggah Lampiran</span>
 						</a>
                     </li>
+                    <li><a class="has-arrow ai-icon" href="{{ route('persyaratanSniAward') }}" aria-expanded="false">
+							<i class="flaticon-381-television"></i>
+							<span class="nav-text">Persyaratan SNI Award</span>
+						</a>
+                    </li>
                     
 				<div class="copyright">
 					<p><strong>SNI AWARD</strong> © 2022 All Rights Reserved</p>

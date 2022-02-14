@@ -1,4 +1,4 @@
-@extends('layouts.evaluator.master')
+@extends('layouts.peserta.master')
 @section('content')
 <div class="content-body">
     @if (session()->has('sukses'))
@@ -24,7 +24,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="orders">
-                                            @foreach ($dataCapacityBuilding as $data)
+                                            @foreach ($dataPersyaratan as $data)
                                                 <tr class="btn-reveal-trigger">
                                                     <td><h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5></td>
                                                     <td class="py-2">{{ $data->nama_file }}</td>

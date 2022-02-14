@@ -5,9 +5,6 @@ use App\Http\Controllers\CapacityBuildingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DokumenCapacityBuildingController;
-use App\Http\Controllers\DokumenPersyaratanController;
-use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\EvaluatorController;
 use App\Http\Controllers\PertanyaanController;
 use App\Http\Controllers\PesertaController;
@@ -23,13 +20,6 @@ use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
-use App\Models\Berita;
-use App\Models\DokumenBerita;
-use App\Models\DokumenPeserta;
-use App\Models\Evaluator;
-use App\Models\Faq;
-use App\Models\Kontak;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +60,7 @@ Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('a
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
 Route::resource('/peserta/lampiran', UnggahLampiranController::class)->middleware('auth');
+Route::get('/peserta/persyaratan',[PersyaratanController::class,'persyaratanSniAward'])->middleware('auth')->name('persyaratanSniAward');
 
 
 // bagian admin
