@@ -105,36 +105,34 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-    //     $validatedData = $request->validate([
-    //         'nama_organisasi' => 'required',
-    //         'master_sni_id' => 'required',
-    //         'alamat_organisasi' =>'required',
-    //         'alamat_pabrik' =>'required',
-    //         'master_provinsi_id'=>'required',
-    //         'master_kota_kabupaten_id'=>'required',
-    //         'email_perusahaan'=>'required',
-    //         'nomor_telepon'=>'required',
-    //         'website'=>'required',
-    //         'tahun_berdiri'=>'required',
-    //         'status_kepemilikan'=>'required',
-    //         'tipe_produk'=>'required',
-    //         'master_sektor_kategori_id'=>'required',
-    //         'kekayaan_organisasi'=>'required',
-    //         'hasil_penjualan_organisasi'=>'required',
-    //         'tipe_organisasi'=>'required'
-    //     ]);
-
-        
-        $data = $request->all();
-        if($request->file('gambar')){
+    if($request->file('gambar')){
             if($request->oldGambar){
                 Storage::delete($request->oldGambar); 
             }
             $data['gambar']= $request->file('gambar')->store('profil-peserta');
         }
-        $dataProfil = Peserta::where('user_id',$id)->get()->first();
-        $dataProfil->update($data);
+        DB::table('peserta')
+        ->where('user_id', $id)
+        ->update(['nama_organisasi' => $request->nama_organisasi,
+                'master_sni_id' => $request->master_sni_id,
+                'alamat_organisasi' => $request->alamat_organisasi,
+                'alamat_pabrik' => $request->alamat_pabrik,
+                'master_provinsi_id' => $request->master_provinsi_id,
+                'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
+                'email_perusahaan' => $request->email_perusahaan,
+                'nomor_telepon' => $request->nomor_telepon,
+                'website' => $request->website,
+                'tahun_berdiri' => $request->tahun_berdiri,
+                'status_kepemilikan' => $request->status_kepemilikan,
+                'tipe_produk' => $request->tipe_produk,
+                'master_sektor_kategori_id' => $request->master_sektor_kategori_id,
+                'kekayaan_organisasi' => $request->kekayaan_organisasi,
+                'hasil_penjualan_organisasi' => $request->hasil_penjualan_organisasi,
+                'tipe_organisasi' => $request->tipe_organisasi,
+                'gambar' => $data['gambar']
+            ]);
+        // $dataProfil = Peserta::where('user_id',$id)->get()->first();
+        // $dataProfil->update($data);
         return redirect()->route('profilpeserta.index')->with('sukses','Data Profil berhasi diubah');
     }
 

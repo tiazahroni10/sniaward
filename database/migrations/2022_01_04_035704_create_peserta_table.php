@@ -14,7 +14,6 @@ class CreatePesertaTable extends Migration
     public function up()
     {
         Schema::create('peserta', function (Blueprint $table) {
-            $table->integerIncrements('id');
             $table->foreignId('user_id');
             $table->foreignId('master_sni_id')->nullable(true);
             $table->foreignId('master_provinsi_id')->nullable(true);

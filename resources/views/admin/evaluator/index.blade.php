@@ -17,6 +17,9 @@
                         <li><a href="{{ route('createEvaluator') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
                             <span class="align-middle"><i class="ti-plus"></i></span> Tambah Evaluator
                         </a></li>
+                        <li><a href="{{ route('detailEvaluator',3) }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                            Detail Evaluator
+                        </a></li>
                         
 					</ol>
                 </div>

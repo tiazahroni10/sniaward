@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Evaluator;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Sertifikat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -161,10 +164,6 @@ class EvaluatorController extends Controller
     {
         //
     }
-    public function profil()
-    {
-        
-    }
 
     public function dataTables()
     {
@@ -219,6 +218,25 @@ class EvaluatorController extends Controller
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataEvaluator' => $dataEvaluator
+        ]);
+    }
+
+    public function detailEvaluator($user_id)
+    {
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $dataEvaluator = Evaluator::where('user_id',$user_id)->get()->first();
+        $dataPendidikan = Pendidikan::where('user_id',$user_id)->get();
+        $dataPekerjaan = Pekerjaan::where('user_id',$user_id)->get();
+        $dataSertifikat = Sertifikat::where('user_id',$user_id)->get();
+        return view('admin.evaluator.show',$data = [
+            'peran' => auth()->user()->peran,
+            'menu' => 'Evaluator',
+            'data' => $data,
+            'dataEvaluator' => $dataEvaluator,
+            'dataPendidikan' => $dataPendidikan,
+            'dataPekerjaan' => $dataPekerjaan,
+            'dataSertifikat' => $dataSertifikat
         ]);
     }
 

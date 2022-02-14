@@ -55,7 +55,7 @@ Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middlewar
 // });
 Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
 
-//peserta
+//bagian peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
@@ -74,6 +74,7 @@ Route::get('/admin/peserta',[PesertaController::class,'showDataPeserta'])->name(
 Route::get('/admin/evaluator/create',[EvaluatorController::class,'createEvaluator'])->name('createEvaluator')->middleware('auth');
 Route::post('/admin/evaluator/store',[EvaluatorController::class,'storeEvaluator'])->name('storeEvaluator')->middleware('auth');
 Route::get('/admin/evaluator/',[EvaluatorController::class,'showDataEvaluator'])->name('showDataEvaluator')->middleware('auth');
+Route::get('/admin/evaluator/detailevaluator/{user_id}',[EvaluatorController::class,'detailEvaluator'])->name('detailEvaluator')->middleware('auth');
 
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth')->name('adminProfil');
 Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth')->except(['show']);
