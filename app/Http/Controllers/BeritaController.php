@@ -139,6 +139,10 @@ class BeritaController extends Controller
 
     public function kumpulanBerita()
     {
-        return view('kumpulanberita');
+        $dataBerita = Berita::all();
+        return view('kumpulanberita',$data = [
+            'menu' => 'Berita',
+            'dataBerita' => $dataBerita
+        ]);
     }
 }

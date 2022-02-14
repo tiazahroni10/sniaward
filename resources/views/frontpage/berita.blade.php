@@ -13,7 +13,9 @@
                     <div class="col-lg-4 col-md-6">
                     <div class="single-blog">
                         <div class="image">
-                                <img src="/storage/{{ $data->gambar }}" alt="image">
+                                <a href="/berita/{{ $data->slug }}">
+                                    <img src="/storage/{{ $data->gambar }}" alt="image">
+                                </a>
                         </div>
                         <div class="content">
                             <ul class="post-meta"> 
@@ -22,7 +24,9 @@
                                     {{ $data->rilis }}
                                 </li>
                             </ul>
-                            <h3>{{ $data->judul }}</h3>
+                            <h3><a href="/berita/{{ $data->slug }}">
+                                        {{ $data->judul }}
+                                    </a></h3>
                             <p>{{ $data->potongan_berita }}</p>
                             <a href="/berita/{{ $data->slug }}" class="read-more">
                                 Baca selengkapnya

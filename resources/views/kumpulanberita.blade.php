@@ -165,230 +165,35 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                    @foreach ($dataBerita as $data)
+                        <div class="col-lg-4 col-md-6">
                         <div class="single-blog">
                             <div class="image">
-                                <a href="/detailberita">
-                                    <img src="{{ asset('assets') }}/img/blog/image1.jpg" alt="image">
+                                <a href="/berita/{{ $data->slug }}">
+                                    <img src="/storage/{{ $data->gambar }}" alt="image">
                                 </a>
-                                <div class="btn">
-                                    <a href="/detailberita">App Development</a>
-                                </div>
                             </div>
                             <div class="content">
                                 <ul class="post-meta">
                                     <li>
                                         <i class="fa fa-calendar"></i>
-                                        12 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">3 Comment</a>
+                                        {{ $data->rilis }}
                                     </li>
                                 </ul>
 
                                 <h3>
-                                    <a href="/detailberita">
-                                        The Most Popular New Business Apps
+                                    <a href="/berita/{{ $data->slug }}">
+                                        {{ $data->judul }}
                                     </a>
                                 </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="/detailberita" class="read-more">
-                                    Read More
+                                <p>{{ $data->potongan_berita }}</p>
+                                <a href="/berita/{{ $data->slug }}" class="read-more">
+                                    Baca Selengkapnya
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                <a href="single-blog.html">
-                                    <img src="assets/img/blog/image2.jpg" alt="image">
-                                </a>
-                                <div class="btn">
-                                    <a href="#">Web Development</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        18 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">6 Comment</a>
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    <a href="single-blog.html">
-                                        The Most Popular New Apps in 2021
-                                    </a>
-                                </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="single-blog.html" class="read-more">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                <a href="single-blog.html">
-                                    <img src="assets/img/blog/image3.jpg" alt="image">
-                                </a>
-                                <div class="btn">
-                                    <a href="#">Design Development</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        28 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">0 Comment</a>
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    <a href="single-blog.html">
-                                        The Best Marketing Management Tools
-                                    </a>
-                                </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="single-blog.html" class="read-more">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                <a href="single-blog.html">
-                                    <img src="assets/img/blog/image4.jpg" alt="image">
-                                </a>
-                                <div class="btn">
-                                    <a href="#">App Development</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        12 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">3 Comment</a>
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    <a href="single-blog.html">
-                                        It’s Time To Think Differently About App
-                                    </a>
-                                </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="single-blog.html" class="read-more">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                <a href="single-blog.html">
-                                    <img src="assets/img/blog/image5.jpg" alt="image">
-                                </a>
-                                <div class="btn">
-                                    <a href="#">Web Development</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        18 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">6 Comment</a>
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    <a href="single-blog.html">
-                                        The Most Popular New Business Apps
-                                    </a>
-                                </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="single-blog.html" class="read-more">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                <a href="single-blog.html">
-                                    <img src="assets/img/blog/image6.jpg" alt="image">
-                                </a>
-                                <div class="btn">
-                                    <a href="#">Design Development</a>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        28 March 2021
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-comments"></i>
-                                        <a href="#">0 Comment</a>
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    <a href="single-blog.html">
-                                        3 WooCommerce Plugins to Boost Sales
-                                    </a>
-                                </h3>
-                                <p>Water plan dolor sit amet consturisi velised quiLorem</p>
-                                <a href="single-blog.html" class="read-more">
-                                    Read More
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12">
-                        <div class="pagination-area">
-                            <a href="#" class="prev page-numbers">
-                                <i class="fa fa-chevron-left"></i>
-                            </a>
-                            <a href="#" class="page-numbers">1</a>
-                            <span class="page-numbers current" aria-current="page">2</span>
-                            <a href="#" class="page-numbers">3</a>
-                            <a href="#" class="page-numbers">4</a>
-                            <a href="#" class="next page-numbers">
-                                <i class="fa fa-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
