@@ -93,16 +93,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                FAQ
+                            <a href="#dokumentasi" class="nav-link">
+                                Dokumentasi
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="/" class="nav-link">
-                                Kontak
+                                FAQ
                             </a>
                         </li>
+
                     </ul>
 
                     <div class="others-option">
@@ -518,8 +519,8 @@
                 <div class="copy-right-content">
                     <p>
                         Copyright © {{ date("Y"); }}. All Rights Reserved by
-                        <a href="" target="_blank">
-                            SNI Awards
+                        <a href="https://bsn.go.id" target="_blank">
+                            Badan Standardisasi Nasional
                         </a>
                     </p>
                 </div>

@@ -24,7 +24,7 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('assets') }}/css/responsive.css">
 
-        <title>SNI AWARDS</title>
+        <title>SNI AWARD</title>
 
         <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
     </head>
@@ -39,7 +39,7 @@
         
             @yield('content')
         
-
+                
             @include('partials.footer')
             @include('partials.copyright')
             @include('partials.gotop')
