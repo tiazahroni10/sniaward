@@ -51,10 +51,11 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('sho
 
 Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
-// Route::get('/kumpulanberita', function () {
-//     return view('kumpulanberita');
-// });
+Route::get('/semuaacara', function () {
+    return view('semuaacara');
+});
 Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
+
 
 //bagian peserta
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');

@@ -10,7 +10,7 @@
                         <div class="bar "></div>
                         <p>{{ $data->ket_kumpulanacara }}</p>
                         <div class="about-btn">
-                            <a href="#" class="default-btn">
+                            <a href="/semuaacara" class="default-btn">
                                 Lihat selengkapnya
                                 <span></span>
                             </a>

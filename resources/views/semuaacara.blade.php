@@ -24,7 +24,7 @@
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="{{ asset('assets') }}/css/responsive.css">
 
-        <title>SNI Award - Kumpulan Berita</title>
+        <title>SNI Award - Kumpulan Acara</title>
 
         <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
     </head>
@@ -122,10 +122,10 @@
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Kumpulan Berita</h2>
+                            <h2>Kumpulan Acara</h2>
                             <ul>
                                 <li><a href="/">Beranda</a></li>
-                                <li>Kumpulan Berita</li>
+                                <li>Kumpulan Acara</li>
                             </ul>
                         </div>
                     </div>
@@ -160,41 +160,41 @@
         <section id="blog" class="blog-area pt-100 pb-100">
             <div class="container">
                 <div class="section-title">
-                    <h2>Berita Terbaru</h2>
+                    <h2>Acara Terbaru</h2>
                     <div class="bar"></div>
-                    <p>Kumpulan Berita Seputar SNI Award</p>
+                    <p>Kumpulan Acara Yang Telah Diselenggarakan</p>
                 </div>
 
                 <div class="row">
-                    @foreach ($dataBerita as $data)
+                    {{-- @foreach ($dataBerita as $data) --}}
                         <div class="col-lg-4 col-md-6">
                         <div class="single-blog">
                             <div class="image">
-                                <a href="/berita/{{ $data->slug }}">
-                                    <img src="/storage/{{ $data->gambar }}" alt="image">
+                                {{-- <a href="/berita/{{ $data->slug }}"> --}}
+                                    {{-- <img src="/storage/{{ $data->gambar }}" alt="image"> --}}
                                 </a>
                             </div>
                             <div class="content">
                                 <ul class="post-meta">
                                     <li>
                                         <i class="fa fa-calendar"></i>
-                                        {{ $data->rilis }}
+                                        {{-- {{ $data->rilis }} --}}
                                     </li>
                                 </ul>
 
                                 <h3>
-                                    <a href="/berita/{{ $data->slug }}">
-                                        {{ $data->judul }}
+                                    {{-- <a href="/berita/{{ $data->slug }}"> --}}
+                                        {{-- {{ $data->judul }} --}}
                                     </a>
                                 </h3>
-                                <p>{{ $data->potongan_berita }}</p>
-                                <a href="/berita/{{ $data->slug }}" class="read-more">
+                                {{-- <p>{{ $data->potongan_berita }}</p>
+                                <a href="/berita/{{ $data->slug }}" class="read-more"> --}}
                                     Baca Selengkapnya
                                 </a>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
             </div>
 
@@ -229,10 +229,15 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="single-footer-widget">
-                            <a href="/" class="logo">
-                                <h2>SNI AWARDS</h2>
+                            <a href="#" class="logo">
+                                <img src="assets/img/logosniaward.png" alt="image" style="width: 100px">
+                                <img src="assets/img/logobsn.png" alt="image" style="width: 180px">
                             </a>
-                                {{-- <p>{{ $data->ket_judul }}</p> --}}
+                                <p>Gedung I BPPT Jl. M.H. Thamrin No.8
+                                    Kebon Sirih, Jakarta Pusat 10340</p>
+                                <br>
+                            <a href="https://goo.gl/maps/dd7M7QX8j1CmNpm98" target="_blank" class="logo">
+                                <img src="assets/img/icon/pin.svg" alt="pinlokasi" style="width: 20px"> Koordinat Peta  </a>
                         </div>
                     </div>
 
@@ -241,33 +246,43 @@
                             <h3>Tautan</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="/">
+                                    <a href="#home">
                                         Beranda
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/">
+                                    <a href="#about">
                                         Informasi
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/">
+                                    <a href="#berita">
+                                        Berita
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#download">
                                         Download
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/">
+                                    <a href="#linimasa">
                                         Linimasa
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/">
+                                    <a href="#acara">
                                         Acara
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/">
-                                        FaQ
+                                    <a href="#dokumentasi">
+                                        Dokumentasi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#faq">
+                                        FAQ
                                     </a>
                                 </li>
                                 
