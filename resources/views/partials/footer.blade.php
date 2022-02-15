@@ -5,9 +5,14 @@
                     <div class="col-lg-3 col-sm-6 text-center">
                         <div class="single-footer-widget">
                             <a href="#" class="logo">
-                                <h2>SNI AWARDS</h2>
+                                <img src="assets/img/logosniaward.png" alt="image" style="width: 100px">
+                                <img src="assets/img/logobsn.png" alt="image" style="width: 180px">
                             </a>
-                                <p>{{ $data->ket_judul }}</p>
+                                <p>Gedung I BPPT Jl. M.H. Thamrin No.8
+                                    Kebon Sirih, Jakarta Pusat 10340</p>
+                                <br>
+                            <a href="https://goo.gl/maps/dd7M7QX8j1CmNpm98" target="_blank" class="logo">
+                                <img src="assets/img/icon/pin.svg" alt="pinlokasi" style="width: 20px"> Koordinat Peta  </a>
                         </div>
                     </div>
 
@@ -16,33 +21,43 @@
                             <h3>Tautan</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="#">
+                                    <a href="#home">
                                         Beranda
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#about">
                                         Informasi
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#berita">
+                                        Berita
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#download">
                                         Download
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#linimasa">
                                         Linimasa
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#acara">
                                         Acara
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
-                                        FaQ
+                                    <a href="#dokumentasi">
+                                        Dokumentasi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#faq">
+                                        FAQ
                                     </a>
                                 </li>
                                 

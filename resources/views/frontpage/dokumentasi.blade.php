@@ -1,6 +1,6 @@
 <!-- End Screenshot Area -->
-    <section id="screenshots" class="screenshot-area ptb-100">
-        <div class="container-fluid">
+    <section id="dokumentasi" class="screenshot-area ptb-100">
+        <div class="container-fluid right-position">
             <div class="section-title">
                 <h2>Dokumentasi</h2>
                 <div class="bar"></div>

@@ -944,7 +944,7 @@ About Area CSS
     position: relative;
     z-index: 1;
     overflow: hidden;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
 }
 
 .about-content h3 {
@@ -3528,7 +3528,7 @@ Sidebar Widget Area CSS
 
 .widget-area .tagcloud a:hover,
 .widget-area .tagcloud a:focus {
-    color: #ffffff;
+    color: #e3b04b;
     background-color: #e3b04b;
     border-color: #e3b04b;
 }
@@ -3538,6 +3538,12 @@ Footer Area CSS
 =================================================*/
 .single-footer-widget {
     margin-bottom: 30px;
+    text-align: justify;
+    
+}
+
+.footer-area {
+    background-color: #f3f3f3;
 }
 
 .single-footer-widget .logo {
@@ -3553,6 +3559,8 @@ Footer Area CSS
 
 .single-footer-widget p {
     margin-bottom: 0;
+    color: #000000;
+    text-align: justify;
 }
 
 .single-footer-widget .social-list {
@@ -3577,11 +3585,11 @@ Footer Area CSS
     width: 35px;
     line-height: 38px;
     background-color: #e3b04b;
-    color: #ffffff;
-    text-align: center;
+    color: #e3b04b;
+    text-align: justify;
     font-size: 16px;
     border-radius: 50px;
-    border: 1px solid #e3b04b;
+    border: 1px solid #ffffff;
 }
 
 .single-footer-widget .social-list a:hover {
@@ -3613,7 +3621,7 @@ Footer Area CSS
 
 .single-footer-widget .list li a {
     display: block;
-    color: #818992;
+    color: #000000;
     font-weight: 500;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -3642,7 +3650,7 @@ Footer Area CSS
 Copy Right CSS
 =================================================*/
 .copy-right {
-    background-color: #fafafa;
+    background-color: #2B2B28;
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -3654,13 +3662,18 @@ Copy Right CSS
 .copy-right-content p {
     font-size: 16px;
     margin-bottom: 0;
-    color: #000000;
+    color: #ffffff;
     font-weight: 600;
+}
+
+.copy-right-content a {
+    color: #ffffff;
+    font-weight: bold;
 }
 
 .copy-right-content p a {
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 /*================================================
