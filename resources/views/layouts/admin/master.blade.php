@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dashboard | {{ $peran; }}</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin') }}/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin') }}/images/logosniaward.png">
 	<link rel="stylesheet" href="{{ asset('admin') }}/vendor/chartist/css/chartist.min.css">
     {{-- //<link rel="stylesheet" href="{{ asset('dashboard') }}/css/style.css"> --}}
     <link href="{{ asset('admin') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">

@@ -54,6 +54,9 @@ Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middlewar
 Route::get('/semuaacara', function () {
     return view('semuaacara');
 });
+Route::get('/detailacara', function () {
+    return view('detailacara');
+});
 Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
 
 
