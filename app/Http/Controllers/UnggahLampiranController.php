@@ -15,21 +15,21 @@ class UnggahLampiranController extends Controller
      * @return \Illuminate\Http\Response
      */
     private $user;
+    private $dokumen;
     function __construct()
     {
         $this->user = new User();
+        $this->dokumen = new DokumenPeserta();
     }
     public function index()
     {
-        $dataDokumen = MasterUnggahLampiran::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        $dokumenPeserta = DokumenPeserta::where('user_id',$id)->get();
+        $dataDokumen = $this->dokumen->getDataDoc($id);
         return view('peserta.lampiran.index', $data = [
             'menu' => 'Unggah Lampiran',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dokumenPeserta' => $dokumenPeserta,
             'dataDokumen' => $dataDokumen
         ]);
     }
@@ -41,7 +41,15 @@ class UnggahLampiranController extends Controller
      */
     public function create()
     {
-        
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $dataMasterLampiran = MasterUnggahLampiran::all();
+        return view('peserta.lampiran.create', $data=[
+            'menu' => 'Unggah Lampiran',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataMasterLampiran' => $dataMasterLampiran
+        ]);
     }
 
     /**
@@ -51,8 +59,17 @@ class UnggahLampiranController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $userId = auth()->user()->id;
+        $arr = $request->file('nama_file');
+        foreach($arr as $key=>$value){
+            $array['user_id'] = $userId;
+            $array['master_dokumen_id'] = 3;
+            $array['master_unggah_lampiran_id'] = $key;
+            $array['nama_file'] = $value->store('dokumen-peserta');
+            DokumenPeserta::create($array);
+        }
+        return redirect()->route('lampiran.index')->with('sukses','Dokumen berhasil diunggah');
     }
 
     /**
@@ -74,15 +91,7 @@ class UnggahLampiranController extends Controller
      */
     public function edit($id)
     {
-        $dokumen = MasterUnggahLampiran::findOrFail($id);
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        return view('peserta.lampiran.create', $data = [
-            'menu' => 'Unggah Lampiran',
-            'data' => $data,
-            'peran' => auth()->user()->peran,
-            'dokumen' => $dokumen
-        ]);
+        //
     }
 
     /**
@@ -94,15 +103,7 @@ class UnggahLampiranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'nama_file' => ['required'],
-        ]);
-        $validatedData['nama_file'] =$request->file('nama_file')->store('dokumen-peserta');
-        $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['master_dokumen_id'] = 3;
-        $validatedData['master_unggah_lampiran_id'] = $id;
-        DokumenPeserta::create($validatedData);
-        return redirect()->route('lampiran.index')->with('sukses','Dokumen berhasil diunggah');
+        //
     }
 
     /**

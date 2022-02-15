@@ -146,6 +146,12 @@ class FrontpageController extends Controller
             }
             $data['gambar_kumpulanacara']=$request->file('gambar_kumpulanacara')->store('frontpage'); 
         }
+        if($request->file('gambar_pertanyaan')){
+            if($request->old_Gambar_pertanyaan){
+                Storage::delete($request->old_Gambar_pertanyaan); 
+            }
+            $data['gambar_pertanyaan']=$request->file('gambar_pertanyaan')->store('frontpage'); 
+        }
 
         $dataFrontpage = FrontPage::findOrFail($id);
         $dataFrontpage->update($data);

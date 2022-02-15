@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BerkasLampiranPesertaController;
 use App\Http\Controllers\CapacityBuildingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -59,7 +60,7 @@ Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('
 Route::get('/peserta/profil',[PesertaController::class,'profil'])->middleware('auth')->name('profilpeserta');
 Route::resource('/peserta/profilpeserta', PesertaController::class,)->middleware('auth')->except(['create','show','store','destroy']);
 Route::resource('/peserta/kontak', KontakController::class)->middleware('auth');
-Route::resource('/peserta/lampiran', UnggahLampiranController::class)->middleware('auth');
+Route::resource('/peserta/lampiran', UnggahLampiranController::class)->middleware('auth')->except(['show','edit','update','destroy']);
 Route::get('/peserta/persyaratan',[PersyaratanController::class,'persyaratanSniAward'])->middleware('auth')->name('persyaratanSniAward');
 
 
@@ -96,6 +97,8 @@ Route::get('/evaluator/download',[CapacityBuildingController::class,'showCapacit
 Route::resource('/evaluator/pekerjaan', PekerjaanController::class)->middleware('auth');
 Route::resource('/evaluator/sertifikat', SertifikatController::class)->middleware('auth');
 Route::resource('/evaluator/pendidikan', PendidikanController::class)->middleware('auth');
+Route::get('/evaluator/berkas',[BerkasLampiranPesertaController::class,'index'])->middleware('auth')->name('berkasDokumen');
+
 
 
 

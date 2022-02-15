@@ -33,6 +33,11 @@
                             <li><a href="table-datatable-basic.html">Riwayat SE</a></li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow ai-icon" href="{{ route('berkasDokumen') }}" aria-expanded="false">
+							<i class="fa fa-file"></i>
+							<span class="nav-text">Berkas Peserta</span>
+						</a>
+                    </li>
                     
 				<div class="copyright">
 					<p><strong>SNI AWARD</strong> © 2022 All Rights Reserved</p>

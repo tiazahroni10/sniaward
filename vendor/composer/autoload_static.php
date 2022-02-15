@@ -528,6 +528,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\BeritaController' => __DIR__ . '/../..' . '/app/Http/Controllers/BeritaController.php',
+        'App\\Http\\Controllers\\BerkasLampiranPesertaController' => __DIR__ . '/../..' . '/app/Http/Controllers/BerkasLampiranPesertaController.php',
         'App\\Http\\Controllers\\CapacityBuildingController' => __DIR__ . '/../..' . '/app/Http/Controllers/CapacityBuildingController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',

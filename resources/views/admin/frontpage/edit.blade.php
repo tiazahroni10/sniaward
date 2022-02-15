@@ -31,6 +31,7 @@
                                     <input type="hidden" name="oldGambar_unduhberkas" value="{{ $dataFrontpage->gambar_unduhberkas }}">
                                     <input type="hidden" name="oldGambar_linimasa" value="{{ $dataFrontpage->gambar_linimasa }}">
                                     <input type="hidden" name="oldGambar_kumpulanacara" value="{{ $dataFrontpage->gambar_kumpulanacara }}">
+                                    <input type="hidden" name="old_Gambar_pertanyaan" value="{{ $dataFrontpage->gambar_pertanyaan }}">
                                     <label for="judul">Judul</label>
                                         <input type="text" class="form-control bg-transparent @error('judul') is-invalid @enderror" name="judul" placeholder=" Judul:" value="{{ $dataFrontpage->judul }}">
                                         @error('judul')
@@ -239,6 +240,27 @@
                                             {{ $message }}
                                         </div>
                                         @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        @if ($dataFrontpage->gambar_pertanyaan)
+                                        <img src="/storage/{{ $dataFrontpage->gambar_pertanyaan }}" class="img-preview img-fluid mb-3 col-sm-5">
+                                        @else
+                                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                                        @endif
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Gambar FaQ</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input @error('gambar_pertanyaan') is-invalid @enderror" name="gambar_pertanyaan">
+                                            <label class="custom-file-label">Pilih File ...</label>
+                                            @error('gambar_pertanyaan')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="kontakkami">Kontak Kami</label>

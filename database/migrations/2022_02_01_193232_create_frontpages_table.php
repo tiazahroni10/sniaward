@@ -33,6 +33,7 @@ class CreateFrontpagesTable extends Migration
             $table->string('dokumentasi',100)->nullable();
             $table->string('pertanyaan',100)->nullable();
             $table->text('ket_pertanyaan')->nullable();
+            $table->string('gambar_pertanyaan')->nullable();
             $table->string('kontakkami',100)->nullable();
             $table->text('ket_kontakkami')->nullable();
             $table->string('linkfacebook',100)->nullable();

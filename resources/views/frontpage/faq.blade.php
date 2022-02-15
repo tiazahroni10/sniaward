@@ -27,7 +27,7 @@
 
                 <div class="col-lg-6">
                     <div class="faq-image">
-                        <img src="assets/img/faq.png" alt="image">
+                        <img src="/storage/{{ $data->gambar_pertanyaan }}" alt="image">
                     </div>
                 </div>
             </div>
