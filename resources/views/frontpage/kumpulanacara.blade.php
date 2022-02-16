@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="assets/img/vector_kumpulanacara1.png" alt="image">
+                        <img src="assets/img/vector_kumpulanacara1.png" alt="image" style="height: 200px">
                     </div>
                 </div>
             </div>

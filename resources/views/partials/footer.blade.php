@@ -1,8 +1,8 @@
 <!-- Start Footer Area -->
         <section class="footer-area pt-100 pb-70">
             <div class="container ">
-                <div class="row justify-content-center">
-                    <div class="col-lg-3 col-sm-6 text-center">
+                <div class="row">
+                    <div class="col col-6 text-center">
                         <div class="single-footer-widget">
                             <a href="#" class="logo">
                                 <img src="assets/img/logosniaward.png" alt="image" style="width: 100px">
@@ -10,13 +10,16 @@
                             </a>
                                 <p>Gedung I BPPT Jl. M.H. Thamrin No.8
                                     Kebon Sirih, Jakarta Pusat 10340</p>
-                                <br>
+                                <p>Telp/Fax : (021) 3927422 /(021)3927527</p>
+                                <p>Hotline Layanan : 021-3917300</p>
+                                <p>Email : bsn@bsn.go.id, dokinfo@bsn.go.id</p>
+                                <p>WhatsApp Layanan Informasi : 081317761112</p>
                             <a href="https://goo.gl/maps/dd7M7QX8j1CmNpm98" target="_blank" class="logo">
                                 <img src="assets/img/icon/pin.svg" alt="pinlokasi" style="width: 20px"> Koordinat Peta  </a>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6 text-center">
+                    <div class="col col-4 text-center">
                         <div class="single-footer-widget pl-5">
                             <h3>Tautan</h3>
                             <ul class="list">
@@ -65,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6 text-center">
+                    <div class="col col-2 text-center">
                         <div class="single-footer-widget">
                             <h3>Sosial Media</h3>
                             <ul class="list">

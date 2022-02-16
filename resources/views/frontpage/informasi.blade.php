@@ -7,7 +7,7 @@
                     <a href="">
                         <div class="single-fun-fact">
                         <div class="icon">
-                            <img src="assets/img/icon/lamp.png" alt="lamp">
+                            <img src="assets/img/icon/award.png" alt="lamp" style="height: 150px">
                         </div>
                         <h3>
                             {{-- <span class="odometer" data-count="345">00</span> --}}
@@ -20,7 +20,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
-                            <img src="assets/img/icon/user.png" alt="lamp">
+                            <img src="assets/img/icon/businessman.png" alt="lamp" style="height: 150px">
                         </div>
                         <h3>
                             {{-- <span class="odometer" data-count="10">00</span> --}}
@@ -32,7 +32,7 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-fun-fact">
                         <div class="icon">
-                            <img src="assets/img/icon/star.png" alt="lamp">
+                            <img src="assets/img/icon/medal.png" alt="lamp" style="height: 150px">
                         </div>
                         <h3>
                             {{-- <span class="odometer" data-count="1234">00</span> --}}
