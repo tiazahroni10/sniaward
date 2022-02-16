@@ -169,7 +169,7 @@ class EvaluatorController extends Controller
     {
         return DataTables ::of(Evaluator::query())
         ->addColumn('action',function($model){
-            return '<a href="#">Edit</> <a href="##">Hapus</>';
+            return '<a href="#"><span class="badge badge-info">Info</span></a>';
         })
         ->make(true); 
     }
@@ -238,6 +238,13 @@ class EvaluatorController extends Controller
             'dataPekerjaan' => $dataPekerjaan,
             'dataSertifikat' => $dataSertifikat
         ]);
+    }
+
+    public function verifikasiEvaluator($user_id)
+    {
+        Evaluator::where('user_id',$user_id)
+        ->update(['flag_complated' => 1]);
+        return redirect()->route('showDataEvaluator')->with('sukses','Verifikasi berhasil');
     }
 
 }

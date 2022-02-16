@@ -80,6 +80,7 @@ Route::get('/admin/evaluator/create',[EvaluatorController::class,'createEvaluato
 Route::post('/admin/evaluator/store',[EvaluatorController::class,'storeEvaluator'])->name('storeEvaluator')->middleware('auth');
 Route::get('/admin/evaluator/',[EvaluatorController::class,'showDataEvaluator'])->name('showDataEvaluator')->middleware('auth');
 Route::get('/admin/evaluator/detailevaluator/{user_id}',[EvaluatorController::class,'detailEvaluator'])->name('detailEvaluator')->middleware('auth');
+Route::post('/admin/evaluator/verifikasiEvaluator/{user_id}',[EvaluatorController::class,'verifikasiEvaluator'])->name('verifikasiEvaluator')->middleware('auth');
 
 Route::get('/admin/profil',[SekretariatController::class,'profil'])->middleware('auth')->name('adminProfil');
 Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->middleware('auth')->except(['show']);

@@ -152,7 +152,7 @@ class PesertaController extends Controller
     {
         return DataTables ::of(Peserta::query())
         ->addColumn('action',function($model){
-            return '<a href="#">Edit</> <a href="##">Hapus</>';
+            return '<a href="#"><span class="badge badge-info">Info</span></a>';
         })
         ->make(true); 
     }
