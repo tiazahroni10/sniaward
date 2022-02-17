@@ -41,8 +41,6 @@
         
                 
             @include('partials.footer')
-            @include('partials.copyright')
-            @include('partials.gotop')
         
         
 

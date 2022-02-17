@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Frontpage;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -132,16 +133,21 @@ class BeritaController extends Controller
     public function detailBerita($slug)
     {
         $dataBerita = DB::table('berita')->where('slug', $slug)->first();
+        $dataFrontpage = Frontpage::all();
+        $dataFrontpage = $dataFrontpage->last();
         return view('detailberita', $data=[
-        'data' => $dataBerita
+        'dataBerita' => $dataBerita,
+        'data' => $dataFrontpage,
     ]);
     }
 
     public function kumpulanBerita()
     {
         $dataBerita = Berita::all();
-        return view('kumpulanberita',$data = [
-            'menu' => 'Berita',
+        $dataFrontpage = Frontpage::all();
+        $dataFrontpage = $dataFrontpage->last();
+        return view('kumpulanberita',$data=[
+            'data' => $dataFrontpage,
             'dataBerita' => $dataBerita
         ]);
     }

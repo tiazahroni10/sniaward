@@ -182,4 +182,13 @@ class FrontpageController extends Controller
             'dataBerita' =>$berita
         ]);
     }
+
+    public function semuaAcara()
+    {
+        $dataFrontpage = Frontpage::all();
+        $dataFrontpage = $dataFrontpage->last();
+        return view('semuaacara',$data=[
+            'data' => $dataFrontpage
+        ]);
+    }
 }

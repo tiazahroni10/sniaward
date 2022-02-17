@@ -51,9 +51,10 @@ Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('sho
 
 Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
-Route::get('/semuaacara', function () {
-    return view('semuaacara');
-});
+// Route::get('/semuaacara', function () {
+//     return view('semuaacara');
+// });
+Route::get('/semuaacara',[FrontpageController::class,'semuaAcara'])->middleware('guest');
 Route::get('/detailacara', function () {
     return view('detailacara');
 });
