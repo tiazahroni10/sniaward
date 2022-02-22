@@ -31,7 +31,7 @@
 							</div>
 							@enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="mb-1 text-white"><strong>Password</strong></label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" required>
 							@error('password')
@@ -39,7 +39,7 @@
 								{{ $message }}
 							</div>
 							@enderror
-                        </div>
+                        </div> --}}
                         
                         <!-- <div class="text-center"> -->
                             <button type="submit" class="btn bg-white text-primary btn-block mt-3">Selanjutnya</button>
