@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\KirimPassword;
 use App\Models\Evaluator;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
@@ -11,9 +12,12 @@ use App\Models\Sertifikat;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Str;
+
 
 class EvaluatorController extends Controller
 {
@@ -184,10 +188,13 @@ class EvaluatorController extends Controller
             'email' => ['required','email:dns'],
             'status' => ['required']
         ]);
-        $validatedData['password'] = bcrypt('1111');
+        $password = Str::random(12);
+        $validatedData['password'] = bcrypt($password);
         $validatedData['peran'] = 'evaluator';
+        $validatedData['status'] = false;
         $ret_val = User::create($validatedData);
         $id = $ret_val->id;
+        Mail::to($validatedData['email'])->send(new KirimPassword($id,$password));
         $dataEvaluator = ([
             'user_id' => $id,
             'status' =>$validatedData['status'],

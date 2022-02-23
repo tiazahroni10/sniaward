@@ -34,8 +34,13 @@ class LoginController extends Controller
             ];
             HistoryLogin::create($history); //mengisi kolom user_id dan login_terakhir
             
-
-            return redirect()->intended('dashboard'); 
+            $user = User::where('email',$validatedData['email'])->get()->first();
+            if ($user['status'] == 'PENDING') {
+                return redirect()->intended('gantipassword'); 
+            } else {
+                return redirect()->intended('dashboard'); 
+            }
+            
         }
 
         return back()->with('loginError','Login Gagal');
