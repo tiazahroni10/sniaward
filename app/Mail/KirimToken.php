@@ -2,13 +2,12 @@
 
 namespace App\Mail;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class KirimPassword extends Mailable
+class KirimToken extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,10 +16,9 @@ class KirimPassword extends Mailable
      *
      * @return void
      */
-    public function __construct($id,$password)
+    public function __construct($token)
     {
-        $this->passwordUser = $password;
-        $this->user = User::find($id);
+        $this->token = $token;
     }
 
     /**
@@ -30,9 +28,8 @@ class KirimPassword extends Mailable
      */
     public function build()
     {
-        return $this->subject("SNI AWARD")->from('sniaward@bsn.go.id')->view('templateemail')->with([
-            'email' => $this->user->email,
-            'password' =>$this->passwordUser,
+        return $this->subject("SNI AWARD")->from('sniaward@bsn.go.id')->view('templatetoken')->with([
+            'token' =>$this->token,
         ]);
     }
 }

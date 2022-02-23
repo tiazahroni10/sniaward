@@ -17,6 +17,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\GantiPasswordController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
@@ -48,6 +49,10 @@ Route::get('/register', [RegisterController::class,'index'])->middleware('guest'
 Route::post('/register', [RegisterController::class,'simpanData']);
 Route::get('/pertanyaan',[PertanyaanController::class,'index'])->name('pertanyaan');
 Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('showPertanyaan');
+Route::get('/lupapassword',[LupaPasswordController::class,'index'])->name('lupaPassword');
+Route::post('/lupapassword',[LupaPasswordController::class,'cekEmail'])->name('cekEmail');
+Route::get('/gantipasswordtoken/{id}',[LupaPasswordController::class,'gantiPasswordToken'])->name('gantiPasswordToken')->middleware('guest');
+Route::post('/gantipasswordtoken/{id}',[LupaPasswordController::class,'updatePassword'])->name('updatePassword')->middleware('guest');
 
 Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
 
