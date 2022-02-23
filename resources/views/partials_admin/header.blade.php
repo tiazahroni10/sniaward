@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SNI Award | Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('peserta') }}/images/favicon.png">
-	<link rel="stylesheet" href="{{ asset('peserta') }}/vendor/chartist/css/chartist.min.css">
-    <link href="{{ asset('peserta') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-	<link href="{{ asset('peserta') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="{{ asset('peserta') }}/css/style.css" rel="stylesheet">
-	<link href="{{ asset('peserta') }}/vendor/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
-	<link href="{{ asset('peserta') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('admin') }}/images/logosniaward.png">
+	<link rel="stylesheet" href="{{ asset('admin') }}/vendor/chartist/css/chartist.min.css">
+    <link href="{{ asset('admin') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="{{ asset('admin') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet">
+	<link href="{{ asset('admin') }}/vendor/fullcalendar/css/fullcalendar.min.css" rel="stylesheet">
+	<link href="{{ asset('admin') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -41,9 +41,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('peserta') }}/images/logo.png" alt="">
-                <img class="logo-compact" src="{{ asset('peserta') }}/images/logo-text.png" alt="">
-                <img class="brand-title" src="{{ asset('peserta') }}/images/logo-text.png" alt="">
+                <img class="logo-abbr" src="{{ asset('admin') }}/images/logosniaward.png" alt="">
+                <h4 class="brand-title">SNI AWARD</h4>
             </a>
 
             <div class="nav-control">
@@ -157,7 +156,7 @@
                                     <img src="images/profile/17.jpg" width="20" alt=""/>
 									<div class="header-info">
 										<span class="text-black"><strong>
-											@if ($peran === 'peserta')
+											@if ($peran === 'admin')
 											{{ $data['nama_organisasi']; }}
 											@endif</strong></span>
 										<p class="fs-12 mb-0">{{ $peran }}</p>

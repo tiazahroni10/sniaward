@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SNI Award | Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('evaluator') }}/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('evaluator') }}/images/logosniaward.png">
 	<link rel="stylesheet" href="{{ asset('evaluator') }}/vendor/chartist/css/chartist.min.css">
     <link href="{{ asset('evaluator') }}/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="{{ asset('evaluator') }}/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
@@ -41,9 +41,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('evaluator') }}/images/logo.png" alt="">
-                <img class="logo-compact" src="{{ asset('evaluator') }}/images/logo-text.png" alt="">
-                <img class="brand-title" src="{{ asset('evaluator') }}/images/logo-text.png" alt="">
+                <img class="logo-abbr" src="{{ asset('evaluator') }}/images/logosniaward.png" alt="">
+                <h4 class="brand-title">SNI AWARD</h4>
             </a>
 
             <div class="nav-control">
