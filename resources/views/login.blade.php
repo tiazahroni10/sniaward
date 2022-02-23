@@ -46,7 +46,7 @@
 								</div>
 								<div class="form-row d-flex justify-content-between">
 									<div class="form-group">
-										<a class="text-white" href="page-forgot-password.html">Lupa Password?</a>
+										<a class="text-white" href="{{ route('lupaPassword') }}">Lupa Password?</a>
 									</div>
 								</div>
 								<!-- <div class="text-center"> -->

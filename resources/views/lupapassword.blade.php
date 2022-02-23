@@ -25,10 +25,11 @@
 										<a href="index.html"><img src="images/logo-full.png" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4 text-white">Lupa Password</h4>
-                                    <form action="index.html">
+                                    <form action="{{ route('cekEmail') }}" method="POST">
+                                        @csrf
                                         <div class="form-group">
-                                            <label class="text-white"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <label class="text-white" for="email"><strong>Email</strong></label>
+                                            <input type="email" class="form-control" placeholder="Masukkan email anda" id="email" name="email">
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn bg-white text-warning btn-block">SUBMIT</button>
