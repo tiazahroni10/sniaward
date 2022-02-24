@@ -171,11 +171,12 @@ class EvaluatorController extends Controller
 
     public function dataTables()
     {
-        return DataTables ::of(Evaluator::query())
-        ->addColumn('action',function($model){
-            return '<a href="#"><span class="badge badge-info">Info</span></a>';
-        })
-        ->make(true); 
+        $model = Evaluator::query();
+        return DataTables::eloquent($model)
+                ->addColumn('action', function(Evaluator $evaluator) {
+                    return '<a href="evaluator/detailevaluator/'.$evaluator->user_id.'"><span class="badge badge-info">Info</span></a>';
+                })
+                ->toJson(); 
     }
 
 
