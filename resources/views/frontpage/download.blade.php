@@ -96,7 +96,6 @@
             icon: 'info',
             title: 'Unduh berkas',
             html: '<div class="about-btn"><a href="#" class="default-btn download-item-btn">Syarat dan Aturan SNI Award<span></span></a><a href="#" class="default-btn download-item-btn mt-2">Kriteria Penilaian SNI Award<span></span></a><a href="#" class="default-btn download-item-btn mt-2">Format Surat Pernyataan Tidak Terlibat Hukum<span></span></a><a href="#" class="default-btn download-item-btn mt-2">Logo SNI Award<span></span></a><a href="#" class="default-btn download-item-btn mt-2">Newsletter<span></span></a></div>',
-            icon: 'error',
             confirmButtonText: 'Tutup'
           })
         })
