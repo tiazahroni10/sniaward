@@ -59,7 +59,7 @@
 				<div class="overlay-container">
 					<div class="overlay">
 						<div class="overlay-panel overlay-right">
-							<img src="{{ asset('assets') }}/img/login_register/login.png" style="height: 400px" >
+							<img src="{{ asset('assets') }}/img/login_register/login1.png" style="height: 400px" >
 						</div>
 					</div>
 				</div>

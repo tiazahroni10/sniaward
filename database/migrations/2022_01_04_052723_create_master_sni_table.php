@@ -13,12 +13,12 @@ class CreateMasterSniTable extends Migration
      */
     public function up()
     {
-        // Schema::create('master_sni', function (Blueprint $table) {
-        //     $table->integerIncrements('id');
-        //     $table->string('nomor_sni',20)->unique()->nullable(false);
-        //     $table->string('tipe_sni',20)->nullable(false);
-        //     $table->timestamps();
-        // });
+        Schema::create('master_sni', function (Blueprint $table) {
+            $table->integerIncrements('id');
+            // $table->string('nomor_sni',20)->unique()->nullable(false);
+            // $table->string('tipe_sni',20)->nullable(false);
+            // $table->timestamps();
+        });
     }
 
     /**

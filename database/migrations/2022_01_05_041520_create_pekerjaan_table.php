@@ -15,7 +15,7 @@ class CreatePekerjaanTable extends Migration
     {
         Schema::create('pekerjaan', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('jabatan',50);
             $table->string('instansi',50)->nullable(false);
             $table->year('tahun_mulai')->nullable(false);

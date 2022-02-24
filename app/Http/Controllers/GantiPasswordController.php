@@ -15,7 +15,7 @@ class GantiPasswordController extends Controller
     public function simpanPasswordBaru(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'password' => ['required','min:8'],
+            'password' => ['required','min:8',],
             'konfirmasi_password' => ['required','min:8']
         ]);
         if ($validatedData['password'] == $validatedData['konfirmasi_password']) {

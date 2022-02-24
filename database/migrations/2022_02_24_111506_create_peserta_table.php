@@ -14,11 +14,11 @@ class CreatePesertaTable extends Migration
     public function up()
     {
         Schema::create('peserta', function (Blueprint $table) {
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('master_sni_id')->nullable(true);
             $table->foreignId('master_provinsi_id')->nullable(true);
-            $table->foreignId('master_kota_kabupaten_id')->nullable(true);
-            $table->foreignId('master_sektor_kategori_id')->nullable(true);
+            $table->foreignId('master_kota_kabupaten_id')->nullable(true)->constrained('master_kota_kabupaten');
+            $table->foreignId('master_sektor_kategori_id')->nullable(true)->constrained('master_sektor_kategori');
             $table->string('nama_organisasi',50)->nullable(false)->unique();
             $table->string('alamat_organisasi',50)->nullable(true);
             $table->string('alamat_pabrik',50)->nullable(true);

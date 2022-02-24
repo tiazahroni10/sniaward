@@ -879,7 +879,7 @@ class Blueprint
     public function foreignId($column)
     {
         return $this->addColumnDefinition(new ForeignIdColumnDefinition($this, [
-            'type' => 'bigInteger',
+            'type' => 'Integer',
             'name' => $column,
             'autoIncrement' => false,
             'unsigned' => true,

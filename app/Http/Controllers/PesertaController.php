@@ -111,6 +111,12 @@ class PesertaController extends Controller
             }
             $data['gambar']= $request->file('gambar')->store('profil-peserta');
         }
+        // $validatedData = $request->validate([
+        //     'nama_kampus' => ['required','max:8'],
+        //     'jenjang' => ['required'],
+        //     'tahun_lulus' => ['required'],
+        //     'ijazah' =>['required']
+        // ]);
         DB::table('peserta')
         ->where('user_id', $id)
         ->update(['nama_organisasi' => $request->nama_organisasi,

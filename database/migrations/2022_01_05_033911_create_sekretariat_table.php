@@ -14,7 +14,7 @@ class CreateSekretariatTable extends Migration
     public function up()
     {
         Schema::create('sekretariat', function (Blueprint $table) {
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_lengkap',50)->nullable(false);
             $table->string('gambar',15);
             $table->boolean('flag_complated')->default(0)->nullable(true);

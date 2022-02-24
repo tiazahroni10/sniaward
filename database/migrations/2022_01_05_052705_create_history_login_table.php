@@ -15,7 +15,7 @@ class CreateHistoryLoginTable extends Migration
     {
         Schema::create('history_login', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamp('login_terakhir')->nullable(true);
             $table->string('login_ip')->nullable(true);
             $table->boolean('status')->default(false);

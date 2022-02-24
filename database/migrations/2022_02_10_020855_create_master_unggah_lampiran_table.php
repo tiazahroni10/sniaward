@@ -14,7 +14,7 @@ class CreateMasterUnggahLampiranTable extends Migration
     public function up()
     {
         Schema::create('master_unggah_lampiran', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->string('nama_dokumen')->nullable();
             $table->string('deskripsi')->nullable();
             $table->timestamps();

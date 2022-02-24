@@ -17,6 +17,7 @@ class CreateTokenPasswordTable extends Migration
             $table->id();
             $table->string('email',100);
             $table->string('token');
+            $table->timestamps();
         });
     }
 

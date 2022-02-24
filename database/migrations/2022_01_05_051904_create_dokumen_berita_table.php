@@ -15,8 +15,8 @@ class CreateDokumenBeritaTable extends Migration
     {
         Schema::create('dokumen_berita', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('user_id');
-            $table->foreignId('master_dokumen_id');
+            $table->foreignId('user_id')->constrained('users');
+            // $table->foreignId('master_dokumen_id');
             $table->string('nama_file',15);
             $table->timestamps();
         });

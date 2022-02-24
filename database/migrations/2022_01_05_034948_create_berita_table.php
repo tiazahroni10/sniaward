@@ -15,7 +15,7 @@ class CreateBeritaTable extends Migration
     {
         Schema::create('berita', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('judul',100)->nullable();
             $table->string('slug',100)->nullable();
             $table->text('konten')->nullable();

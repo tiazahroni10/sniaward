@@ -15,8 +15,8 @@ class CreatePertanyaanPesertaTable extends Migration
     {
         Schema::create('pertanyaan_peserta', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('user_id');
-            $table->foreignId('master_pertanyaan_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('master_pertanyaan_id')->constrained('master_pertanyaan');
             $table->string('jawaban',100);
             $table->timestamps();
         });

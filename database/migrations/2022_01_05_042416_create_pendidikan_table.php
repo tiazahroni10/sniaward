@@ -15,7 +15,7 @@ class CreatePendidikanTable extends Migration
     {
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('jenjang',2)->nullable(false);
             $table->string('nama_kampus',50)->nullable(false);
             $table->string('ijazah')->nullable(false);

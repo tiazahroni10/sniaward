@@ -14,7 +14,7 @@ class CreateEvaluatorTable extends Migration
     public function up()
     {
         Schema::create('evaluator', function (Blueprint $table) {
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_lengkap',50)->nullable(true);
             $table->string('gelar_sebelum_nama',5)->nullable(true);
             $table->string('gelar_setelah_nama',5)->nullable(true);
@@ -24,8 +24,8 @@ class CreateEvaluatorTable extends Migration
             $table->string('nama_instansi',50)->nullable(true);
             $table->string('jenis_kelamin',1)->nullable(true);
             $table->string('alamat',50)->nullable(true);
-            $table->foreignId('master_provinsi_id')->nullable(true);
-            $table->foreignId('master_kota_kabupaten_id')->nullable(true);
+            $table->foreignId('master_provinsi_id')->constrained('master_provinsi')->nullable(true);
+            $table->foreignId('master_kota_kabupaten_id')->constrained('master_kota_kabupaten')->nullable(true);
             $table->string('nomor_telepon',20)->nullable(true);
             $table->string('gambar',100)->nullable(true);
             $table->string('npwp',100)->nullable(true);   

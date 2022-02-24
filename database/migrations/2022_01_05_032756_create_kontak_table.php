@@ -15,7 +15,7 @@ class CreateKontakTable extends Migration
     {
         Schema::create('kontak', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_lengkap',25)->nullable(false);
             $table->string('jabatan',10)->nullable(false);
             $table->string('nomor_telepon',13)->nullable(false);
