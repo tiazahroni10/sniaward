@@ -104,7 +104,6 @@ input {
 	z-index: 2;
 }
 
-
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -160,4 +159,75 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+
+.next-btn {
+	border: none;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	z-index: 1;
+	color: #ffffff;
+	text-transform: capitalize;
+	background-color: #4b73e3;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	border-radius: 50px;
+	font-weight: 400;
+	font-size: 18px;
+	padding: 16px 40px;
+	height: 56px;
+}
+
+.next-btn span {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background-color: #000000;
+	-webkit-transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+	transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-index: -1;
+	border-radius: 5px;
+}
+
+.next-btn:hover {
+	color: #ffffff;
+}
+
+.next-btn:hover span {
+	width: 225%;
+	height: 562.5px;
+}
+
+@media only screen and (max-width: 991px) {
+	body {
+			display: block;
+			margin: 0;
+			padding: 0;
+	}
+
+	.container {
+			background-color: #E3B04B;
+			width: 100%;
+			border-radius: 0;
+			height: 100%;
+			max-width: 100%;
+			margin: 0;
+			padding: 0;
+	}
+
+	.log-in-container {
+			width: 100%;
+			margin: 0;
+			padding: 0;
+	}
+
+	.overlay-container {
+		display: none;
+	}
 }

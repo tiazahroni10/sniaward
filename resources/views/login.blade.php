@@ -39,8 +39,8 @@
     <div class="form-container log-in-container">
       <form action="/login" method="POST" class="pt-1">
         @csrf
-        <h1 class="text-center" style="color: white">SNI AWARD</h1>
-        <small class="text-center" style="color: white">Masuk menggunakan akun anda</small>
+        <h1 class="text-center text-white">SNI AWARD</h1>
+        <small class="text-center text-white">Masuk menggunakan akun anda</small>
         <div class="form-group mt-3 ">
           <label class="mb-1 text-white"><strong>Email</strong></label>
           <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" autofocus required>
