@@ -66,13 +66,14 @@ Route::get('/detailacara', function () {
     return view('detailacara');
 });
 Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
-
-
-
 Route::get('/gantipassword',[GantiPasswordController::class,'index'])->name('gantiPassword')->middleware('auth');
 Route::post('/simpanpasswordbaru/{id}',[GantiPasswordController::class,'simpanPasswordBaru'])->name('simpanPasswordBaru')->middleware('auth');
 
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('is_verified')->name('dashboard');
+
+//ambil data kabupaten
+Route::post('/getkabupaten',[MasterKotaKabupatenController::class,'getKabupaten'])->name('getKabupaten');
+
 
 //bagian peserta
 Route::middleware(['is_verified','peserta'])->group(function(){
@@ -122,8 +123,6 @@ Route::middleware(['is_verified','evaluator'])->group(function () {
     Route::resource('/evaluator/sertifikat', SertifikatController::class);
     Route::resource('/evaluator/pendidikan', PendidikanController::class);
     Route::get('/evaluator/berkas',[BerkasLampiranPesertaController::class,'index'])->name('berkasDokumen');
-    Route::post('/getkabupaten',[MasterKotaKabupatenController::class,'getKabupaten'])->name('getKabupaten');
-    Route::get('/getkabupatenn',[MasterKotaKabupatenController::class,'getKabupatenn'])->name('getKabupatenn');
 });
 
 
