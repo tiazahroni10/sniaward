@@ -156,11 +156,12 @@ class PesertaController extends Controller
     
     public function dataTables()
     {
-        return DataTables ::of(Peserta::query())
-        ->addColumn('action',function($model){
-            return '<a href="#"><span class="badge badge-info">Info</span></a>';
-        })
-        ->make(true); 
+        $model = Peserta::query();
+        return DataTables::eloquent($model)
+                ->addColumn('action', function(Peserta $peserta) {
+                    return '<a href="peserta/detailpeserta/'.$peserta->user_id.'"><span class="badge badge-info">Info</span></a>';
+                })
+                ->toJson(); 
     }
 
     public function showDataPeserta()

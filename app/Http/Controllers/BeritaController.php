@@ -131,11 +131,12 @@ class BeritaController extends Controller
 
     public function dataTables()
     {
-        return DataTables()::of(Berita::query())
-            ->addColumn('action', function ($model) {
-                return '<a href="#">Edit</a> <a href="##">Hapus</a>';
-            })
-            ->make(true);
+        $model = Berita::query();
+        return DataTables::eloquent($model)
+                ->addColumn('action', function(Berita $berita) {
+                    return '<a href="berita/detailberita/'.$berita->user_id.'"><span class="badge badge-info">Info</span></a>';
+                })
+                ->toJson(); 
     }
     public function detailBerita($slug)
     {
