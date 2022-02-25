@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <hr class="mb-4">
-                  <a href="{{ route('berita.index') }}" class="btn btn-info" type="submit">Batal</a>
+                  <a href="{{ route('dokumentasi.index') }}" class="btn btn-info" type="submit">Batal</a>
                   <button class="btn btn-warning text-white" type="submit">Simpan</button>
                 </form>
               </div>
