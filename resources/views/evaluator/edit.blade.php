@@ -125,8 +125,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="master_provinsi_id">Provinsi</label>
-                                        <select  id="master_provinsi_id" class="@error('master_provinsi_id') is-invalid @enderror" name="master_provinsi_id" >
+                                        <label for="provinsi">Provinsi</label>
+                                        <select  id="provinsi" class="@error('master_provinsi_id') is-invalid @enderror" name="master_provinsi_id" >
                                             <option value="">Pilih...</option>
                                             @foreach ($dataProvinsi as $provinsi)
                                             @if (old('master_provinsi_id',$dataEvaluator->master_provinsi_id)==$provinsi->id)
@@ -143,16 +143,10 @@
                                     @enderror
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="master_kota_kabupaten_id">Kabupaten</label>
-                                        <select  id="master_kota_kabupaten_id" class="@error('master_kota_kabupaten_id') is-invalid @enderror" name="master_kota_kabupaten_id">
+                                        <label for="kabupaten">Kabupaten</label>
+                                        <select  id="kabupaten" class="@error('master_kota_kabupaten_id') is-invalid @enderror" name="master_kota_kabupaten_id">
                                             <option value="">Pilih...</option>
-                                            @foreach ($dataKabupaten as $kabupaten)
-                                            @if (old('master_kota_kabupaten_id',$dataEvaluator->master_kota_kabupaten_id)==$kabupaten->id)
-                                                <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->nama }}</option>
-                                            @else
-                                                <option value="{{ $kabupaten->id }}">{{ $kabupaten->nama }}</option>
-                                            @endif
-                                            @endforeach
+                                            
                                         </select>
                                         @error('master_kota_kabupaten_id')
                                         <div class="invalid-feedback">

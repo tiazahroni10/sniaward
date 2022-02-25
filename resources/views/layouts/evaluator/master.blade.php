@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Dashboard | {{ $peran; }}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('evaluator') }}/images/logosniaward.png">
@@ -64,12 +65,42 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
-                $('#master_provinsi_id').select2();
+                $('#provinsi').select2();
             });
         </script>
         <script>
             $(document).ready(function() {
-                $('#master_kota_kabupaten_id').select2();
+                $('#kabupaten').select2();
             });
+        </script>
+
+        <script>
+            $(function(){
+                $.ajaxSetup({
+                    headers:{'X-CSRF-TOKEN':$('meta[name="csrf_token"]').attr('content')}
+                });
+            });
+
+            $(function(){
+                $('#provinsi').on('change',function(){
+                    let id = $('#provinsi').val();
+                    $.ajax({
+                        type :'POST',
+                        url : "{{ route('getKabupaten') }}",
+                        data : {
+                            "_token": "{{ csrf_token() }}",
+                            "id":id},
+                        cache : false,
+
+                        success: function(msg){
+                            $('#kabupaten').html(msg);
+                        },
+                        error: function(data){
+                            console.log('error:', data);
+                        }
+                    })
+
+                })
+            })
         </script>
     </body>

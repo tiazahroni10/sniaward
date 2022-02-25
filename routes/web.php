@@ -18,11 +18,13 @@ use App\Http\Controllers\FrontpageController;
 use App\Http\Controllers\GantiPasswordController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LupaPasswordController;
+use App\Http\Controllers\MasterKotaKabupatenController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
+use App\Models\MasterKotaKabupaten;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,6 +122,8 @@ Route::middleware(['is_verified','evaluator'])->group(function () {
     Route::resource('/evaluator/sertifikat', SertifikatController::class);
     Route::resource('/evaluator/pendidikan', PendidikanController::class);
     Route::get('/evaluator/berkas',[BerkasLampiranPesertaController::class,'index'])->name('berkasDokumen');
+    Route::post('/getkabupaten',[MasterKotaKabupatenController::class,'getKabupaten'])->name('getKabupaten');
+    Route::get('/getkabupatenn',[MasterKotaKabupatenController::class,'getKabupatenn'])->name('getKabupatenn');
 });
 
 

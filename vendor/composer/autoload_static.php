@@ -541,6 +541,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\LupaPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/LupaPasswordController.php',
         'App\\Http\\Controllers\\MasterDokumenController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasterDokumenController.php',
+        'App\\Http\\Controllers\\MasterKotaKabupatenController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasterKotaKabupatenController.php',
         'App\\Http\\Controllers\\MasterPertanyaanController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasterPertanyaanController.php',
         'App\\Http\\Controllers\\PekerjaanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PekerjaanController.php',
         'App\\Http\\Controllers\\PendidikanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PendidikanController.php',

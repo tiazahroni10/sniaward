@@ -24,8 +24,8 @@ class CreateEvaluatorTable extends Migration
             $table->string('nama_instansi',50)->nullable(true);
             $table->string('jenis_kelamin',1)->nullable(true);
             $table->string('alamat',50)->nullable(true);
-            $table->foreignId('master_provinsi_id')->nullable(true)->constrained('master_provinsi');
-            $table->foreignId('master_kota_kabupaten_id')->nullable(true)->constrained('master_kota_kabupaten');
+            $table->foreignId('master_provinsi_id')->nullable(true);
+            $table->foreignId('master_kota_kabupaten_id')->nullable(true);
             $table->string('nomor_telepon',20)->nullable(true);
             $table->string('gambar',100)->nullable(true);
             $table->string('npwp',100)->nullable(true);   

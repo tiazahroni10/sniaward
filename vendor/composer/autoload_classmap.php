@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\LupaPasswordController' => $baseDir . '/app/Http/Controllers/LupaPasswordController.php',
     'App\\Http\\Controllers\\MasterDokumenController' => $baseDir . '/app/Http/Controllers/MasterDokumenController.php',
+    'App\\Http\\Controllers\\MasterKotaKabupatenController' => $baseDir . '/app/Http/Controllers/MasterKotaKabupatenController.php',
     'App\\Http\\Controllers\\MasterPertanyaanController' => $baseDir . '/app/Http/Controllers/MasterPertanyaanController.php',
     'App\\Http\\Controllers\\PekerjaanController' => $baseDir . '/app/Http/Controllers/PekerjaanController.php',
     'App\\Http\\Controllers\\PendidikanController' => $baseDir . '/app/Http/Controllers/PendidikanController.php',
