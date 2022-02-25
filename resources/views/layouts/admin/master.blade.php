@@ -119,7 +119,7 @@
   </script>
 
   {{-- berita --}}
-  <script>
+  {{-- <script>
     $(document).ready(function() {
       $('#beritaTable').DataTable({
         processing: true,
@@ -140,6 +140,6 @@
         ]
       });
     });
-  </script>
+  </script> --}}
 
 </body>
