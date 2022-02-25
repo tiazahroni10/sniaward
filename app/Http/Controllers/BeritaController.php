@@ -28,7 +28,7 @@ class BeritaController extends Controller
         $id = auth()->user()->id;
         $dataBerita = Berita::all();
         $data = $this->user->getUser($id);
-        return view('admin/berita/index',$data = [
+        return view('admin/berita/index', $data = [
             'menu' => 'Berita',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -45,7 +45,7 @@ class BeritaController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        return view('admin.berita.create',$data = [
+        return view('admin.berita.create', $data = [
             'menu' => 'Berita',
             'data' => $data,
             'peran' => auth()->user()->peran
@@ -61,19 +61,19 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'judul' => ['required','unique:berita'],
+            'judul' => ['required', 'unique:berita'],
             'konten' => ['required'],
             'gambar' => 'required|file|mimes:jpg,png,jpeg|max:2048'
         ]);
-        $validatedData['slug'] = Str::slug($request->judul,'-');
+        $validatedData['slug'] = Str::slug($request->judul, '-');
         $validatedData['slug'] = Str::lower($validatedData['slug']);
-        $validatedData['potongan_berita'] = Str::limit(strip_tags($validatedData['konten']),100);
+        $validatedData['potongan_berita'] = Str::limit(strip_tags($validatedData['konten']), 100);
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['rilis'] = now();
-        $validatedData['gambar'] =$request->file('gambar')->store('dokumentasi-berita');
+        $validatedData['gambar'] = $request->file('gambar')->store('dokumentasi-berita');
 
         Berita::create($validatedData);
-        $request->session()->flash('sukses','Berita berhasil ditambahkan');
+        $request->session()->flash('sukses', 'Berita berhasil ditambahkan');
         return redirect()->route('berita.index');
     }
 
@@ -96,7 +96,14 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $berita = Berita::find($id);
+        $data = $this->user->getUser($id);
+        return \view('admin.berita.update', [
+            'menu' => 'Berita',
+            'data' => $data,
+            'berita' => $berita,
+            'peran' => auth()->user()->peran
+        ]);
     }
 
     /**
@@ -124,21 +131,21 @@ class BeritaController extends Controller
 
     public function dataTables()
     {
-        return DataTables() ::of(Berita::query())
-        ->addColumn('action',function($model){
-            return '<a href="#">Edit</a> <a href="##">Hapus</a>';
-        })
-        ->make(true); 
+        return DataTables()::of(Berita::query())
+            ->addColumn('action', function ($model) {
+                return '<a href="#">Edit</a> <a href="##">Hapus</a>';
+            })
+            ->make(true);
     }
     public function detailBerita($slug)
     {
         $dataBerita = DB::table('berita')->where('slug', $slug)->first();
         $dataFrontpage = Frontpage::all();
         $dataFrontpage = $dataFrontpage->last();
-        return view('detailberita', $data=[
-        'dataBerita' => $dataBerita,
-        'data' => $dataFrontpage,
-    ]);
+        return view('detailberita', $data = [
+            'dataBerita' => $dataBerita,
+            'data' => $dataFrontpage,
+        ]);
     }
 
     public function kumpulanBerita()
@@ -146,7 +153,7 @@ class BeritaController extends Controller
         $dataBerita = Berita::all();
         $dataFrontpage = Frontpage::all();
         $dataFrontpage = $dataFrontpage->last();
-        return view('kumpulanberita',$data=[
+        return view('kumpulanberita', $data = [
             'data' => $dataFrontpage,
             'dataBerita' => $dataBerita
         ]);
