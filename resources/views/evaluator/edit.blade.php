@@ -146,7 +146,13 @@
                                         <label for="kabupaten">Kabupaten</label>
                                         <select  id="kabupaten" class="@error('master_kota_kabupaten_id') is-invalid @enderror" name="master_kota_kabupaten_id">
                                             <option value="">Pilih...</option>
-                                            
+                                            @foreach ($dataKabupaten as $kabupaten)
+                                                @if (old('master_kota_kabupaten_id',$dataEvaluator->master_kota_kabupaten_id)==$kabupaten->id)
+                                                    <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->nama }}</option>
+                                                @else
+                                                    
+                                                @endif
+                                            @endforeach
                                         </select>
                                         @error('master_kota_kabupaten_id')
                                         <div class="invalid-feedback">
