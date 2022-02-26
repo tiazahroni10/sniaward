@@ -32,10 +32,10 @@ class Peserta extends Model
         return $this->hasMany(Peserta::class);
     }
 
-    public function getPeserta($id) 
+    
+
+    public function getPesertaWithUserId($user_id)
     {
-        return $this->firstWhere('user_id',$id);
+        return DB::table('peserta')->where('user_id',$user_id)->get()->first();;
     }
-
-
 }

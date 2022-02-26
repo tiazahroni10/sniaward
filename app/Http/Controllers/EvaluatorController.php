@@ -10,6 +10,7 @@ use App\Models\Pekerjaan;
 use App\Models\Pendidikan;
 use App\Models\Sertifikat;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +18,6 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Contracts\DataTable;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
-
 
 class EvaluatorController extends Controller
 {
@@ -30,6 +30,7 @@ class EvaluatorController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->evaluator = new Evaluator();
     }
     public function index()
     {
@@ -137,24 +138,26 @@ class EvaluatorController extends Controller
             $data['cv']= $request->file('cv')->store('profil-evaluator');
         }
         else $data['cv']= null;
-        DB::table('evaluator')
-                ->where('user_id', $id)
-                ->update(['nama_lengkap' => $request->nama_lengkap,
-                        'gelar_sebelum_nama' => $request->gelar_sebelum_nama,
-                        'gelar_setelah_nama' => $request->gelar_setelah_nama,
-                        'tgl_lahir' => $request->tgl_lahir,
-                        'pekerjaan' => $request->pekerjaan,
-                        'nama_instansi' => $request->nama_instansi,
-                        'jenis_kelamin' => $request->jenis_kelamin,
-                        'alamat' => $request->alamat,
-                        'master_provinsi_id' => $request->master_provinsi_id,
-                        'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
-                        'nomor_telepon' => $request->nomor_telepon,
-                        'gambar' => $data['gambar'],
-                        'npwp' => $data['npwp'],
-                        'ktp' => $data['ktp'],
-                        'cv' => $data['cv']
-                    ]);
+        $dataEvaluator =  ([
+            
+            'nama_lengkap' => $request->nama_lengkap,
+            'gelar_sebelum_nama' => $request->gelar_sebelum_nama,
+            'gelar_setelah_nama' =>$request->gelar_setelah_nama,
+            'tgl_lahir' => $request->tgl_lahir,
+            'pekerjaan' => $request->pekerjaan,
+            'nama_instansi' => $request->nama_instansi,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'master_provinsi_id' => $request->master_provinsi_id,
+            'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
+            'nomor_telepon' => $request->nomor_telepon,
+            'cv' => $data['cv'],
+            'gambar' => $data['gambar'],
+            'npwp' => $data['npwp'],
+            'ktp' => $data['ktp']
+
+        ]);
+        $this->evaluator->updateEvaluator($dataEvaluator,$id);
         return redirect()->route('profilevaluator.index')->with('sukses','Data profil berhasi diubah');
     }
 

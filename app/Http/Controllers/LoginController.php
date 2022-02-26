@@ -35,10 +35,10 @@ class LoginController extends Controller
             HistoryLogin::create($history); //mengisi kolom user_id dan login_terakhir
             
             $user = User::where('email',$validatedData['email'])->get()->first();
-            if ($user['status'] == '0') {
-                return redirect()->intended('gantipassword'); 
+            if ($user['status']) {
+                return redirect()->intended('dashboard');
             } else {
-                return redirect()->intended('dashboard'); 
+                return redirect()->intended('gantipassword'); 
             }
             
         }

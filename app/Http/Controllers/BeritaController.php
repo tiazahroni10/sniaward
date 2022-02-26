@@ -22,6 +22,7 @@ class BeritaController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->berita = new Berita();
     }
     public function index()
     {
@@ -140,7 +141,7 @@ class BeritaController extends Controller
     }
     public function detailBerita($slug)
     {
-        $dataBerita = DB::table('berita')->where('slug', $slug)->first();
+        $dataBerita = $this->berita->getBeritaWithSlug($slug);
         $dataFrontpage = Frontpage::all();
         $dataFrontpage = $dataFrontpage->last();
         return view('detailberita', $data = [
