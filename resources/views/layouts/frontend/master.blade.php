@@ -27,6 +27,8 @@
   {{-- Sweetalert2 --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.min.css">
 
+  @stack('css')
+
   <title>SNI AWARD</title>
 
   <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
@@ -42,10 +44,7 @@
 
   @yield('content')
 
-
   @include('partials.footer')
-
-
 
   <!-- jQuery Min JS -->
   <script src="{{ asset('assets') }}/js/jquery-3.5.1.min.js"></script>
