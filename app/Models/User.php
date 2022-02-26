@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function evaluator()
     {
-        $this->belongsTo(User::class);
+        $this->belongsTo(Evaluator::class);
     }
 
     public function pendidikan()
@@ -114,6 +114,6 @@ class User extends Authenticatable
     }
     public function getUser($id)
     {
-        return $this->firstWhere('id',$id);
+        return $this->firstWhere('id', $id);
     }
 }
