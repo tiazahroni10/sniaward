@@ -203,7 +203,7 @@ input {
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #0B2A97;
+    background-color: #E3B04B;
 }
 
 .dropdown-item.disabled,
@@ -282,8 +282,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #0B2A97;
-    border-color: #0B2A97;
+    background-color: #E3B04B;
+    border-color: #E3B04B;
 }
 
 .btn-primary:hover {
@@ -303,8 +303,8 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
-    background-color: #0B2A97;
-    border-color: #0B2A97;
+    background-color: #E3B04B;
+    border-color: #E3B04B;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
