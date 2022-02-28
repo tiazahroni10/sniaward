@@ -42,64 +42,63 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [FrontPageController::class,'showFrontpage'])->middleware('guest')->name('showFrontpage');
+Route::get('/', [FrontPageController::class, 'showFrontpage'])->middleware('guest')->name('showFrontpage');
 Route::resource('/frontpage', FrontpageController::class)->middleware('auth');
-Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class,'login']);
-Route::post('/logout', [LoginController::class,'logout']);
-Route::get('/register', [RegisterController::class,'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class,'simpanData']);
-Route::get('/pertanyaan',[PertanyaanController::class,'index'])->name('pertanyaan');
-Route::post('/pertanyaan',[PertanyaanController::class,'pertanyaan'])->name('showPertanyaan');
-Route::get('/lupapassword',[LupaPasswordController::class,'index'])->name('lupaPassword');
-Route::post('/lupapassword',[LupaPasswordController::class,'cekEmail'])->name('cekEmail');
-Route::get('/gantipasswordtoken/{id}',[LupaPasswordController::class,'gantiPasswordToken'])->name('gantiPasswordToken')->middleware('guest');
-Route::post('/gantipasswordtoken/{id}',[LupaPasswordController::class,'updatePassword'])->name('updatePassword')->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'simpanData']);
+Route::get('/pertanyaan', [PertanyaanController::class, 'index'])->name('pertanyaan');
+Route::post('/pertanyaan', [PertanyaanController::class, 'pertanyaan'])->name('showPertanyaan');
+Route::get('/lupapassword', [LupaPasswordController::class, 'index'])->name('lupaPassword');
+Route::post('/lupapassword', [LupaPasswordController::class, 'cekEmail'])->name('cekEmail');
+Route::get('/gantipasswordtoken/{id}', [LupaPasswordController::class, 'gantiPasswordToken'])->name('gantiPasswordToken')->middleware('guest');
+Route::post('/gantipasswordtoken/{id}', [LupaPasswordController::class, 'updatePassword'])->name('updatePassword')->middleware('guest');
 
-Route::get('/berita/{slug}',[BeritaController::class,'detailBerita'])->middleware('guest')->name('detailBerita');
+Route::get('/berita/{slug}', [BeritaController::class, 'detailBerita'])->middleware('guest')->name('detailBerita');
 
 // Route::get('/semuaacara', function () {
 //     return view('semuaacara');
 // });
-Route::get('/semuaacara',[FrontpageController::class,'semuaAcara'])->middleware('guest');
+Route::get('/semuaacara', [FrontpageController::class, 'semuaAcara'])->middleware('guest');
 Route::get('/detailacara', function () {
     return view('detailacara');
 });
-Route::get('/kumpulanberita',[BeritaController::class,'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
-Route::get('/gantipassword',[GantiPasswordController::class,'index'])->name('gantiPassword')->middleware('auth');
-Route::post('/simpanpasswordbaru/{id}',[GantiPasswordController::class,'simpanPasswordBaru'])->name('simpanPasswordBaru')->middleware('auth');
+Route::get('/kumpulanberita', [BeritaController::class, 'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
+Route::get('/gantipassword', [GantiPasswordController::class, 'index'])->name('gantiPassword')->middleware('auth');
+Route::post('/simpanpasswordbaru/{id}', [GantiPasswordController::class, 'simpanPasswordBaru'])->name('simpanPasswordBaru')->middleware('auth');
 
-Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('is_verified')->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('is_verified')->name('dashboard');
 
 //ambil data kabupaten
-Route::post('/getkabupaten',[MasterKotaKabupatenController::class,'getKabupaten'])->name('getKabupaten');
+Route::post('/getkabupaten', [MasterKotaKabupatenController::class, 'getKabupaten'])->name('getKabupaten');
 
 
 //bagian peserta
-Route::middleware(['is_verified','peserta'])->group(function(){
-    Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create','show','store','destroy']);
+Route::middleware(['is_verified', 'peserta'])->group(function () {
+    Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create', 'show', 'store', 'destroy']);
     Route::resource('/peserta/kontak', KontakController::class);
-    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show','edit','update','destroy']);
-    Route::get('/peserta/persyaratan',[PersyaratanController::class,'persyaratanSniAward'])->name('persyaratanSniAward');
+    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'edit', 'update', 'destroy']);
+    Route::get('/peserta/persyaratan', [PersyaratanController::class, 'persyaratanSniAward'])->name('persyaratanSniAward');
 });
-
 
 // bagian admin
 // Route::get('/admin/peserta',[PesertaController::class,'index'])->middleware('admin');e
-Route::middleware(['is_verified','admin'])->group(function () {
-    Route::get('/admin/evaluator/data',[EvaluatorController::class,'dataTables'])->name('dataevaluator');
-    Route::get('/admin/peserta/data',[PesertaController::class,'dataTables'])->name('datapeserta');
-    Route::get('/admin/berita/data',[BeritaController::class,'dataTables'])->name('databerita');
+Route::middleware(['is_verified', 'admin'])->group(function () {
+    Route::get('/admin/evaluator/data', [EvaluatorController::class, 'dataTables'])->name('dataevaluator');
+    Route::get('/admin/peserta/data', [PesertaController::class, 'dataTables'])->name('datapeserta');
+    Route::get('/admin/berita/data', [BeritaController::class, 'dataTables'])->name('databerita');
 
-    Route::get('/admin/peserta',[PesertaController::class,'showDataPeserta'])->name('showDataPeserta');
+    Route::get('/admin/peserta', [PesertaController::class, 'showDataPeserta'])->name('showDataPeserta');
 
-    Route::get('/admin/evaluator/create',[EvaluatorController::class,'createEvaluator'])->name('createEvaluator');
-    Route::post('/admin/evaluator/store',[EvaluatorController::class,'storeEvaluator'])->name('storeEvaluator');
-    Route::get('/admin/evaluator/',[EvaluatorController::class,'showDataEvaluator'])->name('showDataEvaluator');
-    Route::get('/admin/evaluator/detailevaluator/{user_id}',[EvaluatorController::class,'detailEvaluator'])->name('detailEvaluator');
-    Route::post('/admin/evaluator/verifikasiEvaluator/{user_id}',[EvaluatorController::class,'verifikasiEvaluator'])->name('verifikasiEvaluator');
+    Route::get('/admin/evaluator/create', [EvaluatorController::class, 'createEvaluator'])->name('createEvaluator');
+    Route::post('/admin/evaluator/store', [EvaluatorController::class, 'storeEvaluator'])->name('storeEvaluator');
+    Route::get('/admin/evaluator/', [EvaluatorController::class, 'showDataEvaluator'])->name('showDataEvaluator');
+    Route::get('/admin/evaluator/detailevaluator/{user_id}', [EvaluatorController::class, 'detailEvaluator'])->name('detailEvaluator');
+    Route::post('/admin/evaluator/verifikasiEvaluator/{user_id}', [EvaluatorController::class, 'verifikasiEvaluator'])->name('verifikasiEvaluator');
 
-    Route::get('/admin/profil',[SekretariatController::class,'profil'])->name('adminProfil');
+    Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
     Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->except(['show']);
     Route::resource('/admin/masterdokumen', MasterDokumenController::class)->except(['show']);
     Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->except(['show']);
@@ -109,24 +108,15 @@ Route::middleware(['is_verified','admin'])->group(function () {
     Route::resource('/admin/faq', FaqController::class)->except(['show']);
 });
 
-
-
-
-
-
-
 // bagian evaluator
-Route::middleware(['is_verified','evaluator'])->group(function () {
-    Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create','show','destroy', 'store']);
-    Route::get('/evaluator/download',[CapacityBuildingController::class,'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
+Route::middleware(['is_verified', 'evaluator'])->group(function () {
+    Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
+    Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);
     Route::resource('/evaluator/sertifikat', SertifikatController::class);
     Route::resource('/evaluator/pendidikan', PendidikanController::class);
-    Route::get('/evaluator/berkas',[BerkasLampiranPesertaController::class,'index'])->name('berkasDokumen');
+    Route::get('/evaluator/berkas', [BerkasLampiranPesertaController::class, 'index'])->name('berkasDokumen');
+    Route::get('/evaluator/berkas/{id}', [BerkasLampiranPesertaController::class, 'detail'])->name('detailBerkasDokumen');
+    Route::get('/evaluator/berkas/verifikasi/{id}', [BerkasLampiranPesertaController::class, 'verifikasi'])->name('verifikasiBerkasDokumen');
+    Route::get('/evaluator/berkas/tolak/{id}', [BerkasLampiranPesertaController::class, 'tolak'])->name('tolakBerkasDokumen');
 });
-
-
-
-
-
-

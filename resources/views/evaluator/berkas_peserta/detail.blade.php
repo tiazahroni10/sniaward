@@ -16,7 +16,7 @@
       @endif
       <div class="page-titles ">
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
-          <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Peserta</a></li>
+          <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Verifikasi Dokumen</a></li>
           <li>
             <div class="input-group search-area d-xl-inline-flex d-none mr-3">
               <div class="input-group-append">
@@ -36,27 +36,38 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th class="pl-5 width200">Nama Peserta</th>
-                      <th>Aksi</th>
+                      <th class="pl-5 width200">Nama File</th>
+                      <th class="pl-5">Status</th>
+                      <th class="text-right">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
-                    @foreach ($dataPeserta as $data)
+                    @foreach ($dataPeserta->daftarDokumen as $data)
                       <tr class="btn-reveal-trigger">
-                        <td class="py-3 col-2">
+                        <td class="py-3">
                           <a href="#">
                             <div class="media-body">
                               <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
-                        <td><a class="btn btn-sm btn-primary" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a></td>
+                        <td class="py-2 pl-5">{{ $data->nama_file }}</td>
+                        <td class="py-2 pl-5">Menunggu</td>
+                        <td class="text-right">
+                          <a href="{{ route('verifikasiBerkasDokumen', $data->id) }}" class="btn btn-sm btn-success" type="submit">Verifikasi</a>
+                          <a href="{{ route('tolakBerkasDokumen', $data->id) }}" class="btn btn-sm btn-danger" style="display: inline" type="submit">Tolak</a>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>
                 </table>
               </div>
+
+              <h4 class="mt-4">Feedback</h4>
+              <form action="">
+                <textarea class="form-control mt-2" name="feedback" id="feedback" cols="30" rows="10"></textarea>
+                <button class="btn btn-primary mt-2">Kirim</button>
+              </form>
             </div>
           </div>
         </div>
