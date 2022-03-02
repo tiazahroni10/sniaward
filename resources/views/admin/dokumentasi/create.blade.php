@@ -39,7 +39,7 @@
                       <span class="input-group-text">Upload</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('nama_file') is-invalid @enderror" name="nama_file">
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('nama_file') is-invalid @enderror" name="nama_file">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('nama_file')
                         <div class="invalid-feedback">

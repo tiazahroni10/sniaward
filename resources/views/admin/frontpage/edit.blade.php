@@ -67,7 +67,7 @@
                       <span class="input-group-text">Gambar Banner</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('gambar_judul') is-invalid @enderror" id="gambar_judul " name="gambar_judul"
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar_judul') is-invalid @enderror" id="gambar_judul " name="gambar_judul"
                         onchange="previewImage()">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gambar_judul')
@@ -153,7 +153,7 @@
                       <span class="input-group-text">Gambar Unduh Berkas</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('gambar_unduhberkas') is-invalid @enderror" name="gambar_unduhberkas">
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar_unduhberkas') is-invalid @enderror" name="gambar_unduhberkas">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gambar_unduhberkas')
                         <div class="invalid-feedback">
@@ -184,7 +184,7 @@
                       <span class="input-group-text">Gambar Linimasa</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('gambar_linimasa') is-invalid @enderror" name="gambar_linimasa">
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar_linimasa') is-invalid @enderror" name="gambar_linimasa">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gambar_linimasa')
                         <div class="invalid-feedback">
@@ -215,7 +215,7 @@
                       <span class="input-group-text">Gambar Kumpulan Acara</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('gamabr_kumpulanacara') is-invalid @enderror" name="gambar_kumpulanacara">
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gamabr_kumpulanacara') is-invalid @enderror" name="gambar_kumpulanacara">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gamabr_kumpulanacara')
                         <div class="invalid-feedback">
@@ -280,7 +280,7 @@
                       <span class="input-group-text">Gambar FaQ</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('gambar_pertanyaan') is-invalid @enderror" name="gambar_pertanyaan">
+                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar_pertanyaan') is-invalid @enderror" name="gambar_pertanyaan">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gambar_pertanyaan')
                         <div class="invalid-feedback">

@@ -39,7 +39,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($dataEvaluator as $evaluator)
+                    {{-- @foreach ($dataEvaluator as $evaluator)
                       <tr>
                         <td>{{ $evaluator->nama_lengkap }}</td>
                         <td>{{ $evaluator->status }}</td>
@@ -50,7 +50,7 @@
                           </a>
                         </td>
                       </tr>
-                    @endforeach
+                    @endforeach --}}
                   </tbody>
                 </table>
               </div>

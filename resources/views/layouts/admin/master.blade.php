@@ -117,6 +117,32 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      $('#evaluatorTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('dataevaluator') !!}',
+        columns: [{
+            data: 'nama_lengkap',
+            name: 'nama_lengkap'
+          },
+          {
+            data: 'status',
+            name: 'status'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
+  </script>
 
   {{-- berita --}}
   {{-- <script>

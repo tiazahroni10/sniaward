@@ -31,7 +31,7 @@
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
+                                            <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
                                             <label class="custom-file-label">Pilih file</label>
                                             @error('gambar')
                                         <div class="invalid-feedback">

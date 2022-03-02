@@ -194,6 +194,7 @@ class EvaluatorController extends Controller
             'email' => ['required','email:dns'],
             'status' => ['required']
         ]);
+        $status = $validatedData['status'];
         $password = Str::random(12);
         $validatedData['password'] = bcrypt($password);
         $validatedData['peran'] = 'evaluator';
@@ -203,7 +204,7 @@ class EvaluatorController extends Controller
         Mail::to($validatedData['email'])->send(new KirimPassword($id,$password));
         $dataEvaluator = ([
             'user_id' => $id,
-            'status' =>$validatedData['status'],
+            'status' =>$status,
             'nama_lengkap' => $validatedData['nama_lengkap']
 
         ]);
