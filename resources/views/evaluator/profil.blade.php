@@ -1,7 +1,4 @@
-@extends('layouts.admin.master')
-@php
-$user = auth()->user();
-@endphp
+@extends('layouts.evaluator.master')
 @section('content')
   <div class="content-body">
     <div class="container-fluid">
@@ -18,8 +15,8 @@ $user = auth()->user();
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
-                    <h4 class="text-primary mb-0">{{ $user->evaluator->nama_lengkap }}</h4>
-                    <p>{{ $user->peran }}</p>
+                    <h4 class="text-primary mb-0">{{ $user->nama_lengkap }}</h4>
+                    <p>{{ $peran }}</p>
                   </div>
                   <div class="profile-email px-2 pt-2">
                     <h4 class="text-muted mb-0">{{ $user->email }}</h4>
@@ -98,7 +95,7 @@ $user = auth()->user();
                 <h5 class="text-primary d-inline">Kontak</h5><a href="javascript:void()" class="pull-right f-s-16">Edit</a>
                 <img src="images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
                 <h6><a href="post-details.html" class="text-black">Ridhal Fajri</a></h6>
-                <small class="mb-0">{{ $user->evaluator->nomor_telepon }}</small>
+                <small class="mb-0">{{ $user->nomor_telepon }}</small>
               </div>
               <div class="profile-interest mb-4">
                 <h5 class="text-primary d-inline">Organisasi</h5>

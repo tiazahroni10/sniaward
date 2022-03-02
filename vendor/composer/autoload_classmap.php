@@ -56,6 +56,7 @@ return array(
     'App\\Models\\DokumenSniAward' => $baseDir . '/app/Models/DokumenSniAward.php',
     'App\\Models\\Evaluator' => $baseDir . '/app/Models/Evaluator.php',
     'App\\Models\\Faq' => $baseDir . '/app/Models/Faq.php',
+    'App\\Models\\Feedback' => $baseDir . '/app/Models/Feedback.php',
     'App\\Models\\Frontpage' => $baseDir . '/app/Models/Frontpage.php',
     'App\\Models\\Gambar' => $baseDir . '/app/Models/Gambar.php',
     'App\\Models\\HistoryLogin' => $baseDir . '/app/Models/HistoryLogin.php',

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMasterKotaKabupatenTable extends Migration
+class CreateFeedbackTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateMasterKotaKabupatenTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_kota_kabupaten', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('region_id')->nullable();
-            $table->string('nama')->nullable()->unique();
+            $table->string('pengirim')->nullable();
+            $table->string('user_id')->nullable();
+            $table->date('tanggal')->nullable();
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateMasterKotaKabupatenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_kota_kabupaten');
+        Schema::dropIfExists('feedback');
     }
 }

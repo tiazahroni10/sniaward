@@ -45,8 +45,8 @@
                         <td>{{ $evaluator->status }}</td>
                         <td>{{ $evaluator->nomor_telepon }}</td>
                         <td>
-                          <a href="{{ route('detailEvaluator', $evaluator->user_id) }}" class="btn btn-primary btn-event" style="color: #ffffff">
-                            Detail Evaluator
+                          <a href="{{ route('detailEvaluator', $evaluator->user_id) }}" class="badge badge-pill badge-info " style="color: #ffffff">
+                            Info
                           </a>
                         </td>
                       </tr>

@@ -15,11 +15,16 @@ class CreateMasterSniTable extends Migration
     {
         Schema::create('master_sni', function (Blueprint $table) {
             $table->integerIncrements('id');
-            // $table->string('nomor_sni',20)->unique()->nullable(false);
-            // $table->string('tipe_sni',20)->nullable(false);
-            // $table->timestamps();
+            $table->string('no_sni',300)->nullable();
+            $table->string('judul_sni')->nullable();
+            $table->string('status',20)->nullable();
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
         });
     }
+    
+
+
 
     /**
      * Reverse the migrations.

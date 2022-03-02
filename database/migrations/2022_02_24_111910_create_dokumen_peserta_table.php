@@ -18,6 +18,7 @@ class CreateDokumenPesertaTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             // $table->foreignId('master_dokumen_id');
             $table->foreignId('master_unggah_lampiran_id')->constrained('master_unggah_lampiran');
+            $table->boolean('status',1)->default(false);
             $table->string('nama_file');
             $table->timestamps();
         });

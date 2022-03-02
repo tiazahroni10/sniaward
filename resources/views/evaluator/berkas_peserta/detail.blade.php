@@ -42,7 +42,7 @@
                     </tr>
                   </thead>
                   <tbody id="customers">
-                    @foreach ($dataPeserta->daftarDokumen as $data)
+                    @foreach ($dataDokumen as $data)
                       <tr class="btn-reveal-trigger">
                         <td class="py-3">
                           <a href="#">
@@ -51,7 +51,7 @@
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5">{{ $data->nama_file }}</td>
+                        <td class="py-2 pl-5"><a href="/storage/{{ $data->nama_file }}">{{ $data->nama_dokumen }}</a></td>
                         <td class="py-2 pl-5">Menunggu</td>
                         <td class="text-right">
                           <a href="{{ route('verifikasiBerkasDokumen', $data->id) }}" class="btn btn-sm btn-success" type="submit">Verifikasi</a>

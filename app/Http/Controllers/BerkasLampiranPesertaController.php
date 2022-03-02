@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DokumenPeserta;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ class BerkasLampiranPesertaController extends Controller
 	function __construct()
 	{
 		$this->user = new User();
+		$this->berkasPeserta = new DokumenPeserta();
 	}
 
 	public function index()
@@ -30,12 +32,14 @@ class BerkasLampiranPesertaController extends Controller
 	public function detail($id)
 	{
 		$dataPeserta = Peserta::findOrFail($id);
-		$data = $this->user->getUser(\auth()->user()->id);
-		return \view('evaluator.berkas_peserta.detail', $data = [
+		$dataDokumen = $this->berkasPeserta->getDataDoc($id);
+		$data = $this->user->getUser(auth()->user()->id);
+		return view('evaluator.berkas_peserta.detail', $data = [
 			'menu' => 'Data Master',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'dataPeserta' => $dataPeserta
+			'dataPeserta' => $dataPeserta,
+			'dataDokumen' => $dataDokumen
 		]);
 	}
 }

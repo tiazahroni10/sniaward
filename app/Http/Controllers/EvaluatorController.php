@@ -36,10 +36,12 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+        $user = Evaluator::where('user_id',$id)->get()->first();
         return view('evaluator.profil', $data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'user' => $user
         ]);
     }
 

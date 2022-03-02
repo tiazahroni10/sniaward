@@ -14,8 +14,9 @@ class CreateMasterProvinsiTable extends Migration
     public function up()
     {
         Schema::create('master_provinsi', function (Blueprint $table) {
-            $table->integerIncrements('id');
-            $table->string('nama_provinsi',50)->nullable(false)->unique();
+            $table->integerIncrements('id',5);
+            $table->string('region_id',30)->nullable();
+            $table->string('nama',70)->nullable();
             $table->timestamps();
         });
     }

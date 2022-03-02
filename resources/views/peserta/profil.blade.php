@@ -1,4 +1,4 @@
-@extends('layouts.admin.master')
+@extends('layouts.peserta.master')
 @php
 $user = auth()->user();
 @endphp

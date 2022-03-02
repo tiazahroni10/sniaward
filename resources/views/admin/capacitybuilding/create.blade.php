@@ -28,7 +28,7 @@
                       <span class="input-group-text">Upload</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input @error('nama_dokumen') is-invalid @enderror" name="nama_dokumen">
+                      <input type="file" accept=".pdf" class="custom-file-input @error('nama_dokumen') is-invalid @enderror" name="nama_dokumen">
                       <label class="custom-file-label">Pilih file</label>
                       @error('nama_dokumen')
                         <div class="invalid-feedback">

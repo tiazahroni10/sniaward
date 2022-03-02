@@ -139,7 +139,7 @@
       {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt  labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p> --}}
     </div>
 
-    <div class="screenshot-slider owl-carousel owl-theme">
+    <div class="screenshot-slider owl-carousel owl-them">
       @foreach ($dataGambar as $key => $data)
         <div onclick="showDetail({{ $key }})" class="screenshot-item">
           {{-- onclick="showDetail('{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}', '{{ $data->judul }}', '{{ $data->deskripsi }}', '{{ asset('storage/' . $data->nama_file) }}')" --}}

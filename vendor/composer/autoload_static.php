@@ -575,6 +575,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Models\\DokumenSniAward' => __DIR__ . '/../..' . '/app/Models/DokumenSniAward.php',
         'App\\Models\\Evaluator' => __DIR__ . '/../..' . '/app/Models/Evaluator.php',
         'App\\Models\\Faq' => __DIR__ . '/../..' . '/app/Models/Faq.php',
+        'App\\Models\\Feedback' => __DIR__ . '/../..' . '/app/Models/Feedback.php',
         'App\\Models\\Frontpage' => __DIR__ . '/../..' . '/app/Models/Frontpage.php',
         'App\\Models\\Gambar' => __DIR__ . '/../..' . '/app/Models/Gambar.php',
         'App\\Models\\HistoryLogin' => __DIR__ . '/../..' . '/app/Models/HistoryLogin.php',
