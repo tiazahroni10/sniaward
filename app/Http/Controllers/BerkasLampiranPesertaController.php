@@ -42,4 +42,25 @@ class BerkasLampiranPesertaController extends Controller
 			'dataDokumen' => $dataDokumen
 		]);
 	}
+
+	public function verifikasiBerkasDokumen($id,$user_id,$master_lampiran_id)
+	{
+		$ret_val = $this->berkasPeserta->varifikasi($id, $user_id, $master_lampiran_id);
+		if ($ret_val) {
+            return redirect()->route('detailBerkasDokumen',$user_id)->with('sukses','Dokumen berhasil di verifikasi');
+        }
+        else {
+            return redirect()->route('detailBerkasDokumen',$user_id)->with('gagal','Dokumen gagal di verifikasi');
+        }
+	}
+	public function lengkapiBerkasDokumen($id,$user_id,$master_lampiran_id)
+	{
+		$ret_val = $this->berkasPeserta->lengkapiDokumen($id, $user_id, $master_lampiran_id);
+		if ($ret_val) {
+            return redirect()->route('detailBerkasDokumen',$user_id)->with('lengkapi','Dokumen belum lengkap');
+        }
+        else {
+            return redirect()->route('detailBerkasDokumen',$user_id)->with('gagal','Dokumen gagal di verifikasi');
+        }
+	}
 }

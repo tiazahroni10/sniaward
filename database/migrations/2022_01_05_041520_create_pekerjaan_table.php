@@ -20,6 +20,7 @@ class CreatePekerjaanTable extends Migration
             $table->string('instansi',50)->nullable(false);
             $table->year('tahun_mulai')->nullable(false);
             $table->year('tahun_selesai')->nullable(false);
+            $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
     }

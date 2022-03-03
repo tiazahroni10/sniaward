@@ -2,6 +2,30 @@
 @section('content')
 <div class="content-body">
     <div class="container-fluid">
+        @if (session()->has('sukses'))
+            <div class="alert alert-success solid alert-dismissible fade show">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                class="mr-2">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                <strong>{{ session('sukses') }}</strong>
+                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                </button>
+            </div>
+        @endif
+        @if (session()->has('gagal'))
+            <div class="alert alert-danger solid alert-dismissible fade show">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                class="mr-2">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                <strong>{{ session('gagal') }}</strong>
+                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                </button>
+            </div>
+        @endif
         <form action="{{ route('verifikasiEvaluator',3) }}" method="POST">
             @csrf
             <div class="row">
@@ -105,6 +129,17 @@
                                 <div class="col-md-auto">
                                     <h5>{{ $data->jabatan }}</h5>
                                 </div>
+                                {{-- <form action="{{ route('verifikasiPekerjaan',[$data->id,$data->user_id]) }}" method="POST">
+                                    <button type="submit" class="badge badge-success">verifikasi</button>
+                                </form> --}}
+                                <div class="col-2">
+                                    @if (!$data->status)
+                                        <h5><a href="{{ route('verifikasiPekerjaan',[$data->id,$data->user_id]) }}" class="badge badge-light">Verifikasi</a></h5>
+                                    @else
+                                        <h5 class="badge badge-success">Telah diverifikasi</h5>
+                                    @endif
+                                </div>
+
                             </div>
                             @endforeach
                         </div>
@@ -123,6 +158,15 @@
                                 </div>
                                 <div class="col-md-auto">
                                     <h5><a href="/storage/{{ $data->nama_file }}">Lihat</a></h5>
+                                </div>
+                                
+                                <div class="col-2">
+                                    
+                                    @if (!$data->status)
+                                        <h5><a href="{{ route('verifikasiSertifikat',[$data->id,$data->user_id]) }}" class="badge badge-light">Verifikasi</a></h5>
+                                    @else
+                                        <h5 class="badge badge-success">Telah diverifikasi</h5>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach
@@ -145,6 +189,13 @@
                                 </div>
                                 <div class="col-md-auto">
                                     <h5><a href="/storage/{{ $data->ijazah }}">Lihat</a></h5>
+                                </div>
+                                <div class="col-2">
+                                    @if (!$data->status)
+                                        <h5><a href="{{ route('verifikasiPendidikan',[$data->id,$data->user_id]) }}" class="badge badge-light">Verifikasi</a></h5>
+                                    @else
+                                        <h5 class="badge badge-success">Telah diverifikasi</h5>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach

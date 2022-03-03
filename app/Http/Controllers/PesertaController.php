@@ -106,11 +106,14 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-    if($request->file('gambar')){
-            if($request->oldGambar){
-                Storage::delete($request->oldGambar); 
-            }
-            $data['gambar']= $request->file('gambar')->store('profil-peserta');
+        if($request->file('gambar')){
+                if($request->oldGambar){
+                    Storage::delete($request->oldGambar); 
+                }
+                $data['gambar']= $request->file('gambar')->store('profil-peserta');
+        }
+        else{
+                $data['gambar']= null;
         }
         // $validatedData = $request->validate([
         //     'nama_kampus' => ['required','max:8'],

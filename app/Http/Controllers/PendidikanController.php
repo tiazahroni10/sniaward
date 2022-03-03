@@ -18,6 +18,7 @@ class PendidikanController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->pendidikan = new Pendidikan();
     }
     public function index()
     {
@@ -141,5 +142,16 @@ class PendidikanController extends Controller
         }
         $data->delete();
         return redirect()->route('pendidikan.index')->with('sukses','Pendidikan berhasil dihapus');
+    }
+
+    public function verifikasiPendidikan($id,$user_id)
+    {
+        $ret_val = $this->pendidikan->verifikasi($id,$user_id);
+        if ($ret_val) {
+            return redirect()->route('detailEvaluator',$user_id)->with('sukses','Pendidikan berhasil di verifikasi');
+        }
+        else {
+            return redirect()->route('detailEvaluator',$user_id)->with('gagal','Pendidikan gagal di verifikasi');
+        }
     }
 }
