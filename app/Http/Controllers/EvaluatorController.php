@@ -36,7 +36,7 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        $user = Evaluator::where('user_id',$id)->get()->first();
+        $user = auth()->user()->evaluator;
         return view('evaluator.profil', $data = [
             'menu' => 'Profil',
             'data' => $data,
@@ -52,7 +52,6 @@ class EvaluatorController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -63,7 +62,6 @@ class EvaluatorController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -88,7 +86,7 @@ class EvaluatorController extends Controller
         $dataProvinsi = MasterProvinsi::all();
         $dataKabupaten = MasterKotaKabupaten::all();
         $idUser = auth()->user()->id;
-        $dataEvaluator = Evaluator::where('user_id',$id)->get()->first();
+        $dataEvaluator = Evaluator::where('user_id', $id)->get()->first();
         $data = $this->user->getUser($idUser);
         return view('evaluator.edit', $data = [
             'menu' => 'Profil',
@@ -109,42 +107,38 @@ class EvaluatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->file('gambar')){
-            if($request->oldGambar){
-                Storage::delete($request->oldGambar); 
+        if ($request->file('gambar')) {
+            if ($request->oldGambar) {
+                Storage::delete($request->oldGambar);
             }
-            $data['gambar']= $request->file('gambar')->store('profil-evaluator');
-        }
-        else $data['gambar']= null;
+            $data['gambar'] = $request->file('gambar')->store('profil-evaluator');
+        } else $data['gambar'] = null;
 
-        if($request->file('npwp')){
-            if($request->oldNpwp){
-                Storage::delete($request->oldNpwp); 
+        if ($request->file('npwp')) {
+            if ($request->oldNpwp) {
+                Storage::delete($request->oldNpwp);
             }
-            $data['npwp']= $request->file('npwp')->store('profil-evaluator');
-        }
-        else $data['npwp']= null;
-        
-        if($request->file('ktp')){
-            if($request->oldKtp){
-                Storage::delete($request->oldKtp); 
-            }
-            $data['ktp']= $request->file('ktp')->store('profil-evaluator');
-        }
-        else $data['ktp'] = null;
+            $data['npwp'] = $request->file('npwp')->store('profil-evaluator');
+        } else $data['npwp'] = null;
 
-        if($request->file('cv')){
-            if($request->oldCv){
-                Storage::delete($request->oldCv); 
+        if ($request->file('ktp')) {
+            if ($request->oldKtp) {
+                Storage::delete($request->oldKtp);
             }
-            $data['cv']= $request->file('cv')->store('profil-evaluator');
-        }
-        else $data['cv']= null;
+            $data['ktp'] = $request->file('ktp')->store('profil-evaluator');
+        } else $data['ktp'] = null;
+
+        if ($request->file('cv')) {
+            if ($request->oldCv) {
+                Storage::delete($request->oldCv);
+            }
+            $data['cv'] = $request->file('cv')->store('profil-evaluator');
+        } else $data['cv'] = null;
         $dataEvaluator =  ([
-            
+
             'nama_lengkap' => $request->nama_lengkap,
             'gelar_sebelum_nama' => $request->gelar_sebelum_nama,
-            'gelar_setelah_nama' =>$request->gelar_setelah_nama,
+            'gelar_setelah_nama' => $request->gelar_setelah_nama,
             'tgl_lahir' => $request->tgl_lahir,
             'pekerjaan' => $request->pekerjaan,
             'nama_instansi' => $request->nama_instansi,
@@ -159,8 +153,8 @@ class EvaluatorController extends Controller
             'ktp' => $data['ktp']
 
         ]);
-        $this->evaluator->updateEvaluator($dataEvaluator,$id);
-        return redirect()->route('profilevaluator.index')->with('sukses','Data profil berhasi diubah');
+        $this->evaluator->updateEvaluator($dataEvaluator, $id);
+        return redirect()->route('profilevaluator.index')->with('sukses', 'Data profil berhasi diubah');
     }
 
     /**
@@ -178,10 +172,10 @@ class EvaluatorController extends Controller
     {
         $model = Evaluator::query();
         return DataTables::eloquent($model)
-                ->addColumn('action', function(Evaluator $evaluator) {
-                    return '<a href="evaluator/detailevaluator/'.$evaluator->user_id.'"><span class="badge badge-info">Info</span></a>';
-                })
-                ->toJson(); 
+            ->addColumn('action', function (Evaluator $evaluator) {
+                return '<a href="evaluator/detailevaluator/' . $evaluator->user_id . '"><span class="badge badge-info">Info</span></a>';
+            })
+            ->toJson();
     }
 
 
@@ -190,8 +184,8 @@ class EvaluatorController extends Controller
     public function storeEvaluator(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_lengkap' =>['required'],
-            'email' => ['required','email:dns'],
+            'nama_lengkap' => ['required'],
+            'email' => ['required', 'email:dns'],
             'status' => ['required']
         ]);
         $status = $validatedData['status'];
@@ -201,15 +195,15 @@ class EvaluatorController extends Controller
         $validatedData['status'] = false;
         $ret_val = User::create($validatedData);
         $id = $ret_val->id;
-        Mail::to($validatedData['email'])->send(new KirimPassword($id,$password));
+        Mail::to($validatedData['email'])->send(new KirimPassword($id, $password));
         $dataEvaluator = ([
             'user_id' => $id,
-            'status' =>$status,
+            'status' => $status,
             'nama_lengkap' => $validatedData['nama_lengkap']
 
         ]);
         Evaluator::create($dataEvaluator);
-        $request->session()->flash('sukses','Evaluator berhasil ditambahkan');
+        $request->session()->flash('sukses', 'Evaluator berhasil ditambahkan');
         return redirect()->route('showDataEvaluator');
     }
     public function createEvaluator()
@@ -227,7 +221,7 @@ class EvaluatorController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataEvaluator = Evaluator::all();
-        return view('admin.evaluator.index',$data = [
+        return view('admin.evaluator.index', $data = [
             'menu' => 'Evaluator',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -239,11 +233,11 @@ class EvaluatorController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        $dataEvaluator = Evaluator::where('user_id',$user_id)->get()->first();
-        $dataPendidikan = Pendidikan::where('user_id',$user_id)->get();
-        $dataPekerjaan = Pekerjaan::where('user_id',$user_id)->get();
-        $dataSertifikat = Sertifikat::where('user_id',$user_id)->get();
-        return view('admin.evaluator.show',$data = [
+        $dataEvaluator = Evaluator::where('user_id', $user_id)->get()->first();
+        $dataPendidikan = Pendidikan::where('user_id', $user_id)->get();
+        $dataPekerjaan = Pekerjaan::where('user_id', $user_id)->get();
+        $dataSertifikat = Sertifikat::where('user_id', $user_id)->get();
+        return view('admin.evaluator.show', $data = [
             'peran' => auth()->user()->peran,
             'menu' => 'Evaluator',
             'data' => $data,
@@ -256,9 +250,8 @@ class EvaluatorController extends Controller
 
     public function verifikasiEvaluator($user_id)
     {
-        Evaluator::where('user_id',$user_id)
-        ->update(['flag_complated' => 1]);
-        return redirect()->route('showDataEvaluator')->with('sukses','Verifikasi berhasil');
+        Evaluator::where('user_id', $user_id)
+            ->update(['flag_complated' => 1]);
+        return redirect()->route('showDataEvaluator')->with('sukses', 'Verifikasi berhasil');
     }
-
 }
