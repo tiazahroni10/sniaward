@@ -34,7 +34,8 @@ class Peserta extends Model
 
 	public function getPesertaWithUserId($user_id)
 	{
-		return DB::table('peserta')->where('user_id', $user_id)->get()->first();;
+		$result = DB::table('peserta')->where('user_id', $user_id)->get()->first();
+		return $result;
 	}
 
 	public function daftarDokumen()

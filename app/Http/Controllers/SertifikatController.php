@@ -18,6 +18,7 @@ class SertifikatController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->sertifikat = new Sertifikat();
     }
     public function index()
     {
@@ -136,5 +137,15 @@ class SertifikatController extends Controller
         }
         $data->delete();
         return redirect()->route('sertifikat.index')->with('sukses','Sertifikat berhasil dihapus');
+    }
+    public function verifikasiSertifikat($id,$user_id)
+    {
+        $ret_val = $this->sertifikat->verifikasi($id,$user_id);
+        if ($ret_val) {
+            return redirect()->route('detailEvaluator',$user_id)->with('sukses','Sertifikat berhasil di verifikasi');
+        }
+        else {
+            return redirect()->route('detailEvaluator',$user_id)->with('gagal','Sertifikat gagal di verifikasi');
+        }
     }
 }

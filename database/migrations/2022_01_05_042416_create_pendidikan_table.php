@@ -20,6 +20,7 @@ class CreatePendidikanTable extends Migration
             $table->string('nama_kampus',50)->nullable(false);
             $table->string('ijazah')->nullable(false);
             $table->year('tahun_lulus')->nullable(false);
+            $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
     }

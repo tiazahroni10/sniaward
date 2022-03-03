@@ -97,6 +97,9 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/evaluator/', [EvaluatorController::class, 'showDataEvaluator'])->name('showDataEvaluator');
     Route::get('/admin/evaluator/detailevaluator/{user_id}', [EvaluatorController::class, 'detailEvaluator'])->name('detailEvaluator');
     Route::post('/admin/evaluator/verifikasiEvaluator/{user_id}', [EvaluatorController::class, 'verifikasiEvaluator'])->name('verifikasiEvaluator');
+    Route::get('/admin/evaluator/verifikasipekerjaan/{id}/{user_id}',[PekerjaanController::class,'verifikasiPekerjaan'])->name('verifikasiPekerjaan');
+    Route::get('/admin/evaluator/verifikasisertifikat/{id}/{user_id}',[SertifikatController::class,'verifikasiSertifikat'])->name('verifikasiSertifikat');
+    Route::get('/admin/evaluator/verifikasipendidikan/{id}/{user_id}',[PendidikanController::class,'verifikasiPendidikan'])->name('verifikasiPendidikan');
 
     Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
     Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->except(['show']);
@@ -106,6 +109,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::resource('/admin/dokumentasi', DokumentasiController::class)->except(['show']);
     Route::resource('/admin/berita', BeritaController::class)->except(['show']);
     Route::resource('/admin/faq', FaqController::class)->except(['show']);
+    
 });
 
 // bagian evaluator
@@ -117,6 +121,6 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/pendidikan', PendidikanController::class);
     Route::get('/evaluator/berkas', [BerkasLampiranPesertaController::class, 'index'])->name('berkasDokumen');
     Route::get('/evaluator/berkas/{id}', [BerkasLampiranPesertaController::class, 'detail'])->name('detailBerkasDokumen');
-    Route::get('/evaluator/berkas/verifikasi/{id}', [BerkasLampiranPesertaController::class, 'verifikasi'])->name('verifikasiBerkasDokumen');
-    Route::get('/evaluator/berkas/tolak/{id}', [BerkasLampiranPesertaController::class, 'tolak'])->name('tolakBerkasDokumen');
+    Route::get('/evaluator/berkas/verifikasi/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'verifikasiBerkasDokumen'])->name('verifikasiBerkasDokumen');
+    Route::get('/evaluator/berkas/tolak/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'lengkapiBerkasDokumen'])->name('lengkapiBerkasDokumen');
 });

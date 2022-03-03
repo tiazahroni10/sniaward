@@ -14,6 +14,18 @@
           </button>
         </div>
       @endif
+      @if (session()->has('lengkapi'))
+        <div class="alert alert-warning solid alert-dismissible fade show">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+            class="mr-2">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          <strong>{{ session('sukses') }}</strong>
+          <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+          </button>
+        </div>
+      @endif
       <div class="page-titles ">
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Verifikasi Dokumen</a></li>
@@ -52,10 +64,20 @@
                           </a>
                         </td>
                         <td class="py-2 pl-5"><a href="/storage/{{ $data->nama_file }}">{{ $data->nama_dokumen }}</a></td>
-                        <td class="py-2 pl-5">Menunggu</td>
+                        <td class="py-2 pl-5">
+                          @if ($data->status == 1)
+                              <span class="badge badge-success">Telah verifikasi</span>
+                          @elseif($data->status == 2)
+                              <span class="badge badge-warning">Belum lengkap</span>
+                          @else
+                              <span class="badge badge-dark">Menunggu</span>
+                          @endif
+                        </td>
                         <td class="text-right">
-                          <a href="{{ route('verifikasiBerkasDokumen', $data->id) }}" class="btn btn-sm btn-success" type="submit">Verifikasi</a>
-                          <a href="{{ route('tolakBerkasDokumen', $data->id) }}" class="btn btn-sm btn-danger" style="display: inline" type="submit">Tolak</a>
+                          @if (!$data->status)
+                            <a href="{{ route('verifikasiBerkasDokumen', [$data->id, $data->user_id, $data->master_unggah_lampiran_id]) }}" class="badge badge-secondary" type="submit">Verifikasi</a>
+                            <a href="{{ route('lengkapiBerkasDokumen', [$data->id, $data->user_id, $data->master_unggah_lampiran_id]) }}" class="badge badge-danger" style="display: inline" type="submit">Belum lengkap</a>
+                          @endif
                         </td>
                       </tr>
                     @endforeach

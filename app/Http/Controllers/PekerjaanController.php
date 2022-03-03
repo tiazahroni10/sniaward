@@ -17,6 +17,7 @@ class PekerjaanController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->pekerjaan = new Pekerjaan();
     }
     public function index()
     {
@@ -130,4 +131,16 @@ class PekerjaanController extends Controller
         return redirect()->route('pekerjaan.index')->with('sukses','Pekerjaan berhasil dihapus');
     
     }
+
+    public function verifikasiPekerjaan($id,$user_id)
+    {
+        $ret_val = $this->pekerjaan->verifikasi($id,$user_id);
+        if ($ret_val) {
+            return redirect()->route('detailEvaluator',$user_id)->with('sukses','Pekerjaan berhasil di verifikasi');
+        }
+        else {
+            return redirect()->route('detailEvaluator',$user_id)->with('gagal','Pekerjaan gagal di verifikasi');
+        }
+    }
 }
+
