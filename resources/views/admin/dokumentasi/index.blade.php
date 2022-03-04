@@ -47,10 +47,10 @@
                           <img style="width: 240px; height: 180px; object-fit:cover;" src="{{ asset('storage/' . $dokumentasi->nama_file) }}" alt="">
                         </td>
                         <td>
-                          <a class="btn btn-warning text-white" href="{{ route('dokumentasi.edit', $dokumentasi->id) }}">Edit</a>
+                          <a class="badge badge-warning text-white" href="{{ route('dokumentasi.edit', $dokumentasi->id) }}">Edit</a>
 
                           <form class="d-inline" action="{{ route('dokumentasi.destroy', $dokumentasi->id) }}">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="badge badge-danger" type="submit">Delete</button>
                           </form>
                         </td>
                       </tr>
