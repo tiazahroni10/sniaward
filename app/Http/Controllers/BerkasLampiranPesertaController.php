@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
+use App\Models\Feedback;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BerkasLampiranPesertaController extends Controller
 {
@@ -13,6 +15,7 @@ class BerkasLampiranPesertaController extends Controller
 	function __construct()
 	{
 		$this->user = new User();
+		$this->feedback = new Feedback();
 		$this->berkasPeserta = new DokumenPeserta();
 	}
 
@@ -25,21 +28,24 @@ class BerkasLampiranPesertaController extends Controller
 			'menu' => 'Data Master',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'dataPeserta' => $dataPeserta
+			'dataPeserta' => $dataPeserta,
 		]);
 	}
 
 	public function detail($id)
 	{
 		$dataPeserta = Peserta::findOrFail($id);
+		$idEvaluator = auth()->user()->id;
+		$dataFeedback = $this->feedback->getFeedback($id,$idEvaluator);
 		$dataDokumen = $this->berkasPeserta->getDataDoc($id);
-		$data = $this->user->getUser(auth()->user()->id);
+		$data = $this->user->getUser($idEvaluator);
 		return view('evaluator.berkas_peserta.detail', $data = [
 			'menu' => 'Data Master',
-			'data' => $data,
+			'dataEvaluator' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
-			'dataDokumen' => $dataDokumen
+			'dataDokumen' => $dataDokumen,
+			'dataFeedback' => $dataFeedback
 		]);
 	}
 
@@ -62,5 +68,18 @@ class BerkasLampiranPesertaController extends Controller
         else {
             return redirect()->route('detailBerkasDokumen',$user_id)->with('gagal','Dokumen gagal di verifikasi');
         }
+	}
+
+	public function feedback(Request $request)
+	{
+		$validatedData = $request->validate([
+			'peserta_id' => ['required'],
+			'evaluator_id' => ['required'],
+			'deskripsi' => ['required']
+		]);
+		$validatedData['potongan_deskripsi'] = Str::limit(strip_tags($validatedData['deskripsi']), 50);
+		$validatedData['status'] = true;
+		Feedback::create($validatedData);
+		
 	}
 }

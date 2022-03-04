@@ -21,7 +21,7 @@ class CreateBeritaTable extends Migration
             $table->text('konten')->nullable();
             $table->string('gambar')->nullable();
             $table->string('potongan_berita')->nullable();
-            $table->date('rilis')->format('d/M/Y') ;           
+            $table->date('rilis');           
             $table->timestamps();
         });
     }

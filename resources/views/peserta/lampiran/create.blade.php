@@ -21,7 +21,7 @@
                                                 <span class="input-group-text">Upload</span>
                                             </div>
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input @error('nama_file[{{ $item->id }}]') is-invalid @enderror" name="nama_file[{{ $item->id }}]" required>
+                                                <input type="file" accept=".pdf" class="custom-file-input @error('nama_file[{{ $item->id }}]') is-invalid @enderror" name="nama_file[{{ $item->id }}]" required>
                                                 <label class="custom-file-label">Pilih file</label>
                                                 @error('nama_file[{{ $item->id }}]')
                                             <div class="invalid-feedback">

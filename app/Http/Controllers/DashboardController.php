@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\Peserta;
 use App\Models\User;
 
@@ -12,6 +13,7 @@ class DashboardController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->feedback =  new Feedback();
     }
     public function index()
     {
@@ -19,11 +21,13 @@ class DashboardController extends Controller
         $data = $this->user->getUser($id);
         if(auth()->user()->peran ==='peserta')
         {
+            $feedback = $this->feedback->getFeedbackWithStatus($id);
             return view('peserta.dashboard',
             [   
             'menu' => 'Dashboard',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'feedback' => $feedback
             ]);
         }
         elseif (auth()->user()->peran ==='evaluator') {

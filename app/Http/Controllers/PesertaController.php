@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\MasterSektorKategori;
@@ -25,16 +26,19 @@ class PesertaController extends Controller
     {
         $this->user = new User();
         $this->peserta = new Peserta();
+        $this->feedback = new Feedback();
     }
     public function index()
     {   $dataPeserta = Peserta::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
         return view('peserta.profil',$data = [
             'menu' => 'Peserta',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPeserta' => $dataPeserta
+            'dataPeserta' => $dataPeserta,
+            'feedback' => $feedback
         ]);
     }
 
@@ -85,6 +89,7 @@ class PesertaController extends Controller
         $dataSektorKategori = MasterSektorKategori::all();
         $dataProfil = $this->peserta->getPesertaWithUserId($id);
         $dataSni = MasterSni::all();
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
         return view('peserta/edit',$data = [
             'menu' => 'Profil',
             'data' => $data,
@@ -93,7 +98,8 @@ class PesertaController extends Controller
             'dataKabupaten' => $dataKabupaten,
             'dataSni' => $dataSni,
             'dataSektorKategori' => $dataSektorKategori,
-            'dataProfil'=> $dataProfil
+            'dataProfil'=> $dataProfil,
+            'feedback' => $feedback
         ]);
     }
 

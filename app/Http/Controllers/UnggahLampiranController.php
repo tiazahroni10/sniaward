@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
+use App\Models\Feedback;
 use App\Models\MasterUnggahLampiran;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,17 +21,20 @@ class UnggahLampiranController extends Controller
     {
         $this->user = new User();
         $this->dokumen = new DokumenPeserta();
+        $this->feedback = new Feedback();
     }
     public function index()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
         $dataDokumen = $this->dokumen->getDataDoc($id);
         return view('peserta.lampiran.index', $data = [
             'menu' => 'Unggah Lampiran',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataDokumen' => $dataDokumen
+            'dataDokumen' => $dataDokumen,
+            'feedback' => $feedback
         ]);
     }
 
@@ -43,12 +47,14 @@ class UnggahLampiranController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
         $dataMasterLampiran = MasterUnggahLampiran::all();
         return view('peserta.lampiran.create', $data=[
             'menu' => 'Unggah Lampiran',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataMasterLampiran' => $dataMasterLampiran
+            'dataMasterLampiran' => $dataMasterLampiran,
+            'feedback' => $feedback
         ]);
     }
 

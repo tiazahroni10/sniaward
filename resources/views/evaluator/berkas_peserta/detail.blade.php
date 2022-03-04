@@ -44,7 +44,7 @@
           <div class="card">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-responsive-lg mb-0 table-striped">
+                <table class="table table-responsive-lg mb-5 table-striped">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -53,8 +53,8 @@
                       <th class="text-right">Aksi</th>
                     </tr>
                   </thead>
-                  <tbody id="customers">
-                    @foreach ($dataDokumen as $data)
+                  <tbody>
+                    @foreach ($dataDokumen as $item)
                       <tr class="btn-reveal-trigger">
                         <td class="py-3">
                           <a href="#">
@@ -63,20 +63,20 @@
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5"><a href="/storage/{{ $data->nama_file }}">{{ $data->nama_dokumen }}</a></td>
+                        <td class="py-2 pl-5"><a href="/storage/{{ $item->nama_file }}">{{ $item->nama_dokumen }}</a></td>
                         <td class="py-2 pl-5">
-                          @if ($data->status == 1)
+                          @if ($item->status == 1)
                               <span class="badge badge-success">Telah verifikasi</span>
-                          @elseif($data->status == 2)
+                          @elseif($item->status == 2)
                               <span class="badge badge-warning">Belum lengkap</span>
                           @else
                               <span class="badge badge-dark">Menunggu</span>
                           @endif
                         </td>
                         <td class="text-right">
-                          @if (!$data->status)
-                            <a href="{{ route('verifikasiBerkasDokumen', [$data->id, $data->user_id, $data->master_unggah_lampiran_id]) }}" class="badge badge-secondary" type="submit">Verifikasi</a>
-                            <a href="{{ route('lengkapiBerkasDokumen', [$data->id, $data->user_id, $data->master_unggah_lampiran_id]) }}" class="badge badge-danger" style="display: inline" type="submit">Belum lengkap</a>
+                          @if (!$item->status)
+                            <a href="{{ route('verifikasiBerkasDokumen', [$item->id, $item->user_id, $item->master_unggah_lampiran_id]) }}" class="badge badge-secondary" type="submit">Verifikasi</a>
+                            <a href="{{ route('lengkapiBerkasDokumen', [$item->id, $item->user_id, $item->master_unggah_lampiran_id]) }}" class="badge badge-danger" style="display: inline" type="submit">Belum lengkap</a>
                           @endif
                         </td>
                       </tr>
@@ -84,12 +84,39 @@
                   </tbody>
                 </table>
               </div>
-
-              <h4 class="mt-4">Feedback</h4>
-              <form action="">
-                <textarea class="form-control mt-2" name="feedback" id="feedback" cols="30" rows="10"></textarea>
-                <button class="btn btn-primary mt-2">Kirim</button>
-              </form>
+              @if ($dataFeedback->status)
+              <div class="col">
+                  <div class="card text-white bg-info">
+                      <div class="card-header">
+                          <h5 class="card-title text-white">Feedback</h5>
+                      </div>
+                      <div class="card-body mb-0">
+                          <p class="card-text">{{ $dataFeedback->deskripsi }}</p>
+                      </div>
+                      <div class="card-footer bg-transparent border-0 text-white">
+                          {{ $dataFeedback->created_at }}
+                      </div>
+                  </div>
+              </div>
+              @else
+              <div class="col">
+                  <div class="card text-white bg-info">
+                      <div class="card-header">
+                          <h5 class="card-title text-white">Feedback</h5>
+                      </div>
+                      <div class="card-body mb-0">
+                        <form action="{{ route('feedback') }}" method="POST">
+                          @csrf
+                          <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
+                          <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
+                          <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                          <button class="btn btn-primary mt-2">Kirim</button>
+                        </form>
+                      </div>
+                  </div>
+              </div>
+                
+              @endif
             </div>
           </div>
         </div>

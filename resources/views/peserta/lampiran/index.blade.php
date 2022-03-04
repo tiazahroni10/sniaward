@@ -42,8 +42,24 @@
                                 </table>
                             @endif
                         </div>
+                        
                     </div>
                 </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-info">
+                    <div class="card-header">
+                        <h5 class="card-title text-white">Feedback</h5>
+                    </div>
+                    @foreach ($feedback as $item)
+                        <div class="card-body mb-0">
+                        <p class="card-text">{{ $item->deskripsi }}</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-white">
+                            {{ $item->created_at }}
+                        </div>
+                    @endforeach
+                <div class="card-body mb-0">
             </div>
         </div>
     </div>
