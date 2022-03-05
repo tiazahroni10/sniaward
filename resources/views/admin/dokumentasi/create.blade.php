@@ -26,8 +26,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder=""
-                      value="{{ old('deskripsi') }}" required="">
+                    <textarea class="form-control mt-2 @error('deskripsi') is-invalid @enderror" name="deskripsi" id="deskripsi" cols="30" rows="10" value="{{ old('deskripsi') }}" required=""></textarea>
                     @error('deskripsi')
                       <div class="invalid-feedback">
                         {{ $message }}

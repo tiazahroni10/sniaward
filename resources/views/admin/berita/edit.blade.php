@@ -15,7 +15,9 @@
 
               <div class="compose-content">
                 <form method="POST" action="{{ route('berita.update', $berita->id) }}" enctype="multipart/form-data">
+                  @method('PUT')
                   @csrf
+                  <input type="hidden" name="oldGambar" value="{{ $berita->gambar }}">
                   <div class="form-group">
                     <label for="judul">Judul</label>
                     <input value="{{ $berita->judul }}" type="text" class="form-control bg-transparent @error('judul') is-invalid @enderror" name="judul"
@@ -26,6 +28,13 @@
                       </div>
                     @enderror
                   </div>
+                  <div class="form-group" id="imagePreview">
+                    @if ($berita->gambar)
+                      <img src="/storage/{{ $berita->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                    @else
+                      <img class="img-preview img-fluid mb-3 col-sm-5">
+                    @endif
+                    </div>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Upload</span>

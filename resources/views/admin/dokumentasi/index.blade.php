@@ -24,7 +24,7 @@
           </li>
         </ol>
       </div>
-      <div class="row">
+      {{-- <div class="row">
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
@@ -60,9 +60,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
-        {{-- @foreach ($dataGambar as $data)
+        <div class="row">
+          @foreach ($dataGambar as $data)
           <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div class="card">
               <div class="card-body">
@@ -72,7 +73,7 @@
                   </div>
                   <div class="new-arrival-content text-center mt-3">
                     <h4>{{ $data->judul }}</h4>
-                    <p>{{ $data->deskripsi }}</p>
+                    <p>{{ $data->bagian_deskripsi }}</p>
                     <div class="dropdown ">
                       <button class="btn btn-primary tp-btn-light sharp " type="button" data-toggle="dropdown">
                         <span class="fs--1">
@@ -107,7 +108,8 @@
               </div>
             </div>
           </div>
-        @endforeach --}}
+        @endforeach
+        </div>
       </div>
     </div>
   </div>

@@ -99,6 +99,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/evaluator/verifikasipekerjaan/{id}/{user_id}',[PekerjaanController::class,'verifikasiPekerjaan'])->name('verifikasiPekerjaan');
     Route::get('/admin/evaluator/verifikasisertifikat/{id}/{user_id}',[SertifikatController::class,'verifikasiSertifikat'])->name('verifikasiSertifikat');
     Route::get('/admin/evaluator/verifikasipendidikan/{id}/{user_id}',[PendidikanController::class,'verifikasiPendidikan'])->name('verifikasiPendidikan');
+    Route::get('/admin/detailberita/{slug}', [BeritaController::class, 'detailBeritaAdmin']);
 
     Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
     Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->except(['show']);
