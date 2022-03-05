@@ -90,6 +90,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/berita/data', [BeritaController::class, 'dataTables'])->name('databerita');
 
     Route::get('/admin/peserta', [PesertaController::class, 'showDataPeserta'])->name('showDataPeserta');
+    Route::get('/admin/detailpeserta/{user_id}', [PesertaController::class, 'detailPeserta'])->name('detailPeserta');
 
     Route::get('/admin/evaluator/create', [EvaluatorController::class, 'createEvaluator'])->name('createEvaluator');
     Route::post('/admin/evaluator/store', [EvaluatorController::class, 'storeEvaluator'])->name('storeEvaluator');

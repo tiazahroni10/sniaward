@@ -169,7 +169,7 @@ class PesertaController extends Controller
         $model = Peserta::query();
         return DataTables::eloquent($model)
                 ->addColumn('action', function(Peserta $peserta) {
-                    return '<a href="peserta/detailpeserta/'.$peserta->user_id.'"><span class="badge badge-info">Info</span></a>';
+                    return '<a href="/admin/detailpeserta/'.$peserta->user_id.'"><span class="badge badge-info">Info</span></a>';
                 })
                 ->toJson(); 
     }
@@ -180,6 +180,19 @@ class PesertaController extends Controller
         $data = $this->user->getUser($id);
         $dataPeserta = Peserta::all();
         return view('admin.peserta.index',$data = [
+            'menu' => 'Peserta',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'dataPeserta' => $dataPeserta
+        ]);
+    }
+
+    public function detailPeserta($user_id)
+    {
+        $idUser = auth()->user()->id;
+        $data = $this->user->getUser($idUser);
+        $dataPeserta = $this->peserta->dataPeserta($user_id)->first();
+        return view('admin.peserta.show', $data = [
             'menu' => 'Peserta',
             'data' => $data,
             'peran' => auth()->user()->peran,
