@@ -32,4 +32,25 @@ class Feedback extends Model
                 ->get();
         return $ret_val;
     }
+    public function oldFeedback($peserta_id, $status)
+    {
+        $ret_val = DB::table('feedback')
+                ->join('evaluator', 'evaluator.user_id', '=', 'feedback.evaluator_id')
+                ->select('feedback.*','evaluator.nama_lengkap')
+                ->where('peserta_id', $peserta_id)
+                // ->where('feedback.status',$status)
+                ->orderByDesc('created_at')
+                ->get();
+        return $ret_val;
+    }
+
+	public function updateStatusFeedback($peserta_id)
+    {
+        $ret_val = DB::table('feedback')
+                ->where('peserta_id', $peserta_id)
+                ->where('status', 1)
+                ->update(['status' => 0]);
+        return $ret_val;
+    }
+
 }

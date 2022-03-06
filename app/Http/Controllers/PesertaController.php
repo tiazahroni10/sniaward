@@ -33,12 +33,14 @@ class PesertaController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $oldFeedback = $this->feedback->oldFeedback($id,0);
         return view('peserta.profil',$data = [
             'menu' => 'Peserta',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPeserta' => $dataPeserta,
-            'feedback' => $feedback
+            'feedback' => $feedback,
+            'oldFeedback' =>$oldFeedback
         ]);
     }
 
@@ -90,6 +92,7 @@ class PesertaController extends Controller
         $dataProfil = $this->peserta->getPesertaWithUserId($id);
         $dataSni = MasterSni::all();
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $oldFeedback = $this->feedback->oldFeedback($id,0);
         return view('peserta/edit',$data = [
             'menu' => 'Profil',
             'data' => $data,
@@ -99,7 +102,8 @@ class PesertaController extends Controller
             'dataSni' => $dataSni,
             'dataSektorKategori' => $dataSektorKategori,
             'dataProfil'=> $dataProfil,
-            'feedback' => $feedback
+            'feedback' => $feedback,
+            'oldFeeback' => $oldFeedback
         ]);
     }
 

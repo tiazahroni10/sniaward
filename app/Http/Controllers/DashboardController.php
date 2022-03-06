@@ -22,13 +22,14 @@ class DashboardController extends Controller
         if(auth()->user()->peran ==='peserta')
         {
             $feedback = $this->feedback->getFeedbackWithStatus($id);
+            $oldFeedback = $this->feedback->oldFeedback($id,0);
             return view('peserta.dashboard',
             [   
             'menu' => 'Dashboard',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'feedback' => $feedback
-            ]);
+            'feedback' => $feedback,
+            'oldFeedback' => $oldFeedback            ]);
         }
         elseif (auth()->user()->peran ==='evaluator') {
             return view('evaluator.dashboard',

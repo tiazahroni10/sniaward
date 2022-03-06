@@ -84,39 +84,106 @@
                   </tbody>
                 </table>
               </div>
-              @if ($dataFeedback->status)
-              <div class="col">
-                  <div class="card text-white bg-info">
-                      <div class="card-header">
-                          <h5 class="card-title text-white">Feedback</h5>
-                      </div>
-                      <div class="card-body mb-0">
-                          <p class="card-text">{{ $dataFeedback->deskripsi }}</p>
-                      </div>
-                      <div class="card-footer bg-transparent border-0 text-white">
-                          {{ $dataFeedback->created_at }}
-                      </div>
-                  </div>
-              </div>
-              @else
-              <div class="col">
-                  <div class="card text-white bg-info">
-                      <div class="card-header">
-                          <h5 class="card-title text-white">Feedback</h5>
-                      </div>
-                      <div class="card-body mb-0">
-                        <form action="{{ route('feedback') }}" method="POST">
-                          @csrf
-                          <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
-                          <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
-                          <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
-                          <button class="btn btn-primary mt-2">Kirim</button>
-                        </form>
-                      </div>
-                  </div>
-              </div>
-                
+              {{-- @if ($dataFeedback !== null)
+                  @if ($dataFeedback->status)
+                    <div class="col">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                                <p class="card-text">{{ $dataFeedback->deskripsi }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-white">
+                                {{ $dataFeedback->created_at }}
+                            </div>
+                        </div>
+                    </div>
+                  @else
+                    <div class="col">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                              <form action="{{ route('feedback') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
+                                <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
+                                <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                                <button class="btn btn-primary mt-2">Kirim</button>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
+                  @endif
+                @else
+                <div class="col">
+                    <div class="card text-white bg-info">
+                        <div class="card-header">
+                            <h5 class="card-title text-white">Feedback</h5>
+                        </div>
+                        <div class="card-body mb-0">
+                          <form action="{{ route('feedback') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
+                            <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
+                            <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                            <button class="btn btn-primary mt-2">Kirim</button>
+                          </form>
+                        </div>
+                    </div>
+                </div>
+              @endif --}}
+
+              @if ($tampilkanFormFeedback)
+                  <div class="col">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                              <form action="{{ route('feedback') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
+                                <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
+                                <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                                <button class="btn btn-primary mt-2">Kirim</button>
+                              </form>
+                            </div>
+                        </div>
+                    </div>
               @endif
+              {{-- @if ($dataFeedback->status)
+                    <div class="col">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                                <p class="card-text">{{ $dataFeedback->deskripsi }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-white">
+                                {{ $dataFeedback->created_at }}
+                            </div>
+                        </div>
+                    </div>
+              @else --}}
+              @foreach ($oldFeedback as $item)
+                  <div class="col">
+                        <div class="card text-white bg-dark">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                                <p class="card-text">{{ $item->deskripsi }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-white">
+                                {{ $item->created_at }}
+                            </div>
+                        </div>
+                    </div>
+              @endforeach
             </div>
           </div>
         </div>

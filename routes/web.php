@@ -78,7 +78,7 @@ Route::post('/getkabupaten', [MasterKotaKabupatenController::class, 'getKabupate
 Route::middleware(['is_verified', 'peserta'])->group(function () {
     Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create', 'show', 'store', 'destroy']);
     Route::resource('/peserta/kontak', KontakController::class);
-    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'edit', 'update', 'destroy']);
+    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'destroy']);
     Route::get('/peserta/persyaratan', [PersyaratanController::class, 'persyaratanSniAward'])->name('persyaratanSniAward');
 });
 

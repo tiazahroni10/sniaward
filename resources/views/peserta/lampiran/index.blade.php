@@ -16,11 +16,39 @@
                     <div class="card-body">
                         
                         <div class="table-responsive">
-                            @if (count($dataDokumen) == 0)
-                                <p>UPLOAD DOKUMEN ANDA!</p>
+                            @if ($isNew == 'new' && count($dataDokumen)==0 && $isVerify)
+                                <p>UNGGAH DOKUMEN ANDA!</p>
                                 <li><a href="{{ route('lampiran.create') }}" class="btn btn-primary btn-event w-25" style="color: #ffffff">
                                     <span class="align-middle"><i class="ti-plus"></i></span> Unggah Lampiran
                                 </a></li>
+                            @elseif($isNew == 'edit' && !$isVerify)
+                                <p>UNGGAH ULANG DOKUMEN ANDA!</p>
+                                <li><a href="{{ route('lampiran.edit',$data->id) }}" class="btn btn-primary btn-event w-25" style="color: #ffffff">
+                                    <span class="align-middle"><i class="ti-plus"></i></span> Unggah Lampiran
+                                </a></li>
+                                <table class="table table-sm mb-0 table-responsive-lg text-black">
+                                    <thead>
+                                        
+                                            <th class="align-middle">Nama Lampiran</th>
+                                            <th class="align-middle text-right">Aksi</th>
+                                            <th class="no-sort"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="orders">
+                                        @foreach ($dataDokumen as $data)
+                                                <tr class="btn-reveal-trigger">
+                                                    <td class="py-2">{{ $data->nama_dokumen }}</td>
+                                                    @if ($data->nama_file)
+                                                        <td class="py-2 text-right"><a href="/storage/{{ $data->nama_file }}"><span class="badge badge-success">Lihat<span class="ml-1 fa fa-check"></span></span></a>
+                                                    @else
+                                                        <td class="py-2 text-right"><a href="{{ route('lampiran.edit',$data->id) }}"><span class="badge badge-warning">Upload<span class="ml-1 fa fa-exclamation"></span></span></a>
+                                                    @endif
+                                                    </td>
+                                                </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
                             @else
                                 <table class="table table-sm mb-0 table-responsive-lg text-black">
                                     <thead>
@@ -46,24 +74,42 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card text-white bg-info">
-                    <div class="card-header">
-                        <h5 class="card-title text-white">Feedback</h5>
-                    </div>
-                    @foreach ($feedback as $item)
-                        <div class="card-body mb-0">
-                        <p class="card-text">{{ $item->deskripsi }}</p>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-white">
-                            {{ $item->created_at }}
-                        </div>
-                    @endforeach
-                <div class="card-body mb-0">
-            </div>
+            
+            
         </div>
+        @foreach ($oldFeedback as $item)
+            @if ($item->status == 1)
+                <div class="col">
+                        <div class="card text-white bg-info">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                                <p class="card-text">{{ $item->deskripsi }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-white">
+                                {{ $item->created_at }}
+                            </div>
+                        </div>
+                </div>
+                
+            @else
+                <div class="col">
+                        <div class="card text-white bg-dark">
+                            <div class="card-header">
+                                <h5 class="card-title text-white">Feedback</h5>
+                            </div>
+                            <div class="card-body mb-0">
+                                <p class="card-text">{{ $item->deskripsi }}</p>
+                            </div>
+                            <div class="card-footer bg-transparent border-0 text-white">
+                                {{ $item->created_at }}
+                            </div>
+                        </div>
+                </div>
+            @endif
+        @endforeach
     </div>
 </div>
-
 
 @endsection

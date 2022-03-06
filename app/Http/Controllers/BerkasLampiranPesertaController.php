@@ -37,7 +37,16 @@ class BerkasLampiranPesertaController extends Controller
 		$dataPeserta = Peserta::findOrFail($id);
 		$idEvaluator = auth()->user()->id;
 		$dataFeedback = $this->feedback->getFeedback($id,$idEvaluator);
+		$oldFeedback = $this->feedback->oldFeedback($id,0);
 		$dataDokumen = $this->berkasPeserta->getDataDoc($id);
+
+		$tampilkanFormFeedback = false;
+		foreach ($dataDokumen as $dokumen) {
+			if ($dokumen->status == 2 || $dokumen->status == 0) {
+				$tampilkanFormFeedback = true;
+				break;
+			}
+		}
 		$data = $this->user->getUser($idEvaluator);
 		return view('evaluator.berkas_peserta.detail', $data = [
 			'menu' => 'Data Master',
@@ -45,7 +54,9 @@ class BerkasLampiranPesertaController extends Controller
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
 			'dataDokumen' => $dataDokumen,
-			'dataFeedback' => $dataFeedback
+			'dataFeedback' => $dataFeedback,
+			'oldFeedback' =>$oldFeedback,
+			'tampilkanFormFeedback' => $tampilkanFormFeedback
 		]);
 	}
 
@@ -81,5 +92,7 @@ class BerkasLampiranPesertaController extends Controller
 		$validatedData['status'] = true;
 		Feedback::create($validatedData);
 		
+		return redirect()->route('berkasDokumen');
 	}
+
 }

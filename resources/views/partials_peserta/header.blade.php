@@ -89,14 +89,28 @@
 													<div class="media-body">
 														<h6 class="mb-1"><u>{{ $item->nama_lengkap }}</u></h6>
 														<p class="mb-1 text-body">{{ $item->potongan_deskripsi }}</p>
-														<small class="d-block fs-6">{{ $item->created_at }}</small>
+														<small class="d-block fs-6">{{ $item->created_at}}</small>
 													</div>
 												</div>
                                                 </a>
                                                 
 											</li>
 											@endforeach
-											
+											@foreach ($oldFeedback as $item)
+                                                <li>
+												<a href="{{ route('lampiran.index') }}">
+                                                <div class="timeline-panel">
+													<div class="media mr-2">
+														<img alt="image" width="50" src="assets/img/notifications.png">
+													</div>
+													<div class="media-body">
+														<h6 class="mb-1"><u>{{ $item->nama_lengkap }}</u></h6>
+														<p class="mb-1 text-body">{{ $item->potongan_deskripsi }}</p>
+														<small class="d-block fs-6">{{ $item->created_at }}</small>
+													</div>
+												</div>
+                                                </a>
+                                            @endforeach
 										</ul>
 									</div>
                                     <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>
