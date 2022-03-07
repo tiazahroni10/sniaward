@@ -118,6 +118,36 @@ class EvaluatorController extends Controller
 				'tahun' => '2021',
 			],
 		];
+		$dataSertifikat = [
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'Sertifikat 1'
+			],
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'Sertifikat 2'
+			],
+		];
+		$dataNPWP = [
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'NPWP 1'
+			],
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'NPWP 2'
+			],
+		];
+		$dataKTP = [
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'KTP 1'
+			],
+			[
+				'url' => 'https://via.placeholder.com/150x80',
+				'nama' => 'KTP 2'
+			],
+		];
 		return view('evaluator.profil', $data = [
 			'menu' => 'Profil',
 			'data' => $data,
@@ -130,6 +160,9 @@ class EvaluatorController extends Controller
 			'dataPelatihan' => $dataPelatihan,
 			'dataDE' => $dataDE,
 			'dataSE' => $dataSE,
+			'dataSertifikat' => $dataSertifikat,
+			'dataNPWP' => $dataNPWP,
+			'dataKTP' => $dataKTP,
 		]);
 	}
 
@@ -298,6 +331,21 @@ class EvaluatorController extends Controller
 		} else {
 			// TODO: fungsi tambah data baru
 		}
+	}
+
+	public function simpanSertifikat(Request $request)
+	{
+		// TODO: menyimpan ke database
+	}
+
+	public function simpanNPWP(Request $request)
+	{
+		// TODO: menyimpan ke database
+	}
+
+	public function simpanKTP(Request $request)
+	{
+		// TODO: menyimpan ke database
 	}
 
 	/**

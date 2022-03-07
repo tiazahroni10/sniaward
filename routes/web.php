@@ -116,11 +116,14 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
 // bagian evaluator
 Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
-    Route::post('/evaluator/profile/simpanRiwayatPendidikan', [EvaluatorController::class, 'simpanRiwayatPendidikan'])->name('simpanRiwayatPendidikan');
-    Route::post('/evaluator/profile/simpanRiwayatPekerjaan', [EvaluatorController::class, 'simpanRiwayatPekerjaan'])->name('simpanRiwayatPekerjaan');
-    Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('simpanRiwayatPelatihan');
-    Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('simpanRiwayatDE');
-    Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('simpanRiwayatSE');
+    Route::post('/evaluator/profile/simpanRiwayatPendidikan', [EvaluatorController::class, 'simpanRiwayatPendidikan'])->name('evaluator.simpanRiwayatPendidikan');
+    Route::post('/evaluator/profile/simpanRiwayatPekerjaan', [EvaluatorController::class, 'simpanRiwayatPekerjaan'])->name('evaluator.simpanRiwayatPekerjaan');
+    Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('evaluator.simpanRiwayatPelatihan');
+    Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('evaluator.simpanRiwayatDE');
+    Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('evaluator.simpanRiwayatSE');
+    Route::post('/evaluator/profile/simpanSertifikat', [EvaluatorController::class, 'simpanRiwayatSertifikat'])->name('evaluator.simpanSertifikat');
+    Route::post('/evaluator/profile/simpanNPWP', [EvaluatorController::class, 'simpanNPWP'])->name('evaluator.simpanNPWP');
+    Route::post('/evaluator/profile/simpanKTP', [EvaluatorController::class, 'simpanKTP'])->name('evaluator.simpanKTP');
 
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);

@@ -208,6 +208,93 @@ $user = auth()->user();
                 </div>
               @endforeach
             </div>
+            <hr>
+
+            <div style="justify-content: space-between; display: flex">
+              <h3>Sertifikat</h3>
+              <button type="button" data-toggle="modal" data-target="#form-sertifikat-modal" class="btn btn-sm btn-primary mr-2">
+                Tambah
+              </button>
+            </div>
+            <hr>
+            <div class="row mt-2">
+              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
+              @foreach ($dataSertifikat as $sertifikat)
+                <div class="col-12 mt-2">
+                  <div class="row">
+                    <div class="col-2">
+                      <img style="width: 100%" src="{{ $sertifikat['url'] }}" alt="">
+                    </div>
+                    <div class="col-10">
+                      <h4>
+                        <b>{{ $sertifikat['nama'] }}</b>
+                        <button type="button" class="btn btn-sm btn-danger float-right mr-2">
+                          Hapus
+                        </button>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+            <hr>
+
+            <div style="justify-content: space-between; display: flex">
+              <h3>NPWP</h3>
+              <button type="button" data-toggle="modal" data-target="#form-npwp-modal" class="btn btn-sm btn-primary mr-2">
+                Tambah
+              </button>
+            </div>
+            <hr>
+            <div class="row mt-2">
+              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
+              @foreach ($dataNPWP as $npwp)
+                <div class="col-12 mt-2">
+                  <div class="row">
+                    <div class="col-2">
+                      <img style="width: 100%" src="{{ $npwp['url'] }}" alt="">
+                    </div>
+                    <div class="col-10">
+                      <h4>
+                        <b>{{ $npwp['nama'] }}</b>
+                        <button type="button" class="btn btn-sm btn-danger float-right mr-2">
+                          Hapus
+                        </button>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+            <hr>
+
+            <div style="justify-content: space-between; display: flex">
+              <h3>KTP</h3>
+              <button type="button" data-toggle="modal" data-target="#form-ktp-modal" class="btn btn-sm btn-primary mr-2">
+                Tambah
+              </button>
+            </div>
+            <hr>
+            <div class="row mt-2">
+              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
+              @foreach ($dataKTP as $ktp)
+                <div class="col-12 mt-2">
+                  <div class="row">
+                    <div class="col-2">
+                      <img style="width: 100%" src="{{ $ktp['url'] }}" alt="">
+                    </div>
+                    <div class="col-10">
+                      <h4>
+                        <b>{{ $ktp['nama'] }}</b>
+                        <button type="button" class="btn btn-sm btn-danger float-right mr-2">
+                          Hapus
+                        </button>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+            </div>
           </div>
         </div>
       </div>
@@ -322,7 +409,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('simpanRiwayatPendidikan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPendidikan', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" id="pendidikan-id" name="id">
               <div class="row">
@@ -384,7 +471,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('simpanRiwayatPekerjaan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPekerjaan', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="pekerjaan-id">
               <div class="row">
@@ -435,7 +522,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('simpanRiwayatPelatihan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPelatihan', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="pelatihan-id">
               <div class="row">
@@ -480,7 +567,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('simpanRiwayatDE', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatDE', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" name="id" name="de-id">
               <div class="row">
@@ -525,7 +612,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('simpanRiwayatSE', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatSE', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="se-id">
               <div class="row">
@@ -568,6 +655,123 @@ $user = auth()->user();
       </div>
     </div>
     {{-- Modal Form Riwayat SE --}}
+
+    {{-- Modal Form Sertifikat --}}
+    <div class="modal fade" id="form-sertifikat-modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Simpan Sertifikat</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="comment-form" action="{{ route('evaluator.simpanSertifikat', $user->id) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="id" id="se-id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Nama <span class="required">*</span></label>
+                    <input type="text" id="sertifikat-nama" class="form-control" value="" name="nama">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Gambar <span class="required">*</span></label>
+                    <input type="file" id="sertifikat-gambar" class="form-control" value="" name="gambar">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group mb-0 text-right">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- Modal Form Sertifikat --}}
+
+    {{-- Modal Form NPWP --}}
+    <div class="modal fade" id="form-npwp-modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Simpan NPWP</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="comment-form" action="{{ route('evaluator.simpanNPWP', $user->id) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="id" id="se-id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Nama <span class="required">*</span></label>
+                    <input type="text" id="sertifikat-nama" class="form-control" value="" name="nama">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Gambar <span class="required">*</span></label>
+                    <input type="file" id="sertifikat-gambar" class="form-control" value="" name="gambar">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group mb-0 text-right">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- Modal Form NPWP --}}
+
+    {{-- Modal Form KTP --}}
+    <div class="modal fade" id="form-ktp-modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Simpan KTP</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="comment-form" action="{{ route('evaluator.simpanKTP', $user->id) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="id" id="se-id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Nama <span class="required">*</span></label>
+                    <input type="text" id="ktp-nama" class="form-control" value="" name="nama">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Gambar <span class="required">*</span></label>
+                    <input type="file" id="ktp-gambar" class="form-control" value="" name="gambar">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group mb-0 text-right">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- Modal Form KTP --}}
   </div>
 @endsection
 @push('scripts')
