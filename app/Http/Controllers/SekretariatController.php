@@ -25,7 +25,7 @@ class SekretariatController extends Controller
 		]);
 	}
 
-	public function perbaruiProfil(Request $request)
+	public function perbaruiProfil(Request $request, $id)
 	{
 		$input = $request->all();
 		//TODO: Buat fungsi simpan ke database

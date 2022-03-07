@@ -73,7 +73,7 @@ $user = auth()->user();
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
         </div>
         <div class="modal-body">
-          <form class="comment-form" action="{{ route('adminProfilUpdate') }}" method="POST">
+          <form class="comment-form" action="{{ route('adminProfilUpdate', $user->id) }}" method="POST">
             @csrf
             <div class="row">
               <div class="col-lg-12">
@@ -85,19 +85,19 @@ $user = auth()->user();
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="text-black font-w600">Gelar Sebelum Nama <span class="required">*</span></label>
-                  <input type="text" class="form-control" value="" name="gelar_depan">
+                  <input type="text" class="form-control" value="" name="gelar_sebelum_nama">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="text-black font-w600">Gelar Setelah Nama <span class="required">*</span></label>
-                  <input type="text" class="form-control" value="" name="gelar_belakang">
+                  <input type="text" class="form-control" value="" name="gelar_setelah_nama">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="text-black font-w600">Tanggal Lahir <span class="required">*</span></label>
-                  <input type="data" class="form-control" value="" name="tanggal_lahir">
+                  <input type="data" class="form-control" value="" name="tgl_lahir">
                 </div>
               </div>
               <div class="col-lg-12">
@@ -133,7 +133,7 @@ $user = auth()->user();
               <div class="col-lg-12">
                 <div class="form-group">
                   <label class="text-black font-w600">Telepon <span class="required">*</span></label>
-                  <input type="text" class="form-control" value="" name="no_telepon">
+                  <input type="text" class="form-control" value="" name="nomor_telepon">
                 </div>
               </div>
               <div class="col-lg-12">
@@ -149,5 +149,3 @@ $user = auth()->user();
     </div>
   </div>
 @endsection
-@push('scripts')
-@endpush
