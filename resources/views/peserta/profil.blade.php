@@ -6,121 +6,303 @@ $user = auth()->user();
   <div class="content-body">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="profile card card-body px-3 pt-3 pb-0">
+        <div class="col-12">
+          <div class="profile card card-body p-3" style="height: auto">
             <div class="profile-head">
-              <div class="photo-content">
-                <div class="cover-photo"></div>
-              </div>
               <div class="profile-info">
-                <div class="profile-photo">
+                <div class="profile-photo mt-0">
                   <img src="images/profile/profile.png" class="img-fluid rounded-circle" alt="">
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
-                    <h4 class="text-primary mb-0">{{ $user->email }}</h4>
-                    <p>{{ $user->peran }}</p>
-                  </div>
-                  <div class="profile-email px-2 pt-2">
-                    <h4 class="text-muted mb-0">{{ $user->email }}</h4>
-                    <p>Email</p>
+                    <h3 class="text-primary mb-0">{{ $user->peserta->nama_organisasi }}</h3>
+                    <h4 class="text-muted mb-0">{{ $user->peran }}</h4>
                   </div>
                   <div class="dropdown ml-auto">
-                    <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                          <rect x="0" y="0" width="24" height="24"></rect>
-                          <circle fill="#000000" cx="5" cy="12" r="2"></circle>
-                          <circle fill="#000000" cx="12" cy="12" r="2"></circle>
-                          <circle fill="#000000" cx="19" cy="12" r="2"></circle>
-                        </g>
-                      </svg></a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                      <li class="dropdown-item"><i class="fa fa-user-circle text-primary mr-2"></i> View profile</li>
-                      <li class="dropdown-item"><i class="fa fa-users text-primary mr-2"></i> Add to close friends</li>
-                      <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
-                      <li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
-                    </ul>
+                    <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-primary mr-2">
+                      Edit Profile
+                    </button>
+                    <button class="btn btn-sm btn-primary">Pdf</button>
                   </div>
                 </div>
+              </div>
+              <div style="padding: 15px 20px">
+                <table>
+                  <tr>
+                    <td>Alamat Organisasi</td>
+                    <td class="col-data">: {{ $user->peserta->alamat_organisasi }}</td>
+                  </tr>
+                  <tr>
+                    <td>Alamat Pabrik</td>
+                    <td class="col-data">: {{ $user->peserta->alamat_pabrik }}</td>
+                  </tr>
+                  <tr>
+                    <td>Email Sekretaris Perusahaan</td>
+                    <td class="col-data">: {{ $user->peserta->email_perusahaan }}</td>
+                  </tr>
+                  <tr>
+                    <td>No. Telepon Perusahaan</td>
+                    <td class="col-data">: {{ $user->peserta->nomor_telepon }}</td>
+                  </tr>
+                  <tr>
+                    <td>Website</td>
+                    <td class="col-data">: {{ $user->peserta->website }}</td>
+                  </tr>
+                  <tr>
+                    <td>Organisasi Beroperasi Sejak</td>
+                    <td class="col-data">: {{ $user->peserta->tahun_berdiri }}</td>
+                  </tr>
+                  <tr>
+                    <td>Status Kepemilikan</td>
+                    <td class="col-data">: {{ $user->peserta->status_kepemilikan }}</td>
+                  </tr>
+                  <tr>
+                    <td>Jenis Produk Yang Dihasilkan</td>
+                    <td class="col-data">: {{ $user->peserta->tipe_produk }}</td>
+                  </tr>
+                  <tr>
+                    <td>Apakah Produk Yang Dihasilkan Telah Diekspor?</td>
+                    <td class="col-data">: </td>
+                  </tr>
+                  <tr>
+                    <td>Sektor dan Kategori Orgaisasi</td>
+                    <td class="col-data">: </td>
+                  </tr>
+                  <tr>
+                    <td>Kekayaan Bersih Organisasi</td>
+                    <td class="col-data">: {{ $user->peserta->kekayaan_organisasi }}</td>
+                  </tr>
+                  <tr>
+                    <td>Hasil Penjualan Tahunan Organisasi</td>
+                    <td class="col-data">: {{ $user->peserta->hasil_penjualan_organisasi }}</td>
+                  </tr>
+                  <tr>
+                    <td>Organisasi yang Didaftarkan Merupakan</td>
+                    <td class="col-data">: {{ $user->peserta->tipe_organisasi }}</td>
+                  </tr>
+                  <tr>
+                    <td>Standar Nasional Indonesia yang Dimiliki</td>
+                    <td class="col-data">: </td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="profile-statistics">
-                <!-- Modal -->
-                <div class="modal fade" id="sendMessageModal">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Send Message</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                      </div>
-                      <div class="modal-body">
-                        <form class="comment-form">
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label class="text-black font-w600">Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" value="Author" name="Author" placeholder="Author">
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label class="text-black font-w600">Email <span class="required">*</span></label>
-                                <input type="text" class="form-control" value="Email" placeholder="Email" name="Email">
-                              </div>
-                            </div>
-                            <div class="col-lg-12">
-                              <div class="form-group">
-                                <label class="text-black font-w600">Comment</label>
-                                <textarea rows="8" class="form-control" name="comment" placeholder="Comment"></textarea>
-                              </div>
-                            </div>
-                            <div class="col-lg-12">
-                              <div class="form-group mb-0">
-                                <input type="submit" value="Post Comment" class="submit btn btn-primary" name="submit">
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
+        <div class="col-12">
+          <div class="card card-body">
+            <div style="justify-content: space-between; display: flex">
+              <h3>Standar Nasional Indonesia yang Dimiliki</h3>
+              <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal"
+                class="btn btn-form-riwayat-pendidikan btn-sm btn-primary mr-2">
+                Tambah
+              </button>
+            </div>
+            <hr>
+            <div class="row mt-2">
+              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
+              @foreach ($dataSNI as $sni)
+                <div class="col-12">
+                  <div>
+                    <h4>
+                      <b>{{ $sni['nama_kampus'] }}</b>
+                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan['id'] }}"
+                        data-nama-kampus="{{ $pendidikan['nama_kampus'] }}" data-jenjang="{{ $pendidikan['jenjang'] }}"
+                        data-program-studi="{{ $pendidikan['program_studi'] }}" data-tahun-masuk="{{ $pendidikan['tahun_masuk'] }}"
+                        data-tahun-lulus="{{ $pendidikan['tahun_lulus'] }}"
+                        class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
+                    </h4>
+                    <h5>{{ $sni['program_studi'] }}</h5>
+                    <p>{{ $sni['tahun_masuk'] }}-{{ $sni['tahun_lulus'] }}</p>
                   </div>
                 </div>
-              </div>
-              <div class="profile-blog mb-4">
-                <h5 class="text-primary d-inline">Kontak</h5><a href="javascript:void()" class="pull-right f-s-16">Edit</a>
-                <img src="images/profile/1.jpg" alt="" class="img-fluid mt-4 mb-4 w-100">
-                <h6><a href="post-details.html" class="text-black">Ridhal Fajri</a></h6>
-                <small class="mb-0">082285497645</small>
-              </div>
-              <div class="profile-interest mb-4">
-                <h5 class="text-primary d-inline">Organisasi</h5>
-                </h5><a href="javascript:void()" class="pull-right f-s-16">Edit</a>
-                <h6><a href="post-details.html" class="text-black">PT Pertamina </a></h6>
-              </div>
-              <div class="profile-interest mb-4">
-                <h5 class="text-primary d-inline">Produk</h5>
-                </h5><a href="javascript:void()" class="pull-right f-s-16">Edit</a>
-                <h6><a href="post-details.html" class="text-black">Bahan bakar minyak </a></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8">
-          <div class="card">
-            <div class="card-body">
-
+              @endforeach
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    {{-- Modals Edit Profil --}}
+    <div class="modal fade" id="edit-profile-modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Profil</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="comment-form" action="{{ route('profilevaluator.update', $user->id) }}" method="POST">
+              @csrf
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Nama Organisasi <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{ $user->peserta->nama_organisasi }}" name="nama_organisasi">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Alamat Organisasi <span class="required"></label>
+                    <textarea rows="8" class="form-control" name="alamat_organisasi" required>{{ $user->peserta->alamat_organisasi }}</textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                    <select class="form-control" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
+                      @foreach ($dataKabupaten as $kabupaten)
+                        <option {{ $user->peserta->master_kota_kabupaten_id == $kabupaten->id ? 'selected' : '' }} value="{{ $kabupaten->id }}">
+                          {{ $kabupaten->master_kota_kabupaten_id }}
+                        </option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
+                    <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">
+                      @foreach ($dataProvinsi as $provinsi)
+                        <option {{ $user->peserta->master_provinsi_id == $provinsi->id ? 'selected' : '' }} value="{{ $provinsi->id }}">
+                          {{ $provinsi->nama_provinsi }}
+                        </option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Alamat Pabrik <span class="required"></label>
+                    <textarea rows="8" class="form-control" name="alamat_pabrik" required>{{ $user->peserta->alamat_pabrik }}</textarea>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                    <select class="form-control" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
+                      @foreach ($dataKabupaten as $kabupaten)
+                        <option {{ $user->peserta->master_kota_kabupaten_id == $kabupaten->id ? 'selected' : '' }} value="{{ $kabupaten->id }}">
+                          {{ $kabupaten->master_kota_kabupaten_id }}
+                        </option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
+                    <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">
+                      @foreach ($dataProvinsi as $provinsi)
+                        <option {{ $user->peserta->master_provinsi_id == $provinsi->id ? 'selected' : '' }} value="{{ $provinsi->id }}">
+                          {{ $provinsi->nama_provinsi }}
+                        </option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Email Sekretariat Perusahaan <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{ $user->peserta->email_perusahaan }}" name="email_perusahaan">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">No. Telepon Perusahaan <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{ $user->peserta->nomor_telepon }}" name="nomor_telepon">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Website <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{ $user->peserta->website }}" name="website">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Organisasi Beroperasi Sejak <span class="required">*</span></label>
+                    <input type="date" class="form-control" value="{{ $user->peserta->tahun_berdiri }}" name="tahun_berdiri">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Status Kepemilikan <span class="required">*</span></label>
+                    <select name="status" id="">
+                      <option value="">Pilih Status</option>
+                      <option {{ $user->peserta->status_kepemilikan == 'pribadi' ? 'selected' : '' }} value="pribadi">Pribadi</option>
+                      <option {{ $user->peserta->status_kepemilikan == 'umum' ? 'selected' : '' }} value="umum">Umum</option>
+                      <option {{ $user->peserta->status_kepemilikan == 'negara' ? 'selected' : '' }} value="negara">Negara</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Jenis Produk yang Dihasilkan <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{ $user->peserta->tipe_produk }}" name="nama_instansi">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Apakah Produk Telah Diekspor? <span class="required">*</span></label>
+                    <input type="radio" name="" id="" value="ya">
+                    <input type="radio" name="" id="" value="tidak">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" value="" placeholder="Negara" name="negara_ekspor">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" value="" placeholder="Tahun" name="tahun_ekspor">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Kekayaan Bersih Organisasi <span class="required">*</span></label>
+                    <input type="number" class="form-control" value="{{ $user->peserta->kekayaan_organisasi }}" name="kekayaan_organisasi">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Hasil Penjualan Tahunan Organisasi <span class="required">*</span></label>
+                    <input type="number" class="form-control" value="{{ $user->peserta->hasil_penjualan_organisasi }}" name="hasil_penjualan_organisasi">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Organisasi yang Didaftarkan Merupakan <span class="required">*</span></label>
+                    <select name="tipe_organisasi" id="tipe_organisasi">
+                      <option {{ $user->peserta->tipe_organisasi == 'induk' ? 'selected' : '' }} value="induk">Induk</option>
+                      <option {{ $user->peserta->tipe_organisasi == 'anak' ? 'selected' : '' }} value="anak">Anak Perusahaan</option>
+                      <option {{ $user->peserta->tipe_organisasi == 'cabang' ? 'selected' : '' }} value="cabang">Cabang</option>
+                      <option {{ $user->peserta->tipe_organisasi == 'none' ? 'selected' : '' }} value="none">Tidak Memiliki Anak Perusahaan atau Cabang
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Standar Nasional yang Dimiliki <span class="required">*</span></label>
+                    <input type="checkbox" name="sni" id="sni-produk" value="produk">
+                    <input type="checkbox" name="sni" id="sni-sistem" value="sistem">
+                    <input type="checkbox" name="sni" id="sni-proses" value="proses">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group mb-0 text-right">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- Modal Edit Profil --}}
   </div>
 @endsection

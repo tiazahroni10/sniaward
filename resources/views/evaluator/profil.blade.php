@@ -333,7 +333,7 @@ $user = auth()->user();
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Tanggal Lahir <span class="required">*</span></label>
-                    <input type="data" class="form-control" value="{{ $user->evaluator->tgl_lahir }}" name="tgl_lahir">
+                    <input type="date" class="form-control" value="{{ $user->evaluator->tgl_lahir }}" name="tgl_lahir">
                   </div>
                 </div>
                 <div class="col-lg-12">
@@ -367,8 +367,6 @@ $user = auth()->user();
                   </div>
                 </div>
                 <div class="col-lg-12">
-                  {{ $user->evaluator->master_provinsi_id }}
-                  {{ $user->evaluator->master_kota_kabupaten_id }}
                   <div class="form-group">
                     <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
                     <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">

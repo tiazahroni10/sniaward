@@ -24,6 +24,7 @@ use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
