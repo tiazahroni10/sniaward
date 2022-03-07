@@ -103,7 +103,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/detailberita/{slug}', [BeritaController::class, 'detailBeritaAdmin']);
 
     Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
-    Route::post('/admin/profil/update', [SekretariatController::class, 'perbaruiProfil'])->name('adminProfilUpdate');
+    Route::post('/admin/profil/update/{id}', [SekretariatController::class, 'perbaruiProfil'])->name('adminProfilUpdate');
     Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->except(['show']);
     Route::resource('/admin/masterdokumen', MasterDokumenController::class)->except(['show']);
     Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->except(['show']);
@@ -116,6 +116,12 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
 // bagian evaluator
 Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
+    Route::post('/evaluator/profile/simpanRiwayatPendidikan', [EvaluatorController::class, 'simpanRiwayatPendidikan'])->name('simpanRiwayatPendidikan');
+    Route::post('/evaluator/profile/simpanRiwayatPekerjaan', [EvaluatorController::class, 'simpanRiwayatPekerjaan'])->name('simpanRiwayatPekerjaan');
+    Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('simpanRiwayatPelatihan');
+    Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('simpanRiwayatDE');
+    Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('simpanRiwayatSE');
+
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);
     Route::resource('/evaluator/sertifikat', SertifikatController::class);

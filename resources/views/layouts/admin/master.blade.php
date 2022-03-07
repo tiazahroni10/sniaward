@@ -28,16 +28,12 @@
 </head>
 
 <body>
-
   @include('partials_admin.header')
   @include('partials_admin.sidebar')
 
   @yield('content')
 
-
   @include('partials_admin.footer')
-
-
 
   <!-- jQuery Min JS -->
   <script src="{{ asset('admin') }}/js/jquery-3.5.1.min.js"></script>
@@ -167,5 +163,7 @@
       });
     });
   </script>
+
+  @stack('scripts')
 
 </body>
