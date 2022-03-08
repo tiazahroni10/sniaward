@@ -19,7 +19,7 @@ $user = auth()->user();
                     <h4 class="text-muted mb-0">{{ $user->peran }}</h4>
                   </div>
                   <div class="dropdown ml-auto">
-                    <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-primary mr-2">
+                    <button type="button" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-sm btn-primary mr-2">
                       Edit Profile
                     </button>
                     <button class="btn btn-sm btn-primary">Pdf</button>
@@ -93,8 +93,7 @@ $user = auth()->user();
           <div class="card card-body">
             <div style="justify-content: space-between; display: flex">
               <h3>Standar Nasional Indonesia yang Dimiliki</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal"
-                class="btn btn-form-riwayat-pendidikan btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-sni-modal" class="btn btn-form-sni btn-sm btn-primary mr-2">
                 Tambah
               </button>
             </div>
@@ -102,18 +101,15 @@ $user = auth()->user();
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
               @foreach ($dataSNI as $sni)
-                <div class="col-12">
+                <div class="col-12 mt-2">
                   <div>
                     <h4>
-                      <b>{{ $sni['nama_kampus'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan['id'] }}"
-                        data-nama-kampus="{{ $pendidikan['nama_kampus'] }}" data-jenjang="{{ $pendidikan['jenjang'] }}"
-                        data-program-studi="{{ $pendidikan['program_studi'] }}" data-tahun-masuk="{{ $pendidikan['tahun_masuk'] }}"
-                        data-tahun-lulus="{{ $pendidikan['tahun_lulus'] }}"
-                        class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
+                      <b>{{ $sni['nomor_sni'] }}</b>
+                      <button type="button" data-toggle="modal" data-target="#form-sni-modal" data-id="{{ $sni['id'] }}"
+                        data-nomor-sni="{{ $sni['nomor_sni'] }}" data-nama-lembaga-sertifikasi="{{ $sni['nama_lembaga_sertifikasi'] }}"
+                        class="btn btn-form-sni btn-sm btn-primary float-right mr-2">Edit</button>
                     </h4>
-                    <h5>{{ $sni['program_studi'] }}</h5>
-                    <p>{{ $sni['tahun_masuk'] }}-{{ $sni['tahun_lulus'] }}</p>
+                    <h5>{{ $sni['nama_lembaga_sertifikasi'] }}</h5>
                   </div>
                 </div>
               @endforeach
@@ -132,7 +128,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('profilevaluator.update', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('profilpeserta.update', $user->id) }}" method="POST">
               @csrf
               <div class="row">
                 <div class="col-lg-12">
@@ -304,5 +300,62 @@ $user = auth()->user();
       </div>
     </div>
     {{-- Modal Edit Profil --}}
+
+    {{-- Modal Tambah SNI --}}
+    <div class="modal fade" id="form-sni-modal">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Simpan SNI yang Dimiliki</h5>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form class="comment-form" action="{{ route('peserta.simpanSNI') }}" method="POST">
+              @csrf
+              <input type="hidden" name="id" id="sni-id">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">No. SNI <span class="required">*</span></label>
+                    <input type="text" id="sni-nomor-sni" class="form-control" value="" name="nomor_sni">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Nama Lembaga Sertifikasi <span class="required">*</span></label>
+                    <input type="text" id="sni-nama-lembaga-sertifikasi" class="form-control" value="" name="nama_lembaga_sertifikasi">
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group mb-0 text-right">
+                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- Modal Tambah SNI --}}
   </div>
 @endsection
+@push('scripts')
+  <script>
+    $(document).on("click", ".btn-form-sni", function() {
+      var id = $(this).data('id');
+
+      console.log(id);
+
+      if (id != null) {
+        var nomorSNI = $(this).data('nomor-sni');
+        var namaLembagaSertifikasi = $(this).data('nama-lembaga-sertifikasi');
+
+        $(".modal-body #sni-id").val(id);
+        $(".modal-body #sni-nomor-sni").val(nomorSNI);
+        $(".modal-body #sni-nama-lembaga-sertifikasi").val(namaLembagaSertifikasi);
+      }
+    });
+  </script>
+@endpush

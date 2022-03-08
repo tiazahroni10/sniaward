@@ -38,7 +38,18 @@ class PesertaController extends Controller
 		$oldFeedback = $this->feedback->oldFeedback($id, 0);
 		$dataKabupaten = MasterKotaKabupaten::all();
 		$dataProvinsi = MasterProvinsi::all();
-		$dataSNI = [];
+		$dataSNI = [
+			[
+				'id' => 1,
+				'nomor_sni' => '1231213',
+				'nama_lembaga_sertifikasi' => 'PT Cinta Abadi Jaya'
+			],
+			[
+				'id' => 2,
+				'nomor_sni' => '4071714',
+				'nama_lembaga_sertifikasi' => 'PT Cinta Abadi Jaya'
+			]
+		];
 		return view('peserta.profil', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
@@ -209,5 +220,15 @@ class PesertaController extends Controller
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta
 		]);
+	}
+
+	public function simpanSNI(Request $request)
+	{
+		if (!empty($request->id)) {
+			// TODO: fungsi update data SNIs
+			$id = $request->id;
+		} else {
+			// TODO: simpan data SNI baru
+		}
 	}
 }

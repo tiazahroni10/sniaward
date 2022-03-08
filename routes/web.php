@@ -68,16 +68,15 @@ Route::get('/detailacara', function () {
 Route::get('/kumpulanberita', [BeritaController::class, 'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
 Route::get('/gantipassword', [GantiPasswordController::class, 'index'])->name('gantiPassword')->middleware('auth');
 Route::post('/simpanpasswordbaru/{id}', [GantiPasswordController::class, 'simpanPasswordBaru'])->name('simpanPasswordBaru')->middleware('auth');
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('is_verified')->name('dashboard');
 
 //ambil data kabupaten
 Route::post('/getkabupaten', [MasterKotaKabupatenController::class, 'getKabupaten'])->name('getKabupaten');
 
-
 //bagian peserta
 Route::middleware(['is_verified', 'peserta'])->group(function () {
     Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create', 'show', 'store', 'destroy']);
+    Route::post('/peserta/simpanSNI', [PesertaController::class, 'simpanSNI'])->name('peserta.simpanSNI');
     Route::resource('/peserta/kontak', KontakController::class);
     Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'destroy']);
     Route::get('/peserta/persyaratan', [PersyaratanController::class, 'persyaratanSniAward'])->name('persyaratanSniAward');
