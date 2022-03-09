@@ -47,6 +47,14 @@
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-381-television"></i>
+                        <span class="nav-text">Penjadwalan</span></a>
+                        <ul aria-expanded="false">
+                        <li><a href="{{ route('penjadwalanacara.index') }}">Penjadwalan Acara</a></li>
+                        <li><a href="#">Materi Capacity Building</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-television"></i>
                         <span class="nav-text">Data Master</span></a>
                         <ul aria-expanded="false">
                         <li><a href="{{ route('masterpertanyaan.index') }}">Master Pertanyaan</a></li>

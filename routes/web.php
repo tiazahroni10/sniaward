@@ -21,6 +21,7 @@ use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\MasterKotaKabupatenController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\PenjadwalanAcaraController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
@@ -111,6 +112,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::resource('/admin/dokumentasi', DokumentasiController::class)->except(['show']);
     Route::resource('/admin/berita', BeritaController::class)->except(['show']);
     Route::resource('/admin/faq', FaqController::class)->except(['show']);
+    Route::resource('/admin/penjadwalanacara', PenjadwalanAcaraController::class)->except(['show']);
 });
 
 // bagian evaluator

@@ -26,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\MasterPertanyaanController' => $baseDir . '/app/Http/Controllers/MasterPertanyaanController.php',
     'App\\Http\\Controllers\\PekerjaanController' => $baseDir . '/app/Http/Controllers/PekerjaanController.php',
     'App\\Http\\Controllers\\PendidikanController' => $baseDir . '/app/Http/Controllers/PendidikanController.php',
+    'App\\Http\\Controllers\\PenjadwalanAcaraController' => $baseDir . '/app/Http/Controllers/PenjadwalanAcaraController.php',
     'App\\Http\\Controllers\\PersyaratanController' => $baseDir . '/app/Http/Controllers/PersyaratanController.php',
     'App\\Http\\Controllers\\PertanyaanController' => $baseDir . '/app/Http/Controllers/PertanyaanController.php',
     'App\\Http\\Controllers\\PesertaController' => $baseDir . '/app/Http/Controllers/PesertaController.php',
