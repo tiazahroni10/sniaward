@@ -15,7 +15,7 @@ class CreateJadwalAcaraTable extends Migration
     {
         Schema::create('jadwal_acara', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->foreignId('admin_id')->nullable()->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('judul')->nullable();
             $table->string('kategori')->nullable();
             $table->string('nama_event')->nullable();

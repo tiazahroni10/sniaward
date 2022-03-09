@@ -24,7 +24,7 @@ class PenjadwalanAcaraController extends Controller
         $data = $this->user->getUser($id);
         $dataEvent = JadwalAcara::all();
         return view('admin.penjadwalanacara.index', $data = [
-            'menu' => 'Profil',
+            'menu' => 'Penjadwalan Acara',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataEvent' => $dataEvent
@@ -41,7 +41,7 @@ class PenjadwalanAcaraController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin.penjadwalanacara.create', $data = [
-            'menu' => 'Profil',
+            'menu' => 'Penjadwalan Acara',
             'data' => $data,
             'peran' => auth()->user()->peran,
         ]);
@@ -87,7 +87,15 @@ class PenjadwalanAcaraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $acara = JadwalAcara::findOrFail($id);
+        return view('admin.penjadwalanacara.edit', $data = [
+            'menu' => 'Penjadwalan Acara',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'acara' => $acara
+        ]);
     }
 
     /**
@@ -99,7 +107,17 @@ class PenjadwalanAcaraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => ['required'],
+            'mulai' => ['required'],
+            'hingga' => ['required'],
+            'kategori' => ['required'],
+            
+        ]);
+        $dataAcara = JadwalAcara::findOrFail($id);
+        $dataAcara->update($validatedData);
+        $request->session()->flash('sukses','Acara berhasil diubah');
+        return redirect()->route('penjadwalanacara.index');
     }
 
     /**
@@ -110,6 +128,9 @@ class PenjadwalanAcaraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataAcara   = JadwalAcara::findOrFail($id);
+        $dataAcara->delete();
+
+        return redirect()->route('penjadwalanacara.index')->with('sukses','Acara berhasil dihapus');
     }
 }
