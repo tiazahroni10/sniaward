@@ -186,6 +186,8 @@ class PesertaController extends Controller
 	}
 
 
+	// BAGIAN ADMIN
+	
 	public function dataTables()
 	{
 		$model = Peserta::query();
@@ -195,6 +197,7 @@ class PesertaController extends Controller
 			})
 			->toJson();
 	}
+	
 
 	public function showDataPeserta()
 	{

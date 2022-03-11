@@ -16,9 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css" />
+  {{-- select2 --}}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   {{-- trix editor --}}
   <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
   <script type="text/javascript" src="/assets/js/trix.js"></script>
+
+  
   <style>
     trix-toolbar [data-trix-button-group="file-tools"] {
       display: none;
@@ -68,6 +72,10 @@
 
   {{-- datatables --}}
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+  {{-- Select 2 --}}
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 
   {{-- evaluator --}}
   {{-- <script>
@@ -113,6 +121,8 @@
       });
     });
   </script>
+  
+  {{-- evaluator --}}
   <script>
     $(document).ready(function() {
       $('#evaluatorTable').DataTable({
@@ -161,6 +171,40 @@
           },
         ]
       });
+    });
+  </script>
+
+  {{-- seTable --}}
+  <script>
+    $(document).ready(function() {
+      $('#seTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('datase') !!}',
+        columns: [{
+            data: 'nama_organisasi',
+            name: 'nama_organisasi'
+          },
+          {
+            data: 'tipe_organisasi',
+            name: 'tipe_organisasi'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('#evaluator').select2();
     });
   </script>
 

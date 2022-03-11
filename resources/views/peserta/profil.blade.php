@@ -143,22 +143,10 @@ $user = auth()->user();
                     <textarea rows="8" class="form-control" name="alamat_organisasi" required>{{ $user->peserta->alamat_organisasi }}</textarea>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
-                    <select class="form-control" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
-                      @foreach ($dataKabupaten as $kabupaten)
-                        <option {{ $user->peserta->master_kota_kabupaten_id == $kabupaten->id ? 'selected' : '' }} value="{{ $kabupaten->id }}">
-                          {{ $kabupaten->master_kota_kabupaten_id }}
-                        </option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
-                    <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">
+                    <label class="text-black font-w600">Provinsi <span class="text-danger">*</span></label>
+                    <select class="form-control" id="provinsi" name="master_provinsi_id">
                       @foreach ($dataProvinsi as $provinsi)
                         <option {{ $user->peserta->master_provinsi_id == $provinsi->id ? 'selected' : '' }} value="{{ $provinsi->id }}">
                           {{ $provinsi->nama_provinsi }}
@@ -169,14 +157,8 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Alamat Pabrik <span class="required"></label>
-                    <textarea rows="8" class="form-control" name="alamat_pabrik" required>{{ $user->peserta->alamat_pabrik }}</textarea>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
                     <label class="text-black font-w600">Kota <span class="required">*</span></label>
-                    <select class="form-control" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
+                    <select class="form-control" id="kabupaten" name="master_kota_kabupaten_id">
                       @foreach ($dataKabupaten as $kabupaten)
                         <option {{ $user->peserta->master_kota_kabupaten_id == $kabupaten->id ? 'selected' : '' }} value="{{ $kabupaten->id }}">
                           {{ $kabupaten->master_kota_kabupaten_id }}
@@ -185,18 +167,14 @@ $user = auth()->user();
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                
+                <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
-                    <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">
-                      @foreach ($dataProvinsi as $provinsi)
-                        <option {{ $user->peserta->master_provinsi_id == $provinsi->id ? 'selected' : '' }} value="{{ $provinsi->id }}">
-                          {{ $provinsi->nama_provinsi }}
-                        </option>
-                      @endforeach
-                    </select>
+                    <label class="text-black font-w600">Alamat Pabrik <span class="required"></label>
+                    <textarea rows="8" class="form-control" name="alamat_pabrik" required>{{ $user->peserta->alamat_pabrik }}</textarea>
                   </div>
                 </div>
+                
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Email Sekretariat Perusahaan <span class="required">*</span></label>

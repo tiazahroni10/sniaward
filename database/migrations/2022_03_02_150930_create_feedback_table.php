@@ -18,6 +18,7 @@ class CreateFeedbackTable extends Migration
             $table->foreignId('evaluator_id')->nullable()->constrained('users');
             $table->foreignId('peserta_id')->nullable()->constrained('users');
             $table->string('potongan_deskripsi')->nullable();
+            $table->boolean('status',1)->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

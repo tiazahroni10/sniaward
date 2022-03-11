@@ -28,6 +28,8 @@ class CreatePesertaTable extends Migration
             $table->year('tahun_berdiri')->nullable(true);
             $table->string('status_kepemilikan',10)->nullable(true);
             $table->string('tipe_produk',50)->nullable(true);
+            $table->boolean('ekspor',1)->nullable();
+            $table->string('negara_tujuan',50)->nullable();
             $table->decimal('kekayaan_organisasi',12,3)->nullable(true);
             $table->decimal('hasil_penjualan_organisasi',12,3)->nullable(true);
             $table->string('tipe_organisasi',100)->nullable(true);

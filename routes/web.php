@@ -22,6 +22,8 @@ use App\Http\Controllers\MasterKotaKabupatenController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PenjadwalanAcaraController;
+use App\Http\Controllers\PenjadwalanSeController;
+use App\Http\Controllers\PenugasanSeController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
@@ -88,7 +90,10 @@ Route::middleware(['is_verified', 'peserta'])->group(function () {
 Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/evaluator/data', [EvaluatorController::class, 'dataTables'])->name('dataevaluator');
     Route::get('/admin/peserta/data', [PesertaController::class, 'dataTables'])->name('datapeserta');
+    Route::get('/admin/penugasanse/data', [PenugasanSeController::class, 'seTables'])->name('datase');
     Route::get('/admin/berita/data', [BeritaController::class, 'dataTables'])->name('databerita');
+
+    Route::get('/admin/se/data/{user_id}', [PenugasanSeController::class, 'penugasanSePeserta'])->name('penugasanSePeserta');
 
     Route::get('/admin/peserta', [PesertaController::class, 'showDataPeserta'])->name('showDataPeserta');
     Route::get('/admin/detailpeserta/{user_id}', [PesertaController::class, 'detailPeserta'])->name('detailPeserta');
@@ -113,6 +118,7 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::resource('/admin/berita', BeritaController::class)->except(['show']);
     Route::resource('/admin/faq', FaqController::class)->except(['show']);
     Route::resource('/admin/penjadwalanacara', PenjadwalanAcaraController::class)->except(['show']);
+    Route::resource('/admin/penugasanse', PenugasanSeController::class)->except(['show']);
 });
 
 // bagian evaluator

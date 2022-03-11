@@ -16,7 +16,9 @@ class UserFactory extends Factory
     {
         return [
             'email' => $this->faker->email(),
-            'password' => Str::random(15)// password
+            'password' => bcrypt('1111'),
+            'peran' => $this->faker->randomElement(['evaluator','peserta']),
+            'status' => 1
             
         ];
     }
