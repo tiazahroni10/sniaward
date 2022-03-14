@@ -3,35 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluator;
-use App\Models\PenugasanSe;
+use App\Models\PenugasanDe;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class PenugasanSeController extends Controller
+class PenugasanDeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     function __construct()
     {
         $this->user = new User();
         $this->peserta = new Peserta();
-        $this->penugsanSe = new PenugasanSe();
+        $this->penugsanDe = new PenugasanDe();
     }
     public function index()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
-        $dataSe = PenugasanSe::all();
-        return view('admin.penugasanse.index', $data = [
+        // $dataDe = PenugasanDe::all();
+        return view('admin.penugasande.index', $data = [
             'menu' => 'Penjadwalan Acara',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPenugasanSe' => $dataSe
+            // 'dataPenugasanDe' => $dataDe
         ]);
     }
 
@@ -57,13 +58,15 @@ class PenugasanSeController extends Controller
             'evaluator_id' => ['required'],
             'mulai' => ['required'],
             'hingga' => ['required'],
-            'peserta_id' => ['required']
+            'peserta_id' => ['required'],
+            'lokasi_perusahaan' => ['required'],
+            'nama_organisasi' => ['required']
         ]);
-        $validatedData['kategori'] = 'se';
+        $validatedData['kategori'] = 'de';
         $validatedData['status'] = false;
         $validatedData['admin_id'] = auth()->user()->id;
-        PenugasanSe::create($validatedData);
-        return redirect()->route('penugasanse.index')->with('sukses','penugasan berhasil ditambahkan');
+        PenugasanDe::create($validatedData);
+        return redirect()->route('penugasande.index')->with('sukses','penugasan berhasil ditambahkan');
     }
 
     /**
@@ -111,31 +114,30 @@ class PenugasanSeController extends Controller
         //
     }
 
-    public function seTables()
+    public function deTables()
 	{
 		$model = Peserta::query();
 		return DataTables::eloquent($model)
 			->addColumn('action', function (Peserta $peserta) {
-				return '<a href="/admin/se/data/' . $peserta->user_id . '"><span class="badge badge-info">Info</span></a>';
+				return '<a href="/admin/de/data/' . $peserta->user_id . '"><span class="badge badge-info">Info</span></a>';
 			})
 			->toJson();
 	}
-
-    public function penugasanSePeserta($user_id)
+    public function penugasanDePeserta($user_id)
     {
 
         $idUser = auth()->user()->id;
 		$data = $this->user->getUser($idUser);
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
-        $dataPenugasanSe = $this->penugsanSe->getPenugasanWithEvaluator($user_id);
-		return view('admin.penugasanse.show', $data = [
+        $dataPenugasanDe = $this->penugsanDe->getPenugasanWithEvaluator($user_id);
+		return view('admin.penugasande.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
             'dataEvaluator' => $dataEvaluator,
-            'dataPenugasanSe' => $dataPenugasanSe
+            'dataPenugasanDe' => $dataPenugasanDe
 		]);
     }
 }

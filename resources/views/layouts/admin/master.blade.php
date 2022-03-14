@@ -200,6 +200,34 @@
         ]
       });
     });
+
+  </script>
+  {{-- deTable --}}
+  <script>
+    $(document).ready(function() {
+      $('#deTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('datade') !!}',
+        columns: [{
+            data: 'nama_organisasi',
+            name: 'nama_organisasi'
+          },
+          {
+            data: 'tipe_organisasi',
+            name: 'tipe_organisasi'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
   </script>
 
   <script>

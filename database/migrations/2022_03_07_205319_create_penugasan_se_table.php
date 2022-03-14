@@ -20,6 +20,7 @@ class CreatePenugasanSeTable extends Migration
             $table->foreignId('peserta_id')->nullable()->constrained('users');
             $table->string('kategori',50)->nullable();
             $table->string('judul',100)->nullable();
+            $table->boolean('status')->nullable();
             $table->date('mulai')->nullable();
             $table->date('hingga')->nullable();
             $table->timestamps();

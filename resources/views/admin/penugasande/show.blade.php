@@ -155,10 +155,12 @@
                     </div>
                 </div>
             </div>
-        @if ($dataPenugasanSe == null)
-            <form action="{{ route('penugasanse.store') }}" method="POST">
+        @if ($dataPenugasanDe == null)
+            <form action="{{ route('penugasande.store') }}" method="POST">
             @csrf
             <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
+            <input type="hidden" name="lokasi_perusahaan" value="{{ $dataPeserta->alamat_organisasi }}">
+            <input type="hidden" name="nama_organisasi" value="{{ $dataPeserta->nama_organisasi }}">
             <div class="row mb-2">
                 <div class="col-4">
                     <label for="evaluator">Evaluator</label>
@@ -199,7 +201,7 @@
                                 <h5>Nama Evaluator</h5>
                             </div>
                             <div class="col-md-auto">
-                                <h5>{{ $dataPenugasanSe->nama_lengkap }}</h5>
+                                <h5>{{ $dataPenugasanDe->nama_lengkap }}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -207,7 +209,7 @@
                                 <h5>Mulai</h5>
                             </div>
                             <div class="col-md-auto">
-                                <h5>{{ $dataPenugasanSe->mulai }}</h5>
+                                <h5>{{ $dataPenugasanDe->mulai }}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -215,7 +217,7 @@
                                 <h5>Hingga</h5>
                             </div>
                             <div class="col-md-auto">
-                                <h5>{{ $dataPenugasanSe->hingga }}</h5>
+                                <h5>{{ $dataPenugasanDe->hingga }}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -223,7 +225,7 @@
                                 <h5>Status</h5>
                             </div>
                             <div class="col-md-auto">
-                                @if ($dataPenugasanSe->status)
+                                @if ($dataPenugasanDe->status)
                                     <div class="badge badge-success">Selesai</div>
                                 @else
                                     <div class="badge badge-warning">Tertunda</div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
 use App\Models\Feedback;
+use App\Models\PenugasanDe;
 use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,13 +18,22 @@ class BerkasLampiranPesertaController extends Controller
 		$this->user = new User();
 		$this->feedback = new Feedback();
 		$this->berkasPeserta = new DokumenPeserta();
+		$this->penugasanDe = new PenugasanDe();
+		$this->peserta = new Peserta();
 	}
 
 	public function index()
 	{
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
-		$dataPeserta = Peserta::all('user_id', 'nama_organisasi');
+		// $dataPeserta = Peserta::all('user_id', 'nama_organisasi');
+		// dd($dataPeserta);
+		$idPeserta = $this->penugasanDe->getIdPeserta($id);
+		$dataPeserta= [];
+		foreach ($idPeserta as $id) {
+			$dataPeserta[] = $this->peserta->getNamaPeserta($id->peserta_id);
+		}
+		// dd($dataPeserta);
 		return view('evaluator.berkas_peserta.index', $data = [
 			'menu' => 'Data Master',
 			'data' => $data,

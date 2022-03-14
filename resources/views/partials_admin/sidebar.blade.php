@@ -51,6 +51,7 @@
                         <ul aria-expanded="false">
                         <li><a href="{{ route('penjadwalanacara.index') }}">Penjadwalan Acara</a></li>
                         <li><a href="{{ route('penugasanse.index') }}">Penjadwalan Se</a></li>
+                        <li><a href="{{ route('penugasande.index') }}">Penjadwalan Se</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

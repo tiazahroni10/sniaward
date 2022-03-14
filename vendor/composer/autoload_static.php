@@ -546,6 +546,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Http\\Controllers\\PekerjaanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PekerjaanController.php',
         'App\\Http\\Controllers\\PendidikanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PendidikanController.php',
         'App\\Http\\Controllers\\PenjadwalanAcaraController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenjadwalanAcaraController.php',
+        'App\\Http\\Controllers\\PenugasanDeController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenugasanDeController.php',
         'App\\Http\\Controllers\\PenugasanSeController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenugasanSeController.php',
         'App\\Http\\Controllers\\PersyaratanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersyaratanController.php',
         'App\\Http\\Controllers\\PertanyaanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PertanyaanController.php',
