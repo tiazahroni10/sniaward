@@ -8,7 +8,9 @@ use App\Models\MasterProvinsi;
 use App\Models\MasterSektorKategori;
 use App\Models\MasterSni;
 use App\Models\Peserta;
+use App\Models\SniPeserta;
 use App\Models\User;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -27,6 +29,7 @@ class PesertaController extends Controller
 		$this->user = new User();
 		$this->peserta = new Peserta();
 		$this->feedback = new Feedback();
+		$this->sniPeserta = new SniPeserta();
 	}
 
 	public function index()
@@ -38,18 +41,9 @@ class PesertaController extends Controller
 		$oldFeedback = $this->feedback->oldFeedback($id, 0);
 		$dataKabupaten = MasterKotaKabupaten::all();
 		$dataProvinsi = MasterProvinsi::all();
-		$dataSNI = [
-			[
-				'id' => 1,
-				'nomor_sni' => '1231213',
-				'nama_lembaga_sertifikasi' => 'PT Cinta Abadi Jaya'
-			],
-			[
-				'id' => 2,
-				'nomor_sni' => '4071714',
-				'nama_lembaga_sertifikasi' => 'PT Cinta Abadi Jaya'
-			]
-		];
+		$dataSni = MasterSni::all();
+		$dataSektorKategori = MasterSektorKategori::all();
+		$dataSniPeserta = $this->sniPeserta->getSniPeserta($id);
 		return view('peserta.profil', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
@@ -59,7 +53,9 @@ class PesertaController extends Controller
 			'oldFeedback' => $oldFeedback,
 			'dataKabupaten' => $dataKabupaten,
 			'dataProvinsi' => $dataProvinsi,
-			'dataSNI' => $dataSNI
+			'dataSni' => $dataSni,
+			'dataSektorKategori' => $dataSektorKategori,
+			'dataSniPeserta' => $dataSniPeserta
 		]);
 	}
 
@@ -148,11 +144,12 @@ class PesertaController extends Controller
 		//     'tahun_lulus' => ['required'],
 		//     'ijazah' =>['required']
 		// ]);
+
+		
 		DB::table('peserta')
 			->where('user_id', $id)
 			->update([
 				'nama_organisasi' => $request->nama_organisasi,
-				'master_sni_id' => $request->master_sni_id,
 				'alamat_organisasi' => $request->alamat_organisasi,
 				'alamat_pabrik' => $request->alamat_pabrik,
 				'master_provinsi_id' => $request->master_provinsi_id,
@@ -162,11 +159,16 @@ class PesertaController extends Controller
 				'website' => $request->website,
 				'tahun_berdiri' => $request->tahun_berdiri,
 				'status_kepemilikan' => $request->status_kepemilikan,
-				'tipe_produk' => $request->tipe_produk,
 				'master_sektor_kategori_id' => $request->master_sektor_kategori_id,
 				'kekayaan_organisasi' => $request->kekayaan_organisasi,
 				'hasil_penjualan_organisasi' => $request->hasil_penjualan_organisasi,
 				'tipe_organisasi' => $request->tipe_organisasi,
+				'status_kepemilikan' =>$request->status_kepemilikan,
+				'ekspor' =>$request->ekspor,
+				'negara_ekspor' => $request->negara_ekspor,
+				'tahun_ekspor' => $request->tahun_ekspor,
+				'tipe_sni' => join(',',$request->sni),
+				'tipe_produk' => $request->tipe_produk,
 				'gambar' => $data['gambar']
 			]);
 		// $dataProfil = Peserta::where('user_id',$id)->get()->first();
@@ -225,13 +227,24 @@ class PesertaController extends Controller
 		]);
 	}
 
-	public function simpanSNI(Request $request)
+	public function simpanSniPeserta(Request $request)
 	{
 		if (!empty($request->id)) {
-			// TODO: fungsi update data SNIs
-			$id = $request->id;
+			$validatedData = $request->validate([
+				'master_sni_id' => ['required'],
+				'nama_lembaga_sertifikasi' => ['required']
+			]);
+			$sniPeserta = SniPeserta::findOrFail($request->id);
+			$sniPeserta->update($validatedData);
+			return redirect()->route('profilpeserta.index')->with('sukses','SNI diubah');
 		} else {
-			// TODO: simpan data SNI baru
+			$validatedData = $request->validate([
+				'master_sni_id' => ['required'],
+				'nama_lembaga_sertifikasi' => ['required']
+			]);
+			$validatedData['user_id'] = auth()->user()->id;
+			SniPeserta::create($validatedData);
+			return redirect()->route('profilpeserta.index')->with('sukses','SNI ditambahkan');
 		}
 	}
 }

@@ -599,6 +599,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Models\\Peserta' => __DIR__ . '/../..' . '/app/Models/Peserta.php',
         'App\\Models\\Sekretariat' => __DIR__ . '/../..' . '/app/Models/Sekretariat.php',
         'App\\Models\\Sertifikat' => __DIR__ . '/../..' . '/app/Models/Sertifikat.php',
+        'App\\Models\\SniPeserta' => __DIR__ . '/../..' . '/app/Models/SniPeserta.php',
         'App\\Models\\TokenPassword' => __DIR__ . '/../..' . '/app/Models/TokenPassword.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

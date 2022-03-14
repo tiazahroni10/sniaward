@@ -79,10 +79,10 @@ Route::post('/getkabupaten', [MasterKotaKabupatenController::class, 'getKabupate
 //bagian peserta
 Route::middleware(['is_verified', 'peserta'])->group(function () {
     Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create', 'show', 'store', 'destroy']);
-    Route::post('/peserta/simpanSNI', [PesertaController::class, 'simpanSNI'])->name('peserta.simpanSNI');
     Route::resource('/peserta/kontak', KontakController::class);
     Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'destroy']);
     Route::get('/peserta/persyaratan', [PersyaratanController::class, 'persyaratanSniAward'])->name('persyaratanSniAward');
+    Route::post('/peserta/simpansnipeserta', [PesertaController::class, 'simpanSniPeserta'])->name('simpanSniPeserta');
 });
 
 // bagian admin

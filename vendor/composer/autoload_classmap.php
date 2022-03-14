@@ -80,6 +80,7 @@ return array(
     'App\\Models\\Peserta' => $baseDir . '/app/Models/Peserta.php',
     'App\\Models\\Sekretariat' => $baseDir . '/app/Models/Sekretariat.php',
     'App\\Models\\Sertifikat' => $baseDir . '/app/Models/Sertifikat.php',
+    'App\\Models\\SniPeserta' => $baseDir . '/app/Models/SniPeserta.php',
     'App\\Models\\TokenPassword' => $baseDir . '/app/Models/TokenPassword.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

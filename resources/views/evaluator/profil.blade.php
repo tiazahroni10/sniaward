@@ -1,4 +1,4 @@
-@extends('layouts.admin.master')
+@extends('layouts.evaluator.master')
 @php
 $user = auth()->user();
 @endphp
@@ -36,7 +36,7 @@ $user = auth()->user();
                 <table>
                   <tr>
                     <td>Gender</td>
-                    <td class="col-data">: {{ $user->evaluator->jenis_kelamin }}</td>
+                    <td class="col-data">: @if ($user->evaluator->jenis_kelamin == "P") Perempuan @else Laki Laki @endif</td>
                   </tr>
                   <tr>
                     <td>Tanggal Lahir</td>
@@ -310,6 +310,7 @@ $user = auth()->user();
           </div>
           <div class="modal-body">
             <form class="comment-form" action="{{ route('profilevaluator.update', $user->id) }}" method="POST">
+              @method('PUT')
               @csrf
               <div class="row">
                 <div class="col-lg-12">
@@ -329,6 +330,23 @@ $user = auth()->user();
                     <label class="text-black font-w600">Gelar Setelah Nama <span class="required">*</span></label>
                     <input type="text" class="form-control" value="{{ $user->evaluator->gelar_setelah_nama }}" name="gelar_setelah_nama">
                   </div>
+                </div>
+                <div class="col-lg-12">
+                  <label for="jenis_kelamin">Jenis Kelamin</label>
+                  <div class="form-group mb-0 @error('jenis_kelamin') is-invalid @enderror">
+                      @if ($user->evaluator->jenis_kelamin== "P")
+                          <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="L"> Laki Laki</label>
+                          <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="P" checked> Perempuan</label>
+                      @else
+                          <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="L" checked> Laki Laki</label>
+                          <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="P"> Perempuan</label>
+                      @endif
+                  </div>
+                  @error('jenis_kelamin')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                  @enderror
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
@@ -356,24 +374,26 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
-                    <select class="form-control" id="master_kota_kabupaten_id" name="master_kota_kabupaten_id">
-                      @foreach ($dataKabupaten as $kabupaten)
-                        <option {{ $user->evaluator->master_kota_kabupaten_id == $kabupaten->id ? 'selected' : '' }} value="{{ $kabupaten->id }}">
-                          {{ $kabupaten->master_kota_kabupaten_id }}
-                        </option>
+                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
+                    <select class="form-control" id="provinsi" name="master_provinsi_id">
+                      @foreach ($dataProvinsi as $provinsi)
+                        @if (old('master_provinsi_id',$user->evaluator->master_provinsi_id)==$provinsi->id)
+                            <option value="{{ $provinsi->id }}" selected>{{ $provinsi->nama }}</option>
+                        @else
+                            <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                        @endif
                       @endforeach
                     </select>
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
-                    <select class="form-control" id="master_provinsi_id" name="master_provinsi_id">
-                      @foreach ($dataProvinsi as $provinsi)
-                        <option {{ $user->evaluator->master_provinsi_id == $provinsi->id ? 'selected' : '' }} value="{{ $provinsi->id }}">
-                          {{ $provinsi->nama_provinsi }}
-                        </option>
+                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                    <select class="form-control" id="kabupaten" name="master_kota_kabupaten_id">
+                      @foreach ($dataKabupaten as $kabupaten)
+                          @if (old('master_kota_kabupaten_id',$user->evaluator->master_kota_kabupaten_id)==$kabupaten->id)
+                              <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->nama }}</option>
+                          @endif
                       @endforeach
                     </select>
                   </div>

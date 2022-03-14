@@ -25,11 +25,12 @@ class CreatePesertaTable extends Migration
             $table->string('email_perusahaan',20)->nullable(true);
             $table->string('nomor_telepon',13)->nullable(true);
             $table->string('website',20)->nullable(true);
-            $table->year('tahun_berdiri')->nullable(true);
+            $table->date('tahun_berdiri')->nullable(true);
             $table->string('status_kepemilikan',10)->nullable(true);
             $table->string('tipe_produk',50)->nullable(true);
             $table->boolean('ekspor',1)->nullable();
             $table->string('negara_tujuan',50)->nullable();
+            $table->integer('tahun_ekspor',5)->nullable();
             $table->decimal('kekayaan_organisasi',12,3)->nullable(true);
             $table->decimal('hasil_penjualan_organisasi',12,3)->nullable(true);
             $table->string('tipe_organisasi',100)->nullable(true);
