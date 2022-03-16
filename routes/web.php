@@ -144,4 +144,7 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/berkas/verifikasi/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'verifikasiBerkasDokumen'])->name('verifikasiBerkasDokumen');
     Route::get('/evaluator/berkas/tolak/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'lengkapiBerkasDokumen'])->name('lengkapiBerkasDokumen');
     Route::post('/evaluator/berkas/kirimfeedback', [BerkasLampiranPesertaController::class, 'feedback'])->name('feedback');
+    Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
+
+
 });

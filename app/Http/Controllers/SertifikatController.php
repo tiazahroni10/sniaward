@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalAcara;
 use App\Models\Sertifikat;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,17 +20,21 @@ class SertifikatController extends Controller
     {
         $this->user = new User();
         $this->sertifikat = new Sertifikat();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataSertifikat = Sertifikat::where('user_id',$id)->get();
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+
         return view('evaluator.sertifikat.index', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataSertifikat' => $dataSertifikat
+            'dataSertifikat' => $dataSertifikat,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -41,11 +46,13 @@ class SertifikatController extends Controller
     public function create()
     {
         $id = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($id);
         return view('evaluator.sertifikat.create', $data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -89,11 +96,13 @@ class SertifikatController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         $dataSertifikat = Sertifikat::findOrFail($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('evaluator.sertifikat.edit', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataSertifikat' => $dataSertifikat
+            'dataSertifikat' => $dataSertifikat,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluator;
+use App\Models\JadwalAcara;
 use App\Models\PenugasanSe;
 use App\Models\Peserta;
 use App\Models\User;
@@ -20,7 +21,8 @@ class PenugasanSeController extends Controller
     {
         $this->user = new User();
         $this->peserta = new Peserta();
-        $this->penugsanSe = new PenugasanSe();
+        $this->penugasanSe = new PenugasanSe();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {
@@ -128,7 +130,7 @@ class PenugasanSeController extends Controller
 		$data = $this->user->getUser($idUser);
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
-        $dataPenugasanSe = $this->penugsanSe->getPenugasanWithEvaluator($user_id);
+        $dataPenugasanSe = $this->penugasanSe->getPenugasanWithEvaluator($user_id);
 		return view('admin.penugasanse.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
@@ -136,6 +138,24 @@ class PenugasanSeController extends Controller
 			'dataPeserta' => $dataPeserta,
             'dataEvaluator' => $dataEvaluator,
             'dataPenugasanSe' => $dataPenugasanSe
+		]);
+    }
+
+    public function showPenugasanSeById()
+    {
+        $idUser = auth()->user()->id;
+		$data = $this->user->getUser($idUser);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $penugasanSe = $this->penugasanSe->getPenugasanByIdEvaluator($idUser);
+		// $dataPeserta = $this->peserta->dataPeserta($id)->first();
+        // $dataEvaluator = Evaluator::where('flag_complated',1)->get();
+        // $dataPenugasanSe = $this->penugsanSe->getPenugasanWithEvaluator($id);
+		return view('evaluator.penugasanse.index', $data = [
+			'menu' => 'Peserta',
+			'data' => $data,
+			'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara,
+            'penugasanSe' => $penugasanSe
 		]);
     }
 }

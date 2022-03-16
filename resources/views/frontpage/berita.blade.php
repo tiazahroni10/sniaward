@@ -21,7 +21,7 @@
                <ul class="post-meta">
                  <li>
                    <i class="fa fa-calendar"></i>
-                   {{ $data->rilis }}
+                   {{ date('d F Y', strtotime($data->rilis)) }}
                  </li>
                </ul>
                <h3>

@@ -79,72 +79,23 @@
                                 <div class="dropdown-menu rounded dropdown-menu-right">
                                     <div id="DZ_W_Notification1" class="widget-media dz-scroll p-3 height380">
 										<ul class="timeline">
-											<li>
-												<div class="timeline-panel">
+											@foreach ($jadwalAcara as $item)
+												<li>
+												<a href="{{ route('lampiran.index') }}">
+                                                <div class="timeline-panel">
 													<div class="media mr-2">
-														<img alt="image" width="50" src="images/avatar/1.jpg">
+														<img alt="image" width="50" src="assets/img/notifications.png">
 													</div>
 													<div class="media-body">
-														<h6 class="mb-1">Dr sultads Send you Photo</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
+														<h6 class="mb-1"><u>{{ $item->kategori }}</u></h6>
+														<p class="mb-1 text-body">{{ $item->judul }}</p>
+														<small class="d-block fs-6">{{ date('d F Y | g:i A', strtotime($item->created_at))}}</small>
 													</div>
 												</div>
+                                                </a>
+                                                
 											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-info">
-														KG
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Resport created successfully</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-success">
-														<i class="fa fa-home"></i>
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Reminder : Treatment Time!</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											 <li>
-												<div class="timeline-panel">
-													<div class="media mr-2">
-														<img alt="image" width="50" src="images/avatar/1.jpg">
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Dr sultads Send you Photo</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-danger">
-														KG
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Resport created successfully</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
-											<li>
-												<div class="timeline-panel">
-													<div class="media mr-2 media-primary">
-														<i class="fa fa-home"></i>
-													</div>
-													<div class="media-body">
-														<h6 class="mb-1">Reminder : Treatment Time!</h6>
-														<small class="d-block">29 July 2020 - 02:26 PM</small>
-													</div>
-												</div>
-											</li>
+											@endforeach
 										</ul>
 									</div>
                                     <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>

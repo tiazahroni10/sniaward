@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalAcara;
 use App\Models\Pendidikan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,17 +20,20 @@ class PendidikanController extends Controller
     {
         $this->user = new User();
         $this->pendidikan = new Pendidikan();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataPendidikan = Pendidikan::where('user_id',$id)->get();
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('evaluator.pendidikan.index', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPendidikan' => $dataPendidikan
+            'dataPendidikan' => $dataPendidikan,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -41,11 +45,13 @@ class PendidikanController extends Controller
     public function create()
     {
         $id = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($id);
         return view('evaluator.pendidikan.create', $data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -90,13 +96,15 @@ class PendidikanController extends Controller
     {
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $dataPendidikan = Pendidikan::findOrFail($id);
         
         return view('evaluator.pendidikan.edit', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPendidikan' => $dataPendidikan
+            'dataPendidikan' => $dataPendidikan,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalAcara;
 use App\Models\Pekerjaan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,17 +19,20 @@ class PekerjaanController extends Controller
     {
         $this->user = new User();
         $this->pekerjaan = new Pekerjaan();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataPekerjaan = Pekerjaan::where('user_id',$id)->get();
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('evaluator.pekerjaan.index', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPekerjaan' => $dataPekerjaan
+            'dataPekerjaan' => $dataPekerjaan,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -40,11 +44,13 @@ class PekerjaanController extends Controller
     public function create()
     {
         $id = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($id);
         return view('evaluator.pekerjaan.create', $data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -88,12 +94,14 @@ class PekerjaanController extends Controller
     {
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $dataPekerjaan = Pekerjaan::findOrFail($id);
         return view('evaluator.pekerjaan.edit', $data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataPekerjaan' => $dataPekerjaan
+            'dataPekerjaan' => $dataPekerjaan,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
 use App\Models\Feedback;
+use App\Models\JadwalAcara;
 use App\Models\PenugasanDe;
 use App\Models\Peserta;
 use App\Models\User;
@@ -20,25 +21,25 @@ class BerkasLampiranPesertaController extends Controller
 		$this->berkasPeserta = new DokumenPeserta();
 		$this->penugasanDe = new PenugasanDe();
 		$this->peserta = new Peserta();
+		$this->jadwalAcara = new JadwalAcara();
 	}
 
 	public function index()
 	{
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
-		// $dataPeserta = Peserta::all('user_id', 'nama_organisasi');
-		// dd($dataPeserta);
 		$idPeserta = $this->penugasanDe->getIdPeserta($id);
 		$dataPeserta= [];
 		foreach ($idPeserta as $id) {
 			$dataPeserta[] = $this->peserta->getNamaPeserta($id->peserta_id);
 		}
-		// dd($dataPeserta);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('evaluator.berkas_peserta.index', $data = [
 			'menu' => 'Data Master',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
+			'jadwalAcara' => $jadwalAcara
 		]);
 	}
 
@@ -49,6 +50,7 @@ class BerkasLampiranPesertaController extends Controller
 		$dataFeedback = $this->feedback->getFeedback($id,$idEvaluator);
 		$oldFeedback = $this->feedback->oldFeedback($id,0);
 		$dataDokumen = $this->berkasPeserta->getDataDoc($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 
 		$tampilkanFormFeedback = false;
 		foreach ($dataDokumen as $dokumen) {
@@ -66,7 +68,8 @@ class BerkasLampiranPesertaController extends Controller
 			'dataDokumen' => $dataDokumen,
 			'dataFeedback' => $dataFeedback,
 			'oldFeedback' =>$oldFeedback,
-			'tampilkanFormFeedback' => $tampilkanFormFeedback
+			'tampilkanFormFeedback' => $tampilkanFormFeedback,
+			'jadwalAcara' => $jadwalAcara
 		]);
 	}
 

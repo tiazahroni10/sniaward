@@ -36,8 +36,8 @@
                         
                         <th>No</th>
                         <th class="pl-5">Judul</th>
-                        <th class="pl-5">Mulai</th>
-                        <th class="pl-5">Hingga</th>
+                        <th class="pl-5 text-right">Mulai</th>
+                        <th class="pl-5 text-right">Hingga</th>
                         <th class="pl-5 text-right">Aksi</th>
                         </tr>
                     </thead>
@@ -50,8 +50,8 @@
                                 </div>
                             </td>
                             <td class="py-2 pl-5 wspace-no">{{ $event->judul }}</td>
-                            <td class="py-2 pl-5 wspace-no">{{ $event->mulai }}</td>
-                            <td class="py-2 pl-5 wspace-no">{{ $event->hingga }}</td>
+                            <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->mulai)) }}</td>
+                            <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->hingga)) }}</td>
                             <td class="py-2 text-right">
                             <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-info text-white"><span>Ubah</span>
                             </a>

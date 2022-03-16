@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feedback;
+use App\Models\JadwalAcara;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\MasterSektorKategori;
@@ -30,6 +31,7 @@ class PesertaController extends Controller
 		$this->peserta = new Peserta();
 		$this->feedback = new Feedback();
 		$this->sniPeserta = new SniPeserta();
+		$this->jadwalAcara = new JadwalAcara();
 	}
 
 	public function index()
@@ -44,6 +46,7 @@ class PesertaController extends Controller
 		$dataSni = MasterSni::all();
 		$dataSektorKategori = MasterSektorKategori::all();
 		$dataSniPeserta = $this->sniPeserta->getSniPeserta($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('peserta.profil', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
@@ -55,7 +58,8 @@ class PesertaController extends Controller
 			'dataProvinsi' => $dataProvinsi,
 			'dataSni' => $dataSni,
 			'dataSektorKategori' => $dataSektorKategori,
-			'dataSniPeserta' => $dataSniPeserta
+			'dataSniPeserta' => $dataSniPeserta,
+			'jadwalAcara' => $jadwalAcara
 		]);
 	}
 
@@ -106,6 +110,7 @@ class PesertaController extends Controller
 		$dataProfil = $this->peserta->getPesertaWithUserId($id);
 		$dataSni = MasterSni::all();
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		$oldFeedback = $this->feedback->oldFeedback($id, 0);
 		return view('peserta/edit', $data = [
 			'menu' => 'Profil',
@@ -117,7 +122,8 @@ class PesertaController extends Controller
 			'dataSektorKategori' => $dataSektorKategori,
 			'dataProfil' => $dataProfil,
 			'feedback' => $feedback,
-			'oldFeeback' => $oldFeedback
+			'oldFeeback' => $oldFeedback,
+			'jadwalAcara' => $jadwalAcara
 		]);
 	}
 

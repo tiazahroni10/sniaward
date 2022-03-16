@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Middleware\IsVerified;
 use App\Models\DokumenPeserta;
 use App\Models\Feedback;
+use App\Models\JadwalAcara;
 use App\Models\MasterUnggahLampiran;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class UnggahLampiranController extends Controller
         $this->user = new User();
         $this->dokumen = new DokumenPeserta();
         $this->feedback = new Feedback();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {   
@@ -30,6 +32,7 @@ class UnggahLampiranController extends Controller
         $data = $this->user->getUser($id);
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
         $oldFeedback = $this->feedback->oldFeedback($id,0);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $dataDokumen = $this->dokumen->getDataDoc($id);
         $isNew = 'new';
         if ($feedback->first() != null) {
@@ -50,7 +53,8 @@ class UnggahLampiranController extends Controller
             'feedback' => $feedback,
             'isNew' => $isNew,
             'oldFeedback' => $oldFeedback,
-            'isVerify' => $isVerify
+            'isVerify' => $isVerify,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -64,6 +68,7 @@ class UnggahLampiranController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $oldFeedback = $this->feedback->oldFeedback($id,0);
 
         $dataMasterLampiran = MasterUnggahLampiran::all();
@@ -73,7 +78,8 @@ class UnggahLampiranController extends Controller
             'peran' => auth()->user()->peran,
             'dataMasterLampiran' => $dataMasterLampiran,
             'feedback' => $feedback,
-            'oldFeedback' => $feedback
+            'oldFeedback' => $feedback,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -119,6 +125,7 @@ class UnggahLampiranController extends Controller
         $data = $this->user->getUser($id);
         $dataDokumen = $this->dokumen->getDataDoc($id);
         $oldFeedback = $this->feedback->oldFeedback($id,0);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
         return view('peserta.lampiran.edit', $data=[
             'menu' => 'Unggah Lampiran',
@@ -127,6 +134,7 @@ class UnggahLampiranController extends Controller
             'feedback' => $feedback,
             'dataDokumen' => $dataDokumen,
             'oldFeedback' =>$oldFeedback,
+            'jadwalAcara'=> $jadwalAcara
         ]);
     }
 
