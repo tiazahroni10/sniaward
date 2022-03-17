@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenCapacityBuilding;
+use App\Models\JadwalAcara;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,17 +18,20 @@ class CapacityBuildingController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {
         $dataCapacityBuilding = DokumenCapacityBuilding::all();
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('admin.capacitybuilding.index', $data = [
             'menu' => 'Dokumen',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataCapacityBuilding' => $dataCapacityBuilding
+            'dataCapacityBuilding' => $dataCapacityBuilding,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -40,10 +44,12 @@ class CapacityBuildingController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('admin.capacitybuilding.create', $data = [
             'menu' => 'Dokumen',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -89,12 +95,14 @@ class CapacityBuildingController extends Controller
     {
         $dataCapacityBuilding = DokumenCapacityBuilding::findOrFail($id);
         $idUser = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($idUser);
         return view('admin.capacitybuilding.edit', $data = [
             'menu' => 'Capacity Building',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataCapacityBuilding' => $dataCapacityBuilding
+            'dataCapacityBuilding' => $dataCapacityBuilding,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -135,12 +143,14 @@ class CapacityBuildingController extends Controller
     {
         $dataCapacityBuilding = DokumenCapacityBuilding::all();
         $id = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($id);
         return view('evaluator.download', $data = [
             'menu' => 'Download',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataCapacityBuilding' => $dataCapacityBuilding
+            'dataCapacityBuilding' => $dataCapacityBuilding,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 }

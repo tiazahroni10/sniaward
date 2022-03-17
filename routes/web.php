@@ -21,10 +21,12 @@ use App\Http\Controllers\LupaPasswordController;
 use App\Http\Controllers\MasterKotaKabupatenController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\PenjadwalanAcaraController;
+use App\Http\Controllers\PenugasanDeController;
+use App\Http\Controllers\PenugasanSeController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\SertifikatController;
 use App\Http\Controllers\UnggahLampiranController;
-use App\Models\MasterKotaKabupaten;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,19 +70,18 @@ Route::get('/detailacara', function () {
 Route::get('/kumpulanberita', [BeritaController::class, 'kumpulanBerita'])->name('kumpulanBerita')->middleware('guest');
 Route::get('/gantipassword', [GantiPasswordController::class, 'index'])->name('gantiPassword')->middleware('auth');
 Route::post('/simpanpasswordbaru/{id}', [GantiPasswordController::class, 'simpanPasswordBaru'])->name('simpanPasswordBaru')->middleware('auth');
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('is_verified')->name('dashboard');
 
 //ambil data kabupaten
 Route::post('/getkabupaten', [MasterKotaKabupatenController::class, 'getKabupaten'])->name('getKabupaten');
 
-
 //bagian peserta
 Route::middleware(['is_verified', 'peserta'])->group(function () {
     Route::resource('/peserta/profilpeserta', PesertaController::class,)->except(['create', 'show', 'store', 'destroy']);
     Route::resource('/peserta/kontak', KontakController::class);
-    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'edit', 'update', 'destroy']);
+    Route::resource('/peserta/lampiran', UnggahLampiranController::class)->except(['show', 'destroy']);
     Route::get('/peserta/persyaratan', [PersyaratanController::class, 'persyaratanSniAward'])->name('persyaratanSniAward');
+    Route::post('/peserta/simpansnipeserta', [PesertaController::class, 'simpanSniPeserta'])->name('simpanSniPeserta');
 });
 
 // bagian admin
@@ -88,17 +89,28 @@ Route::middleware(['is_verified', 'peserta'])->group(function () {
 Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/evaluator/data', [EvaluatorController::class, 'dataTables'])->name('dataevaluator');
     Route::get('/admin/peserta/data', [PesertaController::class, 'dataTables'])->name('datapeserta');
+    Route::get('/admin/penugasanse/data', [PenugasanSeController::class, 'seTables'])->name('datase');
+    Route::get('/admin/penugasande/data', [PenugasanDeController::class, 'deTables'])->name('datade');
     Route::get('/admin/berita/data', [BeritaController::class, 'dataTables'])->name('databerita');
 
+    Route::get('/admin/se/data/{user_id}', [PenugasanSeController::class, 'penugasanSePeserta'])->name('penugasanSePeserta');
+    Route::get('/admin/de/data/{user_id}', [PenugasanDeController::class, 'penugasanDePeserta'])->name('penugasanDePeserta');
+
     Route::get('/admin/peserta', [PesertaController::class, 'showDataPeserta'])->name('showDataPeserta');
+    Route::get('/admin/detailpeserta/{user_id}', [PesertaController::class, 'detailPeserta'])->name('detailPeserta');
 
     Route::get('/admin/evaluator/create', [EvaluatorController::class, 'createEvaluator'])->name('createEvaluator');
     Route::post('/admin/evaluator/store', [EvaluatorController::class, 'storeEvaluator'])->name('storeEvaluator');
     Route::get('/admin/evaluator/', [EvaluatorController::class, 'showDataEvaluator'])->name('showDataEvaluator');
     Route::get('/admin/evaluator/detailevaluator/{user_id}', [EvaluatorController::class, 'detailEvaluator'])->name('detailEvaluator');
     Route::post('/admin/evaluator/verifikasiEvaluator/{user_id}', [EvaluatorController::class, 'verifikasiEvaluator'])->name('verifikasiEvaluator');
+    Route::get('/admin/evaluator/verifikasipekerjaan/{id}/{user_id}', [PekerjaanController::class, 'verifikasiPekerjaan'])->name('verifikasiPekerjaan');
+    Route::get('/admin/evaluator/verifikasisertifikat/{id}/{user_id}', [SertifikatController::class, 'verifikasiSertifikat'])->name('verifikasiSertifikat');
+    Route::get('/admin/evaluator/verifikasipendidikan/{id}/{user_id}', [PendidikanController::class, 'verifikasiPendidikan'])->name('verifikasiPendidikan');
+    Route::get('/admin/detailberita/{slug}', [BeritaController::class, 'detailBeritaAdmin']);
 
     Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
+    Route::post('/admin/profil/update/{id}', [SekretariatController::class, 'perbaruiProfil'])->name('adminProfilUpdate');
     Route::resource('/admin/masterpertanyaan', MasterPertanyaanController::class)->except(['show']);
     Route::resource('/admin/masterdokumen', MasterDokumenController::class)->except(['show']);
     Route::resource('/admin/capacitybuilding', CapacityBuildingController::class)->except(['show']);
@@ -106,17 +118,33 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::resource('/admin/dokumentasi', DokumentasiController::class)->except(['show']);
     Route::resource('/admin/berita', BeritaController::class)->except(['show']);
     Route::resource('/admin/faq', FaqController::class)->except(['show']);
+    Route::resource('/admin/penjadwalanacara', PenjadwalanAcaraController::class)->except(['show']);
+    Route::resource('/admin/penugasanse', PenugasanSeController::class)->except(['show']);
+    Route::resource('/admin/penugasande', PenugasanDeController::class)->except(['show']);
 });
 
 // bagian evaluator
 Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
+    Route::post('/evaluator/profile/simpanRiwayatPendidikan', [EvaluatorController::class, 'simpanRiwayatPendidikan'])->name('evaluator.simpanRiwayatPendidikan');
+    Route::post('/evaluator/profile/simpanRiwayatPekerjaan', [EvaluatorController::class, 'simpanRiwayatPekerjaan'])->name('evaluator.simpanRiwayatPekerjaan');
+    Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('evaluator.simpanRiwayatPelatihan');
+    Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('evaluator.simpanRiwayatDE');
+    Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('evaluator.simpanRiwayatSE');
+    Route::post('/evaluator/profile/simpanSertifikat', [EvaluatorController::class, 'simpanRiwayatSertifikat'])->name('evaluator.simpanSertifikat');
+    Route::post('/evaluator/profile/simpanNPWP', [EvaluatorController::class, 'simpanNPWP'])->name('evaluator.simpanNPWP');
+    Route::post('/evaluator/profile/simpanKTP', [EvaluatorController::class, 'simpanKTP'])->name('evaluator.simpanKTP');
+
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);
     Route::resource('/evaluator/sertifikat', SertifikatController::class);
     Route::resource('/evaluator/pendidikan', PendidikanController::class);
     Route::get('/evaluator/berkas', [BerkasLampiranPesertaController::class, 'index'])->name('berkasDokumen');
     Route::get('/evaluator/berkas/{id}', [BerkasLampiranPesertaController::class, 'detail'])->name('detailBerkasDokumen');
-    Route::get('/evaluator/berkas/verifikasi/{id}', [BerkasLampiranPesertaController::class, 'verifikasi'])->name('verifikasiBerkasDokumen');
-    Route::get('/evaluator/berkas/tolak/{id}', [BerkasLampiranPesertaController::class, 'tolak'])->name('tolakBerkasDokumen');
+    Route::get('/evaluator/berkas/verifikasi/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'verifikasiBerkasDokumen'])->name('verifikasiBerkasDokumen');
+    Route::get('/evaluator/berkas/tolak/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'lengkapiBerkasDokumen'])->name('lengkapiBerkasDokumen');
+    Route::post('/evaluator/berkas/kirimfeedback', [BerkasLampiranPesertaController::class, 'feedback'])->name('feedback');
+    Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
+
+
 });

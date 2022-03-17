@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        // User::factory(400)->create();
         // MasterProvinsi::factory(5)->create();
         // MasterPertanyaan::factory(5)->create();
         // MasterDokumen::factory(5)->create();
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         // MasterKotaKabupaten::factory(5)->create();
         // MasterSni::factory(5)->create();
         // HistoryLogin::factory(20)->create();
-        // Peserta::factory(1000)->create();
+        // Peserta::factory(100)->create();
         // Kontak::factory(20)->create();
         // PertanyaanPeserta::factory(20)->create();
         // DokumenPeserta::factory(20)->create();
@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
         // DokumenBerita::factory(20)->create();
         // DokumenCapacityBuilding::factory(20)->create();
         // DokumenSniAward::factory(20)->create();
-        // Evaluator::factory(3000)->create();
+        // Evaluator::factory(300)->create();
         // Pendidikan::factory(20)->create();
         // Pekerjaan::factory(20)->create();
         // Pelatihan::factory(20)->create();
@@ -66,6 +66,12 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'email' => 'admin@gmail.com',
+            'password'=>bcrypt('1111'),
+            'peran' => 'admin' ,
+            'status'=> true
+        ]);
+        User::create([
+            'email' => 'admin1@gmail.com',
             'password'=>bcrypt('1111'),
             'peran' => 'admin' ,
             'status'=> true

@@ -8,66 +8,68 @@
             <!-- row -->
 			<div class="container-fluid">
 				<div class="row">
-						<div class="col-xl-9">
-							<div class="card">
-								<div class="card-body">
-									<div id="calendar" class="app-fullcalendar"></div>
-								</div>
-							</div>
-						</div>
-						<!-- BEGIN MODAL -->
-						<div class="modal fade none-border" id="event-modal">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title"><strong>Add New Event</strong></h4>
-									</div>
-									<div class="modal-body"></div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-success save-event waves-effect waves-light">Create
-											event</button>
-	
-										<button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Modal Add Category -->
-						<div class="modal fade none-border" id="add-category">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title"><strong>Add a category</strong></h4>
-									</div>
-									<div class="modal-body">
-										<form>
-											<div class="row">
-												<div class="col-md-6">
-													<label class="control-label">Category Name</label>
-													<input class="form-control form-white" placeholder="Enter name" type="text" name="category-name">
-												</div>
-												<div class="col-md-6">
-													<label class="control-label">Choose Category Color</label>
-													<select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
-														<option value="success">Success</option>
-														<option value="danger">Danger</option>
-														<option value="info">Info</option>
-														<option value="pink">Pink</option>
-														<option value="primary">Primary</option>
-														<option value="warning">Warning</option>
-													</select>
-												</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-responsive-lg mb-0 table-striped">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th class="pl-5 width200">Acara</th>
+										<th class="pl-5 text-right">Mulai</th>
+										<th class="pl-5 text-right">Hingga</th>
+									</tr>
+								</thead>
+								<tbody id="customers">
+									@foreach ($jadwalAcara as $acara)
+									<tr class="btn-reveal-trigger">
+										<td class="py-3">
+											<div class="media-body">
+											<h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
 											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
-									</div>
-								</div>
+										</td>
+										<td class="py-2 pl-5 wspace-no">{{ $acara->judul }}</td>
+										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
+										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+								</table>
 							</div>
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="card">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-responsive-lg mb-0 table-striped">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th class="pl-5 width200">Acara</th>
+										<th class="pl-5 text-right">Mulai</th>
+										<th class="pl-5 text-right">Hingga</th>
+									</tr>
+								</thead>
+								<tbody id="customers">
+									@foreach ($jadwalAcara as $acara)
+									<tr class="btn-reveal-trigger">
+										<td class="py-3">
+											<div class="media-body">
+											<h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
+											</div>
+										</td>
+										<td class="py-2 pl-5 wspace-no">{{ $acara->judul }}</td>
+										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
+										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 				</div>
             </div>
         </div>

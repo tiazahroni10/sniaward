@@ -16,9 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.css" />
+  {{-- select2 --}}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   {{-- trix editor --}}
   <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
   <script type="text/javascript" src="/assets/js/trix.js"></script>
+
+  
   <style>
     trix-toolbar [data-trix-button-group="file-tools"] {
       display: none;
@@ -28,16 +32,12 @@
 </head>
 
 <body>
-
   @include('partials_admin.header')
   @include('partials_admin.sidebar')
 
   @yield('content')
 
-
   @include('partials_admin.footer')
-
-
 
   <!-- jQuery Min JS -->
   <script src="{{ asset('admin') }}/js/jquery-3.5.1.min.js"></script>
@@ -72,6 +72,10 @@
 
   {{-- datatables --}}
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.4/datatables.min.js"></script>
+  {{-- Select 2 --}}
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
 
   {{-- evaluator --}}
   {{-- <script>
@@ -117,6 +121,8 @@
       });
     });
   </script>
+  
+  {{-- evaluator --}}
   <script>
     $(document).ready(function() {
       $('#evaluatorTable').DataTable({
@@ -145,7 +151,7 @@
   </script>
 
   {{-- berita --}}
-  {{-- <script>
+  <script>
     $(document).ready(function() {
       $('#beritaTable').DataTable({
         processing: true,
@@ -166,6 +172,70 @@
         ]
       });
     });
-  </script> --}}
+  </script>
+
+  {{-- seTable --}}
+  <script>
+    $(document).ready(function() {
+      $('#seTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('datase') !!}',
+        columns: [{
+            data: 'nama_organisasi',
+            name: 'nama_organisasi'
+          },
+          {
+            data: 'tipe_organisasi',
+            name: 'tipe_organisasi'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
+
+  </script>
+  {{-- deTable --}}
+  <script>
+    $(document).ready(function() {
+      $('#deTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('datade') !!}',
+        columns: [{
+            data: 'nama_organisasi',
+            name: 'nama_organisasi'
+          },
+          {
+            data: 'tipe_organisasi',
+            name: 'tipe_organisasi'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('#evaluator').select2();
+    });
+  </script>
+
+  @stack('scripts')
 
 </body>

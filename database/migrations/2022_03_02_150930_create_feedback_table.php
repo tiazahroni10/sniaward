@@ -15,9 +15,10 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->string('pengirim')->nullable();
-            $table->string('user_id')->nullable();
-            $table->date('tanggal')->nullable();
+            $table->foreignId('evaluator_id')->nullable()->constrained('users');
+            $table->foreignId('peserta_id')->nullable()->constrained('users');
+            $table->string('potongan_deskripsi')->nullable();
+            $table->boolean('status',1)->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

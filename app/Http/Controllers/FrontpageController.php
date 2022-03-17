@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\DokumenSniAward;
 use App\Models\Faq;
 use App\Models\Frontpage;
 use App\Models\Gambar;
@@ -181,12 +182,13 @@ class FrontpageController extends Controller
 		$berita = DB::table('berita')
 			->orderByDesc('created_at')->take(3)->get();
 		$dataFrontpage = $dataFrontpage->last();
-		
+		$dataSniAward = DokumenSniAward::all();
 		return view('home', $dataFrontpage = [
 			'data' => $dataFrontpage,
 			'dataFaq' => $dataFaq,
 			'dataGambar' => $dataGambar,
-			'dataBerita' => $berita
+			'dataBerita' => $berita,
+			'dataSniAward' => $dataSniAward
 		]);
 	}
 

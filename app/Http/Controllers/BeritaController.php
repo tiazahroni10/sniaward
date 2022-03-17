@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use League\CommonMark\Normalizer\SlugNormalizer;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -29,7 +30,7 @@ class BeritaController extends Controller
         $id = auth()->user()->id;
         $dataBerita = Berita::all();
         $data = $this->user->getUser($id);
-        return view('admin/berita/index', $data = [
+        return view('admin.berita.index', $data = [
             'menu' => 'Berita',
             'data' => $data,
             'peran' => auth()->user()->peran,
@@ -99,7 +100,7 @@ class BeritaController extends Controller
     {
         $berita = Berita::find($id);
         $data = $this->user->getUser($id);
-        return \view('admin.berita.update', [
+        return view('admin.berita.edit', [
             'menu' => 'Berita',
             'data' => $data,
             'berita' => $berita,
@@ -116,7 +117,16 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        if($request->file('gambar')){
+            if($request->oldGambar){
+                Storage::delete($request->oldGambar);
+            }
+            $data['gambar']=$request->file('gambar')->store('dokumentasi-berita');
+        }
+        $dataGambar = Berita::findOrFail($id);
+        $dataGambar->update($data);
+        return redirect()->route('berita.index')->with('sukses', 'Data Berita berhasil diubah');
     }
 
     /**
@@ -127,7 +137,13 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataBerita = Berita::findOrFail($id);
+        $file = public_path('storage/').$dataBerita->gambar;
+        if(file_exists($file)){
+            @unlink($file);
+        }
+        $dataBerita->delete();
+        return redirect()->route('berita.index')->with('sukses','Berita berhasil dihapus');
     }
 
     public function dataTables()
@@ -135,10 +151,27 @@ class BeritaController extends Controller
         $model = Berita::query();
         return DataTables::eloquent($model)
                 ->addColumn('action', function(Berita $berita) {
-                    return '<a href="berita/detailberita/'.$berita->user_id.'"><span class="badge badge-info">Info</span></a>';
+                    return '<a href="/admin/berita/'.$berita->slug.'"><span class="badge badge-info">Info</span></a>';
                 })
                 ->toJson(); 
     }
+
+
+    public function detailBeritaAdmin($slug){
+        $id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        $berita = Berita::where('slug',$slug)->get()->first();
+        return view('admin.berita.show', $data = [
+            'menu' => 'Berita',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'berita' => $berita
+        ]);
+    }
+
+
+    //untuk frontpage
+
     public function detailBerita($slug)
     {
         $dataBerita = $this->berita->getBeritaWithSlug($slug);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gambar;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 use function Ramsey\Uuid\v1;
@@ -63,6 +64,7 @@ class DokumentasiController extends Controller
             'deskripsi' => ['required'],
             'nama_file' => 'required|file|mimes:jpg,png,jpeg|max:2048'
         ]);
+        $validateData['bagian_deskripsi'] = Str::limit(strip_tags($validateData['deskripsi']), 20);
         $validateData['user_id'] = auth()->user()->id;
         $validateData['nama_file'] = $request->file('nama_file')->store('dokumentasi');
         $ret_val = Gambar::create($validateData);

@@ -1,5 +1,14 @@
 @extends('layouts.admin.master')
 @section('content')
+  <style>
+    .img-fill {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+  </style>
+
   <div class="content-body">
     <div class="container-fluid">
       @if (session()->has('sukses'))
@@ -25,54 +34,17 @@
         </ol>
       </div>
       <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-responsive-lg mb-0 table-striped" id="dokumentasiTable">
-                  <thead>
-                    <tr>
-                      <th>Judul Dokumentasi</th>
-                      <th>Deskripsi</th>
-                      <th>Gambar</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach ($dataGambar as $dokumentasi)
-                      <tr>
-                        <td>{{ $dokumentasi->judul }}</td>
-                        <td>{{ $dokumentasi->deskripsi }}</td>
-                        <td>
-                          <img style="width: 240px; height: 180px; object-fit:cover;" src="{{ asset('storage/' . $dokumentasi->nama_file) }}" alt="">
-                        </td>
-                        <td>
-                          <a class="btn btn-warning text-white" href="{{ route('dokumentasi.edit', $dokumentasi->id) }}">Edit</a>
-
-                          <form class="d-inline" action="{{ route('dokumentasi.destroy', $dokumentasi->id) }}">
-                            <button class="btn btn-danger" type="submit">Delete</button>
-                          </form>
-                        </td>
-                      </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {{-- @foreach ($dataGambar as $data)
+        @foreach ($dataGambar as $data)
           <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
             <div class="card">
               <div class="card-body">
                 <div class="new-arrival-product">
                   <div class="new-arrivals-img-contnent">
-                    <img class="img-fluid" src="/storage/{{ $data->nama_file }}" alt="">
+                    <img class="img-fill" src="/storage/{{ $data->nama_file }}" alt="">
                   </div>
                   <div class="new-arrival-content text-center mt-3">
                     <h4>{{ $data->judul }}</h4>
-                    <p>{{ $data->deskripsi }}</p>
+                    <p>{{ $data->bagian_deskripsi }}</p>
                     <div class="dropdown ">
                       <button class="btn btn-primary tp-btn-light sharp " type="button" data-toggle="dropdown">
                         <span class="fs--1">
@@ -107,8 +79,9 @@
               </div>
             </div>
           </div>
-        @endforeach --}}
+        @endforeach
       </div>
     </div>
+  </div>
   </div>
 @endsection

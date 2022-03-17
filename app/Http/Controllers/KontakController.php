@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
+use App\Models\JadwalAcara;
 use App\Models\Kontak;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,17 +20,26 @@ class KontakController extends Controller
     function __construct()
     {
         $this->user = new User();
+        $this->feedback = new Feedback();
+        $this->jadwalAcara = new JadwalAcara();
     }
     public function index()
     {   
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $dataKontak = DB::table('kontak')->where('user_id',$id)->get();
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $oldFeedback = $this->feedback->oldFeedback($id,0);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+
         return view('peserta.kontak.index',$data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataKontak' => $dataKontak
+            'dataKontak' => $dataKontak,
+            'feedback' => $feedback,
+            'oldFeedback' => $oldFeedback,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -41,10 +52,16 @@ class KontakController extends Controller
     {
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $oldFeedback = $this->feedback->oldFeedback($id,0);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('peserta.kontak.create',$data = [
             'menu' => 'Profil',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'feedback' => $feedback,
+            'oldFeedback' =>$oldFeedback,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 
@@ -88,12 +105,18 @@ class KontakController extends Controller
     {
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
+		$feedback = $this->feedback->getFeedbackWithStatus($id);
+        $oldFeedback = $this->feedback->oldFeedback($id,0);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $dataKontak = Kontak::findOrFail($id);
         return view('peserta.kontak.edit',$data = [
             'menu' => 'Profil',
             'data' => $data,
             'peran' => auth()->user()->peran,
-            'dataKontak' => $dataKontak
+            'dataKontak' => $dataKontak,
+            'feedback' => $feedback,
+            'oldFeedback' => $oldFeedback,
+            'jadwalAcara' => $jadwalAcara
         ]);
     }
 

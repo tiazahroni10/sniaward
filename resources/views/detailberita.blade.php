@@ -50,7 +50,7 @@
                                     <ul>
                                         <li>
                                             <span>Diterbitkan :</span> 
-                                            <a href="index.html">{{ $dataBerita->rilis }}</a>
+                                            <a href="index.html">{{ date('d F Y', strtotime($dataBerita->rilis)) }}</a>
                                         </li>
                                     </ul>
                                 </div>

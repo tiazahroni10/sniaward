@@ -18,6 +18,7 @@ class CreateSertifikatTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('nama_sertifikat',50)->nullable(false);
             $table->string('nama_file')->nullable(false);
+            $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
     }

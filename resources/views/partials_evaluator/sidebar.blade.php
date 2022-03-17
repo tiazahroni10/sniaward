@@ -4,7 +4,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a class="has-arrow ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
@@ -20,8 +20,8 @@
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="table-bootstrap-basic.html">Tugas Verifikasi</a></li>
-                        <li><a href="table-datatable-basic.html">Tugas SE</a></li>
-                        <li><a href="table-datatable-basic.html">Tugas DE</a></li>
+                        <li><a href="{{ route('penugasanSe') }}">Tugas SE</a></li>
+                        <li><a href="{{ route('berkasDokumen') }}">Tugas DE</a></li>
                     </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="{{ route('berkasDokumen') }}" aria-expanded="false">

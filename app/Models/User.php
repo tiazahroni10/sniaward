@@ -30,12 +30,12 @@ class User extends Authenticatable
 
     public function peserta()
     {
-        $this->belongsTo(User::class);
+        return $this->hasOne(Peserta::class);
     }
 
     public function evaluator()
     {
-        $this->belongsTo(Evaluator::class);
+        return $this->hasOne(Evaluator::class);
     }
 
     public function pendidikan()

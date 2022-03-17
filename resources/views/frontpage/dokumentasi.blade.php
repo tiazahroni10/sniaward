@@ -48,6 +48,8 @@
     #documentation-date {
       box-sizing: border-box;
       background-color: white;
+      font-size: 16px;
+      font-weight: 300;
       border-bottom: 1px solid #D9D9D9;
       text-align: start;
       border-radius: 0px 5px 0px 0px;
@@ -68,13 +70,17 @@
       margin-bottom: 30px;
     }
 
+    .documentation-title {
+      color: #e3b04b;
+    }
+
     .documentation-content:last-child {
       margin-bottom: 0px;
     }
 
     .documentation-content-description {
       color: rgba(0, 0, 0, .6);
-      ;
+      margin-top: 10px;
       font-size: 0.8em;
     }
 
@@ -128,6 +134,12 @@
       }
     }
 
+    .img-fill {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
   </style>
 @endpush
 <!-- End Screenshot Area -->
@@ -144,7 +156,7 @@
         <div onclick="showDetail({{ $key }})" class="screenshot-item">
           {{-- onclick="showDetail('{{ \Carbon\Carbon::parse($data->created_at)->format('d M Y') }}', '{{ $data->judul }}', '{{ $data->deskripsi }}', '{{ asset('storage/' . $data->nama_file) }}')" --}}
           <div class="image">
-            <img src="/storage/{{ $data->nama_file }}" alt="image">
+            <img class="img-fill" src="/storage/{{ $data->nama_file }}" alt="image">
             {{-- <h6>{{ $data->judul }}</h6>
             <p>{{ Str::limit($data->deskripsi, 60, '...') }}</p> --}}
           </div>
@@ -206,7 +218,7 @@
           '</div>' +
           '<div id="documentation-content">' +
           '<div class="documentation-content">' +
-          '<div>' + judul + '</div>' +
+          '<div class="documentation-title">' + judul + '</div>' +
           '<div class="documentation-content-description">' + deskripsi + '</div>' +
           '</div>' +
           '</div>' +

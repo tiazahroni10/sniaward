@@ -18,6 +18,7 @@ class CreateDokumenEvaluatorTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             // $table->foreignId('master_dokumen_id');
             $table->string('nama_file',15);
+            $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
     }
