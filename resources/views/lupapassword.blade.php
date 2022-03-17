@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SNI AWARD - Lupa Password</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets') }}/images/logosniaward.png">
     <link href="{{ asset('assets') }}/css/all.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
@@ -22,9 +22,9 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href="index.html"><img src="images/logo-full.png" alt=""></a>
+										<a href="index.html"><img src="images/logosniaward.png" alt=""></a>
 									</div>
-                                    <h4 class="text-center mb-4 text-white">Lupa Password</h4>
+                                    <h2 class="text-center mb-4 text-white">Lupa Password</h2>
                                     <form action="{{ route('cekEmail') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
@@ -32,7 +32,7 @@
                                             <input type="email" class="form-control" placeholder="Masukkan email anda" id="email" name="email">
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn bg-white text-warning btn-block">SUBMIT</button>
+                                            <button type="submit" class="btn btn-coklat btn-block">SUBMIT</button>
                                         </div>
                                     </form>
                                 </div>

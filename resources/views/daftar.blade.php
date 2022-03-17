@@ -45,7 +45,7 @@
                         </div> --}}
 
         <!-- <div class="text-center"> -->
-        <button type="submit" class="btn next-btn btn-block mt-3">Selanjutnya<span></span></button>
+        <button type="submit" class="btn btn-coklat btn-block mt-3">Selanjutnya<span></span></button>
         <!-- </div> -->
 
         <p class="text-white">Sudah memiliki akun ? <a class="text-white" href="/login">Masuk</a></p>

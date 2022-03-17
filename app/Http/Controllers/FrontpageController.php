@@ -181,6 +181,7 @@ class FrontpageController extends Controller
 		$berita = DB::table('berita')
 			->orderByDesc('created_at')->take(3)->get();
 		$dataFrontpage = $dataFrontpage->last();
+		
 		return view('home', $dataFrontpage = [
 			'data' => $dataFrontpage,
 			'dataFaq' => $dataFaq,
@@ -193,6 +194,7 @@ class FrontpageController extends Controller
 	{
 		$dataFrontpage = Frontpage::all();
 		$dataFrontpage = $dataFrontpage->last();
+		
 		return view('semuaacara', $data = [
 			'data' => $dataFrontpage
 		]);

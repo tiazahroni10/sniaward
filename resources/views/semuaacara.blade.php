@@ -45,7 +45,7 @@
         <section id="blog" class="blog-area pt-100 pb-100">
             <div class="container">
                 <div class="section-title">
-                    <h2>Acara Terbaru</h2>
+                    <h2>Acara</h2>
                     <div class="bar"></div>
                     <p>Kumpulan Acara Yang Telah Diselenggarakan</p>
                 </div>
@@ -105,6 +105,21 @@
                 </div>
             </div>
         </section>
+
+        <div class="col-lg-12 col-md-12">
+            <div class="pagination-area">
+                <a href="#" class="prev page-numbers">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <a href="#" class="page-numbers">1</a>
+                <span class="page-numbers current" aria-current="page">2</span>
+                <a href="#" class="page-numbers">3</a>
+                <a href="#" class="page-numbers">4</a>
+                <a href="#" class="next page-numbers">
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
         <!-- End Blog Area -->
 
 

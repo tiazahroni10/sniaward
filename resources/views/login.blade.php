@@ -60,7 +60,7 @@
           </div>
         </div>
         <!-- <div class="text-center"> -->
-        <button type="submit" class="btn login-btn btn-block">Masuk<span></span></button>
+        <button type="submit" class="btn btn-coklat btn-block">Masuk<span></span></button>
         <!-- </div> -->
 
         <p class="text-white ">Belum memiliki akun ? <a class="text-white" href="/register">Daftar</a></p>

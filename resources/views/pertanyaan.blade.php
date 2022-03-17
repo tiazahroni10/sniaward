@@ -61,7 +61,7 @@
         @endforeach
 
         <!-- <div class="text-center"> -->
-        <button type="submit" class="btn submit-btn btn-block mt-3">Submit<span></span></button>
+        <button type="submit" class="btn btn-coklat btn-block mt-3">Submit<span></span></button>
         <!-- </div> -->
 
       </form>
