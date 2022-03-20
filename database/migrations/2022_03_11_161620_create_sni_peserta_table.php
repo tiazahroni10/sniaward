@@ -17,7 +17,7 @@ class CreateSniPesertaTable extends Migration
             $table->integerIncrements('id');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('master_sni_id')->constrained('master_sni');
-            $table->string('lembaga_sertifikasi')->nullable();
+            $table->string('nama_lembaga_sertifikasi')->nullable();
             $table->timestamps();
         });
     }

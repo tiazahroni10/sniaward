@@ -29,11 +29,12 @@ class CreatePesertaTable extends Migration
             $table->string('status_kepemilikan',10)->nullable(true);
             $table->string('tipe_produk',50)->nullable(true);
             $table->boolean('ekspor',1)->nullable();
-            $table->string('negara_tujuan',50)->nullable();
+            $table->string('negara_ekspor',50)->nullable();
             $table->integer('tahun_ekspor',5)->nullable();
             $table->decimal('kekayaan_organisasi',12,3)->nullable(true);
             $table->decimal('hasil_penjualan_organisasi',12,3)->nullable(true);
             $table->string('tipe_organisasi',100)->nullable(true);
+            $table->string('tipe_sni',100)->nullable(true);
             $table->string('gambar',100)->nullable(true);
             $table->boolean('flag_complated')->default(0)->nullable(true);
             $table->timestamps();

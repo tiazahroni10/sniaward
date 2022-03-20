@@ -151,7 +151,7 @@ class BeritaController extends Controller
         $model = Berita::query();
         return DataTables::eloquent($model)
                 ->addColumn('action', function(Berita $berita) {
-                    return '<a href="/admin/berita/'.$berita->slug.'"><span class="badge badge-info">Info</span></a>';
+                    return '<a href="/admin/detailberita/'.$berita->slug.'"><span class="badge badge-info">Info</span></a>';
                 })
                 ->toJson(); 
     }

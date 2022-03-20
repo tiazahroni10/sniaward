@@ -17,7 +17,7 @@
                   <div class="mb-3">
                     <label for="tipe_pertanyaan">Tipe Pertanyaan</label>
                     <select class="form-control @error('tipe_pertanyaan') is-invalid @enderror" id="tipe_pertanyaan" name="tipe_pertanyaan" required>
-                      <option value="0">Tipe 0</option>
+                      <option value="Register">Register</option>
                       <option value="1">Tipe 1</option>
                       <option value="2">Tipe 2</option>
                     </select>
