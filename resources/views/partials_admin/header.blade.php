@@ -40,7 +40,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="/" class="brand-logo">
                 <img class="logo-abbr" src="{{ asset('admin') }}/images/logosniaward.png" alt="">
                 <h4 class="brand-title">SNI AWARD</h4>
             </a>

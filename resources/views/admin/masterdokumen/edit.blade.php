@@ -68,7 +68,10 @@
                                 </div>
                                 
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
+                                <button class="btn btn-warning text-white btn-sl-sm-mr-2" type="submit">Simpan</button>
+                                <a href="{{ route('masterpertanyaan.index') }}" class="btn btn-danger btn-sl-sm" type="cancel">
+                                    <span class="mr-2"></span>Batal
+                                  </a>
                             </form>
                         </div>
                     </div>

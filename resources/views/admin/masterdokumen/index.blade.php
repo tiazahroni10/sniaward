@@ -14,7 +14,7 @@
         <div class="page-titles ">
             <ol class="breadcrumb d-flex justify-content-between align-items-center">
                 <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Dokumen</a></li>
-                <li><a href="{{ route('masterdokumen.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+                <li><a href="{{ route('masterdokumen.create') }}" class="btn btn-warning btn-event w-100" style="color: #ffffff">
                     <span class="align-middle"><i class="ti-plus"></i></span> Tambah Dokumen
                 </a></li>
                 

@@ -27,12 +27,12 @@
                         <span class="nav-text">Evaluator</span>
                         </a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="/admin/berita" aria-expanded="false">
+                    <li><a class="" href="/admin/berita" aria-expanded="false">
                         <i class="flaticon-381-news"></i>
                         <span class="nav-text">Berita</span>
                         </a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ route('dokumentasi.index') }}" aria-expanded="false">
+                    <li><a class="" href="{{ route('dokumentasi.index') }}" aria-expanded="false">
                         <i class="flaticon-381-picture"></i>
                         <span class="nav-text">Dokumentasi</span>
                         </a>
@@ -51,7 +51,7 @@
                         <ul aria-expanded="false">
                         <li><a href="{{ route('penjadwalanacara.index') }}">Penjadwalan Acara</a></li>
                         <li><a href="{{ route('penugasanse.index') }}">Penjadwalan Se</a></li>
-                        <li><a href="{{ route('penugasande.index') }}">Penjadwalan Se</a></li>
+                        <li><a href="{{ route('penugasande.index') }}">Penjadwalan De</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">

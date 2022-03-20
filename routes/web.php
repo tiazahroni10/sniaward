@@ -60,9 +60,10 @@ Route::post('/gantipasswordtoken/{id}', [LupaPasswordController::class, 'updateP
 
 Route::get('/berita/{slug}', [BeritaController::class, 'detailBerita'])->middleware('guest')->name('detailBerita');
 
-// Route::get('/semuaacara', function () {
-//     return view('semuaacara');
-// });
+Route::get('/seputarsni', function () {
+    return view('seputarsni');
+});
+
 Route::get('/semuaacara', [FrontpageController::class, 'semuaAcara'])->middleware('guest');
 Route::get('/detailacara', function () {
     return view('detailacara');

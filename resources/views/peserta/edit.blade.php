@@ -248,7 +248,7 @@
                                         </div>
                                     </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block w-25" type="submit">Simpan</button>
+                                <button class="btn btn-warning text-white btn-lg btn-block w-25" type="submit">Simpan</button>
                             </form>
                         </div>
                     </div>

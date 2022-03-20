@@ -64,7 +64,8 @@
                                     </div>
                                 </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
+                                <button class="btn btn-warning btn-sl-sm mr-2 text-white" type="submit"><span class="mr-2"></span>Simpan</button>
+                                <button class="btn btn-danger btn-sl-sm mr-2" type="cancel"><span class="mr-2"></span>Batal</button>
                             </form>
                         </div>
                     </div>

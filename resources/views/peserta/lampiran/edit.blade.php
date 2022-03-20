@@ -35,7 +35,8 @@
                                         @endif
                                 @endforeach
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
+                                <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
                             </form>
                         </div>
                     </div>

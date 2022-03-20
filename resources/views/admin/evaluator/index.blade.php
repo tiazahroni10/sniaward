@@ -18,7 +18,7 @@
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Nama Evaluator</a></li>
           <li>
-            <a href="{{ route('createEvaluator') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+            <a href="{{ route('createEvaluator') }}" class="btn btn-warning btn-event w-100" style="color: #ffffff">
               <span class="align-middle"><i class="ti-plus"></i></span> Tambah Evaluator
             </a>
           </li>

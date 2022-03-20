@@ -51,7 +51,7 @@
                           </a>
                         </td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
-                        <td><a class="badge badge-primary" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a></td>
+                        <td><a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a></td>
                       </tr>
                     @endforeach
                   </tbody>

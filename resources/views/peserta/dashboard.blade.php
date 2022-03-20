@@ -15,6 +15,14 @@
 				@endif
             <!-- row -->
 			<div class="container-fluid">
+				<div class="page-titles ">
+					<ol class="breadcrumb d-flex justify-content-between align-items-center">
+					  <li class="breadcrumb-item active mr-auto align-items-center"><a href="javascript:void(0)">Daftar Acara Yang Akan Datang</a></li>
+					  <li>
+						
+					  </li>
+					</ol>
+				  </div>
 				<div class="row">
 					<div class="card">
 						<div class="card-body">
@@ -23,9 +31,10 @@
 								<thead>
 									<tr>
 										<th>No</th>
-										<th class="pl-5 width200">Acara</th>
-										<th class="pl-5 text-right">Mulai</th>
-										<th class="pl-5 text-right">Hingga</th>
+										<th class="pl-5 width200">Judul</th>
+										<th class="pl-5 text-right">Tanggal Mulai</th>
+										<th class="pl-5 text-right">Tanggal Selesai</th>
+										<th class="pl-5 text-right">Status</th>
 									</tr>
 								</thead>
 								<tbody id="customers">

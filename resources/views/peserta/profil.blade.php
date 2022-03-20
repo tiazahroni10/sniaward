@@ -31,10 +31,10 @@ $user = auth()->user();
                     <h4 class="text-muted mb-0">{{ $user->peran }}</h4>
                   </div>
                   <div class="dropdown ml-auto">
-                    <button type="button" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-sm btn-primary mr-2">
+                    <button type="button" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-sm btn-warning text-white mr-2">
                       Edit Profile
                     </button>
-                    <button class="btn btn-sm btn-primary">Pdf</button>
+                    <button class="btn btn-sm btn-info">Pdf</button>
                   </div>
                 </div>
               </div>
@@ -105,7 +105,7 @@ $user = auth()->user();
           <div class="card card-body">
             <div style="justify-content: space-between; display: flex">
               <h3>Standar Nasional Indonesia yang Dimiliki</h3>
-              <button type="button" data-toggle="modal" data-target="#form-sni-modal" class="btn btn-form-sni btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-sni-modal" class="btn btn-form-sni btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -125,7 +125,7 @@ $user = auth()->user();
                   <div class="col- col-md-4 align-self-center">
                     <button type="button" data-toggle="modal" data-target="#form-sni-modal" data-id="{{ $item->id }}"
                         data-nomor-sni="{{ $item->master_sni_id }}" data-nama-lembaga-sertifikasi="{{ $item->nama_lembaga_sertifikasi }}"
-                        class="btn btn-form-sni btn-sm btn-primary float-right mr-2">Edit
+                        class="btn btn-form-sni btn-sm btn-warning text-white float-right mr-2">Edit
                     </button>
                   </div>
             </div>
@@ -331,8 +331,9 @@ $user = auth()->user();
               </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -376,8 +377,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>

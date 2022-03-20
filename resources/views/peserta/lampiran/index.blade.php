@@ -18,12 +18,12 @@
                         <div class="table-responsive">
                             @if ($isNew == 'new' && count($dataDokumen)==0 && $isVerify)
                                 <p>UNGGAH DOKUMEN ANDA!</p>
-                                <li><a href="{{ route('lampiran.create') }}" class="btn btn-primary btn-event w-25" style="color: #ffffff">
+                                <li><a href="{{ route('lampiran.create') }}" class="btn btn-warning text-white btn-event w-25" style="color: #ffffff">
                                     <span class="align-middle"><i class="ti-plus"></i></span> Unggah Lampiran
                                 </a></li>
                             @elseif($isNew == 'edit' && !$isVerify)
                                 <p>UNGGAH ULANG DOKUMEN ANDA!</p>
-                                <li><a href="{{ route('lampiran.edit',$data->id) }}" class="btn btn-primary btn-event w-25" style="color: #ffffff">
+                                <li><a href="{{ route('lampiran.edit',$data->id) }}" class="btn btn-warning text-white btn-event w-25" style="color: #ffffff">
                                     <span class="align-middle"><i class="ti-plus"></i></span> Unggah Lampiran
                                 </a></li>
                                 <table class="table table-sm mb-0 table-responsive-lg text-black">
@@ -80,9 +80,9 @@
         @foreach ($oldFeedback as $item)
             @if ($item->status == 1)
                 <div class="col">
-                        <div class="card text-white bg-info">
+                        <div class="card text-black bg-abu">
                             <div class="card-header">
-                                <h5 class="card-title text-white">Feedback</h5>
+                                <h5 class="card-title text-black">Feedback</h5>
                             </div>
                             <div class="card-body mb-0">
                                 <p class="card-text">{{ $item->deskripsi }}</p>

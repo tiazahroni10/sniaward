@@ -18,15 +18,10 @@
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Berita</a></li>
           <li>
-            <div class="input-group search-area d-xl-inline-flex d-none mr-3">
-              <div class="input-group-append">
-                <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-              </div>
-              <input type="text" class="form-control" placeholder="Cari Berita . . .">
-            </div>
+            
           </li>
           <li>
-            <a href="{{ route('berita.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+            <a href="{{ route('berita.create') }}" class="btn btn-warning btn-event w-100" style="color: #ffffff">
               <span class="align-middle"><i class="ti-plus"></i></span> Tambah Berita
             </a>
           </li>

@@ -49,8 +49,8 @@
                     @enderror
                   </div>
                   <hr class="mb-4">
-                  <a href="{{ route('showDataEvaluator') }}" class="btn btn-info">Batal</a>
                   <button class="btn btn-warning text-white" type="submit">Simpan</button>
+                  <a href="{{ route('showDataEvaluator') }}" class="btn btn-danger text-white" type="cancel">Batal</a>
                 </form>
               </div>
             </div>

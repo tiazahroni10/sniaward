@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row d-flex justify-content-center ">
                 <div class="col-lg-3 col-sm-6">
-                    <a href="">
+                    <a href="/seputarsni">
                         <div class="single-fun-fact">
                         <div class="icon">
                             <img src="assets/img/icon/award.png" alt="lamp" style="height: 150px">
@@ -12,7 +12,7 @@
                         <h3>
                             {{-- <span class="odometer" data-count="345">00</span> --}}
                         </h3>
-                        <p>Seputar SNI Awards</p>
+                        <p>Seputar SNI Award</p>
                     </div>
                     </a>
                 </div>
@@ -37,7 +37,7 @@
                         <h3>
                             {{-- <span class="odometer" data-count="1234">00</span> --}}
                         </h3>
-                        <p>Peraih SNI Awards</p>
+                        <p>Peraih SNI Award</p>
                     </div>
                 </div>
                

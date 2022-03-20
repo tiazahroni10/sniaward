@@ -30,12 +30,7 @@
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Verifikasi Dokumen</a></li>
           <li>
-            <div class="input-group search-area d-xl-inline-flex d-none mr-3">
-              <div class="input-group-append">
-                <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-              </div>
-              <input type="text" class="form-control" placeholder="Cari Dokumen . . .">
-            </div>
+            
           </li>
         </ol>
       </div>
@@ -138,17 +133,17 @@
 
               @if ($tampilkanFormFeedback)
                   <div class="col">
-                        <div class="card text-white bg-info">
+                        <div class="card text-white bg-abu">
                             <div class="card-header">
-                                <h5 class="card-title text-white">Feedback</h5>
+                                <h5 class="card-title text-black">Feedback</h5>
                             </div>
                             <div class="card-body mb-0">
                               <form action="{{ route('feedback') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
                                 <input type="hidden" name="evaluator_id" value="{{ $dataEvaluator->id }}">
-                                <textarea class="form-control mt-2 bg-info text-white" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
-                                <button class="btn btn-primary mt-2">Kirim</button>
+                                <textarea class="form-control mt-2 bg-light text-black" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                                <button class="btn btn-warning text-white mt-2">Kirim</button>
                               </form>
                             </div>
                         </div>
@@ -171,9 +166,9 @@
               @else --}}
               @foreach ($oldFeedback as $item)
                   <div class="col">
-                        <div class="card text-white bg-dark">
+                        <div class="card text-white bg-abu">
                             <div class="card-header">
-                                <h5 class="card-title text-white">Feedback</h5>
+                                <h5 class="card-title text-black">Feedback</h5>
                             </div>
                             <div class="card-body mb-0">
                                 <p class="card-text">{{ $item->deskripsi }}</p>
