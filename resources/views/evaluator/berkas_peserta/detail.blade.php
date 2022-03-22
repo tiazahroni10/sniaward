@@ -133,9 +133,9 @@
 
               @if ($tampilkanFormFeedback)
                   <div class="col">
-                        <div class="card text-white bg-abu">
+                        <div class="card text-white bg-dark">
                             <div class="card-header">
-                                <h5 class="card-title text-black">Feedback</h5>
+                                <h5 class="card-title text-white">Feedback</h5>
                             </div>
                             <div class="card-body mb-0">
                               <form action="{{ route('feedback') }}" method="POST">
@@ -166,9 +166,9 @@
               @else --}}
               @foreach ($oldFeedback as $item)
                   <div class="col">
-                        <div class="card text-white bg-abu">
+                        <div class="card text-white bg-dark">
                             <div class="card-header">
-                                <h5 class="card-title text-black">Feedback</h5>
+                                <h5 class="card-title text-white">Feedback</h5>
                             </div>
                             <div class="card-body mb-0">
                                 <p class="card-text">{{ $item->deskripsi }}</p>

@@ -34,7 +34,7 @@
 
                         <li class="nav-item">
                             <a href="#download" class="nav-link">
-                                Download
+                                Unduh Berkas
                             </a>
                         </li>
 

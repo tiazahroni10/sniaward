@@ -185,8 +185,8 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('penugasanse.index') }}" class="btn btn-danger">Batal</a>
+                    <button type="submit" class="btn btn-warning text-white">Simpan</button>
+                    <a href="{{ route('penugasande.index') }}" class="btn btn-danger">Batal</a>
                 </div>
             </div>
         </form>

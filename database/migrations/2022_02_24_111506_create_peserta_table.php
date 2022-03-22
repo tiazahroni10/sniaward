@@ -22,7 +22,7 @@ class CreatePesertaTable extends Migration
             $table->string('nama_organisasi',50)->nullable(false)->unique();
             $table->string('alamat_organisasi',50)->nullable(true);
             $table->string('alamat_pabrik',50)->nullable(true);
-            $table->string('email_perusahaan',20)->nullable(true);
+            $table->string('email_perusahaan',50)->nullable(true);
             $table->string('nomor_telepon',13)->nullable(true);
             $table->string('website',20)->nullable(true);
             $table->date('tahun_berdiri')->nullable(true);

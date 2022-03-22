@@ -206,7 +206,7 @@
             <div class="row">
                 <div class="col-4">
                     <button type="submit" class="btn btn-success">Verifikasi</button>
-                    <a href="#" class="btn btn-danger">Batal</a>
+                    <a href="" class="btn btn-danger  btn-sl-sm" type="cancel"><span class="mr-2"></span>Batal</a>
                 </div>
             </div>
         </form>

@@ -18,12 +18,6 @@
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Peserta</a></li>
           <li>
-            <div class="input-group search-area d-xl-inline-flex d-none mr-3">
-              <div class="input-group-append">
-                <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-              </div>
-              <input type="text" class="form-control" placeholder="Cari Dokumen . . .">
-            </div>
           </li>
         </ol>
       </div>
@@ -52,11 +46,18 @@
                           </a>
                         </td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
+<<<<<<< HEAD
+                        <td class="text-right">
+                          <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a> </td>
+                        <td class="text-right">  
+                          <a class="badge badge-secondary text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Verifikasi</a></td>
+=======
                         <td>
                           <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->peserta_id) }}">Cek Dokumen</a>
                         </td>
                         <td>
                           <a class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white" href="{{ route('verifikasiPenugasanDe', [$data->id,$data->peserta_id]) }}" @if($data->status==1) style="pointer-events: none" @endif>Verifikasi</a>
+>>>>>>> e0bdaa564f611afd61842723e46f786fd8925911
                         </td>
                       </tr>
                     @endforeach

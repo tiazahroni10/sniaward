@@ -36,8 +36,8 @@
                     @enderror
                   </div>
                   <hr class="mb-4">
-                  <button class="btn btn-primary btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>
-                  <a href="{{ route('faq.index') }}" class="btn btn-danger light btn-sl-sm" type="button">
+                  <button class="btn btn-warning text-white btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>
+                  <a href="{{ route('faq.index') }}" class="btn btn-danger btn-sl-sm" type="button">
                     <span class="mr-2"></span>Batal
                   </a>
                 </form>

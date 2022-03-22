@@ -74,7 +74,8 @@
                                     </div>
                                 </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Simpan</button>
+                                <button class="btn btn-warning text-white btn-lg btn-block" type="submit">Simpan</button>
+                                <a href="{{ route('pendidikan.index') }}" class="btn btn-danger  btn-sl-sm" type="cancel"><span class="mr-2"></span>Batal</a>
                             </form>
                         </div>
                     </div>

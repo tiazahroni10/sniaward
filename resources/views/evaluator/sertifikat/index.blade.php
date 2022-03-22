@@ -19,7 +19,7 @@
         <div class="page-titles ">
             <ol class="breadcrumb d-flex justify-content-between align-items-center">
                 <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Sertifikat</a></li>
-                <li><a href="{{ route('sertifikat.create') }}" class="btn btn-primary btn-event w-100"
+                <li><a href="{{ route('sertifikat.create') }}" class="btn btn-warning text-white btn-event w-100"
                         style="color: #ffffff">
                         <span class="align-middle"><i class="ti-plus"></i></span> Tambah Sertifikat
                     </a></li>
@@ -62,7 +62,7 @@
                                         </td>
                                         <td class="py-2 pl-5 wspace-no"><a href="/storage/{{ $sertifikat->nama_file }}">{{ $sertifikat->nama_sertifikat }}</a></td>
                                         <td class="py-2 text-right">
-                                            <div class="dropdown"><button class="btn btn-primary tp-btn-light sharp"
+                                            <div class="dropdown"><button class="btn btn-warning tp-btn-light sharp"
                                                     type="button" data-toggle="dropdown"><span class="fs--1"><svg
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"

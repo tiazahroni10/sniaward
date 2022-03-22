@@ -34,7 +34,7 @@ $user = auth()->user();
                     <button type="button" data-toggle="modal" data-target="#edit-profile-modal" class="btn btn-sm btn-warning text-white mr-2">
                       Edit Profile
                     </button>
-                    <button class="btn btn-sm btn-info">Pdf</button>
+                    {{-- <button class="btn btn-sm btn-info">Pdf</button> --}}
                   </div>
                 </div>
               </div>

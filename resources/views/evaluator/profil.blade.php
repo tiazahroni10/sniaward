@@ -18,6 +18,7 @@
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
+
                     <h3 class="text-primary mb-0">{{ $evaluator->gelar_sebelum_nama }} {{ $evaluator->nama_lengkap }} {{ $evaluator->gelar_setelah_nama }}</h3>
                     <h4 class="text-muted mb-0">{{ $peran }}</h4>
                   </div>
@@ -25,7 +26,7 @@
                     <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-warning text-white mr-2">
                       Edit Profile
                     </button>
-                    <button class="btn btn-sm btn-info">Pdf</button>
+                    {{-- <button class="btn btn-sm btn-info">Pdf</button> --}}
                   </div>
                 </div>
               </div>
@@ -65,7 +66,7 @@
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pendidikan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal"
-                class="btn btn-form-riwayat-pendidikan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pendidikan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -75,6 +76,7 @@
                 <div class="col-12">
                   <div>
                     <h4>
+
                       <b>{{ $pendidikan->nama_kampus }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan->id }}"
                         data-nama-kampus="{{ $pendidikan->nama_kampus }}" data-jenjang="{{ $pendidikan->jenjang }}"
@@ -93,7 +95,7 @@
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pekerjaan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal"
-                class="btn btn-form-riwayat-pekerjaan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pekerjaan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -122,7 +124,7 @@
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pelatihan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal"
-                class="btn btn-form-riwayat-pelatihan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pelatihan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -136,6 +138,7 @@
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan->id }}"
                         data-nama-pelatihan="{{ $pelatihan->nama_pelatihan }}" data-tahun-pelatihan="{{ $pelatihan->tahun_pelatihan }}" data-old-sertifikat = "{{ $pelatihan->sertifikat_pelatihan }}"
                         class="btn btn-form-riwayat-pelatihan btn-sm btn-primary float-right mr-2">
+
                         Edit
                       </button>
                     </h4>
@@ -148,7 +151,7 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Desk Evaluation (DE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -162,7 +165,7 @@
                       <b>{{ $de['nama_kegiatan'] }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" data-id="{{ $de['id'] }}"
                         data-nama-kegiatan="{{ $de['nama_kegiatan'] }}" data-nama-instansi="{{ $de['nama_instansi'] }}" data-tahun="{{ $de['tahun'] }}"
-                        class="btn btn-form-riwayat-de btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-de btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -176,7 +179,7 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Side Evaluation (SE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -191,7 +194,7 @@
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" data-id="{{ $se['id'] }}"
                         data-nama-kegiatan="{{ $se['nama_kegiatan'] }}" data-nama-instansi="{{ $se['nama_instansi'] }}"
                         data-lokasi-instansi="{{ $se['lokasi_instansi'] }}" data-tahun="{{ $se['tahun'] }}"
-                        class="btn btn-form-riwayat-se btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-se btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -205,7 +208,7 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>Sertifikat</h3>
-              <button type="button" data-toggle="modal" data-target="#form-sertifikat-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-sertifikat-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -234,7 +237,7 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>NPWP</h3>
-              <button type="button" data-toggle="modal" data-target="#form-npwp-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-npwp-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -263,7 +266,7 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>KTP</h3>
-              <button type="button" data-toggle="modal" data-target="#form-ktp-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-ktp-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -454,8 +457,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
                 
@@ -535,8 +539,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -586,8 +591,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -643,8 +649,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -688,8 +695,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -741,8 +749,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -780,8 +789,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -819,8 +829,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -858,8 +869,9 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>

@@ -53,7 +53,7 @@
                             <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->mulai)) }}</td>
                             <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->hingga)) }}</td>
                             <td class="py-2 text-right">
-                            <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-info text-white"><span>Ubah</span>
+                            <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                             </a>
                             <form class="d-inline" action="{{ route('penjadwalanacara.destroy', $event->id) }}" method="POST">
                                 @csrf

@@ -18,7 +18,7 @@
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Jawaban FaQ</a></li>
           <li>
-            <a href="{{ route('faq.create') }}" class="btn btn-primary btn-event w-100" style="color: #ffffff">
+            <a href="{{ route('faq.create') }}" class="btn btn-warning text-white btn-event w-100" style="color: #ffffff">
               <span class="align-middle"><i class="ti-plus"></i></span> Tambah FaQ
             </a>
           </li>
@@ -63,12 +63,12 @@
                         <td class="py-2 pl-5 wspace-no">{{ $data->pertanyaan }}</td>
                         <td class="py-2 pl-5 wspace-no">{{ $data->jawaban }}</td>
                         <td class="py-2 text-right">
-                          <a href="{{ route('faq.edit', $data->id) }}" type="submit" class="btn btn-warning text-white"><span>Ubah</span>
+                          <a href="{{ route('faq.edit', $data->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('faq.destroy', $data->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                            <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
                             </button>
                           </form>
                         </td>

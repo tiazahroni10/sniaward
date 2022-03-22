@@ -61,61 +61,6 @@
                             </div>
                         </div>
                     </div>    
-                    <div class="col-lg-4 col-md-12">
-                        <aside class="widget-area" id="secondary">
-                            <section class="widget widget_search">
-                                <form class="search-form search-top">
-                                    <label>
-                                        <span class="screen-reader-text">Search for:</span>
-                                        <input type="search" class="search-field" placeholder="Search...">
-                                    </label class="">
-                                    <button type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </form>
-                            </section>
-
-                            <section class="widget widget_colugo_posts_thumb">
-                                <h3 class="widget-title">Berita Terkini</h3>
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg1" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 10, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Making Peace With The Feast Or Famine Of Freelancing</a>
-                                        </h4>
-                                    </div>
-                                </article>
-
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg2" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 21, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Be healthy, Enjoy life with Colugo organic</a>
-                                        </h4>
-                                    </div>
-                                </article>
-
-                                <article class="item">
-                                    <a href="#" class="thumb">
-                                        <span class="fullimage cover bg3" role="img"></span>
-                                    </a>
-                                    <div class="info">
-                                        <time class="2021-06-30">June 30, 2021</time>
-                                        <h4 class="title usmall">
-                                            <a href="index.html">Buy organic food online and be healthy</a>
-                                        </h4>
-                                    </div>
-                                </article>
-                            </section>
-
-                        </aside>
-                    </div>
                 </div>
             </div>
         </section>
