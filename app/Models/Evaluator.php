@@ -44,7 +44,6 @@ class Evaluator extends Model
                         'gambar' => $dataEvaluator ['gambar'],
                         'npwp' => $dataEvaluator ['npwp'],
                         'ktp' => $dataEvaluator ['ktp'],
-                        'cv' => $dataEvaluator ['cv']
                     ]);
     }
 }

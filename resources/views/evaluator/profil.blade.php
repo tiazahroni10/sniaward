@@ -1,7 +1,4 @@
 @extends('layouts.evaluator.master')
-@php
-$user = auth()->user();
-@endphp
 <style>
   .col-data {
     padding-left: 48px;
@@ -17,12 +14,13 @@ $user = auth()->user();
             <div class="profile-head">
               <div class="profile-info">
                 <div class="profile-photo mt-0">
-                  <img src="images/profile/profile.png" class="img-fluid rounded-circle" alt="">
+                  <img src="@if($evaluator->gambar) /storage/{{ $evaluator->gambar }} @else images/profile/profile.png @endif" class="img-fluid rounded-circle" alt="">
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
-                    <h3 class="text-warning mb-0">{{ $user->evaluator->nama_lengkap }}</h3>
-                    <h4 class="text-muted mb-0">{{ $user->peran }}</h4>
+
+                    <h3 class="text-primary mb-0">{{ $evaluator->gelar_sebelum_nama }} {{ $evaluator->nama_lengkap }} {{ $evaluator->gelar_setelah_nama }}</h3>
+                    <h4 class="text-muted mb-0">{{ $peran }}</h4>
                   </div>
                   <div class="dropdown ml-auto">
                     <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-warning text-white mr-2">
@@ -36,27 +34,27 @@ $user = auth()->user();
                 <table>
                   <tr>
                     <td>Gender</td>
-                    <td class="col-data">: @if ($user->evaluator->jenis_kelamin == "P") Perempuan @else Laki Laki @endif</td>
+                    <td class="col-data">: @if ($evaluator->jenis_kelamin == "P") Perempuan @else Laki Laki @endif</td>
                   </tr>
                   <tr>
                     <td>Tanggal Lahir</td>
-                    <td class="col-data">: {{ $user->evaluator->tgl_lahir }}</td>
+                    <td class="col-data">: {{ $evaluator->tgl_lahir }}</td>
                   </tr>
                   <tr>
                     <td>Pekerjaan</td>
-                    <td class="col-data">: {{ $user->evaluator->pekerjaan }}</td>
+                    <td class="col-data">: {{ $evaluator->pekerjaan }}</td>
                   </tr>
                   <tr>
                     <td>Nama Instansi</td>
-                    <td class="col-data">: {{ $user->evaluator->nama_instansi }}</td>
+                    <td class="col-data">: {{ $evaluator->nama_instansi }}</td>
                   </tr>
                   <tr>
                     <td>Alamat</td>
-                    <td class="col-data">: {{ $user->evaluator->alamat }}</td>
+                    <td class="col-data">: {{ $evaluator->alamat }}</td>
                   </tr>
                   <tr>
                     <td>No. Telepon</td>
-                    <td class="col-data">: {{ $user->evaluator->nomor_telepon }}</td>
+                    <td class="col-data">: {{ $evaluator->nomor_telepon }}</td>
                   </tr>
                 </table>
               </div>
@@ -78,21 +76,13 @@ $user = auth()->user();
                 <div class="col-12">
                   <div>
                     <h4>
-<<<<<<< HEAD
-                      <b>{{ $pendidikan['nama_kampus'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan['id'] }}"
-                        data-nama-kampus="{{ $pendidikan['nama_kampus'] }}" data-jenjang="{{ $pendidikan['jenjang'] }}"
-                        data-program-studi="{{ $pendidikan['program_studi'] }}" data-tahun-masuk="{{ $pendidikan['tahun_masuk'] }}"
-                        data-tahun-lulus="{{ $pendidikan['tahun_lulus'] }}"
-                        class="btn btn-form-riwayat-pendidikan btn-sm btnwarning text-white float-right mr-2">Edit</button>
-=======
+
                       <b>{{ $pendidikan->nama_kampus }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan->id }}"
                         data-nama-kampus="{{ $pendidikan->nama_kampus }}" data-jenjang="{{ $pendidikan->jenjang }}"
                         data-program-studi="{{ $pendidikan->program_studi }}" data-tahun-masuk="{{ $pendidikan->tahun_masuk }}"
-                        data-tahun-lulus="{{ $pendidikan->tahun_lulus }}"
+                        data-tahun-lulus="{{ $pendidikan->tahun_lulus }}" data-old-ijazah = "{{ $pendidikan->ijazah }}"
                         class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
->>>>>>> e0bdaa564f611afd61842723e46f786fd8925911
                     </h4>
                     <h5>{{ $pendidikan->program_studi }}</h5>
                     <p>{{ $pendidikan->tahun_masuk }}-{{ $pendidikan->tahun_lulus }}</p>
@@ -111,21 +101,20 @@ $user = auth()->user();
             </div>
             <hr>
             <div class="row mt-2">
-              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
               @foreach ($dataPekerjaan as $pekerjaan)
                 <div class="col-12">
                   <div>
                     <h4>
-                      <b>{{ $pekerjaan['jabatan'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal" data-id="{{ $pekerjaan['id'] }}"
-                        data-jabatan="{{ $pekerjaan['jabatan'] }}" data-instansi="{{ $pekerjaan['instansi'] }}"
-                        data-tahun-mulai="{{ $pekerjaan['tahun_mulai'] }}" data-tahun-selesai="{{ $pekerjaan['tahun_selesai'] }}"
-                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-warning text-white float-right mr-2">
+                      <b>{{ $pekerjaan->jabatan }}</b>
+                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal" data-id="{{ $pekerjaan->id }}"
+                        data-jabatan="{{ $pekerjaan->jabatan }}" data-instansi="{{ $pekerjaan->instansi }}"
+                        data-tahun-mulai="{{ $pekerjaan->tahun_mulai }}" data-tahun-selesai="{{ $pekerjaan->tahun_selesai }}"
+                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-primary float-right mr-2">
                         Edit
                       </button>
                     </h4>
-                    <h5>{{ $pekerjaan['instansi'] }}</h5>
-                    <p>{{ $pekerjaan['tahun_mulai'] }}-{{ $pekerjaan['tahun_selesai'] }}</p>
+                    <h5>{{ $pekerjaan->instansi }}</h5>
+                    <p>{{ $pekerjaan->tahun_mulai }}-{{ $pekerjaan->tahun_selesai }}</p>
                   </div>
                 </div>
               @endforeach
@@ -141,23 +130,22 @@ $user = auth()->user();
             </div>
             <hr>
             <div class="row mt-2">
-              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              {{-- @foreach ($dataPelatihan as $pelatihan)
+              @foreach ($dataPelatihan as $pelatihan)
                 <div class="col-12">
                   <div>
                     <h4>
-                      <b>{{ $pelatihan['nama_pelatihan'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan['id'] }}"
-                        data-nama-pelatihan="{{ $pelatihan['nama_pelatihan'] }}" data-tgl-mulai="{{ $pelatihan['tgl_mulai'] }}"
-                        data-tgl-selesai="{{ $pelatihan['tgl_selesai'] }}" class="btn btn-form-riwayat-pelatihan btn-sm btn-warning text-white float-right mr-2">
+                      <b>{{ $pelatihan->nama_pelatihan }}</b>
+                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan->id }}"
+                        data-nama-pelatihan="{{ $pelatihan->nama_pelatihan }}" data-tahun-pelatihan="{{ $pelatihan->tahun_pelatihan }}" data-old-sertifikat = "{{ $pelatihan->sertifikat_pelatihan }}"
+                        class="btn btn-form-riwayat-pelatihan btn-sm btn-primary float-right mr-2">
+
                         Edit
                       </button>
                     </h4>
-                    {{-- <h5>{{ $pelatihan['instansi'] }}</h5> --}}
-                    {{-- <p>{{ $pelatihan['tgl_mulai'] }}-{{ $pelatihan['tgl_selesai'] }}</p>
+                    <p>{{ $pelatihan->tahun_pelatihan }}</p>
                   </div>
-                </div> --}}
-              {{-- @endforeach --}}
+                </div>
+              @endforeach
             </div>
             <hr>
 
@@ -317,32 +305,35 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('profilevaluator.update', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('profilevaluator.update', $evaluator->user_id) }}" method="POST" enctype="multipart/form-data">
               @method('PUT')
               @csrf
+              <input type="hidden" name="oldGambar" value="{{ $evaluator->gambar }}">
+              <input type="hidden" name="oldNpwp" value="{{ $evaluator->npwp }}">
+              <input type="hidden" name="oldKtp" value="{{ $evaluator->ktp }}">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Nama Lengkap <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->nama_lengkap }}" name="nama_lengkap">
+                    <input type="text" class="form-control" value="{{ $evaluator->nama_lengkap }}" name="nama_lengkap">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Gelar Sebelum Nama <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->gelar_sebelum_nama }}" name="gelar_sebelum_nama">
+                    <input type="text" class="form-control" value="{{ $evaluator->gelar_sebelum_nama }}" name="gelar_sebelum_nama">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Gelar Setelah Nama <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->gelar_setelah_nama }}" name="gelar_setelah_nama">
+                    <input type="text" class="form-control" value="{{ $evaluator->gelar_setelah_nama }}" name="gelar_setelah_nama">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <label for="jenis_kelamin">Jenis Kelamin</label>
                   <div class="form-group mb-0 @error('jenis_kelamin') is-invalid @enderror">
-                      @if ($user->evaluator->jenis_kelamin== "P")
+                      @if ($evaluator->jenis_kelamin== "P")
                           <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="L"> Laki Laki</label>
                           <label class="radio-inline mr-3"><input type="radio" name="jenis_kelamin" value="P" checked> Perempuan</label>
                       @else
@@ -359,25 +350,25 @@ $user = auth()->user();
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Tanggal Lahir <span class="required">*</span></label>
-                    <input type="date" class="form-control" value="{{ $user->evaluator->tgl_lahir }}" name="tgl_lahir">
+                    <input type="date" class="form-control" value="{{ $evaluator->tgl_lahir }}" name="tgl_lahir">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Pekerjaan <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->pekerjaan }}" name="pekerjaan">
+                    <input type="text" class="form-control" value="{{ $evaluator->pekerjaan }}" name="pekerjaan">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Nama Instansi <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->nama_instansi }}" name="nama_instansi">
+                    <input type="text" class="form-control" value="{{ $evaluator->nama_instansi }}" name="nama_instansi">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Alamat <span class="required"></label>
-                    <textarea rows="8" class="form-control" name="alamat" required>{{ $user->evaluator->alamat }}</textarea>
+                    <textarea rows="8" class="form-control" name="alamat" required>{{ $evaluator->alamat }}</textarea>
                   </div>
                 </div>
                 <div class="col-lg-12">
@@ -385,7 +376,7 @@ $user = auth()->user();
                     <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
                     <select class="form-control" id="provinsi" name="master_provinsi_id">
                       @foreach ($dataProvinsi as $provinsi)
-                        @if (old('master_provinsi_id',$user->evaluator->master_provinsi_id)==$provinsi->id)
+                        @if (old('master_provinsi_id',$evaluator->master_provinsi_id)==$provinsi->id)
                             <option value="{{ $provinsi->id }}" selected>{{ $provinsi->nama }}</option>
                         @else
                             <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
@@ -399,18 +390,70 @@ $user = auth()->user();
                     <label class="text-black font-w600">Kota <span class="required">*</span></label>
                     <select class="form-control" id="kabupaten" name="master_kota_kabupaten_id">
                       @foreach ($dataKabupaten as $kabupaten)
-                          @if (old('master_kota_kabupaten_id',$user->evaluator->master_kota_kabupaten_id)==$kabupaten->id)
+                          @if (old('master_kota_kabupaten_id',$evaluator->master_kota_kabupaten_id)==$kabupaten->id)
                               <option value="{{ $kabupaten->id }}" selected>{{ $kabupaten->nama }}</option>
                           @endif
                       @endforeach
                     </select>
                   </div>
                 </div>
+                
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Telepon <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->evaluator->nomor_telepon }}" name="nomor_telepon">
+                    <input type="text" class="form-control" value="{{ $evaluator->nomor_telepon }}" name="nomor_telepon">
                   </div>
+                </div>
+                <div class="col-lg-12">
+                    <label for="gambar">gambar</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" accept=".png, .jpg, .jpeg" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
+                            <label class="custom-file-label">Pilih File ...</label>
+                            @error('gambar')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <label for="ktp">KTP</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" accept=".pdf" class="custom-file-input @error('ktp') is-invalid @enderror" name="ktp">
+                            <label class="custom-file-label">Pilih File ...</label>
+                            @error('ktp')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <label for="npwp">NPWP</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" accept=".pdf" class="custom-file-input @error('npwp') is-invalid @enderror" name="npwp">
+                            <label class="custom-file-label">Pilih File ...</label>
+                            @error('npwp')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
@@ -419,6 +462,7 @@ $user = auth()->user();
                     
                   </div>
                 </div>
+                
               </div>
             </form>
           </div>
@@ -436,9 +480,10 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluatorPendidikan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluatorPendidikan') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="hidden" id="pendidikan-id" name="id">
+              <input type="hidden" id= "pendidikan-old-ijazah" name="oldIjazah">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
@@ -476,6 +521,23 @@ $user = auth()->user();
                   </div>
                 </div>
                 <div class="col-lg-12">
+                    <label for="ijazah">Ijazah</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" accept=".pdf" class="custom-file-input @error('ijazah') is-invalid @enderror" name="ijazah">
+                            <label class="custom-file-label">Pilih File ...</label>
+                            @error('ijazah')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
                     <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
                     <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
@@ -499,7 +561,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluatorPekerjaan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluatorPekerjaan') }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="pekerjaan-id">
               <div class="row">
@@ -551,9 +613,10 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPelatihan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluatorPelatihan') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" id="pelatihan-id">
+              <input type="hidden" name="oldSertifikat" id="pelatihan-old-sertifikat">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
@@ -563,15 +626,26 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tanggal Mulai <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="" name="tgl_mulai" id="pelatihan-tgl-mulai">
+                    <label class="text-black font-w600">Tanggal Pelatihan <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="" name="tahun_pelatihan" id="pelatihan-tahun-pelatihan">
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="text-black font-w600">Tanggal Selesai <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="" name="tgl_selesai" id="pelatihan-tgl-selesai">
-                  </div>
+                <div class="col-lg-12">
+                    <label for="sertifikat_pelatihan">Sertifikat</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" accept=".pdf" class="custom-file-input @error('sertifikat_pelatihan') is-invalid @enderror" name="sertifikat_pelatihan">
+                            <label class="custom-file-label">Pilih File ...</label>
+                            @error('sertifikat_pelatihan')
+                                <div class="invalid-feedback">
+                                {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
@@ -597,7 +671,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatDE', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatDE') }}" method="POST">
               @csrf
               <input type="hidden" name="id" name="de-id">
               <div class="row">
@@ -643,7 +717,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatSE', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatSE') }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="se-id">
               <div class="row">
@@ -697,7 +771,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanSertifikat', $user->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="comment-form" action="{{ route('evaluator.simpanSertifikat') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" id="se-id">
               <div class="row">
@@ -737,7 +811,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanNPWP', $user->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="comment-form" action="{{ route('evaluator.simpanNPWP') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" id="se-id">
               <div class="row">
@@ -777,7 +851,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanKTP', $user->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="comment-form" action="{{ route('evaluator.simpanKTP') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" id="se-id">
               <div class="row">
@@ -815,6 +889,7 @@ $user = auth()->user();
       var id = $(this).data('id');
 
       if (id != null) {
+        var oldIjazah = $(this).data('old-ijazah')
         var namaKampus = $(this).data('nama-kampus');
         var jenjang = $(this).data('jenjang');
         var programStudi = $(this).data('program-studi');
@@ -822,6 +897,7 @@ $user = auth()->user();
         var tahunLulus = $(this).data('tahun-lulus');
         
         $(".modal-body #pendidikan-id").val(id);
+        $(".modal-body #pendidikan-old-ijazah").val(oldIjazah);
         $(".modal-body #pedidikan-nama-kampus").val(namaKampus);
         $(".modal-body #pedidikan-jenjang").val(jenjang).change();
         $(".modal-body #pedidikan-program-studi").val(programStudi);
@@ -853,13 +929,13 @@ $user = auth()->user();
 
       if (id != null) {
         var namaPelatihan = $(this).data('nama-pelatihan');
-        var tglMulai = $(this).data('tgl-mulai');
-        var tglSelesai = $(this).data('tgl-selesai');
+        var tahun_pelatihan = $(this).data('tahun-pelatihan');
+        var oldSertifikat = $(this).data('old-sertifikat');
 
         $(".modal-body #pelatihan-id").val(id);
+        $(".modal-body #pelatihan-old-sertifikat").val(oldSertifikat);
         $(".modal-body #pelatihan-nama-pelatihan").val(namaPelatihan);
-        $(".modal-body #pelatihan-tgl-mulai").val(tglMulai);
-        $(".modal-body #pelatihan-tgl-selesai").val(tglSelesai);
+        $(".modal-body #pelatihan-tahun-pelatihan").val(tahun_pelatihan);
       }
     });
 

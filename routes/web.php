@@ -129,12 +129,9 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
     Route::post('/evaluator/profil/pendidikan', [EvaluatorController::class, 'pendidikan'])->name('evaluatorPendidikan');
     Route::post('/evaluator/profile/pekerjaan', [EvaluatorController::class, 'pekerjaan'])->name('evaluatorPekerjaan');
-    Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('evaluator.simpanRiwayatPelatihan');
+    Route::post('/evaluator/profile/pelatihan', [EvaluatorController::class, 'pelatihan'])->name('evaluatorPelatihan');
     Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('evaluator.simpanRiwayatDE');
     Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('evaluator.simpanRiwayatSE');
-    Route::post('/evaluator/profile/simpanSertifikat', [EvaluatorController::class, 'simpanRiwayatSertifikat'])->name('evaluator.simpanSertifikat');
-    Route::post('/evaluator/profile/simpanNPWP', [EvaluatorController::class, 'simpanNPWP'])->name('evaluator.simpanNPWP');
-    Route::post('/evaluator/profile/simpanKTP', [EvaluatorController::class, 'simpanKTP'])->name('evaluator.simpanKTP');
     Route::post('/evaluator/penugasanse/uploadfile', [PenugasanSeController::class, 'uploadFilePenugasanSe'])->name('uploadFilePenugasanSe');
 
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
