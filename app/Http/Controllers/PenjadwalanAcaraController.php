@@ -60,7 +60,7 @@ class PenjadwalanAcaraController extends Controller
             'mulai' => ['required'],
             'hingga' => ['required'],
             'kategori' => ['required'],
-            
+
         ]);
         $validatedData['user_id'] = auth()->user()->id;
         $ret_val = JadwalAcara::create($validatedData);
@@ -87,9 +87,10 @@ class PenjadwalanAcaraController extends Controller
      */
     public function edit($id)
     {
-        $id = auth()->user()->id;
-        $data = $this->user->getUser($id);
-        $acara = JadwalAcara::findOrFail($id);
+        $userId = auth()->user()->id;
+        $data   = $this->user->getUser($userId);
+        $acara  = JadwalAcara::findOrFail($id);
+
         return view('admin.penjadwalanacara.edit', $data = [
             'menu' => 'Penjadwalan Acara',
             'data' => $data,
@@ -112,7 +113,7 @@ class PenjadwalanAcaraController extends Controller
             'mulai' => ['required'],
             'hingga' => ['required'],
             'kategori' => ['required'],
-            
+
         ]);
         $dataAcara = JadwalAcara::findOrFail($id);
         $dataAcara->update($validatedData);

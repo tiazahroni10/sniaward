@@ -25,7 +25,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" class="form-control bg-transparent @error('mulai') is-invalid @enderror" name="mulai" placeholder="" value="{{ date('dd/mm/yyyy H:i:s', strtotime($acara->mulai) ) }}">
+                        <input type="datetime-local" class="form-control bg-transparent @error('mulai') is-invalid @enderror" name="mulai" placeholder="" value="{{ date('Y-m-d\TH:i', strtotime($acara->mulai)) }}">
                         @error('mulai')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" class="form-control bg-transparent @error('hingga') is-invalid @enderror" name="hingga" placeholder=" Judul:">
+                        <input type="datetime-local" class="form-control bg-transparent @error('hingga') is-invalid @enderror" name="hingga" placeholder=" Judul:" value="{{ date('Y-m-d\TH:i', strtotime($acara->hingga)) }}">
                         @error('hingga')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -43,7 +43,7 @@
                         <div class="mb-3">
                         <label for="kategori">Kategori<span class="text-danger">*</span></label>
                         <select class="d-block w-50 default-select @error('kategori') is-invalid @enderror" id="kategori" name="kategori" required="">
-                        
+
                         @if ($acara->kategori)
                             <option value="acara">acara</option>
                         @else
@@ -58,7 +58,7 @@
                         </div>
                         @enderror
                     </div>
-                    
+
                     <div class="text-left mt-4 mb-2">
                         <button class="btn btn-warning text-white btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>
                         <a href="{{ route('penjadwalanacara.index') }}" class="btn btn-danger  btn-sl-sm" type="cancel"><span class="mr-2"></span>Batal</a>
