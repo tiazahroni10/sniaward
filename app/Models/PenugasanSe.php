@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,14 @@ class PenugasanSe extends Model
                 // ->where('status',0)
                 ->where('evaluator_id',$id)
                 ->get();
+        return $ret_val;
+    }
+
+    public function verifikasiPenugasanSe($id)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->where('id',$id)
+        ->update(['status'=>1]);
         return $ret_val;
     }
 }

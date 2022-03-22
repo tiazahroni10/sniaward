@@ -158,4 +158,24 @@ class PenugasanSeController extends Controller
             'penugasanSe' => $penugasanSe
 		]);
     }
+
+    public function uploadFilePenugasanSe(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => ['required'],
+            'file_penilaian' => 'required|file|mimes:pdf|max:2048'
+        ]);
+        $validatedData['status'] = 2;
+        $validatedData['file_penilaian'] = $request->file('file_penilaian')->store('dokumen-se');
+        $tugas = PenugasanSe::findOrFail($validatedData['id']);
+        $tugas->update($validatedData);
+
+        return redirect()->route('penugasanSe')->with('sukses', 'file penilaian berhasil di unggah');
+    }
+
+    public function verifikasiPenugasanSe($id)
+    {
+        $ret_val = $this->penugasanSe->verifikasiPenugasanSe($id);
+        return redirect()->route('penugasanSe')->with('sukses','verifikasi berhasil');
+    }
 }

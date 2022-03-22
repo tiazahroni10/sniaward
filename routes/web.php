@@ -135,6 +135,7 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::post('/evaluator/profile/simpanSertifikat', [EvaluatorController::class, 'simpanRiwayatSertifikat'])->name('evaluator.simpanSertifikat');
     Route::post('/evaluator/profile/simpanNPWP', [EvaluatorController::class, 'simpanNPWP'])->name('evaluator.simpanNPWP');
     Route::post('/evaluator/profile/simpanKTP', [EvaluatorController::class, 'simpanKTP'])->name('evaluator.simpanKTP');
+    Route::post('/evaluator/penugasanse/uploadfile', [PenugasanSeController::class, 'uploadFilePenugasanSe'])->name('uploadFilePenugasanSe');
 
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);
@@ -147,6 +148,7 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::post('/evaluator/berkas/kirimfeedback', [BerkasLampiranPesertaController::class, 'feedback'])->name('feedback');
     Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
     Route::get('/evaluator/verifikasipenugasande/{id}/{user_id}', [PenugasanDeController::class, 'verifikasiPenugasanDe'])->name('verifikasiPenugasanDe');
+    Route::get('/evaluator/verifikasipenugasanse/{id}', [PenugasanSeController::class, 'verifikasiPenugasanSe'])->name('verifikasiPenugasanSe');
 
 
 });
