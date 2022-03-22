@@ -32,10 +32,11 @@
                       <th>No</th>
                       <th class="pl-5 width200">Nama Peserta</th>
                       <th>Aksi</th>
+                      <th>Verifikasi</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
-                    @foreach ($dataPeserta as $data)
+                    @foreach ($penugasan as $data)
                       <tr class="btn-reveal-trigger">
                         <td class="py-3 col-2">
                           <a href="#">
@@ -45,10 +46,18 @@
                           </a>
                         </td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
+<<<<<<< HEAD
                         <td class="text-right">
                           <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a> </td>
                         <td class="text-right">  
                           <a class="badge badge-secondary text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Verifikasi</a></td>
+=======
+                        <td>
+                          <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->peserta_id) }}">Cek Dokumen</a>
+                        </td>
+                        <td>
+                          <a class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white" href="{{ route('verifikasiPenugasanDe', [$data->id,$data->peserta_id]) }}" @if($data->status==1) style="pointer-events: none" @endif>Verifikasi</a>
+>>>>>>> e0bdaa564f611afd61842723e46f786fd8925911
                         </td>
                       </tr>
                     @endforeach

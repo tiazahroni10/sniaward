@@ -16,10 +16,12 @@ class CreatePendidikanTable extends Migration
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id')->constrained('users');
-            $table->string('jenjang',2)->nullable(false);
-            $table->string('nama_kampus',50)->nullable(false);
-            $table->string('ijazah')->nullable(false);
-            $table->year('tahun_lulus')->nullable(false);
+            $table->string('jenjang',2)->nullable();
+            $table->string('program_studi',50)->nullable();
+            $table->string('nama_kampus',50)->nullable();
+            $table->string('ijazah')->nullable();
+            $table->year('tahun_masuk')->nullable();
+            $table->year('tahun_lulus')->nullable();
             $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
