@@ -16,7 +16,7 @@ class CreateMasterSniTable extends Migration
         Schema::create('master_sni', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->string('no_sni',300)->nullable();
-            $table->string('judul_sni')->nullable();
+            $table->string('judul_sni',500)->nullable();
             $table->string('status',20)->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();

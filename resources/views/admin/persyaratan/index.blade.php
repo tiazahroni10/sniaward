@@ -60,12 +60,12 @@
                             class="text-primary">{{ $persyaratan->nama_file }}</a></td>
                         <td class="py-2 pl-5 wspace-no">{{ $persyaratan->created_at }}</td>
                         <td class="py-2 text-right">
-                          <a href="{{ route('persyaratan.edit', $persyaratan->id) }}" type="submit" class="btn btn-warning text-white"><span>Ubah</span>
+                          <a href="{{ route('persyaratan.edit', $persyaratan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('persyaratan.destroy', $persyaratan->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                            <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
                             </button>
                           </form>
                         </td>

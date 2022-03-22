@@ -68,12 +68,12 @@
                         <td class="py-2 pl-5 wspace-no">{{ $capacityBuilding->created_at }}</td>
                         <td class="py-2 text-right">
                           <a href="{{ route('capacitybuilding.edit', $capacityBuilding->id) }}" type="submit"
-                            class="btn btn-warning text-white"><span>Ubah</span>
+                            class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('capacitybuilding.destroy', $capacityBuilding->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                            <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
                             </button>
                           </form>
                         </td>

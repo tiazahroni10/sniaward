@@ -17,12 +17,12 @@
                         <li><a href="{{ route('faq.index') }}">FaQ</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="{{ route('showDataPeserta') }}" aria-expanded="false">
+                    <li><a class="" href="{{ route('showDataPeserta') }}" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">Peserta</span>
 						</a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="/admin/evaluator" aria-expanded="false">
+                    <li><a class="" href="/admin/evaluator" aria-expanded="false">
                         <i class="flaticon-381-notepad"></i>
                         <span class="nav-text">Evaluator</span>
                         </a>

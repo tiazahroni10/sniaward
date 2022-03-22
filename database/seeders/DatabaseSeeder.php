@@ -109,10 +109,10 @@ class DatabaseSeeder extends Seeder
             'ket_pertanyaan' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidiunt labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.',
             'kontakkami' => 'Kontak Kami',
             'ket_kontakkami' => 'Tujuan dari Kontak BSN adalah untuk menampung permintaan layanan, pertanyaan maupun masukan yang berhubungan dengan kegiatan SNI Award. Semua masukan dari Kontak BSN akan diteruskan kepada pihak/narasumber yang mempunyai kompetensi sesuai dengan cakupan pertanyaan',
-            'linkfacebook' => 'facebook.com',
-            'linktwitter' => 'twitter.com',
-            'linkinstagram' => 'instagram.com',
-            'webbsn' => 'bsn.go.id'
+            'linkfacebook' => 'https://www.facebook.com/BadanStandardisasiNasional',
+            'linktwitter' => 'https://www.twitter.com/',
+            'linkinstagram' => 'https://www.instagram.com/',
+            'webbsn' => 'https://www.bsn.go.id'
         ]);
         MasterUnggahLampiran::create([
             'nama_dokumen' =>'Scan legalitas hukum organisasi (SIUP/Akte Perusahaan)',

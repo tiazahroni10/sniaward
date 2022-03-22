@@ -21,14 +21,14 @@ $user = auth()->user();
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
-                    <h3 class="text-primary mb-0">{{ $user->evaluator->nama_lengkap }}</h3>
+                    <h3 class="text-warning mb-0">{{ $user->evaluator->nama_lengkap }}</h3>
                     <h4 class="text-muted mb-0">{{ $user->peran }}</h4>
                   </div>
                   <div class="dropdown ml-auto">
                     <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-warning text-white mr-2">
                       Edit Profile
                     </button>
-                    <button class="btn btn-sm btn-info">Pdf</button>
+                    {{-- <button class="btn btn-sm btn-info">Pdf</button> --}}
                   </div>
                 </div>
               </div>
@@ -68,7 +68,7 @@ $user = auth()->user();
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pendidikan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal"
-                class="btn btn-form-riwayat-pendidikan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pendidikan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -84,7 +84,7 @@ $user = auth()->user();
                         data-nama-kampus="{{ $pendidikan['nama_kampus'] }}" data-jenjang="{{ $pendidikan['jenjang'] }}"
                         data-program-studi="{{ $pendidikan['program_studi'] }}" data-tahun-masuk="{{ $pendidikan['tahun_masuk'] }}"
                         data-tahun-lulus="{{ $pendidikan['tahun_lulus'] }}"
-                        class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
+                        class="btn btn-form-riwayat-pendidikan btn-sm btnwarning text-white float-right mr-2">Edit</button>
                     </h4>
                     <h5>{{ $pendidikan['program_studi'] }}</h5>
                     <p>{{ $pendidikan['tahun_masuk'] }}-{{ $pendidikan['tahun_lulus'] }}</p>
@@ -97,7 +97,7 @@ $user = auth()->user();
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pekerjaan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal"
-                class="btn btn-form-riwayat-pekerjaan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pekerjaan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -112,7 +112,7 @@ $user = auth()->user();
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal" data-id="{{ $pekerjaan['id'] }}"
                         data-jabatan="{{ $pekerjaan['jabatan'] }}" data-instansi="{{ $pekerjaan['instansi'] }}"
                         data-tahun-mulai="{{ $pekerjaan['tahun_mulai'] }}" data-tahun-selesai="{{ $pekerjaan['tahun_selesai'] }}"
-                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -127,7 +127,7 @@ $user = auth()->user();
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Pelatihian</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal"
-                class="btn btn-form-riwayat-pelatihan btn-sm btn-primary mr-2">
+                class="btn btn-form-riwayat-pelatihan btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -141,7 +141,7 @@ $user = auth()->user();
                       <b>{{ $pelatihan['nama_pelatihan'] }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan['id'] }}"
                         data-nama-pelatihan="{{ $pelatihan['nama_pelatihan'] }}" data-tgl-mulai="{{ $pelatihan['tgl_mulai'] }}"
-                        data-tgl-selesai="{{ $pelatihan['tgl_selesai'] }}" class="btn btn-form-riwayat-pelatihan btn-sm btn-primary float-right mr-2">
+                        data-tgl-selesai="{{ $pelatihan['tgl_selesai'] }}" class="btn btn-form-riwayat-pelatihan btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -155,7 +155,7 @@ $user = auth()->user();
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Desk Evaluation (DE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -169,7 +169,7 @@ $user = auth()->user();
                       <b>{{ $de['nama_kegiatan'] }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" data-id="{{ $de['id'] }}"
                         data-nama-kegiatan="{{ $de['nama_kegiatan'] }}" data-nama-instansi="{{ $de['nama_instansi'] }}" data-tahun="{{ $de['tahun'] }}"
-                        class="btn btn-form-riwayat-de btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-de btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -183,7 +183,7 @@ $user = auth()->user();
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Side Evaluation (SE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -198,7 +198,7 @@ $user = auth()->user();
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" data-id="{{ $se['id'] }}"
                         data-nama-kegiatan="{{ $se['nama_kegiatan'] }}" data-nama-instansi="{{ $se['nama_instansi'] }}"
                         data-lokasi-instansi="{{ $se['lokasi_instansi'] }}" data-tahun="{{ $se['tahun'] }}"
-                        class="btn btn-form-riwayat-se btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-se btn-sm btn-warning text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
@@ -212,7 +212,7 @@ $user = auth()->user();
 
             <div style="justify-content: space-between; display: flex">
               <h3>Sertifikat</h3>
-              <button type="button" data-toggle="modal" data-target="#form-sertifikat-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-sertifikat-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -241,7 +241,7 @@ $user = auth()->user();
 
             <div style="justify-content: space-between; display: flex">
               <h3>NPWP</h3>
-              <button type="button" data-toggle="modal" data-target="#form-npwp-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-npwp-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -270,7 +270,7 @@ $user = auth()->user();
 
             <div style="justify-content: space-between; display: flex">
               <h3>KTP</h3>
-              <button type="button" data-toggle="modal" data-target="#form-ktp-modal" class="btn btn-sm btn-primary mr-2">
+              <button type="button" data-toggle="modal" data-target="#form-ktp-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
               </button>
             </div>
@@ -406,8 +406,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -468,8 +469,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -519,8 +521,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -564,8 +567,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -609,8 +613,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -662,8 +667,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -701,8 +707,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -740,8 +747,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>
@@ -779,8 +787,9 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
-                    <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="submit btn btn-sm btn-primary" name="submit">Simpan</button>
+                    <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                    <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                    
                   </div>
                 </div>
               </div>

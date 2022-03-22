@@ -80,7 +80,7 @@
         @foreach ($oldFeedback as $item)
             @if ($item->status == 1)
                 <div class="col">
-                        <div class="card text-black bg-abu">
+                        <div class="card text-white bg-dark">
                             <div class="card-header">
                                 <h5 class="card-title text-black">Feedback</h5>
                             </div>

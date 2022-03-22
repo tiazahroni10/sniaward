@@ -352,8 +352,8 @@
                     @enderror
                   </div>
                   <div class="text-left mt-4 mb-2">
-                    <button class="btn btn-primary btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>
-                    <button class="btn btn-danger light btn-sl-sm" type="button"><span class="mr-2"></span>Batal</button>
+                    <button class="btn btn-warning text-white btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>
+                    <button class="btn btn-danger btn-sl-sm" type="button"><span class="mr-2"></span>Batal</button>
                   </div>
                 </form>
               </div>

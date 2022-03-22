@@ -63,12 +63,12 @@
                         <td class="py-2 pl-5 wspace-no"><a href="mailto:ricky@example.com">{{ $pertanyaan->tipe_pertanyaan }}</a></td>
                         <td class="py-2 pl-5 wspace-no">{{ $pertanyaan->pertanyaan }}</td>
                         <td class="py-2 text-right">
-                          <a href="{{ route('masterpertanyaan.edit', $pertanyaan->id) }}" type="submit" class="btn btn-warning text-white"><span>Ubah</span>
+                          <a href="{{ route('masterpertanyaan.edit', $pertanyaan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('masterpertanyaan.destroy', $pertanyaan->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                            <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
                             </button>
                           </form>
                         </td>
