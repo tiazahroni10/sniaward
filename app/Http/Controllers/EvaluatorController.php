@@ -8,6 +8,7 @@ use App\Models\JadwalAcara;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\Pekerjaan;
+use App\Models\Pelatihan;
 use App\Models\Pendidikan;
 use App\Models\Sertifikat;
 use App\Models\User;
@@ -40,41 +41,11 @@ class EvaluatorController extends Controller
 		$dataKabupaten = MasterKotaKabupaten::all();
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
-		$user = auth()->user()->evaluator;
+		$evaluator = Evaluator::where('user_id',$id)->first();
 		$jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $dataPekerjaan = Pekerjaan::where('user_id',$id)->get();
         $dataPendidikan = Pendidikan::where('user_id',$id)->get();
-		
-		// $dataPekerjaan = [
-		// 	[
-		// 		"id" => 1,
-		// 		"jabatan" => "Sales",
-		// 		"instansi" => "Googlee Cabang Depok",
-		// 		"tahun_mulai" => "2018",
-		// 		"tahun_selesai" => "2018",
-		// 	],
-		// 	[
-		// 		"id" => 2,
-		// 		"jabatan" => "CEO",
-		// 		"instansi" => "Googlee",
-		// 		"tahun_mulai" => "2018",
-		// 		"tahun_selesai" => "2020",
-		// 	],
-		// ];
-		$dataPelatihan = [
-			[
-				"id" => 1,
-				"nama_pelatihan" => "Cara Membuat Akun Tiktok",
-				"tgl_mulai" => "20-12-2022",
-				"tgl_selesai" => "21-12-2022",
-			],
-			[
-				"id" => 2,
-				"nama_pelatihan" => "Cara Daftar Pinjol Aman",
-				"tgl_mulai" => "28-12-2022",
-				"tgl_selesai" => "29-12-2022",
-			],
-		];
+        $dataPelatihan = Pelatihan::where('user_id',$id)->get();
 		$dataDE = [
 			[
 				"id" => 1,
@@ -105,41 +76,12 @@ class EvaluatorController extends Controller
 				'tahun' => '2021',
 			],
 		];
-		$dataSertifikat = [
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'Sertifikat 1'
-			],
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'Sertifikat 2'
-			],
-		];
-		$dataNPWP = [
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'NPWP 1'
-			],
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'NPWP 2'
-			],
-		];
-		$dataKTP = [
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'KTP 1'
-			],
-			[
-				'url' => 'https://via.placeholder.com/150x80',
-				'nama' => 'KTP 2'
-			],
-		];
+		
 		return view('evaluator.profil', $data = [
 			'menu' => 'Profil',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'user' => $user,
+			'evaluator' => $evaluator,
 			'dataProvinsi' => $dataProvinsi,
 			'dataKabupaten' => $dataKabupaten,
 			'dataPendidikan' => $dataPendidikan,
@@ -147,9 +89,6 @@ class EvaluatorController extends Controller
 			'dataPelatihan' => $dataPelatihan,
 			'dataDE' => $dataDE,
 			'dataSE' => $dataSE,
-			'dataSertifikat' => $dataSertifikat,
-			'dataNPWP' => $dataNPWP,
-			'dataKTP' => $dataKTP,
 			'jadwalAcara' => $jadwalAcara
 		]);
 	}
@@ -237,12 +176,12 @@ class EvaluatorController extends Controller
 			$data['ktp'] = $request->file('ktp')->store('profil-evaluator');
 		} else $data['ktp'] = null;
 
-		if ($request->file('cv')) {
-			if ($request->oldCv) {
-				Storage::delete($request->oldCv);
-			}
-			$data['cv'] = $request->file('cv')->store('profil-evaluator');
-		} else $data['cv'] = null;
+		// if ($request->file('cv')) {
+		// 	if ($request->oldCv) {
+		// 		Storage::delete($request->oldCv);
+		// 	}
+		// 	$data['cv'] = $request->file('cv')->store('profil-evaluator');
+		// } else $data['cv'] = null;
 		$dataEvaluator =  ([
 
 			'nama_lengkap' => $request->nama_lengkap,
@@ -256,7 +195,6 @@ class EvaluatorController extends Controller
 			'master_provinsi_id' => $request->master_provinsi_id,
 			'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
 			'nomor_telepon' => $request->nomor_telepon,
-			'cv' => $data['cv'],
 			'gambar' => $data['gambar'],
 			'npwp' => $data['npwp'],
 			'ktp' => $data['ktp']
@@ -268,10 +206,24 @@ class EvaluatorController extends Controller
 
 	public function pendidikan(Request $request)
 	{
-		// TODO: menyimpan ke database
 		if (!empty($request->id) && $request->id != null) {
-			$id = $request->id;
-			dd($id);
+			$validatedData = $request->validate([
+			'nama_kampus' => ['required'],
+			'tahun_masuk' => ['required'],
+			'tahun_lulus' => ['required'],
+			'jenjang' =>['required'],
+			'program_studi' =>['required']
+			]);
+			if($request->file('ijazah')){
+				if($request->oldijazah){
+					Storage::delete($request->oldijazah);
+				}
+            $validatedData['ijazah']=$request->file('ijazah')->store('pendidikan-evaluator');
+        	}
+			
+			$dataPendidikan = Pendidikan::findOrFail($request->id);
+			$dataPendidikan->update($validatedData);
+			return redirect()->route('profilevaluator.index')->with('sukses','Data pendidikan berhasil ditambahkan');
 		} else {
 				$validatedData = $request->validate([
 			'nama_kampus' => ['required'],
@@ -280,7 +232,7 @@ class EvaluatorController extends Controller
 			'jenjang' =>['required'],
 			'program_studi' =>['required']
 		]);
-			// $validatedData['ijazah'] = $request->file('ijazah')->store('pendidikan-evaluator');
+			$validatedData['ijazah'] = $request->file('ijazah')->store('pendidikan-evaluator');
 			$validatedData['user_id'] = auth()->user()->id;
 			$validatedData['status'] = false;
 			Pendidikan::create($validatedData);
@@ -290,10 +242,17 @@ class EvaluatorController extends Controller
 
 	public function pekerjaan(Request $request)
 	{
-		// TODO: menyimpan ke database
 		if (!empty($request->id) && $request->id != null) {
-			// TODO: fungsi edit data yang sudah ada
-			$id = $request->id;
+			$validatedData = $request->validate([
+            'instansi' => ['required'],
+            'jabatan' => ['required'],
+            'tahun_mulai' => ['required'],
+            'tahun_selesai' => ['required']
+        ]);
+			$validatedData['user_id'] = auth()->user()->id;
+			$dataPekerjaan = Pekerjaan::findOrFail($request->id);
+			$dataPekerjaan->update($validatedData);
+			return redirect()->route('profilevaluator.index')->with('sukses','Data pekerjaan berhasil diubah');
 		} else {
 			$validatedData = $request->validate([
             'instansi' => ['required'],
@@ -307,14 +266,32 @@ class EvaluatorController extends Controller
 		}
 	}
 
-	public function simpanRiwayatPelatihan(Request $request)
+	public function pelatihan(Request $request)
 	{
-		// TODO: menyimpan ke database
 		if (!empty($request->id) && $request->id != null) {
-			// TODO: fungsi edit data yang sudah ada
-			$id = $request->id;
+			$validatedData = $request->validate([
+			'nama_pelatihan' => ['required'],
+			'tahun_pelatihan' => ['required']
+			]);
+			if($request->file('sertifikat_pelatihan')){
+				if($request->oldSertifikat){
+					Storage::delete($request->oldSertifikat);
+				}
+            $validatedData['sertifikat_pelatihan']=$request->file('sertifikat_pelatihan')->store('pendidikan-evaluator');
+        	}
+			
+			$pelatihan = Pelatihan::findOrFail($request->id);
+			$pelatihan->update($validatedData);
+			return redirect()->route('profilevaluator.index')->with('sukses','Data pendidikan berhasil ditambahkan');
 		} else {
-			// TODO: fungsi tambah data baru
+			$validatedData = $request->validate([
+            'nama_pelatihan' => ['required'],
+            'tahun_pelatihan' => ['required'],
+        ]);
+			$validatedData['sertifikat_pelatihan'] = $request->file('sertifikat_pelatihan')->store('pelatihan-evaluator');
+			$validatedData['user_id'] = auth()->user()->id;
+			Pelatihan::create($validatedData);
+			return redirect()->route('profilevaluator.index')->with('sukses','Data pendidikan berhasil ditambahkan');
 		}
 	}
 
@@ -340,20 +317,6 @@ class EvaluatorController extends Controller
 		}
 	}
 
-	public function simpanSertifikat(Request $request)
-	{
-		// TODO: menyimpan ke database
-	}
-
-	public function simpanNPWP(Request $request)
-	{
-		// TODO: menyimpan ke database
-	}
-
-	public function simpanKTP(Request $request)
-	{
-		// TODO: menyimpan ke database
-	}
 
 	/**
 	 * Remove the specified resource from storage.
