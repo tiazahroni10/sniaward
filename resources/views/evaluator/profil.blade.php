@@ -74,20 +74,19 @@ $user = auth()->user();
             </div>
             <hr>
             <div class="row mt-2">
-              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
               @foreach ($dataPendidikan as $pendidikan)
                 <div class="col-12">
                   <div>
                     <h4>
-                      <b>{{ $pendidikan['nama_kampus'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan['id'] }}"
-                        data-nama-kampus="{{ $pendidikan['nama_kampus'] }}" data-jenjang="{{ $pendidikan['jenjang'] }}"
-                        data-program-studi="{{ $pendidikan['program_studi'] }}" data-tahun-masuk="{{ $pendidikan['tahun_masuk'] }}"
-                        data-tahun-lulus="{{ $pendidikan['tahun_lulus'] }}"
+                      <b>{{ $pendidikan->nama_kampus }}</b>
+                      <button type="button" data-toggle="modal" data-target="#form-riwayat-pendidikan-modal" data-id="{{ $pendidikan->id }}"
+                        data-nama-kampus="{{ $pendidikan->nama_kampus }}" data-jenjang="{{ $pendidikan->jenjang }}"
+                        data-program-studi="{{ $pendidikan->program_studi }}" data-tahun-masuk="{{ $pendidikan->tahun_masuk }}"
+                        data-tahun-lulus="{{ $pendidikan->tahun_lulus }}"
                         class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
                     </h4>
-                    <h5>{{ $pendidikan['program_studi'] }}</h5>
-                    <p>{{ $pendidikan['tahun_masuk'] }}-{{ $pendidikan['tahun_lulus'] }}</p>
+                    <h5>{{ $pendidikan->program_studi }}</h5>
+                    <p>{{ $pendidikan->tahun_masuk }}-{{ $pendidikan->tahun_lulus }}</p>
                   </div>
                 </div>
               @endforeach
@@ -125,7 +124,7 @@ $user = auth()->user();
             <hr>
 
             <div style="justify-content: space-between; display: flex">
-              <h3>Riwayat Pelatihian</h3>
+              <h3>Riwayat Pelatihan</h3>
               <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal"
                 class="btn btn-form-riwayat-pelatihan btn-sm btn-primary mr-2">
                 Tambah
@@ -134,7 +133,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataPelatihan as $pelatihan)
+              {{-- @foreach ($dataPelatihan as $pelatihan)
                 <div class="col-12">
                   <div>
                     <h4>
@@ -146,10 +145,10 @@ $user = auth()->user();
                       </button>
                     </h4>
                     {{-- <h5>{{ $pelatihan['instansi'] }}</h5> --}}
-                    <p>{{ $pelatihan['tgl_mulai'] }}-{{ $pelatihan['tgl_selesai'] }}</p>
+                    {{-- <p>{{ $pelatihan['tgl_mulai'] }}-{{ $pelatihan['tgl_selesai'] }}</p>
                   </div>
-                </div>
-              @endforeach
+                </div> --}}
+              {{-- @endforeach --}}
             </div>
             <hr>
 
@@ -162,7 +161,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataDE as $de)
+              {{-- @foreach ($dataDE as $de)
                 <div class="col-12">
                   <div>
                     <h4>
@@ -177,7 +176,7 @@ $user = auth()->user();
                     <p>{{ $de['tahun'] }}</p>
                   </div>
                 </div>
-              @endforeach
+              @endforeach --}}
             </div>
             <hr>
 
@@ -190,7 +189,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataSE as $se)
+              {{-- @foreach ($dataSE as $se)
                 <div class="col-12">
                   <div>
                     <h4>
@@ -206,7 +205,7 @@ $user = auth()->user();
                     <p>{{ $se['tahun'] }}</p>
                   </div>
                 </div>
-              @endforeach
+              @endforeach --}}
             </div>
             <hr>
 
@@ -219,7 +218,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataSertifikat as $sertifikat)
+              {{-- @foreach ($dataSertifikat as $sertifikat)
                 <div class="col-12 mt-2">
                   <div class="row">
                     <div class="col-2">
@@ -235,7 +234,7 @@ $user = auth()->user();
                     </div>
                   </div>
                 </div>
-              @endforeach
+              @endforeach --}}
             </div>
             <hr>
 
@@ -248,7 +247,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataNPWP as $npwp)
+              {{-- @foreach ($dataNPWP as $npwp)
                 <div class="col-12 mt-2">
                   <div class="row">
                     <div class="col-2">
@@ -264,7 +263,7 @@ $user = auth()->user();
                     </div>
                   </div>
                 </div>
-              @endforeach
+              @endforeach --}}
             </div>
             <hr>
 
@@ -277,7 +276,7 @@ $user = auth()->user();
             <hr>
             <div class="row mt-2">
               {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              @foreach ($dataKTP as $ktp)
+              {{-- @foreach ($dataKTP as $ktp)
                 <div class="col-12 mt-2">
                   <div class="row">
                     <div class="col-2">
@@ -293,7 +292,7 @@ $user = auth()->user();
                     </div>
                   </div>
                 </div>
-              @endforeach
+              @endforeach --}}
             </div>
           </div>
         </div>
@@ -427,7 +426,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPendidikan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluatorPendidikan', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" id="pendidikan-id" name="id">
               <div class="row">
@@ -489,7 +488,7 @@ $user = auth()->user();
             <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-            <form class="comment-form" action="{{ route('evaluator.simpanRiwayatPekerjaan', $user->id) }}" method="POST">
+            <form class="comment-form" action="{{ route('evaluatorPekerjaan', $user->id) }}" method="POST">
               @csrf
               <input type="hidden" name="id" id="pekerjaan-id">
               <div class="row">
@@ -803,8 +802,8 @@ $user = auth()->user();
         var programStudi = $(this).data('program-studi');
         var tahunMasuk = $(this).data('tahun-masuk');
         var tahunLulus = $(this).data('tahun-lulus');
-
-        $(".modal-body #pedidikan-id").val(namaKampus);
+        
+        $(".modal-body #pendidikan-id").val(id);
         $(".modal-body #pedidikan-nama-kampus").val(namaKampus);
         $(".modal-body #pedidikan-jenjang").val(jenjang).change();
         $(".modal-body #pedidikan-program-studi").val(programStudi);
@@ -812,6 +811,7 @@ $user = auth()->user();
         $(".modal-body #pedidikan-tahun-lulus").val(tahunLulus);
       }
     });
+    
 
     $(document).on("click", ".btn-form-riwayat-pekerjaan", function() {
       var id = $(this).data('id');

@@ -21,11 +21,21 @@ class PenugasanDe extends Model
         return $ret_val;
     }
 
-    public function getIdPeserta($idEvaluator){
+    public function getPenugasan($idEvaluator){
         $ret_val = DB::table('penugasan_de')
-        ->select('peserta_id')
+        ->select('peserta_id','id','nama_organisasi','status')
         ->where('evaluator_id',$idEvaluator)
         ->get();
         return $ret_val;
+    }
+    public function verifikasiPenugasanDe($id,$evaluator_id, $peserta_id)
+    {
+        $ret_val = DB::table('penugasan_de')
+        ->where('id',$id)
+        ->where('evaluator_id',$evaluator_id)
+        ->where('peserta_id',$peserta_id)
+        ->update(['status'=>1]);
+        return $ret_val;
+
     }
 }

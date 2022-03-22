@@ -21,7 +21,7 @@ class PenugasanDeController extends Controller
     {
         $this->user = new User();
         $this->peserta = new Peserta();
-        $this->penugsanDe = new PenugasanDe();
+        $this->penugasanDe = new PenugasanDe();
     }
     public function index()
     {
@@ -139,5 +139,13 @@ class PenugasanDeController extends Controller
             'dataEvaluator' => $dataEvaluator,
             'dataPenugasanDe' => $dataPenugasanDe
 		]);
+    }
+
+    public function verifikasiPenugasanDe($id,$user_id)
+    {
+        $evaluator_id = auth()->user()->id;
+        $ret_val = $this->penugasanDe->verifikasiPenugasanDe($id,$evaluator_id,$user_id);
+
+        return redirect()->route('berkasDokumen')->with('sukses','verifikasi berhasil');
     }
 }

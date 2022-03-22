@@ -28,17 +28,17 @@ class BerkasLampiranPesertaController extends Controller
 	{
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
-		$idPeserta = $this->penugasanDe->getIdPeserta($id);
-		$dataPeserta= [];
-		foreach ($idPeserta as $id) {
-			$dataPeserta[] = $this->peserta->getNamaPeserta($id->peserta_id);
-		}
+		$penugasan = $this->penugasanDe->getPenugasan($id);
+		// $dataPeserta= [];
+		// foreach ($penugasan as $id) {
+		// 	$dataPeserta[] = $this->peserta->getNamaPeserta($id->peserta_id);
+		// }
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('evaluator.berkas_peserta.index', $data = [
 			'menu' => 'Data Master',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'dataPeserta' => $dataPeserta,
+			'penugasan' => $penugasan,
 			'jadwalAcara' => $jadwalAcara
 		]);
 	}
@@ -82,6 +82,7 @@ class BerkasLampiranPesertaController extends Controller
         else {
             return redirect()->route('detailBerkasDokumen',$user_id)->with('gagal','Dokumen gagal di verifikasi');
         }
+
 	}
 	public function lengkapiBerkasDokumen($id,$user_id,$master_lampiran_id)
 	{

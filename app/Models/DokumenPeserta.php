@@ -38,6 +38,15 @@ class DokumenPeserta extends Model
         return $ret_val;
 
     }
+    public function statusDokumen($user_id)
+    {
+        $ret_val = DB::table('dokumen_peserta')
+        ->where('user_id',$user_id)
+        ->select('status')
+        ->get();
+        return $ret_val;
+
+    }
     public function lengkapiDokumen($id, $user_id, $lampiran_id)
     {
         $nama_file = $this->getNamaFile($id);

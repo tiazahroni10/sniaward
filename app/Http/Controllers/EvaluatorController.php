@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\KirimPassword;
 use App\Models\Evaluator;
+use App\Models\JadwalAcara;
 use App\Models\MasterKotaKabupaten;
 use App\Models\MasterProvinsi;
 use App\Models\Pekerjaan;
@@ -31,6 +32,7 @@ class EvaluatorController extends Controller
 	{
 		$this->user = new User();
 		$this->evaluator = new Evaluator();
+		$this->jadwalAcara = new JadwalAcara();
 	}
 	public function index()
 	{
@@ -39,41 +41,26 @@ class EvaluatorController extends Controller
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
 		$user = auth()->user()->evaluator;
-
-		$dataPendidikan = [
-			[
-				"id" => 1,
-				"nama_kampus" => "Cambridge University",
-				"program_studi" => "Teknik Informatika",
-				"jenjang" => "S1",
-				"tahun_masuk" => "2018",
-				"tahun_lulus" => "2022",
-			],
-			[
-				"id" => 2,
-				"nama_kampus" => "Depok University",
-				"program_studi" => "Teknologi Lingkungan",
-				"jenjang" => "S1",
-				"tahun_masuk" => "2022",
-				"tahun_lulus" => "2024",
-			]
-		];
-		$dataPekerjaan = [
-			[
-				"id" => 1,
-				"jabatan" => "Sales",
-				"instansi" => "Googlee Cabang Depok",
-				"tahun_mulai" => "2018",
-				"tahun_selesai" => "2018",
-			],
-			[
-				"id" => 2,
-				"jabatan" => "CEO",
-				"instansi" => "Googlee",
-				"tahun_mulai" => "2018",
-				"tahun_selesai" => "2020",
-			],
-		];
+		$jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $dataPekerjaan = Pekerjaan::where('user_id',$id)->get();
+        $dataPendidikan = Pendidikan::where('user_id',$id)->get();
+		
+		// $dataPekerjaan = [
+		// 	[
+		// 		"id" => 1,
+		// 		"jabatan" => "Sales",
+		// 		"instansi" => "Googlee Cabang Depok",
+		// 		"tahun_mulai" => "2018",
+		// 		"tahun_selesai" => "2018",
+		// 	],
+		// 	[
+		// 		"id" => 2,
+		// 		"jabatan" => "CEO",
+		// 		"instansi" => "Googlee",
+		// 		"tahun_mulai" => "2018",
+		// 		"tahun_selesai" => "2020",
+		// 	],
+		// ];
 		$dataPelatihan = [
 			[
 				"id" => 1,
@@ -163,6 +150,7 @@ class EvaluatorController extends Controller
 			'dataSertifikat' => $dataSertifikat,
 			'dataNPWP' => $dataNPWP,
 			'dataKTP' => $dataKTP,
+			'jadwalAcara' => $jadwalAcara
 		]);
 	}
 
@@ -278,25 +266,44 @@ class EvaluatorController extends Controller
 		return redirect()->route('profilevaluator.index')->with('sukses', 'Data profil berhasi diubah');
 	}
 
-	public function simpanRiwayatPendidikan(Request $request)
+	public function pendidikan(Request $request)
 	{
 		// TODO: menyimpan ke database
 		if (!empty($request->id) && $request->id != null) {
-			// TODO: fungsi edit data yang sudah ada
 			$id = $request->id;
+			dd($id);
 		} else {
-			// TODO: fungsi tambah data baru
+				$validatedData = $request->validate([
+			'nama_kampus' => ['required'],
+			'tahun_masuk' => ['required'],
+			'tahun_lulus' => ['required'],
+			'jenjang' =>['required'],
+			'program_studi' =>['required']
+		]);
+			// $validatedData['ijazah'] = $request->file('ijazah')->store('pendidikan-evaluator');
+			$validatedData['user_id'] = auth()->user()->id;
+			$validatedData['status'] = false;
+			Pendidikan::create($validatedData);
+			return redirect()->route('profilevaluator.index')->with('sukses','Data pendidikan berhasil ditambahkan');
 		}
 	}
 
-	public function simpanRiwayatPekerjaan(Request $request)
+	public function pekerjaan(Request $request)
 	{
 		// TODO: menyimpan ke database
 		if (!empty($request->id) && $request->id != null) {
 			// TODO: fungsi edit data yang sudah ada
 			$id = $request->id;
 		} else {
-			// TODO: fungsi tambah data baru
+			$validatedData = $request->validate([
+            'instansi' => ['required'],
+            'jabatan' => ['required'],
+            'tahun_mulai' => ['required'],
+            'tahun_selesai' => ['required']
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        Pekerjaan::create($validatedData);
+        return redirect()->route('profilevaluator.index')->with('sukses','Data pekerjaan berhasil ditambahkan');
 		}
 	}
 

@@ -127,8 +127,8 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
 // bagian evaluator
 Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
-    Route::post('/evaluator/profile/simpanRiwayatPendidikan', [EvaluatorController::class, 'simpanRiwayatPendidikan'])->name('evaluator.simpanRiwayatPendidikan');
-    Route::post('/evaluator/profile/simpanRiwayatPekerjaan', [EvaluatorController::class, 'simpanRiwayatPekerjaan'])->name('evaluator.simpanRiwayatPekerjaan');
+    Route::post('/evaluator/profil/pendidikan', [EvaluatorController::class, 'pendidikan'])->name('evaluatorPendidikan');
+    Route::post('/evaluator/profile/pekerjaan', [EvaluatorController::class, 'pekerjaan'])->name('evaluatorPekerjaan');
     Route::post('/evaluator/profile/simpanRiwayatPelatihan', [EvaluatorController::class, 'simpanRiwayatPelatihan'])->name('evaluator.simpanRiwayatPelatihan');
     Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('evaluator.simpanRiwayatDE');
     Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('evaluator.simpanRiwayatSE');
@@ -146,6 +146,7 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/berkas/tolak/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'lengkapiBerkasDokumen'])->name('lengkapiBerkasDokumen');
     Route::post('/evaluator/berkas/kirimfeedback', [BerkasLampiranPesertaController::class, 'feedback'])->name('feedback');
     Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
+    Route::get('/evaluator/verifikasipenugasande/{id}/{user_id}', [PenugasanDeController::class, 'verifikasiPenugasanDe'])->name('verifikasiPenugasanDe');
 
 
 });
