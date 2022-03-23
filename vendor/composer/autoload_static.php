@@ -596,6 +596,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Models\\Pendidikan' => __DIR__ . '/../..' . '/app/Models/Pendidikan.php',
         'App\\Models\\PenugasanDe' => __DIR__ . '/../..' . '/app/Models/PenugasanDe.php',
         'App\\Models\\PenugasanSe' => __DIR__ . '/../..' . '/app/Models/PenugasanSe.php',
+        'App\\Models\\PenugasanVerifikasi' => __DIR__ . '/../..' . '/app/Models/PenugasanVerifikasi.php',
         'App\\Models\\PertanyaanPeserta' => __DIR__ . '/../..' . '/app/Models/PertanyaanPeserta.php',
         'App\\Models\\Peserta' => __DIR__ . '/../..' . '/app/Models/Peserta.php',
         'App\\Models\\Sekretariat' => __DIR__ . '/../..' . '/app/Models/Sekretariat.php',
