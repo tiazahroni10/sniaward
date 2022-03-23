@@ -77,6 +77,7 @@ return array(
     'App\\Models\\Pendidikan' => $baseDir . '/app/Models/Pendidikan.php',
     'App\\Models\\PenugasanDe' => $baseDir . '/app/Models/PenugasanDe.php',
     'App\\Models\\PenugasanSe' => $baseDir . '/app/Models/PenugasanSe.php',
+    'App\\Models\\PenugasanVerifikasi' => $baseDir . '/app/Models/PenugasanVerifikasi.php',
     'App\\Models\\PertanyaanPeserta' => $baseDir . '/app/Models/PertanyaanPeserta.php',
     'App\\Models\\Peserta' => $baseDir . '/app/Models/Peserta.php',
     'App\\Models\\Sekretariat' => $baseDir . '/app/Models/Sekretariat.php',
