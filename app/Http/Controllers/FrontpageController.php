@@ -201,4 +201,15 @@ class FrontpageController extends Controller
 			'data' => $dataFrontpage
 		]);
 	}
+
+	public function seputarSni()
+	{
+		$dataFrontpage = Frontpage::all();
+		$dataFrontpage = $dataFrontpage->last();
+
+		return view('seputarsni',$data = [
+			'data' => $dataFrontpage
+		]);
+	}
+	
 }

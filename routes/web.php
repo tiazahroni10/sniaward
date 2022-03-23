@@ -65,6 +65,7 @@ Route::get('/seputarsni', function () {
 });
 
 Route::get('/semuaacara', [FrontpageController::class, 'semuaAcara'])->middleware('guest');
+Route::get('/seputarsni', [FrontpageController::class, 'seputarSni'])->middleware('guest');
 Route::get('/detailacara', function () {
     return view('detailacara');
 });
@@ -146,6 +147,5 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
     Route::get('/evaluator/verifikasipenugasande/{id}/{user_id}', [PenugasanDeController::class, 'verifikasiPenugasanDe'])->name('verifikasiPenugasanDe');
     Route::get('/evaluator/verifikasipenugasanse/{id}', [PenugasanSeController::class, 'verifikasiPenugasanSe'])->name('verifikasiPenugasanSe');
-
 
 });
