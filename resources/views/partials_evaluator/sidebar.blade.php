@@ -17,12 +17,20 @@
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-notepad"></i>
 							<span class="nav-text">Tugas</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{ route('penugasanSe') }}">Tugas SE</a></li>
-                        <li><a href="{{ route('berkasDokumen') }}">Tugas DE</a></li>
-                    </ul>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('berkasDokumen') }}">Tugas Verifikasi</a></li>
+                            <li><a href="{{ route('penugasanSe') }}">Tugas SE</a></li>
+                            <li><a href="{{ route('berkasDokumen') }}">Tugas DE</a></li>
+                            
+                        </ul>
                     </li>
+                    <li><a class="" href="{{ route('berkasDokumen') }}" aria-expanded="false">
+                        <i class="flaticon-381-news"></i>
+                        <span class="nav-text">Umpan Balik</span>
+                        </a>
+                    </li>
+                    
                     
                     
 				<div class="copyright">
