@@ -6,6 +6,7 @@ use App\Models\Evaluator;
 use App\Models\JadwalAcara;
 use App\Models\PenugasanSe;
 use App\Models\Peserta;
+use App\Models\SniPeserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -23,6 +24,7 @@ class PenugasanSeController extends Controller
         $this->peserta = new Peserta();
         $this->penugasanSe = new PenugasanSe();
         $this->jadwalAcara = new JadwalAcara();
+        $this->sniPeserta = new SniPeserta();
     }
     public function index()
     {
@@ -131,13 +133,16 @@ class PenugasanSeController extends Controller
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
         $dataPenugasanSe = $this->penugasanSe->getPenugasanWithEvaluator($user_id);
+		$dataSniPeserta = $this->sniPeserta->getSniPeserta($user_id);
+
 		return view('admin.penugasanse.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
             'dataEvaluator' => $dataEvaluator,
-            'dataPenugasanSe' => $dataPenugasanSe
+            'dataPenugasanSe' => $dataPenugasanSe,
+            'dataSniPeserta' => $dataSniPeserta
 		]);
     }
 

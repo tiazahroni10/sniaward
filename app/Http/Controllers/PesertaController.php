@@ -225,11 +225,13 @@ class PesertaController extends Controller
 		$idUser = auth()->user()->id;
 		$data = $this->user->getUser($idUser);
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
+		$dataSniPeserta = $this->sniPeserta->getSniPeserta($user_id);
 		return view('admin.peserta.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'dataPeserta' => $dataPeserta
+			'dataPeserta' => $dataPeserta,
+			'dataSniPeserta' => $dataSniPeserta
 		]);
 	}
 

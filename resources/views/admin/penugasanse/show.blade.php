@@ -27,134 +27,105 @@
             </div>
         @endif
             <div class="row">
-                <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <label for="pendidikan">Biodata</label> <br><br>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Nama Organisasi</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->nama_organisasi }}</h5>
-                                </div>
-                            </div>
-                            {{-- <div class="row">
-                                <div class="col-4">
-                                    <h5>No SNI</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->no_sni }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Judul SNI</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->judul_sni }}</h5>
-                                </div>
-                            </div> --}}
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Kategori</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->nama_kategori }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Alamat Organisasi</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->alamat_organisasi }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Alamat Pabrik</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->alamat_pabrik }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Email Perusahaan</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->email_perusahaan }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>No Telepon</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->nomor_telepon }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>website</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->website }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Tahun Berdiri</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->tahun_berdiri }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Status Kepemilikan</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->status_kepemilikan }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Tipe Produk</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->tipe_produk }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Kekayaan Organisasi</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->kekayaan_organisasi }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Hasil Penjualan Organisasi</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->hasil_penjualan_organisasi }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Tipe Organisasi</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->tipe_organisasi }}</h5>
-                                </div>
-                            </div>
+            <div class="col-12">
+            <div class="profile card card-body p-3" style="height: auto">
+                <div class="profile-head">
+                <div class="profile-info">
+                    <div class="profile-photo mt-0">
+                    {{-- <a href="/storage/{{ $dataPeserta->gambar }}"><img src="/storage/{{ $$dataPeserta->gambar }}" class="img-fluid rounded-circle"></a> --}}
+                    </div>
+                    <div class="profile-details">
+                    <div class="profile-name px-3 pt-2">
+                        <h3 class="text-primary mb-0">{{ $dataPeserta->nama_organisasi }}</h3>
+                    </div>
+                    </div>
+                </div>
+                <div style="padding: 15px 20px">
+                    <table>
+                    <tr>
+                        <td>Alamat Organisasi</td>
+                        <td class="col-data">: {{ $dataPeserta->alamat_organisasi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat Pabrik</td>
+                        <td class="col-data">: {{ $dataPeserta->alamat_pabrik }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Sekretaris Perusahaan</td>
+                        <td class="col-data">: {{ $dataPeserta->email_perusahaan }}</td>
+                    </tr>
+                    <tr>
+                        <td>No. Telepon Perusahaan</td>
+                        <td class="col-data">: {{ $dataPeserta->nomor_telepon }}</td>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td class="col-data">: {{ $dataPeserta->website }}</td>
+                    </tr>
+                    <tr>
+                        <td>Organisasi Beroperasi Sejak</td>
+                        <td class="col-data">: {{ date('d F Y', strtotime($dataPeserta->tahun_berdiri)) }}</td>
+                    </tr>
+                    <tr>
+                        <td>Status Kepemilikan</td>
+                        <td class="col-data">: {{ $dataPeserta->status_kepemilikan }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Produk Yang Dihasilkan</td>
+                        <td class="col-data">: {{ $dataPeserta->tipe_produk }}</td>
+                    </tr>
+                    <tr>
+                        <td>Apakah Produk Yang Dihasilkan Telah Diekspor?</td>
+                        <td class="col-data">: {{ 1 == ($dataPeserta->ekspor) ? 'ya' : 'tidak' ; }} </td>
+                    </tr>
+                    <tr>
+                        <td>Sektor dan Kategori Organisasi</td>
+                        <td class="col-data">: {{ $dataPeserta->master_sektor_kategori_id }} </td>
+                    </tr>
+                    <tr>
+                        <td>Kekayaan Bersih Organisasi</td>
+                        <td class="col-data">: {{ "Rp " . number_format($dataPeserta->kekayaan_organisasi,2,',','.')}}</td>
+                    </tr>
+                    <tr>
+                        <td>Hasil Penjualan Tahunan Organisasi</td>
+                        <td class="col-data">:  {{ "Rp " . number_format($dataPeserta->hasil_penjualan_organisasi,2,',','.')}}</td>
+                    </tr> 
+                    <tr>
+                        <td>Organisasi yang Didaftarkan Merupakan</td>
+                        <td class="col-data">: {{ $dataPeserta->tipe_organisasi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Standar Nasional Indonesia yang Dimiliki</td>
+                        <td class="col-data">: {{ $dataPeserta->tipe_sni  }} </td>
+                    </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-12">
+            <div class="card card-body">
+                <div style="justify-content: space-between; display: flex">
+                <h3>Standar Nasional Indonesia yang Dimiliki</h3>
+                </div>
+                <hr>
+                @foreach ($dataSniPeserta as $item)
+                <div class="row mt-2">
+                    <div class="col-8 my-4">
+                        <div>
+                            <h4>
+                            <b>{{ $item->no_sni}}</b>
+                            <p>{{ $item->judul_sni }}</p>
+                            
+                            </h4>
+                            <h5>{{ $item->nama_lembaga_sertifikasi }}</h5>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
+            </div>
+        </div>
         @if ($dataPenugasanSe == null)
             <form action="{{ route('penugasanse.store') }}" method="POST">
             @csrf
