@@ -223,10 +223,12 @@
                                 <h5>Status</h5>
                             </div>
                             <div class="col-md-auto">
-                                @if ($dataPenugasanSe->status)
+                                @if ($dataPenugasanSe->status == 2)
                                     <div class="badge badge-success">Selesai</div>
-                                @else
+                                @elseif($dataPenugasanSe->status == 0)
                                     <div class="badge badge-warning">Tertunda</div>
+                                @else
+                                    <div class="badge badge-info">Verifikasi</div>
                                 @endif
                             </div>
                         </div>
