@@ -96,6 +96,14 @@ $user = auth()->user();
                     <td>Standar Nasional Indonesia yang Dimiliki</td>
                     <td class="col-data">: {{ $user->peserta->tipe_sni  }} </td>
                   </tr>
+                  <tr>
+                    <td>KTP</td>
+                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                  </tr>
+                  <tr>
+                    <td>NPWP</td>
+                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                  </tr>
                 </table>
               </div>
             </div>
@@ -150,14 +158,24 @@ $user = auth()->user();
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Organisasi <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->peserta->nama_organisasi }}" name="nama_organisasi">
+                    <label class="text-black font-w600">Nama Organisasi <span class="required text-danger">*</span></label>
+                    <input type="text" class="form-control @error('nama_organisasi') is-invalid @enderror" value="{{ $user->peserta->nama_organisasi }}" name="nama_organisasi">
+                    @error('nama_organisasi')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
                     <label class="text-black font-w600">Alamat Organisasi <span class="required"></label>
-                    <textarea rows="8" class="form-control" name="alamat_organisasi" required>{{ $user->peserta->alamat_organisasi }}</textarea>
+                    <textarea rows="8" class="form-control @error('alamat_organisasi') is-invalid @enderror" name="alamat_organisasi" required>{{ $user->peserta->alamat_organisasi }}</textarea>
+                    @error('alamat_organisasi')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -176,7 +194,7 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                    <label class="text-black font-w600">Kota <span class="required text-danger">*</span></label>
                     <select class="form-control" id="kabupaten" name="master_kota_kabupaten_id">
                       @foreach ($dataKabupaten as $kabupaten)
                           @if (old('master_kota_kabupaten_id',$user->peserta->master_kota_kabupaten_id)==$kabupaten->id)
@@ -196,25 +214,40 @@ $user = auth()->user();
                 
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Email Sekretariat Perusahaan <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->peserta->email_perusahaan }}" name="email_perusahaan">
+                    <label class="text-black font-w600">Email Sekretariat Perusahaan <span class="required text-danger">*</span></label>
+                    <input type="text" class="form-control @error('email_perusahaan') is-invalid @enderror" value="{{ $user->peserta->email_perusahaan }}" name="email_perusahaan">
+                    @error('email_perusahaan')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">No. Telepon Perusahaan <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->peserta->nomor_telepon }}" name="nomor_telepon">
+                    <label class="text-black font-w600">No. Telepon Perusahaan <span class="required text-danger">*</span></label>
+                    <input type="text" class="form-control @error('nomor_telepon') is-invalid @enderror" value="{{ $user->peserta->nomor_telepon }}" name="nomor_telepon">
+                    @error('nomor_telepon')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Website <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="{{ $user->peserta->website }}" name="website">
+                    <label class="text-black font-w600">Website <span class="required text-danger">*</span></label>
+                    <input type="text" class="form-control @error('website') is-invalid @enderror" value="{{ $user->peserta->website }}" name="website">
+                    @error('website')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Organisasi Beroperasi Sejak <span class="required">*</span></label>
+                    <label class="text-black font-w600">Organisasi Beroperasi Sejak <span class="required text-danger">*</span></label>
                     <input type="date" class="form-control" value="{{ $user->peserta->tahun_berdiri }}" name="tahun_berdiri">
                   </div>
                 </div>
@@ -231,22 +264,32 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Jenis Produk yang Dihasilkan <span class="required">*</span></label>
+                    <label class="text-black font-w600">Jenis Produk yang Dihasilkan <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $user->peserta->tipe_produk }}" name="tipe_produk">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Apakah Produk Telah Diekspor? <span class="required">*</span></label>
+                    <label class="text-black font-w600">Apakah Produk Telah Diekspor? <span class="required text-danger">*</span></label>
                     <input type="radio" name="ekspor" id="ya" value="1">
                     <label for="ya">YA</label>
                     <input type="radio" name="ekspor" id="tidak" value="0">
                     <label for="tidak">TIDAK</label>
                   </div>
                 </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="text" class="form-control" value="" placeholder="Negara" name="negara_ekspor">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <input type="number" class="form-control" value="" placeholder="Tahun" name="tahun_ekspor">
+                  </div>
+                </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Sektor Kategori Organisasi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Sektor Kategori Organisasi <span class="required text-danger">*</span></label>
                     <select name="master_sektor_kategori_id" id="master_sektor_kategori_id">
                         @if ($user->peserta->master_sektor_kategori_id)
                             <option value="">Pilih...</option>
@@ -262,32 +305,21 @@ $user = auth()->user();
                     </select>
                   </div>
                 </div>
-
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input type="text" class="form-control" value="" placeholder="Negara" name="negara_ekspor">
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <input type="year" class="form-control" value="" placeholder="Tahun" name="tahun_ekspor">
-                  </div>
-                </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Kekayaan Bersih Organisasi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Kekayaan Bersih Organisasi <span class="required text-danger">*</span></label>
                     <input type="number" class="form-control" value="{{ $user->peserta->kekayaan_organisasi }}" name="kekayaan_organisasi">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Hasil Penjualan Tahunan Organisasi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Hasil Penjualan Tahunan Organisasi <span class="required text-danger">*</span></label>
                     <input type="number" class="form-control" value="{{ $user->peserta->hasil_penjualan_organisasi }}" name="hasil_penjualan_organisasi">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Organisasi yang Didaftarkan Merupakan <span class="required">*</span></label>
+                    <label class="text-black font-w600">Organisasi yang Didaftarkan Merupakan <span class="required text-danger">*</span></label>
                     <select name="tipe_organisasi" id="tipe_organisasi">
                       <option {{ $user->peserta->tipe_organisasi == 'induk' ? 'selected' : '' }} value="induk">Induk</option>
                       <option {{ $user->peserta->tipe_organisasi == 'anak' ? 'selected' : '' }} value="anak">Anak Perusahaan</option>
@@ -299,7 +331,8 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Standar Nasional yang Dimiliki <span class="required">*</span></label>
+                    <label class="text-black font-w600">Standar Nasional yang Dimiliki <span class="required text-danger">*</span></label>
+                    <br>
                     <input type="checkbox" name="sni[]" id="sni-produk" value="produk" @if (str_contains($user->peserta->tipe_sni, 'produk')) checked @endif>
                     <label for="sni-produk">Produk</label>
                     <input type="checkbox" name="sni[]" id="sni-sistem" value="sistem" @if (str_contains($user->peserta->tipe_sni, 'sistem')) checked @endif>
@@ -308,12 +341,17 @@ $user = auth()->user();
                     <label for="sni-proses">Proses</label>
                   </div>
                 </div>
-                <div class="form-group" id="imagePreview">
-                    @if ($user->peserta->gambar)
-                    <img src="/storage/{{ $user->peserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
-                    @else
-                    <img class="img-preview img-fluid mb-3 col-sm-5">
-                    @endif
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-black font-w600">Foto Profil</label>
+                    <div class="form-group" id="imagePreview">
+                        @if ($user->peserta->gambar)
+                        <img src="/storage/{{ $user->peserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                        @else
+                        <img class="img-preview img-fluid mb-3 col-sm-5">
+                        @endif
+                    </div>
+                  </div>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -328,6 +366,60 @@ $user = auth()->user();
                   </div>
                   @enderror
                   </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="text-black font-w600">KTP <span class="required text-danger">*</span></label>
+                  <div class="form-group" id="imagePreview">
+                      @if ($user->peserta->gambar)
+                      <img src="/storage/{{ $user->peserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                      @else
+                      <img class="img-preview img-fluid mb-3 col-sm-5">
+                      @endif
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
+                    <label class="custom-file-label">Pilih file</label>
+                @error('gambar')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label class="text-black font-w600">NPWP <span class="required text-danger">*</span></label>
+                  <div class="form-group" id="imagePreview">
+                      @if ($user->peserta->gambar)
+                      <img src="/storage/{{ $user->peserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
+                      @else
+                      <img class="img-preview img-fluid mb-3 col-sm-5">
+                      @endif
+                  </div>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
+                    <label class="custom-file-label">Pilih file</label>
+                @error('gambar')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+                </div>
               </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
@@ -359,7 +451,7 @@ $user = auth()->user();
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">No. SNI <span class="required">*</span></label>
+                    <label class="text-black font-w600">No. SNI <span class="required text-danger">*</span></label>
                     <select name="master_sni_id" id="master_sni_id">
                     <option value="">Pilih...</option>
                       @foreach ($dataSni as $item)
@@ -371,7 +463,7 @@ $user = auth()->user();
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Lembaga Sertifikasi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Lembaga Sertifikasi <span class="required text-danger">*</span></label>
                     <input type="text" id="sni-nama-lembaga-sertifikasi" class="form-control" value="" name="nama_lembaga_sertifikasi">
                   </div>
                 </div>
