@@ -78,61 +78,61 @@ $user = auth()->user();
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Nama Lengkap <span class="required">*</span></label>
+                  <label class="text-black font-w600">Nama Lengkap <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="nama_lengkap">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Gelar Sebelum Nama <span class="required">*</span></label>
+                  <label class="text-black font-w600">Gelar Sebelum Nama <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="gelar_sebelum_nama">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Gelar Setelah Nama <span class="required">*</span></label>
+                  <label class="text-black font-w600">Gelar Setelah Nama <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="gelar_setelah_nama">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Tanggal Lahir <span class="required">*</span></label>
+                  <label class="text-black font-w600">Tanggal Lahir <span class="required text-danger">*</span></label>
                   <input type="data" class="form-control" value="" name="tgl_lahir">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Pekerjaan <span class="required">*</span></label>
+                  <label class="text-black font-w600">Pekerjaan <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="pekerjaan">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Nama Instansi <span class="required">*</span></label>
+                  <label class="text-black font-w600">Nama Instansi <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="nama_instansi">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Alamat <span class="required"></label>
+                  <label class="text-black font-w600">Alamat <span class="required text-danger"></label>
                   <textarea rows="8" class="form-control" name="alamat" required></textarea>
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                  <label class="text-black font-w600">Kota <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="kota">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
+                  <label class="text-black font-w600">Provinsi <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="provinsi">
                 </div>
               </div>
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label class="text-black font-w600">Telepon <span class="required">*</span></label>
+                  <label class="text-black font-w600">Telepon <span class="required text-danger">*</span></label>
                   <input type="text" class="form-control" value="" name="nomor_telepon">
                 </div>
               </div>
