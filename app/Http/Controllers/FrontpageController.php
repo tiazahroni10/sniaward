@@ -208,7 +208,7 @@ class FrontpageController extends Controller
 		$dataFrontpage = $dataFrontpage->last();
 
 		return view('seputarsni',$data = [
-			'data' => $dataFrontpage
+			'data' => $dataFrontpage,
 		]);
 	}
 	

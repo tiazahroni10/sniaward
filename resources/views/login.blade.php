@@ -54,7 +54,7 @@
         </div>
         <div class="form-group">
           <label class="mb-1 text-white"><strong>Password</strong></label>
-          <input type="password" name="password" id="password" class="form-control" required>
+          <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" required>
         </div>
         <div class="form-row d-flex justify-content-between mt-4">
           <div class="form-group">
