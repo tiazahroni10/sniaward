@@ -214,6 +214,17 @@
                                 @endif
                             </div>
                         </div>
+                        @if ($dataPenugasanDe->nama_file)
+                            <div class="row">
+                            <div class="col-4">
+                                <h5>File Dokumen DE</h5>
+                            </div>
+                            <div class="col-md-auto">
+                                <a href="/storage/{{ $dataPenugasanDe->nama_file }}" ><i class="fa fa-download color-warning"></i>
+                                    </a>
+                            </div>
+                        </div>
+                        @endif
 
                     </div>
                 </div>
