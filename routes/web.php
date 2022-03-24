@@ -93,10 +93,13 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/peserta/data', [PesertaController::class, 'dataTables'])->name('datapeserta');
     Route::get('/admin/penugasanse/data', [PenugasanSeController::class, 'seTables'])->name('datase');
     Route::get('/admin/penugasande/data', [PenugasanDeController::class, 'deTables'])->name('datade');
+    Route::get('/admin/penugasanverifikasi/data', [BerkasLampiranPesertaController::class, 'verifTables'])->name('dataverif');
     Route::get('/admin/berita/data', [BeritaController::class, 'dataTables'])->name('databerita');
 
     Route::get('/admin/se/data/{user_id}', [PenugasanSeController::class, 'penugasanSePeserta'])->name('penugasanSePeserta');
     Route::get('/admin/de/data/{user_id}', [PenugasanDeController::class, 'penugasanDePeserta'])->name('penugasanDePeserta');
+    Route::post('/admin/verif/evaluator/', [BerkasLampiranPesertaController::class, 'setEvaluatorToBerkasPeserta'])->name('setEvaluatorToBerkasPeserta');
+    Route::get('/admin/verif/data/{user_id}', [BerkasLampiranPesertaController::class, 'penugasanVerifikasiDokPeserta'])->name('penugasanVerifikasiDokPeserta');
 
     Route::get('/admin/peserta', [PesertaController::class, 'showDataPeserta'])->name('showDataPeserta');
     Route::get('/admin/detailpeserta/{user_id}', [PesertaController::class, 'detailPeserta'])->name('detailPeserta');
@@ -110,6 +113,9 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
     Route::get('/admin/evaluator/verifikasisertifikat/{id}/{user_id}', [SertifikatController::class, 'verifikasiSertifikat'])->name('verifikasiSertifikat');
     Route::get('/admin/evaluator/verifikasipendidikan/{id}/{user_id}', [PendidikanController::class, 'verifikasiPendidikan'])->name('verifikasiPendidikan');
     Route::get('/admin/detailberita/{slug}', [BeritaController::class, 'detailBeritaAdmin']);
+
+
+    Route::get('/admin/penugasanverifikasi', [BerkasLampiranPesertaController::class, 'getPeserta'])->name('getPesertaPenugasanVerifikasi');
 
     Route::get('/admin/profil', [SekretariatController::class, 'profil'])->name('adminProfil');
     Route::post('/admin/profil/update/{id}', [SekretariatController::class, 'perbaruiProfil'])->name('adminProfilUpdate');

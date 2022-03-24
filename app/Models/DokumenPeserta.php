@@ -78,4 +78,57 @@ class DokumenPeserta extends Model
                 ->update(['nama_file' => $arr['nama_file'], 'status' => 0]);
         return $ret_val;
     }
+
+    public function updateEvaluatorDokumenPeserta($evaluator_id,$peserta_id)
+    {
+        $ret_val = DB::table('dokumen_peserta')
+                ->where('user_id',$peserta_id)
+                ->update(['evaluator_id' => $evaluator_id]);
+        return $ret_val;
+    }
+
+    public function cekEvaluatorDokumenPeserta($peserta_id){
+        $ret_val = DB::table('dokumen_peserta')
+                    ->where('user_id',$peserta_id)
+                    ->select('evaluator_id')
+                    ->get()->first();
+        return $ret_val;
+
+    }
+
+    public function statusDokumenPeserta($peserta_id){
+        $cekStatus = 1;
+        $ret_val = DB::table('dokumen_peserta')
+                    ->where('user_id',$peserta_id)
+                    ->select('status')
+                    ->get();
+        foreach ($ret_val as $item ) {
+            if ($item->status == 0 or $item->status == 2) {
+                $cekStatus = 0;
+                break;
+            }
+        }
+
+        return $cekStatus;
+    }
+
+    public function cekDokumen($user_id)
+    {
+        $ret_val = DB::table('dokumen_peserta')
+                    ->where('user_id',$user_id)
+                    ->select('user_id')
+                    ->get()->first();
+        return $ret_val;
+    }
+
+    public function getPenugasan($idEvaluator){
+        $ret_val = DB::table('dokumen_peserta')
+        ->select('user_id')
+        ->distinct()
+        ->where('evaluator_id',$idEvaluator)
+        ->get();
+        return $ret_val;
+
+    
+    }
 }

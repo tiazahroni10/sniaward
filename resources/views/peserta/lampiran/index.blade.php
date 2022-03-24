@@ -77,37 +77,35 @@
             
             
         </div>
+        @foreach ($feedback as $item)
+            <div class="col">
+                    <div class="card text-white bg-dark">
+                        <div class="card-header">
+                            <h5 class="card-title text-white">Feedback</h5>
+                        </div>
+                        <div class="card-body mb-0">
+                            <p class="card-text">{{ $item->deskripsi }}</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 text-white">
+                            {{ $item->created_at }}
+                        </div>
+                    </div>
+            </div>
+        @endforeach
         @foreach ($oldFeedback as $item)
-            @if ($item->status == 1)
-                <div class="col">
-                        <div class="card text-white bg-dark">
-                            <div class="card-header">
-                                <h5 class="card-title text-black">Feedback</h5>
-                            </div>
-                            <div class="card-body mb-0">
-                                <p class="card-text">{{ $item->deskripsi }}</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-white">
-                                {{ $item->created_at }}
-                            </div>
+            <div class="col">
+                    <div class="card text-white bg-dark">
+                        <div class="card-header">
+                            <h5 class="card-title text-white">Feedback</h5>
                         </div>
-                </div>
-                
-            @else
-                <div class="col">
-                        <div class="card text-white bg-dark">
-                            <div class="card-header">
-                                <h5 class="card-title text-white">Feedback</h5>
-                            </div>
-                            <div class="card-body mb-0">
-                                <p class="card-text">{{ $item->deskripsi }}</p>
-                            </div>
-                            <div class="card-footer bg-transparent border-0 text-white">
-                                {{ $item->created_at }}
-                            </div>
+                        <div class="card-body mb-0">
+                            <p class="card-text">{{ $item->deskripsi }}</p>
                         </div>
-                </div>
-            @endif
+                        <div class="card-footer bg-transparent border-0 text-white">
+                            {{ $item->created_at }}
+                        </div>
+                    </div>
+            </div>
         @endforeach
     </div>
 </div>

@@ -36,7 +36,7 @@
                     </tr>
                   </thead>
                   <tbody id="customers">
-                    @foreach ($penugasan as $data)
+                    @foreach ($dataPeserta as $data)
                       <tr class="btn-reveal-trigger">
                         <td class="py-3 col-2">
                           <a href="#">
@@ -47,10 +47,10 @@
                         </td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
                         <td>
-                          <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->peserta_id) }}">Cek Dokumen</a>
+                          <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a>
                         </td>
                         <td>
-                          <a class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white" href="{{ route('verifikasiPenugasanDe', [$data->id,$data->peserta_id]) }}" @if($data->status==1) style="pointer-events: none" @endif>Verifikasi</a>
+                          <div class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white" >Verifikasi</div>
                         </td>
                       </tr>
                     @endforeach

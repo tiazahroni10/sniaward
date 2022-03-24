@@ -130,7 +130,7 @@ class PenugasanDeController extends Controller
 		$data = $this->user->getUser($idUser);
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
-        $dataPenugasanDe = $this->penugsanDe->getPenugasanWithEvaluator($user_id);
+        $dataPenugasanDe = $this->penugasanDe->getPenugasanWithEvaluator($user_id);
 		return view('admin.penugasande.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,

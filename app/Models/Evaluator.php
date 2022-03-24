@@ -46,4 +46,13 @@ class Evaluator extends Model
                         'ktp' => $dataEvaluator ['ktp'],
                     ]);
     }
+
+    public function getNamaEvaluator($user_id)
+    {
+        $ret_val = DB::table('evaluator')
+                    ->where('user_id',$user_id)
+                    ->select('nama_lengkap')
+                    ->get()->first();
+        return $ret_val;
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumenPeserta;
+use App\Models\Evaluator;
 use App\Models\Feedback;
 use App\Models\JadwalAcara;
 use App\Models\PenugasanDe;
@@ -10,6 +11,7 @@ use App\Models\Peserta;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class BerkasLampiranPesertaController extends Controller
 {
@@ -17,6 +19,7 @@ class BerkasLampiranPesertaController extends Controller
 	function __construct()
 	{
 		$this->user = new User();
+		$this->evaluator = new Evaluator();
 		$this->feedback = new Feedback();
 		$this->berkasPeserta = new DokumenPeserta();
 		$this->penugasanDe = new PenugasanDe();
@@ -28,17 +31,24 @@ class BerkasLampiranPesertaController extends Controller
 	{
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
-		$penugasan = $this->penugasanDe->getPenugasan($id);
+		$penugasan = $this->berkasPeserta->getPenugasan($id);
 		// $dataPeserta= [];
-		// foreach ($penugasan as $id) {
-		// 	$dataPeserta[] = $this->peserta->getNamaPeserta($id->peserta_id);
-		// }
+		foreach ($penugasan as $id) {
+			$dataPeserta[] = $this->peserta->getNamaPeserta($id->user_id);
+		}
+		
+		foreach ($dataPeserta as $peserta ) {
+			$status = $this->berkasPeserta->statusDokumenPeserta($peserta->user_id);
+			$peserta->status = $status;
+			
+		}
+
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('evaluator.berkas_peserta.index', $data = [
 			'menu' => 'Data Master',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
-			'penugasan' => $penugasan,
+			'dataPeserta' => $dataPeserta,
 			'jadwalAcara' => $jadwalAcara
 		]);
 	}
@@ -107,6 +117,73 @@ class BerkasLampiranPesertaController extends Controller
 		Feedback::create($validatedData);
 		
 		return redirect()->route('berkasDokumen');
+	}
+
+	//ADMIN
+
+
+	public function verifTables()
+	{
+		$model = Peserta::query();
+		return DataTables::eloquent($model)
+			->addColumn('action', function (Peserta $peserta) {
+				return '<a href="/admin/verif/data/' . $peserta->user_id . '"><span class="badge badge-danger">Info</span></a>';
+			})
+			->toJson();
+	}
+
+	public function getPeserta()
+	{
+		$id = auth()->user()->id;
+        $data = $this->user->getUser($id);
+        return view('admin.penugasanverifikasi.index', $data = [
+            'menu' => 'Penugasan Verifikasi',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+        ]);
+	}
+
+	public function setEvaluatorToBerkasPeserta(Request $request)
+	{	
+		$peserta_id = $request->peserta_id;
+		$evaluator_id = $request->evaluator_id;
+		$ret_val = $this->berkasPeserta->updateEvaluatorDokumenPeserta($evaluator_id,$peserta_id);
+		return redirect()->route('getPesertaPenugasanVerifikasi')->with('sukses','evaluator berhasil dipilih');
+	}
+
+	public function penugasanVerifikasiDokPeserta($user_id)
+	{
+		$idUser = auth()->user()->id;
+		$data = $this->user->getUser($idUser);
+		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
+        $dataEvaluator = Evaluator::where('flag_complated',1)->get();
+
+
+		$cekEvaluator = $this->berkasPeserta->cekEvaluatorDokumenPeserta($user_id);
+		$dokumenPeserta = $this->berkasPeserta->cekDokumen($user_id);// cek dokumen ada atau tidak
+		if($dokumenPeserta == null){
+			$evaluatorTerpilih = '';
+		} elseif($dokumenPeserta != null and $cekEvaluator->evaluator_id != null){ 
+			
+			$evaluatorTerpilih = $this->evaluator->getNamaEvaluator($cekEvaluator->evaluator_id);
+			$evaluatorTerpilih = $evaluatorTerpilih->nama_lengkap;
+			
+		} else{
+			$evaluatorTerpilih = 'EVALUATOR BELUM DIPILIH';
+		}
+		
+
+		$status = $this->berkasPeserta->statusDokumenPeserta($user_id);
+		return view('admin.penugasanverifikasi.show', $data = [
+			'menu' => 'Peserta',
+			'data' => $data,
+			'peran' => auth()->user()->peran,
+			'dataPeserta' => $dataPeserta,
+            'dataEvaluator' => $dataEvaluator,
+            // 'evaluatorDokumen' => $evaluatorDokumen,
+			'evaluatorTerpilih' => $evaluatorTerpilih,
+			'status' => $status
+		]);
 	}
 
 }

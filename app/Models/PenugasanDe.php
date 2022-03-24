@@ -18,6 +18,7 @@ class PenugasanDe extends Model
             ->select('penugasan_de.*','evaluator.nama_lengkap')
             ->where('peserta_id',$user_id)
             ->get()->first();
+        dd($ret_val);
         return $ret_val;
     }
 

@@ -229,6 +229,33 @@
       });
     });
   </script>
+  {{-- verifikasiTable --}}
+  <script>
+    $(document).ready(function() {
+      $('#verifTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('dataverif') !!}',
+        columns: [{
+            data: 'nama_organisasi',
+            name: 'nama_organisasi'
+          },
+          {
+            data: 'tipe_organisasi',
+            name: 'tipe_organisasi'
+          },
+          {
+            data: 'nomor_telepon',
+            name: 'nomor_telepon'
+          },
+          {
+            data: 'action',
+            name: 'action'
+          },
+        ]
+      });
+    });
+  </script>
 
   <script>
     $(document).ready(function() {
