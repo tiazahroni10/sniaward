@@ -19,8 +19,7 @@ class CreatePenugasanDeTable extends Migration
             $table->foreignId('evaluator_id')->nullable()->constrained('users');
             $table->foreignId('peserta_id')->nullable()->constrained('users');
             $table->string('kategori',50)->nullable();
-            $table->string('nama_organisasi')->nullable();
-            $table->string('lokasi_perusahaan')->nullable();
+            $table->string('nama_file')->nullable();
             $table->date('mulai')->nullable();
             $table->date('hingga')->nullable();
             $table->boolean('status')->nullable();

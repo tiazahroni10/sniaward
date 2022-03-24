@@ -31,12 +31,14 @@
                     <tr>
                       <th>No</th>
                       <th class="pl-5 width200">Nama Peserta</th>
+                      <th class="pl-5">Mulai</th>
+                      <th class="pl-5">Hingga</th>
                       <th>Aksi</th>
-                      <th>Verifikasi</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
-                    @foreach ($dataPeserta as $data)
+                    @foreach ($penugasanDe as $data)
                       <tr class="btn-reveal-trigger">
                         <td class="py-3 col-2">
                           <a href="#">
@@ -46,11 +48,13 @@
                           </a>
                         </td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->nama_organisasi }}</td>
+                        <td class="py-2 pl-5 wspace-no col-8">{{ $data->mulai }}</td>
+                        <td class="py-2 pl-5 wspace-no col-8">{{ $data->hingga }}</td>
                         <td>
-                          <a class="badge badge-warning text-white" href="{{ route('detailBerkasDokumen', $data->user_id) }}">Cek Dokumen</a>
+                          <a class="badge badge-warning text-white" style="@if ($data->status== 1) pointer-events:none @endif" href="{{ route('formUploadPenugasanDe', $data->id) }}">Unggah File</a>
                         </td>
                         <td>
-                          <div class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white" >Verifikasi</div>
+                          <div class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white"  >Verifikasi</div>
                         </td>
                       </tr>
                     @endforeach

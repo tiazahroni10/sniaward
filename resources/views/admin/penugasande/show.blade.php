@@ -39,22 +39,6 @@
                                     <h5>{{ $dataPeserta->nama_organisasi }}</h5>
                                 </div>
                             </div>
-                            {{-- <div class="row">
-                                <div class="col-4">
-                                    <h5>No SNI</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->no_sni }}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4">
-                                    <h5>Judul SNI</h5>
-                                </div>
-                                <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->judul_sni }}</h5>
-                                </div>
-                            </div> --}}
                             <div class="row">
                                 <div class="col-4">
                                     <h5>Kategori</h5>
@@ -159,8 +143,6 @@
             <form action="{{ route('penugasande.store') }}" method="POST">
             @csrf
             <input type="hidden" name="peserta_id" value="{{ $dataPeserta->user_id }}">
-            <input type="hidden" name="lokasi_perusahaan" value="{{ $dataPeserta->alamat_organisasi }}">
-            <input type="hidden" name="nama_organisasi" value="{{ $dataPeserta->nama_organisasi }}">
             <div class="row mb-2">
                 <div class="col-4">
                     <label for="evaluator">Evaluator</label>

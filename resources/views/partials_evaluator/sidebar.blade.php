@@ -21,7 +21,7 @@
                         <ul aria-expanded="false">
                             <li><a href="{{ route('berkasDokumen') }}">Tugas Verifikasi</a></li>
                             <li><a href="{{ route('penugasanSe') }}">Tugas SE</a></li>
-                            <li><a href="{{ route('berkasDokumen') }}">Tugas DE</a></li>
+                            <li><a href="{{ route('getPenugasanDe') }}">Tugas DE</a></li>
                             
                         </ul>
                     </li>

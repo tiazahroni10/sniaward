@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evaluator;
+use App\Models\JadwalAcara;
 use App\Models\PenugasanDe;
 use App\Models\Peserta;
 use App\Models\User;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class PenugasanDeController extends Controller
@@ -21,6 +24,7 @@ class PenugasanDeController extends Controller
     {
         $this->user = new User();
         $this->peserta = new Peserta();
+        $this->jadwalAcara = new JadwalAcara();
         $this->penugasanDe = new PenugasanDe();
     }
     public function index()
@@ -58,9 +62,7 @@ class PenugasanDeController extends Controller
             'evaluator_id' => ['required'],
             'mulai' => ['required'],
             'hingga' => ['required'],
-            'peserta_id' => ['required'],
-            'lokasi_perusahaan' => ['required'],
-            'nama_organisasi' => ['required']
+            'peserta_id' => ['required']
         ]);
         $validatedData['kategori'] = 'de';
         $validatedData['status'] = false;
@@ -100,7 +102,7 @@ class PenugasanDeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -147,5 +149,55 @@ class PenugasanDeController extends Controller
         $ret_val = $this->penugasanDe->verifikasiPenugasanDe($id,$evaluator_id,$user_id);
 
         return redirect()->route('berkasDokumen')->with('sukses','verifikasi berhasil');
+    }
+
+    
+
+    //EVALUATOR
+    public function getPenugasanDe()
+    {
+        $id = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $penugasanDe = $this->penugasanDe->getPenugasan($id);
+        $data = $this->user->getUser($id);
+        // $dataDe = PenugasanDe::all();
+        return view('evaluator.penugasande.index', $data = [
+            'menu' => 'UPLOAD DE',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara,
+            'penugasanDe' => $penugasanDe
+        ]);
+    }
+    public function formUploadPenugasanDe($id)
+    {
+        $idUser = auth()->user()->id;
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $tugasDe = PenugasanDe::findOrFail($id);
+        $data = $this->user->getUser($id);
+        // $dataDe = PenugasanDe::all();
+        return view('evaluator.penugasande.show', $data = [
+            'menu' => 'UPLOAD DE',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara,
+            'tugasDe' => $tugasDe
+        ]);
+    }
+    public function uploadFilePenugasan(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_file' => ['required','mimes:pdf','file ','max:10240']
+        ]);
+        if($request->file('nama_file')){
+            if($request->oldNama_file){
+                Storage::delete($request->oldNama_file);
+            }
+            $data['nama_file']=$request->file('nama_file')->store('penugasan-de');
+        }
+        $data['status'] = true;
+        $dataGambar = PenugasanDe::findOrFail($request->id);
+        $dataGambar->update($data);
+        return redirect()->route('getPenugasanDe')->with('sukses', "penugasan DE berhasil di upload");
     }
 }

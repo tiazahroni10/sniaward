@@ -153,5 +153,8 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
     Route::get('/evaluator/verifikasipenugasande/{id}/{user_id}', [PenugasanDeController::class, 'verifikasiPenugasanDe'])->name('verifikasiPenugasanDe');
     Route::get('/evaluator/verifikasipenugasanse/{id}', [PenugasanSeController::class, 'verifikasiPenugasanSe'])->name('verifikasiPenugasanSe');
+    Route::get('/evaluator/penugasande/', [PenugasanDeController::class, 'getPenugasanDe'])->name('getPenugasanDe');
+    Route::get('/evaluator/penugasande/{id}', [PenugasanDeController::class, 'formUploadPenugasanDe'])->name('formUploadPenugasanDe');
+    Route::post('/evaluator/penugasande/upload/{id}', [PenugasanDeController::class, 'uploadFilePenugasan'])->name('uploadFilePenugasan');
 
 });

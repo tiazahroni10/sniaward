@@ -18,13 +18,13 @@ class PenugasanDe extends Model
             ->select('penugasan_de.*','evaluator.nama_lengkap')
             ->where('peserta_id',$user_id)
             ->get()->first();
-        dd($ret_val);
         return $ret_val;
     }
 
     public function getPenugasan($idEvaluator){
         $ret_val = DB::table('penugasan_de')
-        ->select('peserta_id','id','nama_organisasi','status')
+        ->join('peserta', 'peserta.user_id', '=', 'penugasan_de.peserta_id')
+        ->select('peserta_id','id','status','peserta.nama_organisasi','mulai','hingga')
         ->where('evaluator_id',$idEvaluator)
         ->get();
         return $ret_val;
