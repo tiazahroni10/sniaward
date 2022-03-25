@@ -62,6 +62,7 @@ class PenjadwalanAcaraController extends Controller
             'kategori' => ['required'],
 
         ]);
+        $validatedData['link_meet'] = $request->link_meet;
         $validatedData['user_id'] = auth()->user()->id;
         $ret_val = JadwalAcara::create($validatedData);
         $request->session()->flash('sukses','Acara berhasil ditambahkan');
@@ -115,6 +116,8 @@ class PenjadwalanAcaraController extends Controller
             'kategori' => ['required'],
 
         ]);
+        $validatedData['link_meet'] = $request->link_meet;
+
         $dataAcara = JadwalAcara::findOrFail($id);
         $dataAcara->update($validatedData);
         $request->session()->flash('sukses','Acara berhasil diubah');

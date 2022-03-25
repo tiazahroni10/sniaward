@@ -58,6 +58,14 @@
                         </div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control bg-transparent @error('link_meet') is-invalid @enderror" name="link_meet" placeholder=" Link:" value="{{ $acara->link_meet }}">
+                        @error('link_meet')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
 
                     <div class="text-left mt-4 mb-2">
                         <button class="btn btn-warning text-white btn-sl-sm mr-2" type="submit"><span class="mr-2"></span>Simpan</button>

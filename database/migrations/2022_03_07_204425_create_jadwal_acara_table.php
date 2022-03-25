@@ -18,7 +18,7 @@ class CreateJadwalAcaraTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->string('judul')->nullable();
             $table->string('kategori')->nullable();
-            $table->string('nama_event')->nullable();
+            $table->string('link_meet')->nullable()->default('-');
             $table->date('mulai')->nullable();
             $table->date('hingga')->nullable();
             $table->timestamps();

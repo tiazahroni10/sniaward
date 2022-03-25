@@ -38,6 +38,7 @@
                         <th class="pl-5">Judul</th>
                         <th class="pl-5 text-right">Mulai</th>
                         <th class="pl-5 text-right">Hingga</th>
+                        <th class="pl-5">Link zoom</th>
                         <th class="pl-5 text-right">Aksi</th>
                         </tr>
                     </thead>
@@ -52,6 +53,11 @@
                             <td class="py-2 pl-5 wspace-no">{{ $event->judul }}</td>
                             <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->mulai)) }}</td>
                             <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->hingga)) }}</td>
+                            <td class="py-2 pl-5 wspace-no">@if ($event->link_meet != '-')
+                                <a href="{{ $event->link_meet }}">Klik disini</a>
+                            @else
+                                -
+                            @endif</td>
                             <td class="py-2 text-right">
                             <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                             </a>

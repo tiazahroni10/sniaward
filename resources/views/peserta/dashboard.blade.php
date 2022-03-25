@@ -34,7 +34,7 @@
 										<th class="pl-5 width200">Judul</th>
 										<th class="pl-5 text-right">Tanggal Mulai</th>
 										<th class="pl-5 text-right">Tanggal Selesai</th>
-										<th class="pl-5 text-right">Status</th>
+										<th class="pl-5 ">Link</th>
 									</tr>
 								</thead>
 								<tbody id="customers">
@@ -48,6 +48,11 @@
 										<td class="py-2 pl-5 wspace-no">{{ $acara->judul }}</td>
 										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
 										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
+										<td class="py-2 pl-5 wspace-no">@if ($acara->link_meet != '-')
+											<a href="{{ $acara->link_meet }}"><span class="badge badge-info">Klik disini</span></a>
+										@else
+											-
+										@endif</td>
 									</tr>
 									@endforeach
 								</tbody>
