@@ -36,8 +36,9 @@ class PesertaController extends Controller
 
 	public function index()
 	{
-		$dataPeserta = Peserta::all();
+		
 		$id = auth()->user()->id;
+		$dataPeserta = Peserta::findOrFail($id);
 		$data = $this->user->getUser($id);
 		$feedback = $this->feedback->getFeedbackWithStatus($id);
 		$oldFeedback = $this->feedback->oldFeedback($id, 0);
@@ -226,12 +227,18 @@ class PesertaController extends Controller
 		$data = $this->user->getUser($idUser);
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
 		$dataSniPeserta = $this->sniPeserta->getSniPeserta($user_id);
+		$dataProvinsi = MasterProvinsi::all();
+		$dataKabupaten = MasterKotaKabupaten::all();
+		$dataSektorKategori = MasterSektorKategori::all();
 		return view('admin.peserta.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
-			'dataSniPeserta' => $dataSniPeserta
+			'dataSniPeserta' => $dataSniPeserta,
+			'dataProvinsi' => $dataProvinsi,
+			'dataKabupaten' => $dataKabupaten,
+			'dataSektorKategori' => $dataSektorKategori
 		]);
 	}
 
@@ -255,4 +262,53 @@ class PesertaController extends Controller
 			return redirect()->route('profilpeserta.index')->with('sukses','SNI ditambahkan');
 		}
 	}
+
+	public function updatePesertaPadaAdmin(Request $request)
+	{
+		if ($request->file('gambar')) {
+			if ($request->oldGambar) {
+				Storage::delete($request->oldGambar);
+			}
+			$data['gambar'] = $request->file('gambar')->store('profil-peserta');
+		} else {
+			$data['gambar'] = null;
+		}
+		// $validatedData = $request->validate([
+		//     'nama_kampus' => ['required','max:8'],
+		//     'jenjang' => ['required'],
+		//     'tahun_lulus' => ['required'],
+		//     'ijazah' =>['required']
+		// ]);
+
+		
+		DB::table('peserta')
+			->where('user_id', $request->id)
+			->update([
+				'nama_organisasi' => $request->nama_organisasi,
+				'alamat_organisasi' => $request->alamat_organisasi,
+				'alamat_pabrik' => $request->alamat_pabrik,
+				'master_provinsi_id' => $request->master_provinsi_id,
+				'master_kota_kabupaten_id' => $request->master_kota_kabupaten_id,
+				'email_perusahaan' => $request->email_perusahaan,
+				'nomor_telepon' => $request->nomor_telepon,
+				'website' => $request->website,
+				'tahun_berdiri' => $request->tahun_berdiri,
+				'status_kepemilikan' => $request->status_kepemilikan,
+				'master_sektor_kategori_id' => $request->master_sektor_kategori_id,
+				'kekayaan_organisasi' => $request->kekayaan_organisasi,
+				'hasil_penjualan_organisasi' => $request->hasil_penjualan_organisasi,
+				'tipe_organisasi' => $request->tipe_organisasi,
+				'status_kepemilikan' =>$request->status_kepemilikan,
+				'ekspor' =>$request->ekspor,
+				'negara_ekspor' => $request->negara_ekspor,
+				'tahun_ekspor' => $request->tahun_ekspor,
+				'tipe_sni' => join(',',$request->sni),
+				'tipe_produk' => $request->tipe_produk,
+				'gambar' => $data['gambar']
+			]);
+		// $dataProfil = Peserta::where('user_id',$id)->get()->first();
+		// $dataProfil->update($data);
+		return redirect('/admin/detailpeserta/'. $request->id)->with('sukses', 'Data Profil berhasi diubah');
+	}
+
 }

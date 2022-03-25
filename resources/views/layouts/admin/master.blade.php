@@ -263,6 +263,76 @@
     });
   </script>
 
+  <script>
+    $(document).ready(function() {
+      $('#tipe_produk').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#tahun_berdiri').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#provinsi').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#kabupaten').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#master_sni_id').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#tipe_organisasi').select2();
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#master_sektor_kategori_id').select2();
+    });
+  </script>
+
+  <script>
+    $(function() {
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+        }
+      });
+    });
+
+    $(function() {
+      $('#provinsi').on('change', function() {
+        let id = $('#provinsi').val();
+        $.ajax({
+          type: 'POST',
+          url: "{{ route('getKabupaten') }}",
+          data: {
+            "_token": "{{ csrf_token() }}",
+            "id": id
+          },
+          cache: false,
+
+          success: function(msg) {
+            $('#kabupaten').html(msg);
+          },
+          error: function(data) {
+            console.log('error:', data);
+          }
+        })
+      })
+    })
+  </script>
+
+
   @stack('scripts')
+  
 
 </body>

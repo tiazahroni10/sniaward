@@ -55,4 +55,11 @@ class Evaluator extends Model
                     ->get()->first();
         return $ret_val;
     }
+    public function jumlahEvaluator()
+	{
+		$ret_val = DB::table('evaluator')
+                ->where('flag_complated',true)
+				->count();
+		return $ret_val;
+	}
 }

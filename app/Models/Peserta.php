@@ -67,4 +67,11 @@ class Peserta extends Model
 		return $ret_val;
 
 	}
+
+	public function jumlahPeserta()
+	{
+		$ret_val = DB::table('peserta')
+				->count();
+		return $ret_val;
+	}
 }

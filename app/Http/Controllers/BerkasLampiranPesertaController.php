@@ -32,7 +32,7 @@ class BerkasLampiranPesertaController extends Controller
 		$id = auth()->user()->id;
 		$data = $this->user->getUser($id);
 		$penugasan = $this->berkasPeserta->getPenugasan($id);
-		// $dataPeserta= [];
+		$dataPeserta = [];
 		foreach ($penugasan as $id) {
 			$dataPeserta[] = $this->peserta->getNamaPeserta($id->user_id);
 		}
@@ -42,7 +42,6 @@ class BerkasLampiranPesertaController extends Controller
 			$peserta->status = $status;
 			
 		}
-
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('evaluator.berkas_peserta.index', $data = [
 			'menu' => 'Data Master',

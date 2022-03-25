@@ -12,7 +12,7 @@
                 </span>
                 <div class="media-body">
                   <p class="fs-14 mb-2">Peserta</p>
-                  <span class="title text-black font-w600"></span>
+                  <span class="title font-w600"> {{ $jumlahPeserta }}</span>
                 </div>
               </div>
               <div class="progress" style="height:5px;">
@@ -34,7 +34,7 @@
                 </span>
                 <div class="media-body">
                   <p class="fs-14 mb-2">Evaluator</p>
-                  <span class="title text-black font-w600"></span>
+                  <span class="title font-w600">{{ $jumlahEvaluator }}</span>
                 </div>
               </div>
               <div class="progress" style="height:5px;">

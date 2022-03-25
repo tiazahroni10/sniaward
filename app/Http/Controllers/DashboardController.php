@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evaluator;
 use App\Models\Feedback;
 use App\Models\JadwalAcara;
 use App\Models\PenugasanSe;
+use App\Models\Peserta;
 use App\Models\User;
 
 class DashboardController extends Controller
@@ -17,6 +19,8 @@ class DashboardController extends Controller
         $this->feedback =  new Feedback();
         $this->jadwalAcara = new JadwalAcara();
         $this->penugasanSe = new PenugasanSe();
+        $this->peserta = new Peserta();
+        $this->evaluator = new Evaluator();
     }
     public function index()
     {
@@ -48,11 +52,15 @@ class DashboardController extends Controller
             ]);
         }
         else {
+            $jumlahPeserta = $this->peserta->jumlahPeserta();
+            $jumlahEvaluator = $this->evaluator->jumlahEvaluator();
             return view('admin.dashboard',
             [
             'menu' => 'Dashboard',
             'data' => $data,
-            'peran' => auth()->user()->peran
+            'peran' => auth()->user()->peran,
+            'jumlahPeserta' => $jumlahPeserta,
+            'jumlahEvaluator' => $jumlahEvaluator
             ]);
         }
     }

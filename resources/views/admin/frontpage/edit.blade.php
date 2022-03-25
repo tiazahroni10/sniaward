@@ -67,7 +67,7 @@
                       <span class="input-group-text">Gambar Banner</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" accept=".jpg, .png, .jpeg" class="custom-file-input @error('gambar_judul') is-invalid @enderror" id="gambar_judul " name="gambar_judul"
+                      <input type="file" accept=".jpg, .png, .jpeg" class="gambar_judul custom-file-input @error('gambar_judul') is-invalid @enderror" id="gambar_judul " name="gambar_judul"
                         onchange="previewImage()">
                       <label class="custom-file-label">Pilih File ...</label>
                       @error('gambar_judul')
@@ -367,35 +367,36 @@
   </div>
 
   <script>
-    // function previewImage(){
-    //     const gambar_judul = document.querySelector('#gambar_judul');
-    //     const imgPreview = document.querySelector('img-preview'); 
+    function previewImage(){
+        const gambar_judul = document.querySelector('.gambar_judul');
+        const imgPreview = document.querySelector('.img-preview'); 
+        // console.log(gambar_judul.files[0].name);
+        imgPreview.style.display = 'block';
 
-    //     imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
 
-    //     const oFReader = new FileReader();
-    //     oFReader.readAsDataURL(gambar_judul.files[0]);
+        oFReader.readAsDataURL(gambar_judul.files[0]);
 
-    //     oFReader.onload = function(oFREvent){
-    //         imgPreview.src = oFREvent.target.result;
-    //     }
-    // }
-    // const image = document.getElementById('gambar_judul');
-    // const imgPreview = document.getElementById('img-preview'); 
-    // const pre_image = imgPreview.querySelector('.img-preview')
+        oFReader.onload = function(oFREvent){
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+    const image = document.getElementById('gambar_judul');
+    const imgPreview = document.getElementById('img-preview'); 
+    const pre_image = imgPreview.querySelector('.img-preview')
 
-    // image.addEventListener("change", function(){
-    //     const file = this.files[0];
+    image.addEventListener("change", function(){
+        const file = this.files[0];
 
-    //     if(file){
-    //         const reader = new FileReader();
-    //         imgPreview.style.display = "block ";
+        if(file){
+            const reader = new FileReader();
+            imgPreview.style.display = "block ";
 
-    //         reader.addEventListener("load",function(){
-    //             previewImage.setAttribute("src",this.result)
-    //         });
-    //         reader.readAsDataURL(file)
-    //     }
-    // });
+            reader.addEventListener("load",function(){
+                previewImage.setAttribute("src",this.result)
+            });
+            reader.readAsDataURL(file)
+        }
+    });
   </script>
 @endsection
