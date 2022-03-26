@@ -17,7 +17,7 @@ class PenugasanDe extends Model
             ->join('evaluator', 'evaluator.user_id', '=', 'penugasan_de.evaluator_id')
             ->select('penugasan_de.*','evaluator.nama_lengkap')
             ->where('peserta_id',$user_id)
-            ->get()->first();
+            ->get();
         return $ret_val;
     }
 
@@ -38,5 +38,12 @@ class PenugasanDe extends Model
         ->update(['status'=>1]);
         return $ret_val;
 
+    }
+    public function uploadFileDe($data)
+    {
+        $ret_val = DB::table('penugasan_de')
+        ->where('peserta_id',$data['peserta_id'])
+        ->update(['status'=>1 , 'nama_file'=> $data['nama_file'] ]);
+        return $ret_val;
     }
 }

@@ -58,64 +58,34 @@ class PenugasanDeController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        if (!empty($request->id) && $request->id != null) {
+			$validatedData = $request->validate([
             'evaluator_id' => ['required'],
             'mulai' => ['required'],
             'hingga' => ['required'],
             'peserta_id' => ['required']
-        ]);
-        $validatedData['kategori'] = 'de';
-        $validatedData['status'] = false;
-        $validatedData['admin_id'] = auth()->user()->id;
-        PenugasanDe::create($validatedData);
-        return redirect()->route('penugasande.index')->with('sukses','penugasan berhasil ditambahkan');
+            ]);
+            $validatedData['admin_id'] = auth()->user()->id;
+            $penugasanDe = PenugasanDe::findOrFail($request->id);
+            $penugasanDe->update($validatedData);
+		} else {
+
+            $validatedData = $request->validate([
+            'evaluator_id' => ['required'],
+            'mulai' => ['required'],
+            'hingga' => ['required'],
+            'peserta_id' => ['required']
+            ]);
+            $validatedData['kategori'] = 'de';
+            $validatedData['status'] = false;
+            $validatedData['admin_id'] = auth()->user()->id;
+            PenugasanDe::create($validatedData);
+		}
+        
+        return redirect('/admin/de/data/' . $request->peserta_id)->with('sukses','penugasan berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        dd($request);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
+    
     public function deTables()
 	{
 		$model = Peserta::query();
@@ -133,13 +103,15 @@ class PenugasanDeController extends Controller
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
         $dataPenugasanDe = $this->penugasanDe->getPenugasanWithEvaluator($user_id);
+        $countPenugasan = count($dataPenugasanDe);
 		return view('admin.penugasande.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
             'dataEvaluator' => $dataEvaluator,
-            'dataPenugasanDe' => $dataPenugasanDe
+            'dataPenugasanDe' => $dataPenugasanDe,
+            'countPenugasan' => $countPenugasan
 		]);
     }
 
@@ -185,7 +157,7 @@ class PenugasanDeController extends Controller
         ]);
     }
     public function uploadFilePenugasan(Request $request)
-    {
+    {   
         $validatedData = $request->validate([
             'nama_file' => ['required','mimes:pdf','file ','max:10240']
         ]);
@@ -195,9 +167,8 @@ class PenugasanDeController extends Controller
             }
             $data['nama_file']=$request->file('nama_file')->store('penugasan-de');
         }
-        $data['status'] = true;
-        $dataGambar = PenugasanDe::findOrFail($request->id);
-        $dataGambar->update($data);
+        $data['peserta_id'] = $request->peserta_id;
+        $ret_val = $this->penugasanDe->uploadFileDe($data);
         return redirect()->route('getPenugasanDe')->with('sukses', "penugasan DE berhasil di upload");
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.admin.master')
+@extends('layouts.evaluator.master')
 @section('content')
 <div class="content-body">
     <div class="container-fluid">
@@ -30,7 +30,7 @@
             <form action="{{ route('uploadFilePenugasan',$tugasDe->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{ $tugasDe->id }}">
-            <input type="hidden" name="peserta_id" value="{{ $tugasDe->user_id }}">
+            <input type="hidden" name="peserta_id" value="{{ $tugasDe->peserta_id }}">
             <input type="hidden" name="oldNama_file" value="{{ $tugasDe->nama_file }}">
             <div class="row mb-2">
             </div>

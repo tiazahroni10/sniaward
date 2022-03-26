@@ -39,81 +39,35 @@ class PenugasanSeController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        if (!empty($request->id) && $request->id != null) {
+			$validatedData = $request->validate([
             'evaluator_id' => ['required'],
             'mulai' => ['required'],
             'hingga' => ['required'],
             'peserta_id' => ['required']
-        ]);
-        $validatedData['kategori'] = 'se';
-        $validatedData['status'] = false;
-        $validatedData['admin_id'] = auth()->user()->id;
-        PenugasanSe::create($validatedData);
-        return redirect()->route('penugasanse.index')->with('sukses','penugasan berhasil ditambahkan');
+            ]);
+            $validatedData['admin_id'] = auth()->user()->id;
+            $penugasanDe = PenugasanSe::findOrFail($request->id);
+            $penugasanDe->update($validatedData);
+		} else {
+
+            $validatedData = $request->validate([
+            'evaluator_id' => ['required'],
+            'mulai' => ['required'],
+            'hingga' => ['required'],
+            'peserta_id' => ['required']
+            ]);
+            $validatedData['kategori'] = 'de';
+            $validatedData['status'] = false;
+            $validatedData['admin_id'] = auth()->user()->id;
+            PenugasanSe::create($validatedData);
+		}
+        
+        return redirect('/admin/se/data/' . $request->peserta_id)->with('sukses','penugasan berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function seTables()
 	{
@@ -133,8 +87,8 @@ class PenugasanSeController extends Controller
 		$dataPeserta = $this->peserta->dataPeserta($user_id)->first();
         $dataEvaluator = Evaluator::where('flag_complated',1)->get();
         $dataPenugasanSe = $this->penugasanSe->getPenugasanWithEvaluator($user_id);
+        $counPenugasan = count($dataPenugasanSe);
 		$dataSniPeserta = $this->sniPeserta->getSniPeserta($user_id);
-
 		return view('admin.penugasanse.show', $data = [
 			'menu' => 'Peserta',
 			'data' => $data,
@@ -142,7 +96,8 @@ class PenugasanSeController extends Controller
 			'dataPeserta' => $dataPeserta,
             'dataEvaluator' => $dataEvaluator,
             'dataPenugasanSe' => $dataPenugasanSe,
-            'dataSniPeserta' => $dataSniPeserta
+            'dataSniPeserta' => $dataSniPeserta,
+            'countPenugasan' => $counPenugasan
 		]);
     }
 
@@ -170,17 +125,18 @@ class PenugasanSeController extends Controller
             'id' => ['required'],
             'file_penilaian' => 'required|file|mimes:pdf|max:2048'
         ]);
-        $validatedData['status'] = 2;
-        $validatedData['file_penilaian'] = $request->file('file_penilaian')->store('dokumen-se');
-        $tugas = PenugasanSe::findOrFail($validatedData['id']);
-        $tugas->update($validatedData);
+        $data['file_penilaian'] = $request->file('file_penilaian')->store('dokumen-se');
+        $peserta_id = $this->penugasanSe->getPesertaId($validatedData['id']);
+        $data['peserta_id'] = $peserta_id->peserta_id;
+        $this->penugasanSe->uploadFileSe($data);
 
         return redirect()->route('penugasanSe')->with('sukses', 'file penilaian berhasil di unggah');
     }
 
     public function verifikasiPenugasanSe($id)
-    {
-        $ret_val = $this->penugasanSe->verifikasiPenugasanSe($id);
+    {   
+        $penugasan = $this->penugasanSe->getPesertaId($id);
+        $ret_val = $this->penugasanSe->verifikasiPenugasanSe($penugasan->peserta_id);
         return redirect()->route('penugasanSe')->with('sukses','verifikasi berhasil');
     }
 }

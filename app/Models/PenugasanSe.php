@@ -18,7 +18,7 @@ class PenugasanSe extends Model
             ->join('evaluator', 'evaluator.user_id', '=', 'penugasan_se.evaluator_id')
             ->select('penugasan_se.*','evaluator.nama_lengkap')
             ->where('peserta_id',$user_id)
-            ->get()->first();
+            ->get();
         return $ret_val;
     }
 
@@ -36,8 +36,24 @@ class PenugasanSe extends Model
     public function verifikasiPenugasanSe($id)
     {
         $ret_val = DB::table('penugasan_se')
-        ->where('id',$id)
+        ->where('peserta_id',$id)
         ->update(['status'=>1]);
+        return $ret_val;
+    }
+
+    public function getPesertaId($id)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->where('id',$id)
+        ->select('peserta_id')
+        ->get()->first();
+        return $ret_val;
+    }
+    public function uploadFileSe($data)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->where('peserta_id',$data['peserta_id'])
+        ->update(['status'=>2 , 'file_penilaian'=> $data['file_penilaian'] ]);
         return $ret_val;
     }
 }

@@ -50,8 +50,8 @@
                         <span class="nav-text">Penjadwalan</span></a>
                         <ul aria-expanded="false">
                         <li><a href="{{ route('penjadwalanacara.index') }}">Penjadwalan Acara</a></li>
-                        <li><a href="{{ route('penugasanse.index') }}">Penjadwalan Se</a></li>
                         <li><a href="{{ route('getPesertaPenugasanVerifikasi') }}">Penjadwalan Verifikasi Dokumen</a></li>
+                        <li><a href="{{ route('penugasanse.index') }}">Penjadwalan Se</a></li>
                         <li><a href="{{ route('penugasande.index') }}">Penjadwalan De</a></li>
                         </ul>
                     </li>
