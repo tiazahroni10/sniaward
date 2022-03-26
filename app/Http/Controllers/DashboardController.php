@@ -60,7 +60,8 @@ class DashboardController extends Controller
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jumlahPeserta' => $jumlahPeserta,
-            'jumlahEvaluator' => $jumlahEvaluator
+            'jadwalAcara' => $jadwalAcara,
+            'jumlahEvaluator' => $jumlahEvaluator,
             ]);
         }
     }

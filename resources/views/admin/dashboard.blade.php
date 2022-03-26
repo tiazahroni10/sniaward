@@ -66,13 +66,28 @@
                     <tr>
                       <th>No</th>
                       <th>Judul</th>
-                      <th>Tanggal Mulai</th>
-                      <th>Tanggal Akhir</th>
-					  <th>Status</th>
+                      <th>Mulai</th>
+                      <th>Hingga</th>
+					            <th>Link</th>
                     </tr>
                   </thead>
                   <tbody>
-    
+                    @foreach ($jadwalAcara as $acara)
+                    <tr class="btn-reveal-trigger">
+                      <td class="py-3">
+                        <div class="media-body">
+                        <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
+                        </div>
+                      </td>
+                      <td class="py-2 pl-5 wspace-no">{{ $acara->judul }}</td>
+                      <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
+                      <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
+                      <td class="py-2 pl-5 wspace-no">@if ($acara->link_meet != '-')
+                        <a href="{{ $acara->link_meet }}">Klik disini</a>
+                      @else
+                        -
+                      @endif</td>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
