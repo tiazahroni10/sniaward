@@ -35,20 +35,15 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th class="pl-5 width200">Nama dokumen</th>
-                      <th class="pl-5 width200">Tanggal Publish</th>
-                      <th class="pl-5 text-right">Aksi</th>
+                      <th width="70px" class="pl-5 text-center">Nama dokumen</th>
+                      <th width="70px" class="pl-5 text-center">Tanggal Publish</th>
+                      <th width="70px" class="pl-5 text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
                     @foreach ($dataPersyaratan as $persyaratan)
                       <tr class="btn-reveal-trigger">
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox1">
-                            <label class="custom-control-label" for="checkbox1"></label>
-                          </div>
-                        </td>
+                        
                         <td class="py-3">
                           <a href="#">
                             <div class="media-body">
@@ -56,10 +51,10 @@
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5 wspace-no"><a href="/storage/{{ $persyaratan->nama_dokumen }}"
+                        <td width="70px" class="py-2 pl-5 wspace-no text-justify"><a href="/storage/{{ $persyaratan->nama_dokumen }}"
                             class="text-primary">{{ $persyaratan->nama_file }}</a></td>
-                        <td class="py-2 pl-5 wspace-no">{{ $persyaratan->created_at }}</td>
-                        <td class="py-2 text-right">
+                        <td class="py-2 pl-5 wspace-no text-center">{{ $persyaratan->created_at }}</td>
+                        <td class="py-2 text-center">
                           <a href="{{ route('persyaratan.edit', $persyaratan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('persyaratan.destroy', $persyaratan->id) }}" method="POST">

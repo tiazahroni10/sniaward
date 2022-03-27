@@ -28,30 +28,20 @@
                             <table class="table table-responsive-lg mb-0 table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkAll">
-                                                <label class="custom-control-label" for="checkAll"></label>
-                                            </div>
-                                        </th>
+                                        
                                         <th>No</th>
                                         <th class="pl-5">Tipe Dokumen</th>
                                         <th class="pl-5">Format File</th>
                                         <th class="pl-5">Maksimal Ukuran (KB)</th>
                                         <th class="pl-5">Wajib</th>
-                                        <th class="pl-5">Deskripsi</th>
+                                        <th width="70px" class="pl-5">Deskripsi</th>
 
                                     </tr>
                                 </thead>
                                 <tbody id="customers">
                                     @foreach ($dataMasterDokumen as $masterDokumen)
                                     <tr class="btn-reveal-trigger">
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="checkbox1">
-                                                <label class="custom-control-label" for="checkbox1"></label>
-                                            </div>
-                                        </td>
+                                        
                                         <td class="py-3">
                                             <a href="#">
                                                 <div class="media-body">
@@ -63,7 +53,7 @@
                                         <td class="py-2 pl-5 wspace-no">{{ $masterDokumen->format_file }}</td>
                                         <td class="py-2 pl-5 wspace-no">{{ $masterDokumen->maks_ukuran }}</td>
                                         <td class="py-2 pl-5 wspace-no">{{ $masterDokumen->wajib }}</td>
-                                        <td class="py-2 pl-5 wspace-no">{{ $masterDokumen->deskripsi }}</td>
+                                        <td width="70px" class="pl-5 text-justify">{{ $masterDokumen->deskripsi }}</td>
                                         <td class="py-2 text-right">
                                             <div class="dropdown"><button class="btn btn-primary tp-btn-light sharp" type="button" data-toggle="dropdown"><span class="fs--1"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg></span></button>
                                                 <div class="dropdown-menu dropdown-menu-right border py-0">
