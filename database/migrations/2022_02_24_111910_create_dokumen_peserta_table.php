@@ -16,6 +16,7 @@ class CreateDokumenPesertaTable extends Migration
         Schema::create('dokumen_peserta', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('evaluator_id')->constrained('users');
             // $table->foreignId('master_dokumen_id');
             $table->foreignId('master_unggah_lampiran_id')->constrained('master_unggah_lampiran');
             $table->boolean('status',1)->default(false);
