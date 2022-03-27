@@ -64,6 +64,14 @@
                     <td>No. Telepon</td>
                     <td class="col-data">: {{ $evaluator->nomor_telepon }}</td>
                   </tr>
+                  <tr>
+                    <td>KTP</td>
+                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                  </tr>
+                  <tr>
+                    <td>NPWP</td>
+                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                  </tr>
                 </table>
               </div>
             </div>
@@ -90,10 +98,11 @@
                         data-nama-kampus="{{ $pendidikan->nama_kampus }}" data-jenjang="{{ $pendidikan->jenjang }}"
                         data-program-studi="{{ $pendidikan->program_studi }}" data-tahun-masuk="{{ $pendidikan->tahun_masuk }}"
                         data-tahun-lulus="{{ $pendidikan->tahun_lulus }}" data-old-ijazah = "{{ $pendidikan->ijazah }}"
-                        class="btn btn-form-riwayat-pendidikan btn-sm btn-primary float-right mr-2">Edit</button>
+                        class="btn btn-form-riwayat-pendidikan btn-sm btn-info text-white float-right mr-2">Edit</button>
                     </h4>
                     <h5>{{ $pendidikan->program_studi }}</h5>
                     <p>{{ $pendidikan->tahun_masuk }}-{{ $pendidikan->tahun_lulus }}</p>
+                    <a href="" class="text-warning">Lihat Dokumen</a>
                   </div>
                 </div>
               @endforeach
@@ -117,12 +126,13 @@
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pekerjaan-modal" data-id="{{ $pekerjaan->id }}"
                         data-jabatan="{{ $pekerjaan->jabatan }}" data-instansi="{{ $pekerjaan->instansi }}"
                         data-tahun-mulai="{{ $pekerjaan->tahun_mulai }}" data-tahun-selesai="{{ $pekerjaan->tahun_selesai }}"
-                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-pekerjaan btn-sm btn-info text-white float-right mr-2">
                         Edit
                       </button>
                     </h4>
                     <h5>{{ $pekerjaan->instansi }}</h5>
                     <p>{{ $pekerjaan->tahun_mulai }}-{{ $pekerjaan->tahun_selesai }}</p>
+                    <a href="" class="text-warning">Lihat Dokumen</a>
                   </div>
                 </div>
               @endforeach
@@ -145,12 +155,13 @@
                       <b>{{ $pelatihan->nama_pelatihan }}</b>
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan->id }}"
                         data-nama-pelatihan="{{ $pelatihan->nama_pelatihan }}" data-tahun-pelatihan="{{ $pelatihan->tahun_pelatihan }}" data-old-sertifikat = "{{ $pelatihan->sertifikat_pelatihan }}"
-                        class="btn btn-form-riwayat-pelatihan btn-sm btn-primary float-right mr-2">
+                        class="btn btn-form-riwayat-pelatihan btn-sm btn-info text-white float-right mr-2">
 
                         Edit
                       </button>
                     </h4>
                     <p>{{ $pelatihan->tahun_pelatihan }}</p>
+                    <a href="" class="text-warning">Lihat Dokumen</a>
                   </div>
                 </div>
               @endforeach
@@ -159,9 +170,9 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Desk Evaluation (DE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-warning text-white mr-2">
+              {{-- <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
-              </button>
+              </button> --}}
             </div>
             <hr>
             <div class="row mt-2">
@@ -182,14 +193,17 @@
                   </div>
                 </div>
               @endforeach --}}
+              <div class="col-12">
+                <a href="" class="text-warning">Lihat Selengkapnya</a>
+              </div>
             </div>
             <hr>
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Side Evaluation (SE)</h3>
-              <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-warning text-white mr-2">
+              {{-- <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-warning text-white mr-2">
                 Tambah
-              </button>
+              </button> --}}
             </div>
             <hr>
             <div class="row mt-2">
@@ -211,6 +225,9 @@
                   </div>
                 </div>
               @endforeach --}}
+              <div class="col-12">
+                <a href="" class="text-warning">Lihat Selengkapnya</a>
+              </div>
             </div>
             <hr>
           </div>
@@ -236,19 +253,19 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Lengkap <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Lengkap <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->nama_lengkap }}" name="nama_lengkap">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Gelar Sebelum Nama <span class="required">*</span></label>
+                    <label class="text-black font-w600">Gelar Sebelum Nama <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->gelar_sebelum_nama }}" name="gelar_sebelum_nama">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Gelar Setelah Nama <span class="required">*</span></label>
+                    <label class="text-black font-w600">Gelar Setelah Nama <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->gelar_setelah_nama }}" name="gelar_setelah_nama">
                   </div>
                 </div>
@@ -271,19 +288,19 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tanggal Lahir <span class="required">*</span></label>
+                    <label class="text-black font-w600">Tanggal Lahir <span class="required text-danger"></span>*</label>
                     <input type="date" class="form-control" value="{{ $evaluator->tgl_lahir }}" name="tgl_lahir">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Pekerjaan <span class="required">*</span></label>
+                    <label class="text-black font-w600">Pekerjaan <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->pekerjaan }}" name="pekerjaan">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Instansi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Instansi <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->nama_instansi }}" name="nama_instansi">
                   </div>
                 </div>
@@ -295,7 +312,7 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Provinsi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Provinsi <span class="required text-danger">*</span></label>
                     <select class="form-control" id="provinsi" name="master_provinsi_id">
                       @foreach ($dataProvinsi as $provinsi)
                         @if (old('master_provinsi_id',$evaluator->master_provinsi_id)==$provinsi->id)
@@ -309,7 +326,7 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Kota <span class="required">*</span></label>
+                    <label class="text-black font-w600">Kota <span class="required text-danger">*</span></label>
                     <select class="form-control" id="kabupaten" name="master_kota_kabupaten_id">
                       @foreach ($dataKabupaten as $kabupaten)
                           @if (old('master_kota_kabupaten_id',$evaluator->master_kota_kabupaten_id)==$kabupaten->id)
@@ -322,7 +339,7 @@
                 
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Telepon <span class="required">*</span></label>
+                    <label class="text-black font-w600">Telepon <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="{{ $evaluator->nomor_telepon }}" name="nomor_telepon">
                   </div>
                 </div>
@@ -344,13 +361,13 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <label for="ktp">KTP</label>
+                    <label for="ktp">KTP <span class="required text-danger">*</span></label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" accept=".pdf" class="custom-file-input @error('ktp') is-invalid @enderror" name="ktp">
+                            <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('ktp') is-invalid @enderror" name="ktp">
                             <label class="custom-file-label">Pilih File ...</label>
                             @error('ktp')
                                 <div class="invalid-feedback">
@@ -361,13 +378,13 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <label for="npwp">NPWP</label>
+                    <label for="npwp">NPWP <span class="required text-danger">*</span></label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" accept=".pdf" class="custom-file-input @error('npwp') is-invalid @enderror" name="npwp">
+                            <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('npwp') is-invalid @enderror" name="npwp">
                             <label class="custom-file-label">Pilih File ...</label>
                             @error('npwp')
                                 <div class="invalid-feedback">
@@ -409,13 +426,13 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Universitas <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Universitas <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="" id="pedidikan-nama-kampus" name="nama_kampus">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Jenjang <span class="required">*</span></label>
+                    <label class="text-black font-w600">Jenjang <span class="required text-danger">*</span></label>
                     <select class="form-control" id="pedidikan-jenjang" name="jenjang">
                       <option value="D3">D3</option>
                       <option value="S1">S1</option>
@@ -426,19 +443,19 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Program Studi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Program Studi <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" id="pedidikan-program-studi" value="" name="program_studi">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tahun Masuk <span class="required">*</span></label>
+                    <label class="text-black font-w600">Tahun Masuk <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="" id="pedidikan-tahun-masuk" name="tahun_masuk">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tahun Keluar <span class="required">*</span></label>
+                    <label class="text-black font-w600">Tahun Keluar <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="" id="pedidikan-tahun-lulus" name="tahun_lulus">
                   </div>
                 </div>
@@ -489,25 +506,25 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Jabatan <span class="required">*</span></label>
+                    <label class="text-black font-w600">Jabatan <span class="required text-danger">*</span></label>
                     <input id="pekerjaan-jabatan" type="text" class="form-control" value="" name="jabatan">
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Instansi <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Instansi <span class="required text-danger">*</span></label>
                     <input id="pekerjaan-instansi" type="text" class="form-control" value="" name="instansi">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tahun Mulai <span class="required">*</span></label>
+                    <label class="text-black font-w600">Tahun Mulai <span class="required text-danger">*</span></label>
                     <input id="pekerjaan-tahun-mulai" type="text" class="form-control" value="" name="tahun_mulai">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tahun Selesai <span class="required">*</span></label>
+                    <label class="text-black font-w600">Tahun Selesai <span class="required text-danger">*</span></label>
                     <input id="pekerjaan-tahun-selesai" type="text" class="form-control" value="" name="tahun_selesai">
                   </div>
                 </div>
@@ -542,14 +559,14 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="form-group">
-                    <label class="text-black font-w600">Nama Pelatihan <span class="required">*</span></label>
+                    <label class="text-black font-w600">Nama Pelatihan <span class="required text-danger">*</span></label>
                     <input type="text" class="form-control" value="" name="nama_pelatihan" id="pelatihan-nama-pelatihan">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="text-black font-w600">Tanggal Pelatihan <span class="required">*</span></label>
-                    <input type="text" class="form-control" value="" name="tahun_pelatihan" id="pelatihan-tahun-pelatihan">
+                    <label class="text-black font-w600">Tanggal Pelatihan <span class="required text-danger">*</span></label>
+                    <input type="number" class="form-control" value="" name="tahun_pelatihan" id="pelatihan-tahun-pelatihan">
                   </div>
                 </div>
                 <div class="col-lg-12">

@@ -93,14 +93,6 @@
                     <td>Standar Nasional Indonesia yang Dimiliki</td>
                     <td class="col-data">: {{ $dataPeserta->tipe_sni  }} </td>
                   </tr>
-                  <tr>
-                    <td>KTP</td>
-                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
-                  </tr>
-                  <tr>
-                    <td>NPWP</td>
-                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
-                  </tr>
                 </table>
               </div>
             </div>
@@ -130,7 +122,7 @@
                   <div class="col- col-md-4 align-self-center">
                     <button type="button" data-toggle="modal" data-target="#form-sni-modal" data-id="{{ $item->id }}"
                         data-nomor-sni="{{ $item->master_sni_id }}" data-nama-lembaga-sertifikasi="{{ $item->nama_lembaga_sertifikasi }}"
-                        class="btn btn-form-sni btn-sm btn-warning text-white float-right mr-2">Edit
+                        class="btn btn-form-sni btn-sm btn-info text-white float-right mr-2">Edit
                     </button>
                   </div>
             </div>
@@ -363,60 +355,6 @@
                   </div>
                   @enderror
                   </div>
-              </div>
-
-              <div class="col-lg-12">
-                <div class="form-group">
-                  <label class="text-black font-w600">KTP <span class="required text-danger">*</span></label>
-                  <div class="form-group" id="imagePreview">
-                      @if ($dataPeserta->gambar)
-                      <img src="/storage/{{ $dataPeserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
-                      @else
-                      <img class="img-preview img-fluid mb-3 col-sm-5">
-                      @endif
-                  </div>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
-                    <label class="custom-file-label">Pilih file</label>
-                @error('gambar')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-                </div>
-              </div>
-
-              <div class="col-lg-12">
-                <div class="form-group">
-                  <label class="text-black font-w600">NPWP <span class="required text-danger">*</span></label>
-                  <div class="form-group" id="imagePreview">
-                      @if ($dataPeserta->gambar)
-                      <img src="/storage/{{ $dataPeserta->gambar }}" class="img-preview img-fluid mb-3 col-sm-5">
-                      @else
-                      <img class="img-preview img-fluid mb-3 col-sm-5">
-                      @endif
-                  </div>
-                </div>
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Upload</span>
-                </div>
-                <div class="custom-file">
-                    <input type="file" accept=".jpg, .jpeg, .png" class="custom-file-input @error('gambar') is-invalid @enderror" name="gambar">
-                    <label class="custom-file-label">Pilih file</label>
-                @error('gambar')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-                </div>
               </div>
                 <div class="col-lg-12">
                   <div class="form-group mb-0 text-right">
