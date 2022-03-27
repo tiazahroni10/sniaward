@@ -32,27 +32,17 @@
                 <table class="table table-responsive-lg mb-0 table-striped">
                   <thead>
                     <tr>
-                      <th class="">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="checkAll">
-                          <label class="custom-control-label" for="checkAll"></label>
-                        </div>
-                      </th>
+                      
                       <th>No</th>
-                      <th class="pl-5">Tipe Pertanyaan</th>
-                      <th class="pl-5">Pertanyaan</th>
-                      <th class="pl-5 text-right">Aksi</th>
+                      <th class="pl-5 text-left">Tipe Pertanyaan</th>
+                      <th width="100px" class="pl-5 text-left">Pertanyaan</th>
+                      <th class="pl-5 text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
                     @foreach ($dataPertanyaan as $pertanyaan)
                       <tr class="btn-reveal-trigger">
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="checkbox1">
-                            <label class="custom-control-label" for="checkbox1"></label>
-                          </div>
-                        </td>
+                        
                         <td class="py-3">
                           <a href="#">
                             <div class="media-body">
@@ -60,9 +50,9 @@
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5 wspace-no"><a href="mailto:ricky@example.com">{{ $pertanyaan->tipe_pertanyaan }}</a></td>
-                        <td class="py-2 pl-5 wspace-no">{{ $pertanyaan->pertanyaan }}</td>
-                        <td class="py-2 text-right">
+                        <td class="py-2 pl-5 wspace-no text-left"><a href="mailto:ricky@example.com">{{ $pertanyaan->tipe_pertanyaan }}</a></td>
+                        <td width="100px" class="pl-5 text-justify">{{ $pertanyaan->pertanyaan }}</td>
+                        <td class="py-2 text-center">
                           <a href="{{ route('masterpertanyaan.edit', $pertanyaan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>
                           <form class="d-inline" action="{{ route('masterpertanyaan.destroy', $pertanyaan->id) }}" method="POST">

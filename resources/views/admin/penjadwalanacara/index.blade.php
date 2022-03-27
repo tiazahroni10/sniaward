@@ -29,50 +29,50 @@
             <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-responsive-lg mb-0 table-striped">
-                    <thead>
-                        <tr>
-                        
-                        <th>No</th>
-                        <th class="pl-5">Judul</th>
-                        <th class="pl-5 text-right">Mulai</th>
-                        <th class="pl-5 text-right">Hingga</th>
-                        <th class="pl-5">Link zoom</th>
-                        <th class="pl-5 text-right">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="customers">
-                        @foreach ($dataEvent as $event)
-                        <tr class="btn-reveal-triggerx" >
-                            <td class="py-3">
-                                <div class="media-body">
-                                <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
-                                </div>
-                            </td>
-                            <td class="py-2 pl-5 wspace-no">{{ $event->judul }}</td>
-                            <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->mulai)) }}</td>
-                            <td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($event->hingga)) }}</td>
-                            <td class="py-2 pl-5 wspace-no">@if ($event->link_meet != '-')
-                                <a href="{{ $event->link_meet }}">Klik disini</a>
-                            @else
-                                -
-                            @endif</td>
-                            <td class="py-2 text-right">
-                            <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
-                            </a>
-                            <form class="d-inline" action="{{ route('penjadwalanacara.destroy', $event->id) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
-                                </button>
-                            </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    </table>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table table-responsive-lg mb-0 table-striped">
+                        <thead>
+                            <tr>
+                            
+                            <th>No</th>
+                            <th width="70px" class="pl-5 text-center">Judul</th>
+                            <th class="pl-5 text-center">Mulai</th>
+                            <th class="pl-5 text-center">Hingga</th>
+                            <th class="pl-5 text-center">Link zoom</th>
+                            <th class="pl-5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customers">
+                            @foreach ($dataEvent as $event)
+                            <tr class="btn-reveal-triggerx" >
+                                <td class="py-3">
+                                    <div class="media-body">
+                                    <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
+                                    </div>
+                                </td>
+                                <td width="70px" class=" pl-5 text-justify">{{ $event->judul }}</td>
+                                <td class="py-2 pl-5 wspace-no text-center">{{ date('d F Y', strtotime($event->mulai)) }}</td>
+                                <td class="py-2 pl-5 wspace-no text-center">{{ date('d F Y', strtotime($event->hingga)) }}</td>
+                                <td class="py-2 pl-5 wspace-no text-center">@if ($event->link_meet != '-')
+                                    <a href="{{ $event->link_meet }}">Klik disini</a>
+                                @else
+                                    -
+                                @endif</td>
+                                <td class="py-2 text-center">
+                                <a href="{{ route('penjadwalanacara.edit', $event->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
+                                </a>
+                                <form class="d-inline" action="{{ route('penjadwalanacara.destroy', $event->id) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="badge badge-danger" onclick="return confirm('apakah yakin ingin menghapus data ini? ')"><span>Hapus</span>
+                                    </button>
+                                </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             </div>

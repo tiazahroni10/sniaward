@@ -23,10 +23,10 @@
 								<thead>
 									<tr>
 										<th>No</th>
-										<th class="pl-5 width200">Judul</th>
-										<th class="pl-5 text-right">Tanggal Mulai</th>
-										<th class="pl-5 text-right">Tanggal Selesai</th>
-										<th class="pl-5 ">Link</th>
+										<th width="70px" class="pl-5 text center">Judul</th>
+										<th class="pl-5 text-center">Tanggal Mulai</th>
+										<th class="pl-5 text-center">Tanggal Selesai</th>
+										<th class="pl-5 text-center">Link</th>
 									</tr>
 								</thead>
 								<tbody id="customers">
@@ -37,10 +37,10 @@
 											<h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
 											</div>
 										</td>
-										<td class="py-2 pl-5 wspace-no">{{ $acara->judul }}</td>
-										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
-										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
-										<td class="py-2 pl-5 wspace-no">@if ($acara->link_meet != '-')
+										<td width="70px" class="pl-5 text-justify">{{ $acara->judul }}</td>
+										<td class="py-2 pl-5 wspace-no text-center">{{ date('d F Y', strtotime($acara->mulai)) }}</td>
+										<td class="py-2 pl-5 wspace-no text-center">{{ date('d F Y', strtotime($acara->hingga)) }}</td>
+										<td class="py-2 pl-5 wspace-no text-center">@if ($acara->link_meet != '-')
 											<a href="{{ $acara->link_meet }}">Klik disini</a>
 										@else
 											-
