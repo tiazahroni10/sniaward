@@ -63,7 +63,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Simpan SNI yang Dimiliki</h5>
+                <h5 class="modal-title">Unggah File Penilaian SE</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
