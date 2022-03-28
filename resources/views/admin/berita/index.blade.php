@@ -16,13 +16,13 @@
       @endif
       <div class="page-titles ">
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
-          <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Berita</a></li>
+          <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Berita & Acara</a></li>
           <li>
             
           </li>
           <li>
             <a href="{{ route('berita.create') }}" class="btn btn-warning btn-event w-100" style="color: #ffffff">
-              <span class="align-middle"><i class="ti-plus"></i></span> Tambah Berita
+              <span class="align-middle"><i class="ti-plus"></i></span> Tambah
             </a>
           </li>
         </ol>
@@ -35,8 +35,9 @@
                 <table class="table table-responsive-lg mb-0 table-striped" id="beritaTable">
                   <thead>
                     <tr>
-                      <th>Judul Berita</th>
+                      <th>Judul</th>
                       <th>Tanggal Rilis</th>
+                      <th>Kategori</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>

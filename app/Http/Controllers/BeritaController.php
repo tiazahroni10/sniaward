@@ -65,7 +65,8 @@ class BeritaController extends Controller
         $validatedData = $request->validate([
             'judul' => ['required', 'unique:berita',],
             'konten' => ['required'],
-            'gambar' => 'required|file|mimes:jpg,png,jpeg|max:10240'
+            'gambar' => 'required|file|mimes:jpg,png,jpeg|max:10240',
+            'kategori' => ['required']
         ]);
         $validatedData['slug'] = Str::slug($request->judul, '-');
         $validatedData['slug'] = Str::lower($validatedData['slug']);

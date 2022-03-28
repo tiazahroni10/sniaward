@@ -17,6 +17,17 @@
                 <form method="POST" action="{{ route('berita.update', $berita->id) }}" enctype="multipart/form-data">
                   @method('PUT')
                   @csrf
+                  <select class="form-control w-25 @error('kategori') is-invalid @enderror" id="kategori" name="kategori" required>
+                      @if ($berita->kategori == 'Berita')
+                          <option value="">Pilih..</option>
+                          <option value="Berita" selected>Berita</option>
+                          <option value="Acara">Acara</option>
+                      @else
+                          <option value="">Pilih..</option>
+                          <option value="Berita">Berita</option>
+                          <option value="Acara" selected>Acara</option>
+                      @endif
+                  </select>
                   <input type="hidden" name="oldGambar" value="{{ $berita->gambar }}">
                   <div class="form-group">
                     <label for="judul">Judul</label>

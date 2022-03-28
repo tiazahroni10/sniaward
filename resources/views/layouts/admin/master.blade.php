@@ -166,6 +166,10 @@
             name: 'rilis'
           },
           {
+            data: 'kategori',
+            name: 'kategori'
+          },
+          {
             data: 'action',
             name: 'action'
           },

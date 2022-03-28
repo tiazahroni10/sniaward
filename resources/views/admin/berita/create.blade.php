@@ -17,6 +17,11 @@
                             <div class="compose-content">
                                 <form method="POST" action="{{ route('berita.store') }}" enctype="multipart/form-data">
                                     @csrf
+                                    <select class="form-control w-25 @error('kategori') is-invalid @enderror" id="kategori" name="kategori" required>
+                                        <option value="">Pilih..</option>
+                                        <option value="Berita">Berita</option>
+                                        <option value="Acara">Acara</option>
+                                    </select>
                                     <div class="form-group">
                                         <label for="judul">Judul</label>
                                         <input type="text" class="form-control bg-transparent @error('judul') is-invalid @enderror" name="judul" placeholder=" Judul:" value="{{ old('judul') }}">

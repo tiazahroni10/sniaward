@@ -29,7 +29,7 @@
                     </li>
                     <li><a class="" href="/admin/berita" aria-expanded="false">
                         <i class="flaticon-381-news"></i>
-                        <span class="nav-text">Berita</span>
+                        <span class="nav-text">Berita & Acara</span>
                         </a>
                     </li>
                     <li><a class="" href="{{ route('dokumentasi.index') }}" aria-expanded="false">
