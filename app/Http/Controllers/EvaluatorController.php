@@ -10,6 +10,8 @@ use App\Models\MasterProvinsi;
 use App\Models\Pekerjaan;
 use App\Models\Pelatihan;
 use App\Models\Pendidikan;
+use App\Models\PenugasanDe;
+use App\Models\PenugasanSe;
 use App\Models\Sertifikat;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
@@ -30,7 +32,9 @@ class EvaluatorController extends Controller
 	 */
 	private $user;
 	function __construct()
-	{
+	{	
+		$this->penugasanDe = new PenugasanDe();
+		$this->penugasanSe = new PenugasanSe();
 		$this->user = new User();
 		$this->evaluator = new Evaluator();
 		$this->jadwalAcara = new JadwalAcara();
@@ -46,36 +50,8 @@ class EvaluatorController extends Controller
         $dataPekerjaan = Pekerjaan::where('user_id',$id)->get();
         $dataPendidikan = Pendidikan::where('user_id',$id)->get();
         $dataPelatihan = Pelatihan::where('user_id',$id)->get();
-		$dataDE = [
-			[
-				"id" => 1,
-				'nama_kegiatan' => 'TikTok Influencer',
-				'nama_instansi' => 'PT. Sunda Empire',
-				'tahun' => '2020',
-			],
-			[
-				"id" => 2,
-				'nama_kegiatan' => 'TikTok Influencer Batch 2',
-				'nama_instansi' => 'PT. Sunda Empire',
-				'tahun' => '2021',
-			],
-		];
-		$dataSE = [
-			[
-				"id" => 1,
-				'nama_kegiatan' => 'TikTok Influencer',
-				'nama_instansi' => 'PT. Sunda Empire',
-				'lokasi_instansi' => 'Kerajaan Sunda',
-				'tahun' => '2020',
-			],
-			[
-				"id" => 2,
-				'nama_kegiatan' => 'TikTok Influencer Batch 2',
-				'nama_instansi' => 'PT. Sunda Empire',
-				'lokasi_instansi' => 'Kerajaan Sunda',
-				'tahun' => '2021',
-			],
-		];
+		$dataPenugasanDe = $this->penugasanDe->historyPenugasanDe($id);
+		$dataPenugasanSe = $this->penugasanSe->historyPenugasanSe($id);
 		
 		return view('evaluator.profil', $data = [
 			'menu' => 'Profil',
@@ -87,8 +63,8 @@ class EvaluatorController extends Controller
 			'dataPendidikan' => $dataPendidikan,
 			'dataPekerjaan' => $dataPekerjaan,
 			'dataPelatihan' => $dataPelatihan,
-			'dataDE' => $dataDE,
-			'dataSE' => $dataSE,
+			'dataPenugasanDe' => $dataPenugasanDe,
+			'dataPenugasanSe' => $dataPenugasanSe,
 			'jadwalAcara' => $jadwalAcara
 		]);
 	}

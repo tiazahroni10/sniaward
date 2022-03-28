@@ -156,7 +156,6 @@
                       <button type="button" data-toggle="modal" data-target="#form-riwayat-pelatihan-modal" data-id="{{ $pelatihan->id }}"
                         data-nama-pelatihan="{{ $pelatihan->nama_pelatihan }}" data-tahun-pelatihan="{{ $pelatihan->tahun_pelatihan }}" data-old-sertifikat = "{{ $pelatihan->sertifikat_pelatihan }}"
                         class="btn btn-form-riwayat-pelatihan btn-sm btn-info text-white float-right mr-2">
-
                         Edit
                       </button>
                     </h4>
@@ -176,23 +175,16 @@
             </div>
             <hr>
             <div class="row mt-2">
-              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              {{-- @foreach ($dataDE as $de)
+              @foreach ($dataPenugasanDe as $data)
                 <div class="col-12">
                   <div>
                     <h4>
-                      <b>{{ $de['nama_kegiatan'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-de-modal" data-id="{{ $de['id'] }}"
-                        data-nama-kegiatan="{{ $de['nama_kegiatan'] }}" data-nama-instansi="{{ $de['nama_instansi'] }}" data-tahun="{{ $de['tahun'] }}"
-                        class="btn btn-form-riwayat-de btn-sm btn-warning text-white float-right mr-2">
-                        Edit
-                      </button>
+                      <b>{{ $data->nama_organisasi }}</b>
                     </h4>
-                    <h5>{{ $de['nama_instansi'] }}</h5>
-                    <p>{{ $de['tahun'] }}</p>
+                    <h5>{{ date('d F Y', strtotime($data->updated_at)) }}</h5>
                   </div>
                 </div>
-              @endforeach --}}
+              @endforeach
               <div class="col-12">
                 <a href="" class="text-warning">Lihat Selengkapnya</a>
               </div>
@@ -201,30 +193,20 @@
 
             <div style="justify-content: space-between; display: flex">
               <h3>Riwayat Side Evaluation (SE)</h3>
-              {{-- <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" class="btn btn-sm btn-warning text-white mr-2">
-                Tambah
-              </button> --}}
             </div>
             <hr>
             <div class="row mt-2">
-              {{-- TODO: isi data dengan data real pake foreach, sementara pake data statis --}}
-              {{-- @foreach ($dataSE as $se)
+              @foreach ($dataPenugasanSe as $data)
                 <div class="col-12">
                   <div>
                     <h4>
-                      <b>{{ $se['nama_kegiatan'] }}</b>
-                      <button type="button" data-toggle="modal" data-target="#form-riwayat-se-modal" data-id="{{ $se['id'] }}"
-                        data-nama-kegiatan="{{ $se['nama_kegiatan'] }}" data-nama-instansi="{{ $se['nama_instansi'] }}"
-                        data-lokasi-instansi="{{ $se['lokasi_instansi'] }}" data-tahun="{{ $se['tahun'] }}"
-                        class="btn btn-form-riwayat-se btn-sm btn-warning text-white float-right mr-2">
-                        Edit
-                      </button>
+                      <b>{{ $data->nama_organisasi }}</b>
                     </h4>
-                    <h5>{{ $se['nama_instansi'] }}</h5>
-                    <p>{{ $se['tahun'] }}</p>
+                    <h5>{{ date('d F Y', strtotime($data->updated_at)) }}</h5>
+                    {{-- <p>{{ $data['tahun'] }}</p> --}}
                   </div>
                 </div>
-              @endforeach --}}
+              @endforeach
               <div class="col-12">
                 <a href="" class="text-warning">Lihat Selengkapnya</a>
               </div>

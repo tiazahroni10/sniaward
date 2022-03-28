@@ -56,4 +56,18 @@ class PenugasanSe extends Model
         ->update(['status'=>2 , 'file_penilaian'=> $data['file_penilaian'] ]);
         return $ret_val;
     }
+
+    public function historyPenugasanSe($evaluator_id)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->join('peserta', 'peserta.user_id', '=', 'penugasan_se.peserta_id')
+        ->where('penugasan_se.evaluator_id',$evaluator_id)
+        ->where('penugasan_se.status', 2)
+        ->select('penugasan_se.*','peserta.nama_organisasi')
+        ->orderByDesc('updated_at')
+        ->take(3)
+        ->get();
+
+        return $ret_val;
+    }
 }
