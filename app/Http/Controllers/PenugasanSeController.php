@@ -139,4 +139,20 @@ class PenugasanSeController extends Controller
         $ret_val = $this->penugasanSe->verifikasiPenugasanSe($penugasan->peserta_id);
         return redirect()->route('penugasanSe')->with('sukses','verifikasi berhasil');
     }
+
+    public function riwayatSe(Request $request)
+    {
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $evaluator_id = $request->id;
+        $data = $this->user->getUser($evaluator_id);
+        $riwayatSe = $this->penugasanSe->historyPenugasanSeByEvaluator($evaluator_id);
+        return view('evaluator.penugasanse.tabelriwayatse', $data=[
+            'menu' => 'Riwat SE',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'jadwalAcara'=> $jadwalAcara,
+            'riwayatSe' => $riwayatSe
+        ]);
+    }
+
 }

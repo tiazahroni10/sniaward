@@ -70,4 +70,15 @@ class PenugasanSe extends Model
 
         return $ret_val;
     }
+    public function historyPenugasanSeByEvaluator($evaluator_id)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->join('peserta', 'peserta.user_id', '=', 'penugasan_se.peserta_id')
+        ->where('penugasan_se.evaluator_id',$evaluator_id)
+        ->where('penugasan_se.status', 2)
+        ->select('penugasan_se.updated_at','peserta.nama_organisasi')
+        ->orderByDesc('updated_at')
+        ->get();
+        return $ret_val;
+    }
 }

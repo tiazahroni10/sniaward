@@ -137,11 +137,14 @@ Route::middleware(['is_verified', 'admin'])->group(function () {
 Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::resource('/evaluator/profilevaluator', EvaluatorController::class)->except(['create', 'show', 'destroy', 'store']);
     Route::post('/evaluator/profil/pendidikan', [EvaluatorController::class, 'pendidikan'])->name('evaluatorPendidikan');
-    Route::post('/evaluator/profile/pekerjaan', [EvaluatorController::class, 'pekerjaan'])->name('evaluatorPekerjaan');
-    Route::post('/evaluator/profile/pelatihan', [EvaluatorController::class, 'pelatihan'])->name('evaluatorPelatihan');
-    Route::post('/evaluator/profile/simpanRiwayatDE', [EvaluatorController::class, 'simpanRiwayatDE'])->name('evaluator.simpanRiwayatDE');
-    Route::post('/evaluator/profile/simpanRiwayatSE', [EvaluatorController::class, 'simpanRiwayatSE'])->name('evaluator.simpanRiwayatSE');
+    Route::post('/evaluator/profil/pekerjaan', [EvaluatorController::class, 'pekerjaan'])->name('evaluatorPekerjaan');
+    Route::post('/evaluator/profil/pelatihan', [EvaluatorController::class, 'pelatihan'])->name('evaluatorPelatihan');
+    Route::post('/evaluator/profil/provilevaluator/riwayatde/', [PenugasanDeController::class, 'riwayatDe'])->name('riwayatDe');
+    Route::post('/evaluator/profil/provilevaluator/riwayatse/', [PenugasanSeController::class, 'riwayatSe'])->name('riwayatSe');
+
     Route::post('/evaluator/penugasanse/uploadfile', [PenugasanSeController::class, 'uploadFilePenugasanSe'])->name('uploadFilePenugasanSe');
+
+
 
     Route::get('/evaluator/download', [CapacityBuildingController::class, 'showCapacityBuildingDownload'])->name('showCapacityBuildingDownload');
     Route::resource('/evaluator/pekerjaan', PekerjaanController::class);
@@ -158,5 +161,5 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/penugasande/', [PenugasanDeController::class, 'getPenugasanDe'])->name('getPenugasanDe');
     Route::get('/evaluator/penugasande/{id}', [PenugasanDeController::class, 'formUploadPenugasanDe'])->name('formUploadPenugasanDe');
     Route::post('/evaluator/penugasande/upload/{id}', [PenugasanDeController::class, 'uploadFilePenugasan'])->name('uploadFilePenugasan');
-
+    
 });

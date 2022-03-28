@@ -24,12 +24,24 @@
 									<tr>
 										<th>No</th>
 										<th class="pl-5 width200">Nama Instansi</th>
-										<th class="pl-5 text-right">Tanggal Mulai</th>
-										<th class="pl-5 text-right">Tanggal Selesai</th>
+										<th class="pl-5 text-right">Selesai</th>
 									</tr>
 								</thead>
 								<tbody id="customers">
-									
+									@foreach ($riwayatSe as $item)
+									<tr class="btn-reveal-trigger">
+										
+										<td class="py-3">
+										<a href="#">
+											<div class="media-body">
+											<h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
+											</div>
+										</a>
+										</td>
+										<td width="70px" class="pl-5 text-justify">{{ $item->nama_organisasi }}</td>
+										<td class="py-2 pl-5 wspace-no text-right">{{ date('d F Y', strtotime($item->updated_at)) }}</td>
+									</tr>
+									@endforeach
 								</tbody>
 								</table>
 							</div>

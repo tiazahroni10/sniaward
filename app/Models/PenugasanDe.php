@@ -53,11 +53,22 @@ class PenugasanDe extends Model
         ->join('peserta', 'peserta.user_id', '=', 'penugasan_de.peserta_id')
         ->where('penugasan_de.evaluator_id',$evaluator_id)
         ->where('penugasan_de.status', 1)
-        ->select('penugasan_de.*','peserta.nama_organisasi')
+        ->select('penugasan_de.updated_at','peserta.nama_organisasi')
         ->orderByDesc('updated_at')
         ->take(3)
         ->get();
 
+        return $ret_val;
+    }
+    public function historyPenugasanDeByEvaluator($evaluator_id)
+    {
+        $ret_val = DB::table('penugasan_de')
+        ->join('peserta', 'peserta.user_id', '=', 'penugasan_de.peserta_id')
+        ->where('penugasan_de.evaluator_id',$evaluator_id)
+        ->where('penugasan_de.status', 1)
+        ->select('penugasan_de.updated_at','peserta.nama_organisasi')
+        ->orderByDesc('updated_at')
+        ->get();
         return $ret_val;
     }
 }

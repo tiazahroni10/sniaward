@@ -186,7 +186,12 @@
                 </div>
               @endforeach
               <div class="col-12">
-                <a href="" class="text-warning">Lihat Selengkapnya</a>
+                <form action="{{ route('riwayatDe') }}" method="POST">
+                  @csrf
+                  <input type="hidden" value="{{ $evaluator->user_id }}" name="id">
+                  <button type="submit" class="badge badge-success" >Lihat selengkpanya</button>
+                </form>
+                {{-- <a href="" class="text-warning">Lihat Selengkapnya</a> --}}
               </div>
             </div>
             <hr>
@@ -208,7 +213,12 @@
                 </div>
               @endforeach
               <div class="col-12">
-                <a href="" class="text-warning">Lihat Selengkapnya</a>
+                <form action="{{ route('riwayatSe') }}" method="POST">
+                  @csrf
+                  <input type="hidden" value="{{ $evaluator->user_id }}" name="id">
+                  <button type="submit" class="badge badge-success" >Lihat selengkpanya</button>
+                </form>
+                {{-- <a href="" class="text-warning">Lihat Selengkapnya</a> --}}
               </div>
             </div>
             <hr>

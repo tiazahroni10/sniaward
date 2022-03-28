@@ -171,4 +171,19 @@ class PenugasanDeController extends Controller
         $ret_val = $this->penugasanDe->uploadFileDe($data);
         return redirect()->route('getPenugasanDe')->with('sukses', "penugasan DE berhasil di upload");
     }
+
+    public function riwayatDe(Request $request)
+    {
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $evaluator_id = $request->id;
+        $data = $this->user->getUser($evaluator_id);
+        $riwayatDe = $this->penugasanDe->historyPenugasanDeByEvaluator($evaluator_id);
+        return view('evaluator.penugasande.tabelriwayatde', $data=[
+            'menu' => 'Riwat DE',
+            'data' => $data,
+            'peran' => auth()->user()->peran,
+            'jadwalAcara'=> $jadwalAcara,
+            'riwayatDe' => $riwayatDe
+        ]);
+    }
 }
