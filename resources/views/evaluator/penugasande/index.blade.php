@@ -51,7 +51,7 @@
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->mulai }}</td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->hingga }}</td>
                         <td>
-                          <a class="badge badge-warning text-white" style="@if ($data->status== 1) pointer-events:none @endif" href="{{ route('formUploadPenugasanDe', $data->id) }}">Unggah File</a>
+                          <a class="badge badge-warning text-white" style="@if ($data->status== 1) pointer-events:none @endif" data-toggle="modal" data-target="#form-upload-file" data-id="{{ $item->id }}">Unggah File</a>
                         </td>
                         <td>
                           <div class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white"  >Verifikasi</div>
@@ -67,4 +67,58 @@
       </div>
     </div>
   </div>
+{{-- Modal Unggah DE --}}
+<div class="modal fade" id="form-upload-file">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Unggah File Penilaian DE</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+              <form class="comment-form" action="{{ route('uploadFilePenugasanSe') }}" method="POST" enctype="multipart/form-data" >
+                  @csrf
+                  <input type="hidden" name="id" id="upload-id">
+                  <div class="row">
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">Upload</span>
+                          </div>
+                          <div class="custom-file">
+                              <input type="file" accept=".pdf" class="custom-file-input @error('file_penilaian') is-invalid @enderror" name="file_penilaian">
+                              <label class="custom-file-label">Pilih File ...</label>
+                              @error('file_penilaian')
+                                  <div class="invalid-feedback">
+                                  {{ $message }}
+                                  </div>
+                              @enderror
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="form-group mb-0 text-right">
+                          <button type="submit" class="submit btn btn-sm btn-warning text-white" name="submit">Simpan</button>
+                          <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Batal</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </div>
+  {{-- Modal Tambah SNI --}}
 @endsection
+@push('scripts')
+<script>
+  $(document).on("click", ".btn-form-upload", function() {
+  var id = $(this).data('id');
+
+  console.log(id);
+
+  if (id != null) {
+      $(".modal-body #upload-id").val(id);
+  }
+  });
+</script>
+@endpush
+

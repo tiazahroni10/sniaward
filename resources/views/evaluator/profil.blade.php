@@ -22,7 +22,7 @@
             <div class="profile-head">
               <div class="profile-info">
                 <div class="profile-photo mt-0">
-                  <img src="@if($evaluator->gambar) /storage/{{ $evaluator->gambar }} @else images/profile/profile.png @endif" class="img-fluid rounded-circle" alt="">
+                  <img src="@if($evaluator->gambar) /storage/{{ $evaluator->gambar }} @else images/profile/profile.png @endif" class="img-fluid rounded-circle" width="60px" height="60px" alt="">
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
