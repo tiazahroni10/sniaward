@@ -2,6 +2,14 @@
 @section('content')
   <div class="content-body">
     <div class="container-fluid">
+      @if (session()->has('sukses'))
+				<div class="alert alert-success solid alert-dismissible fade show">
+					<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+					<strong>{{ session('sukses') }}</strong>
+					<button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+					</button>
+				</div>
+				@endif
       <div class="page-titles ">
         <ol class="breadcrumb d-flex justify-content-between align-items-center">
           <li class="breadcrumb-item active mr-auto"><a href="javascript:void(0)">Daftar Peserta</a></li>
@@ -19,28 +27,36 @@
                     <tr>
                       <th>No</th>
                       <th class="pl-5 width200">Nama Peserta</th>
-                      <th class="pl-5">Status</th>
-                      <th class="pl-5">Aksi</th>
+                      <th class="pl-5 text-right" >Status</th>
+                      <th class="pl-5 text-right">Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="customers">
-                      <tr class="btn-reveal-trigger">
-                        <td class="py-3 col-2">
-                          <a href="#">
-                            <div class="media-body">
-                              <h5 class="mb-0 fs--1"></h5>
-                            </div>
-                          </a>
-                        </td>
-                        <td class="py-2 pl-5 wspace-no col-8"></td>
-                        <td>
-                          <a class="badge badge-warning text-white" style=" pointer-events:none " href="">Unggah File</a>
-                        </td>
-                        <td>
-                          <div class="badge badge-success text-white"  >Selesai</div>
-                        </td>
-                      </tr>
-                    @endforeach
+                      @foreach ($penugasanSe as $item)
+                            <tr class="btn-reveal-trigger">
+                                <td class="py-3">
+                                    <div class="media-body">
+                                    <h5 class="mb-0 fs--1">{{ $loop->iteration }}</h5>
+                                    </div>
+                                </td>
+                                <td class="py-2 pl-5 wspace-no">{{ $item->nama_organisasi }}</td>
+                                <td class="py-2 pl-5 wspace-no text-right">
+                                    @if ($item->umpan_balik == NULL)
+                                        <div class="badge badge-warning text-black"><span>Tertunda</span></div>
+                                    @elseif($item->umpan_balik)
+                                        <div class="badge badge-success text-white"><span>Selesai</span></div>
+                                    @endif
+                                </td>
+                                <td class="py-2 pl-5 wspace-no text-right">
+                                    @if ($item->umpan_balik == NULL)
+                                        <button type="button" data-toggle="modal" data-target="#form-upload-file" data-id="{{ $item->peserta_id }}"
+                                            class="badge btn-form-upload badge-danger text-white">Unggah File
+                                        </button>
+                                    @endif
+                                    
+                                </td>
+                            </tr>
+                        @endforeach
                   </tbody>
                 </table>
               </div>
@@ -59,7 +75,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <div class="modal-body">
-                <form class="comment-form" action="{{ route('uploadFilePenugasanSe') }}" method="POST" enctype="multipart/form-data" >
+                <form class="comment-form" action="{{ route('uploadFileUmpanBalik') }}" method="POST" enctype="multipart/form-data" >
                     @csrf
                     <input type="hidden" name="id" id="upload-id">
                     <div class="row">
@@ -68,9 +84,9 @@
                                 <span class="input-group-text">Upload</span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" accept=".pdf" class="custom-file-input @error('file_penilaian') is-invalid @enderror" name="file_penilaian">
+                                <input type="file" accept=".pdf" class="custom-file-input @error('umpan_balik') is-invalid @enderror" name="umpan_balik">
                                 <label class="custom-file-label">Pilih File ...</label>
-                                @error('file_penilaian')
+                                @error('umpan_balik')
                                     <div class="invalid-feedback">
                                     {{ $message }}
                                     </div>
@@ -103,4 +119,4 @@
     }
     });
 </script>
-@endsection
+@endpush

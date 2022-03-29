@@ -26,7 +26,7 @@ class PenugasanSe extends Model
     {
         $ret_val = DB::table('penugasan_se')
             ->join('peserta', 'peserta.user_id', '=', 'penugasan_se.peserta_id')
-                ->select('penugasan_se.mulai','penugasan_se.hingga','peserta.nama_organisasi','penugasan_se.id','penugasan_se.status')
+                ->select('penugasan_se.peserta_id','penugasan_se.umpan_balik','penugasan_se.mulai','penugasan_se.hingga','peserta.nama_organisasi','penugasan_se.id','penugasan_se.status')
                 // ->where('status',0)
                 ->where('evaluator_id',$id)
                 ->get();
@@ -79,6 +79,13 @@ class PenugasanSe extends Model
         ->select('penugasan_se.updated_at','peserta.nama_organisasi')
         ->orderByDesc('updated_at')
         ->get();
+        return $ret_val;
+    }
+    public function uploadUmpanBalik($data)
+    {
+        $ret_val = DB::table('penugasan_se')
+        ->where('peserta_id',$data['peserta_id'])
+        ->update(['umpan_balik'=> $data['umpan_balik'] ]);
         return $ret_val;
     }
 }

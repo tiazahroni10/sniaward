@@ -157,10 +157,12 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/berkas/tolak/{id}/{user_id}/{master_lampiran_id}', [BerkasLampiranPesertaController::class, 'lengkapiBerkasDokumen'])->name('lengkapiBerkasDokumen');
     Route::post('/evaluator/berkas/kirimfeedback', [BerkasLampiranPesertaController::class, 'feedback'])->name('feedback');
     Route::get('/evaluator/penugasanse/', [PenugasanSeController::class, 'showPenugasanSeById'])->name('penugasanSe');
+    Route::get('/evaluator/umpanbalik/', [PenugasanSeController::class, 'penugasanUmpanBalik'])->name('penugasanUmpanBalik');
     Route::get('/evaluator/verifikasipenugasande/{id}/{user_id}', [PenugasanDeController::class, 'verifikasiPenugasanDe'])->name('verifikasiPenugasanDe');
     Route::get('/evaluator/verifikasipenugasanse/{id}', [PenugasanSeController::class, 'verifikasiPenugasanSe'])->name('verifikasiPenugasanSe');
     Route::get('/evaluator/penugasande/', [PenugasanDeController::class, 'getPenugasanDe'])->name('getPenugasanDe');
     Route::get('/evaluator/penugasande/{id}', [PenugasanDeController::class, 'formUploadPenugasanDe'])->name('formUploadPenugasanDe');
     Route::post('/evaluator/penugasande/upload/', [PenugasanDeController::class, 'uploadFilePenugasan'])->name('uploadFilePenugasan');
+    Route::post('/evaluator/penugasanse/upload/', [PenugasanSeController::class, 'uploadFileUmpanBalik'])->name('uploadFileUmpanBalik');
     
 });

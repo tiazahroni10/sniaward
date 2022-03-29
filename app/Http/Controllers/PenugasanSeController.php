@@ -9,6 +9,7 @@ use App\Models\Peserta;
 use App\Models\SniPeserta;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class PenugasanSeController extends Controller
@@ -155,4 +156,38 @@ class PenugasanSeController extends Controller
         ]);
     }
 
+
+    // UMPAN BALIK UNTUK EVALUATOR
+    public function penugasanUmpanBalik()
+    {
+        $idUser = auth()->user()->id;
+		$data = $this->user->getUser($idUser);
+        $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
+        $penugasanSe = $this->penugasanSe->getPenugasanByIdEvaluator($idUser);
+		// $dataPeserta = $this->peserta->dataPeserta($id)->first();
+        // $dataEvaluator = Evaluator::where('flag_complated',1)->get();
+        // $dataPenugasanSe = $this->penugsanSe->getPenugasanWithEvaluator($id);
+		return view('evaluator.umpanbalik.index', $data = [
+			'menu' => 'Tugas Se',
+			'data' => $data,
+			'peran' => auth()->user()->peran,
+            'jadwalAcara' => $jadwalAcara,
+            'penugasanSe' => $penugasanSe
+		]);
+    }
+
+    public function uploadFileUmpanBalik(Request $request){
+        $validatedData = $request->validate([
+            'umpan_balik' => 'required|file|mimes:pdf|max:10240'
+        ]);
+        if($request->file('umpan_balik')){
+            if($request->oldNama_file){
+                Storage::delete($request->oldNama_file);
+            }
+            $validatedData['umpan_balik']=$request->file('umpan_balik')->store('umpan-balik');
+        }
+        $validatedData['peserta_id'] = $request->id;
+        $ret_val = $this->penugasanSe->uploadUmpanBalik($validatedData);
+        return redirect()->route('penugasanUmpanBalik')->with('sukses', "Umpan Balik berhasil di upload");
+    }
 }

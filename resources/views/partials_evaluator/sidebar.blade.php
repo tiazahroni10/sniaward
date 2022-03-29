@@ -25,7 +25,7 @@
                             
                         </ul>
                     </li>
-                    <li><a class="" href="#" aria-expanded="false">
+                    <li><a class="" href="{{ route('penugasanUmpanBalik') }}" aria-expanded="false">
                         <i class="flaticon-381-news"></i>
                         <span class="nav-text">Umpan Balik</span>
                         </a>
