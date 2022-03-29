@@ -33,22 +33,13 @@ class PenugasanDeController extends Controller
         $data = $this->user->getUser($id);
         // $dataDe = PenugasanDe::all();
         return view('admin.penugasande.index', $data = [
-            'menu' => 'Penjadwalan Acara',
+            'menu' => 'Penjadwalan De',
             'data' => $data,
             'peran' => auth()->user()->peran,
             // 'dataPenugasanDe' => $dataDe
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -105,7 +96,7 @@ class PenugasanDeController extends Controller
         $dataPenugasanDe = $this->penugasanDe->getPenugasanWithEvaluator($user_id);
         $countPenugasan = count($dataPenugasanDe);
 		return view('admin.penugasande.show', $data = [
-			'menu' => 'Peserta',
+			'menu' => 'Penjadwalan De',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
@@ -134,7 +125,7 @@ class PenugasanDeController extends Controller
         $data = $this->user->getUser($id);
         // $dataDe = PenugasanDe::all();
         return view('evaluator.penugasande.index', $data = [
-            'menu' => 'UPLOAD DE',
+            'menu' => 'Tugas De',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jadwalAcara' => $jadwalAcara,

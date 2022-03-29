@@ -16,7 +16,7 @@ class IsPeserta
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->peran !== 'peserta') {
+        if (!auth()->check() || auth()->user()->peran !== 'Peserta') {
             abort(403); 
         }
         return $next($request);

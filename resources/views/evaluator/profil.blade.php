@@ -46,7 +46,7 @@
                   </tr>
                   <tr>
                     <td>Tanggal Lahir</td>
-                    <td class="col-data">: {{ $evaluator->tgl_lahir }}</td>
+                    <td class="col-data">: {{ date('d F Y', strtotime($evaluator->tgl_lahir)) }}</td>
                   </tr>
                   <tr>
                     <td>Pekerjaan</td>
@@ -66,11 +66,11 @@
                   </tr>
                   <tr>
                     <td>KTP</td>
-                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                    <td class="col-data">: <a href="/storage/{{ $evaluator->ktp }}" class="text-warning">Lihat Dokumen</a> </td>
                   </tr>
                   <tr>
                     <td>NPWP</td>
-                    <td class="col-data">: <a href="" class="text-warning">Lihat Dokumen</a> </td>
+                    <td class="col-data">: <a href="/storage/{{ $evaluator->npwp }}" class="text-warning">Lihat Dokumen</a> </td>
                   </tr>
                 </table>
               </div>
@@ -102,7 +102,7 @@
                     </h4>
                     <h5>{{ $pendidikan->program_studi }}</h5>
                     <p>{{ $pendidikan->tahun_masuk }}-{{ $pendidikan->tahun_lulus }}</p>
-                    <a href="" class="text-warning">Lihat Dokumen</a>
+                    <a href="/storage/{{ $pendidikan->ijazah }}" class="text-warning">Lihat Dokumen</a>
                   </div>
                 </div>
               @endforeach
@@ -132,7 +132,7 @@
                     </h4>
                     <h5>{{ $pekerjaan->instansi }}</h5>
                     <p>{{ $pekerjaan->tahun_mulai }}-{{ $pekerjaan->tahun_selesai }}</p>
-                    <a href="" class="text-warning">Lihat Dokumen</a>
+                    {{-- <a href="" class="text-warning">Lihat Dokumen</a> --}}
                   </div>
                 </div>
               @endforeach
@@ -160,7 +160,7 @@
                       </button>
                     </h4>
                     <p>{{ $pelatihan->tahun_pelatihan }}</p>
-                    <a href="" class="text-warning">Lihat Dokumen</a>
+                    <a href="/storage/{{ $pelatihan->sertifikat_pelatihan }}" class="text-warning">Lihat Dokumen</a>
                   </div>
                 </div>
               @endforeach

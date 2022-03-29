@@ -26,7 +26,7 @@ class MasterPertanyaanController extends Controller
         $data = $this->user->getUser($id);
         return view('admin.masterpertanyaan.index',$data = [
             'dataPertanyaan' => $dataPertanyaan,
-            'menu' => 'Data Master',
+            'menu' => 'Master Pertanyaan',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
@@ -42,7 +42,7 @@ class MasterPertanyaanController extends Controller
         $id = auth()->user()->id;
             $data = $this->user->getUser($id);
             return view('admin.masterpertanyaan.create',$data = [
-                'menu' => 'Data Master',
+                'menu' => 'Master Pertanyaan',
                 'data' => $data,
                 'peran' => auth()->user()->peran
             ]);
@@ -67,17 +67,7 @@ class MasterPertanyaanController extends Controller
         return redirect()->route('masterpertanyaan.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MasterPertanyaan  $masterPertanyaan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MasterPertanyaan $masterPertanyaan) //untuk detail
-    {
-        //
-    }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
@@ -90,7 +80,7 @@ class MasterPertanyaanController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.masterpertanyaan.edit',$data=[
-            'menu' => 'Data Master',
+            'menu' => 'Master Pertanyaan',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPertanyaan' => $dataPertanyaan

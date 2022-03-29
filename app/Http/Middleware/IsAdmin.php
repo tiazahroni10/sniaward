@@ -16,7 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->peran !== 'admin') {
+        if (!auth()->check() || auth()->user()->peran !== 'Admin') {
             abort(403); 
         }
         return $next($request);

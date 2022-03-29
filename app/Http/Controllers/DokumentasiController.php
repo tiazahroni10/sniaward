@@ -73,16 +73,7 @@ class DokumentasiController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -96,7 +87,7 @@ class DokumentasiController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.dokumentasi.edit',$data=[
-            'menu' => 'Edit Dokumentasi',
+            'menu' => 'Dokumentasi',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataGambar' => $dataGambar

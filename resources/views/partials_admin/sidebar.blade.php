@@ -6,14 +6,14 @@
 				<ul class="metismenu" id="menu">
                     <li><a  href="{{ route('dashboard') }}" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text">Beranda</span>
 						</a>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-381-television"></i>
-                        <span class="nav-text">Beranda</span></a>
+                        <span class="nav-text">Halaman depan</span></a>
                         <ul aria-expanded="false">
-                        <li><a href="{{ route('frontpage.edit',1) }}">Frontpage</a></li>
+                        <li><a href="{{ route('frontpage.edit',1) }}">Edit</a></li>
                         <li><a href="{{ route('faq.index') }}">FaQ</a></li>
                         </ul>
                     </li>
@@ -60,11 +60,11 @@
                         <span class="nav-text">Data Master</span></a>
                         <ul aria-expanded="false">
                         <li><a href="{{ route('masterpertanyaan.index') }}">Master Pertanyaan</a></li>
-                        <li><a href="{{ route('masterdokumen.index') }}">Master Dokumen</a></li>
+                        {{-- <li><a href="{{ route('masterdokumen.index') }}">Master Dokumen</a></li> --}}
                         </ul>
                     </li>
 				<div class="copyright">
-					<p><strong>SNI AWARD</strong> © 2022 All Rights Reserved</p>
+					<p>Copyright © SNI AWARD {{ date("Y"); }}</p>
 					
 				</div>
 			</div>

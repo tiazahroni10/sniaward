@@ -27,7 +27,7 @@ class CapacityBuildingController extends Controller
         $data = $this->user->getUser($id);
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('admin.capacitybuilding.index', $data = [
-            'menu' => 'Dokumen',
+            'menu' => 'Materi Capacity Building',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataCapacityBuilding' => $dataCapacityBuilding,
@@ -46,7 +46,7 @@ class CapacityBuildingController extends Controller
         $data = $this->user->getUser($id);
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         return view('admin.capacitybuilding.create', $data = [
-            'menu' => 'Dokumen',
+            'menu' => 'Materi Capacity Building',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jadwalAcara' => $jadwalAcara
@@ -75,17 +75,6 @@ class CapacityBuildingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -98,7 +87,7 @@ class CapacityBuildingController extends Controller
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($idUser);
         return view('admin.capacitybuilding.edit', $data = [
-            'menu' => 'Capacity Building',
+            'menu' => 'Materi Capacity Building',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataCapacityBuilding' => $dataCapacityBuilding,
@@ -146,7 +135,7 @@ class CapacityBuildingController extends Controller
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
         $data = $this->user->getUser($id);
         return view('evaluator.download', $data = [
-            'menu' => 'Download',
+            'menu' => 'Materi Capacity Building',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataCapacityBuilding' => $dataCapacityBuilding,

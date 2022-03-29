@@ -27,13 +27,13 @@ class DashboardController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
-        if(auth()->user()->peran ==='peserta')
+        if(auth()->user()->peran ==='Peserta')
         {
             $feedback = $this->feedback->getFeedbackWithStatus($id);
             $oldFeedback = $this->feedback->oldFeedback($id);
             return view('peserta.dashboard',
             [   
-            'menu' => 'Dashboard',
+            'menu' => 'Beranda',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'feedback' => $feedback,
@@ -41,11 +41,11 @@ class DashboardController extends Controller
             'jadwalAcara' => $jadwalAcara
             ]);
         }
-        elseif (auth()->user()->peran ==='evaluator') {
+        elseif (auth()->user()->peran ==='Evaluator') {
             $dataSe = $this->penugasanSe->getPenugasanByIdEvaluator($id);
             return view('evaluator.dashboard',
             [  
-            'menu' => 'Dashboard',
+            'menu' => 'Beranda',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jadwalAcara' => $jadwalAcara
@@ -56,7 +56,7 @@ class DashboardController extends Controller
             $jumlahEvaluator = $this->evaluator->jumlahEvaluator();
             return view('admin.dashboard',
             [
-            'menu' => 'Dashboard',
+            'menu' => 'Beranda',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jumlahPeserta' => $jumlahPeserta,

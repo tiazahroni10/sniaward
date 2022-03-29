@@ -69,36 +69,7 @@ class EvaluatorController extends Controller
 		]);
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
+	
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -293,18 +264,6 @@ class EvaluatorController extends Controller
 		}
 	}
 
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 	public function dataTables()
 	{
 		$model = Evaluator::query();
@@ -328,7 +287,7 @@ class EvaluatorController extends Controller
 		$status = $validatedData['status'];
 		$password = Str::random(12);
 		$validatedData['password'] = bcrypt($password);
-		$validatedData['peran'] = 'evaluator';
+		$validatedData['peran'] = 'Evaluator';
 		$validatedData['status'] = false;
 		$ret_val = User::create($validatedData);
 		$id = $ret_val->id;

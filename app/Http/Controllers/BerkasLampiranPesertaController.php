@@ -44,7 +44,7 @@ class BerkasLampiranPesertaController extends Controller
 		}
         $jadwalAcara = $this->jadwalAcara->getJadwalAcara();
 		return view('evaluator.berkas_peserta.index', $data = [
-			'menu' => 'Data Master',
+			'menu' => 'Tugas Verifikasi',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
@@ -70,7 +70,7 @@ class BerkasLampiranPesertaController extends Controller
 		}
 		$data = $this->user->getUser($idEvaluator);
 		return view('evaluator.berkas_peserta.detail', $data = [
-			'menu' => 'Data Master',
+			'menu' => 'Tugas Verifikasi',
 			'dataEvaluator' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
@@ -126,7 +126,7 @@ class BerkasLampiranPesertaController extends Controller
 		$model = Peserta::query();
 		return DataTables::eloquent($model)
 			->addColumn('action', function (Peserta $peserta) {
-				return '<a href="/admin/verif/data/' . $peserta->user_id . '"><span class="badge badge-danger">Info</span></a>';
+				return '<a href="/admin/verif/data/' . $peserta->user_id . '"><span class="badge badge-info">Info</span></a>';
 			})
 			->toJson();
 	}
@@ -174,7 +174,7 @@ class BerkasLampiranPesertaController extends Controller
 
 		$status = $this->berkasPeserta->statusDokumenPeserta($user_id);
 		return view('admin.penugasanverifikasi.show', $data = [
-			'menu' => 'Peserta',
+			'menu' => 'Penugasan Verifikasi',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,

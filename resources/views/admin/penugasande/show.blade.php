@@ -92,7 +92,7 @@
                                     <h5>Tahun Berdiri</h5>
                                 </div>
                                 <div class="col-md-auto">
-                                    <h5>{{ $dataPeserta->tahun_berdiri }}</h5>
+                                    <h5>{{ date('d F Y', strtotime($dataPeserta->tahun_berdiri)) }}</h5>
                                 </div>
                             </div>
                             <div class="row">
