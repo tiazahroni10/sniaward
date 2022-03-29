@@ -104,9 +104,9 @@
 														<img alt="image" width="50" src="assets/img/notifications.png">
 													</div>
 													<div class="media-body">
-														<h6 class="mb-1"><u>{{ $item->kategori }}</u></h6>
+														<h6 class="mb-1 text-warning"><u>{{ $item->kategori }}</u></h6>
 														<p class="mb-1 text-body">{{ $item->judul }}</p>
-														<small class="d-block fs-6">{{ date('d F Y | g:i A', strtotime($item->created_at))}}</small>
+														<small class="d-block fs-6 text-warning">{{ date('d F Y | g:i A', strtotime($item->created_at))}}</small>
 													</div>
 												</div>
                                                 </a>
@@ -130,7 +130,7 @@
                                             @endforeach
 										</ul>
 									</div>
-                                    <a class="all-notification" href="javascript:void(0)">See all notifications <i class="ti-arrow-right"></i></a>
+                                    <a class="all-notification" href="javascript:void(0)">Lihat Semua <i class="ti-arrow-right"></i></a>
                                 </div>
                             </li>
 							
@@ -146,12 +146,12 @@
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="{{ route('profilpeserta.index') }}" class="dropdown-item ai-icon">
                                         <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        <span class="ml-2">Profile </span>
+                                        <span class="ml-2">Profil </span>
                                     </a>
 									<form action="/logout" method="POST">
 										@csrf
 										<button type="submit" class="dropdown-item ai-icon"><svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-											<span class="ml-2">Logout </span></button>
+											<span class="ml-2">Keluar </span></button>
 									</form>
                                 </div>
                             </li>
