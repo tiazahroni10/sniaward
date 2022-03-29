@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets') }}/images/logosniaward.png">
+    <title>SNI Award | Ubah Password</title>
+    <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
     <link href="{{ asset('assets') }}/css/all.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="h-100">
+<body class="h-100 mt-5">
     <div class="authincation h-100">
         <div class="container h-100">
             <div class="row justify-content-center h-100 align-items-center">

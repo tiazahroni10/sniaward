@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" href="{{ asset('assets') }}/css/all.css">
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets') }}/images/logosniaward.png">
+  <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/logosniaward.png">
   <link rel="stylesheet" href="{{ asset('assets') }}/vendor/chartist/css/chartist.min.css">
   <link rel="stylesheet" href="{{ asset('assets') }}/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
