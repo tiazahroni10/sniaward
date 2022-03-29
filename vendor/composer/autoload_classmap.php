@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Controllers\\RegisterController' => $baseDir . '/app/Http/Controllers/RegisterController.php',
     'App\\Http\\Controllers\\SekretariatController' => $baseDir . '/app/Http/Controllers/SekretariatController.php',
     'App\\Http\\Controllers\\SertifikatController' => $baseDir . '/app/Http/Controllers/SertifikatController.php',
+    'App\\Http\\Controllers\\UmpanBalikController' => $baseDir . '/app/Http/Controllers/UmpanBalikController.php',
     'App\\Http\\Controllers\\UnggahLampiranController' => $baseDir . '/app/Http/Controllers/UnggahLampiranController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

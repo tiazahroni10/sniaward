@@ -143,6 +143,7 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::post('/evaluator/profil/provilevaluator/riwayatse/', [PenugasanSeController::class, 'riwayatSe'])->name('riwayatSe');
 
     Route::post('/evaluator/penugasanse/uploadfile', [PenugasanSeController::class, 'uploadFilePenugasanSe'])->name('uploadFilePenugasanSe');
+    // Route::post('/evaluator/penugasanse/uploadfile', [PenugasanDeController::class, 'uploadFilePenugasanDe'])->name('uploadFilePenugasanDe');
 
 
 
@@ -160,6 +161,6 @@ Route::middleware(['is_verified', 'evaluator'])->group(function () {
     Route::get('/evaluator/verifikasipenugasanse/{id}', [PenugasanSeController::class, 'verifikasiPenugasanSe'])->name('verifikasiPenugasanSe');
     Route::get('/evaluator/penugasande/', [PenugasanDeController::class, 'getPenugasanDe'])->name('getPenugasanDe');
     Route::get('/evaluator/penugasande/{id}', [PenugasanDeController::class, 'formUploadPenugasanDe'])->name('formUploadPenugasanDe');
-    Route::post('/evaluator/penugasande/upload/{id}', [PenugasanDeController::class, 'uploadFilePenugasan'])->name('uploadFilePenugasan');
+    Route::post('/evaluator/penugasande/upload/', [PenugasanDeController::class, 'uploadFilePenugasan'])->name('uploadFilePenugasan');
     
 });

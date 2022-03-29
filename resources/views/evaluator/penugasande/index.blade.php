@@ -51,7 +51,10 @@
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->mulai }}</td>
                         <td class="py-2 pl-5 wspace-no col-8">{{ $data->hingga }}</td>
                         <td>
-                          <a class="badge badge-warning text-white" style="@if ($data->status== 1) pointer-events:none @endif" data-toggle="modal" data-target="#form-upload-file" data-id="{{ $item->id }}">Unggah File</a>
+                          {{-- <a class="badge badge-warning text-white" style="@if ($data->status== 1) pointer-events:none @endif" data-toggle="modal" data-target="#form-upload-file" data-id="{{ $data->id }}">Unggah File</a> --}}
+                          <button type="button" data-toggle="modal" data-target="#form-upload-file" data-id="{{ $data->peserta_id }}"
+                              class="badge btn-form-upload badge-danger text-white">Unggah File
+                          </button>
                         </td>
                         <td>
                           <div class="badge @if($data->status == 1) badge-success @else badge-danger @endif text-white"  >Verifikasi</div>
@@ -76,7 +79,7 @@
               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
           </div>
           <div class="modal-body">
-              <form class="comment-form" action="{{ route('uploadFilePenugasanSe') }}" method="POST" enctype="multipart/form-data" >
+              <form class="comment-form" action="{{ route('uploadFilePenugasan') }}" method="POST" enctype="multipart/form-data" >
                   @csrf
                   <input type="hidden" name="id" id="upload-id">
                   <div class="row">
@@ -85,9 +88,9 @@
                               <span class="input-group-text">Upload</span>
                           </div>
                           <div class="custom-file">
-                              <input type="file" accept=".pdf" class="custom-file-input @error('file_penilaian') is-invalid @enderror" name="file_penilaian">
+                              <input type="file" accept=".pdf" class="custom-file-input @error('nama_file') is-invalid @enderror" name="nama_file">
                               <label class="custom-file-label">Pilih File ...</label>
-                              @error('file_penilaian')
+                              @error('nama_file')
                                   <div class="invalid-feedback">
                                   {{ $message }}
                                   </div>

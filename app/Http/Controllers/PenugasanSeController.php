@@ -123,7 +123,7 @@ class PenugasanSeController extends Controller
     {
         $validatedData = $request->validate([
             'id' => ['required'],
-            'file_penilaian' => 'required|file|mimes:pdf|max:2048'
+            'file_penilaian' => 'required|file|mimes:pdf|max:10240'
         ]);
         $data['file_penilaian'] = $request->file('file_penilaian')->store('dokumen-se');
         $peserta_id = $this->penugasanSe->getPesertaId($validatedData['id']);

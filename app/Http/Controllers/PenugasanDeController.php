@@ -150,16 +150,16 @@ class PenugasanDeController extends Controller
     public function uploadFilePenugasan(Request $request)
     {   
         $validatedData = $request->validate([
-            'nama_file' => ['required','mimes:pdf','file ','max:10240']
+            'nama_file' => 'required|file|mimes:pdf|max:10240'
         ]);
         if($request->file('nama_file')){
             if($request->oldNama_file){
                 Storage::delete($request->oldNama_file);
             }
-            $data['nama_file']=$request->file('nama_file')->store('penugasan-de');
+            $validatedData['nama_file']=$request->file('nama_file')->store('penugasan-de');
         }
-        $data['peserta_id'] = $request->peserta_id;
-        $ret_val = $this->penugasanDe->uploadFileDe($data);
+        $validatedData['peserta_id'] = $request->id;
+        $ret_val = $this->penugasanDe->uploadFileDe($validatedData);
         return redirect()->route('getPenugasanDe')->with('sukses', "penugasan DE berhasil di upload");
     }
 

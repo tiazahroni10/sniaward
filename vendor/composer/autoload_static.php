@@ -554,6 +554,7 @@ class ComposerStaticInitd71434b5e44c1a2f65a9f8ccd0382052
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
         'App\\Http\\Controllers\\SekretariatController' => __DIR__ . '/../..' . '/app/Http/Controllers/SekretariatController.php',
         'App\\Http\\Controllers\\SertifikatController' => __DIR__ . '/../..' . '/app/Http/Controllers/SertifikatController.php',
+        'App\\Http\\Controllers\\UmpanBalikController' => __DIR__ . '/../..' . '/app/Http/Controllers/UmpanBalikController.php',
         'App\\Http\\Controllers\\UnggahLampiranController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnggahLampiranController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
