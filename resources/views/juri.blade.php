@@ -1,16 +1,15 @@
 @extends('layouts.frontend.master')
 @section('content')
-
         <!-- Start Page Title Area -->
         <div class="page-title-area">
             <div class="d-table">
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Kumpulan Acara</h2>
+                            <h2>Dewan Juri SNI Award </h2>
                             <ul>
                                 <li><a href="/">Beranda</a></li>
-                                <li>Kumpulan Acara</li>
+                                <li>Juri</li>
                             </ul>
                         </div>
                     </div>
@@ -44,42 +43,37 @@
         <!-- Start Blog Area -->
         <section id="blog" class="blog-area pt-100 pb-100">
             <div class="container">
-                {{-- <div class="section-title">
-                    <h2>Acara</h2>
+                <div class="section-title">
+                    <h2>Dewan Juri SNI Award</h2>
                     <div class="bar"></div>
-                    <p>Kumpulan Acara Yang Telah Diselenggarakan</p>
-                </div> --}}
+                    
+                </div>
 
                 <div class="row">
-                    {{-- @foreach ($dataBerita as $data) --}}
+                    @foreach ($dataBerita as $item)
                         <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="image">
-                                {{-- <a href="/berita/{{ $data->slug }}"> --}}
-                                    {{-- <img src="/storage/{{ $data->gambar }}" alt="image"> --}}
-                                </a>
-                            </div>
-                            <div class="content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <i class="fa fa-calendar"></i>
-                                        {{-- {{ $data->rilis }} --}}
-                                    </li>
-                                </ul>
-
-                                <h3>
-                                    {{-- <a href="/berita/{{ $data->slug }}"> --}}
-                                        {{-- {{ $data->judul }} --}}
+                            <div class="single-blog">
+                                <div class="image">
+                                    <a href="">
+                                        <img src="/storage/{{ $item->gambar }}" alt="image">
                                     </a>
-                                </h3>
-                                {{-- <p>{{ $data->potongan_berita }}</p> --}}
-                                <a href="/detailacara" class="read-more">
-                                    Baca Selengkapnya
-                                </a>
+                                </div>
+                                <div class="content">
+
+                                    <h3>
+                                        <a href="">
+                                            nama
+                                        </a>
+                                    </h3>
+                                    <li>Profesi</li>
+                                    <li>Asal Instansi</li>
+                                    <a href="" class="read-more">
+                                        Baca Selengkapnya
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </div>
             </div>
 
@@ -121,6 +115,5 @@
             </div>
         </div>
         <!-- End Blog Area -->
-
 
 @endsection
