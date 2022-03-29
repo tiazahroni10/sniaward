@@ -43,11 +43,11 @@
         <!-- Start Blog Area -->
         <section id="blog" class="blog-area pt-100 pb-100">
             <div class="container">
-                <div class="section-title">
+                {{-- <div class="section-title">
                     <h2>Berita</h2>
                     <div class="bar"></div>
                     <p>Kumpulan Berita Seputar SNI Award</p>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     @foreach ($dataBerita as $item)
