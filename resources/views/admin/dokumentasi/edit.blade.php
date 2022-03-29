@@ -28,13 +28,20 @@
                   </div>
                   <div class="mb-3">
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder=""
-                      value="{{ $dataGambar->deskripsi }}" required="">
+                    <textarea class="form-control bg-transparent" name="deskripsi" id="deskripsi"
+                      rows="5">{{ $dataGambar->deskripsi }}</textarea>
                     @error('deskripsi')
                       <div class="invalid-feedback">
                         {{ $message }}
                       </div>
                     @enderror
+                    {{-- <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" placeholder=""
+                      value="{{ $dataGambar->deskripsi }}" required="">
+                    @error('deskripsi')
+                      <div class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror --}}
                   </div>
                   <div class="form-group" id="imagePreview">
                     @if ($dataGambar->nama_file)
