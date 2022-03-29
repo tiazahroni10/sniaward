@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('email',50)->unique()->nullable(false);
             $table->boolean('status')->default(false);
             $table->string('password',100)->nullable(false);
-            $table->string('peran',10)->nullable(false)->default('peserta');
+            $table->string('peran',10)->nullable(false)->default('Peserta');
             $table->timestamps();
         });
     }

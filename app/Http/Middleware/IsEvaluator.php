@@ -16,7 +16,7 @@ class IsEvaluator
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->peran !== 'evaluator') {
+        if (!auth()->check() || auth()->user()->peran !== 'Evaluator') {
             abort(403); 
         }
         return $next($request);

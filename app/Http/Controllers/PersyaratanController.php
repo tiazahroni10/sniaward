@@ -26,7 +26,7 @@ class PersyaratanController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin.persyaratan.index',$data = [
-            'menu' => 'Dokumen',
+            'menu' => 'Persyaratan SNI Award',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPersyaratan' => $dataPersyaratan
@@ -43,7 +43,7 @@ class PersyaratanController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin.persyaratan.create',$data = [
-            'menu' => 'Dokumen',
+            'menu' => 'Persyaratan SNI Award',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
@@ -70,17 +70,7 @@ class PersyaratanController extends Controller
         return redirect()->route('persyaratan.index'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,7 +83,7 @@ class PersyaratanController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.persyaratan.edit',$data=[
-            'menu' => 'Data Master',
+            'menu' => 'Persyaratan SNI Award',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPersyaratan' => $dataPersyaratan
@@ -141,7 +131,7 @@ class PersyaratanController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('peserta.persyaratan.index',$data = [
-            'menu' => 'Dokumen',
+            'menu' => 'Persyaratan SNI Award',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPersyaratan' => $dataPersyaratan

@@ -24,8 +24,8 @@
 									<tr>
 										<th>No</th>
 										<th width="70px" class="pl-5 text center">Judul</th>
-										<th class="pl-5 text-center">Tanggal Mulai</th>
-										<th class="pl-5 text-center">Tanggal Selesai</th>
+										<th class="pl-5 text-center">Mulai</th>
+										<th class="pl-5 text-center">Hingga</th>
 										<th class="pl-5 text-center">Link</th>
 									</tr>
 								</thead>

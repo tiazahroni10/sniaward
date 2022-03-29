@@ -3,7 +3,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © <a href="http://dexignzone.com/" target="_blank">SNI AWARD</a> 2022</p>
+                <p>Copyright © <a href="{{ route('dashboard') }}" target="_blank">SNI AWARD</a> {{ date("Y"); }}</p>
             </div>
         </div>
         <!--**********************************

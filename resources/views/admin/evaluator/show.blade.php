@@ -70,7 +70,9 @@
                                     <h5>Tanggal Lahir</h5>
                                 </div>
                                 <div class="col-md-auto">
-                                    <h5>{{ $dataEvaluator->tgl_lahir }}</h5>
+                                    @if ($dataEvaluator->tgl_lahir != NULL)
+                                        <h5>{{ date('d F Y', strtotime($dataEvaluator->tgl_lahir)) }}</h5>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">

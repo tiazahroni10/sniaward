@@ -42,28 +42,6 @@ class PertanyaanController extends Controller
         return redirect('/login')->with('sukses','Registrasi berhasil,');
 
 
-        // $arr->each(function ($item, $key) {
-        //     dd( $key, $item);
-        // });
-
-        
-        // return $request;
-        // $validateData = $request->validate([
-        //     'jawaban1' =>['required'],
-        //     'jawaban2' =>['required'],
-        //     'jawaban3' =>['required'],
-        // ]);
-        // $tipe_pertanyaan = 'Register';
-        // $validateData['user_id'] = User::latest()->first()->id; //memasukkan id pada variabel validateData
-
-        // $validateData = collect($validateData);     //menjadikan validateData collection
-
-        // $data = $this->pertanyaan->getPertanyaan($tipe_pertanyaan); //mengambil data id dan pertanyaan pada tabel master pertanyaan
-        // dd($validateData);
-        // foreach ($data as $item) { 
-        //     return $this->jawaban->inputDataPertanyaanPeserta($item,$validateData);
-        // }
-
         
     }
     

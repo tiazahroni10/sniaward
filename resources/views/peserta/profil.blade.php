@@ -59,7 +59,7 @@
                   </tr>
                   <tr>
                     <td>Organisasi Beroperasi Sejak</td>
-                    <td class="col-data">: {{ $dataPeserta->tahun_berdiri }}</td>
+                    <td class="col-data">: {{ date('d F Y', strtotime($dataPeserta->tahun_berdiri)) }}</td>
                   </tr>
                   <tr>
                     <td>Status Kepemilikan</td>

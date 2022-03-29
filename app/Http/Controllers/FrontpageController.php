@@ -84,17 +84,7 @@ class FrontpageController extends Controller
 		return redirect()->route('frontpage.index')->with('sukses', 'Frontpage berhasil diubah');
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
+	
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -107,7 +97,7 @@ class FrontpageController extends Controller
 		$data = $this->user->getUser($idUser);
 		$dataFrontpage = FrontPage::findOrFail($id);
 		return view('admin.frontpage.edit', $data = [
-			'menu' => 'Edit Frontpage',
+			'menu' => 'Edit Halaman Depan',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataFrontpage' => $dataFrontpage
@@ -160,16 +150,7 @@ class FrontpageController extends Controller
 		return redirect()->route('frontpage.edit', $id)->with('sukses', 'Frontpage berhasil diubah');
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+
 	public function showFrontpage()
 	{
 		$dataFrontpage = FrontPage::all();

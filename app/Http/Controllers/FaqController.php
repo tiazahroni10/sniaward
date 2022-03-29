@@ -25,7 +25,7 @@ class FaqController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.faq.index',$data = [
-            'menu' => 'Data FaQ',
+            'menu' => 'FaQ',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataFaq' => $dataFaq
@@ -42,7 +42,7 @@ class FaqController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.faq.create',$data = [
-            'menu' => 'Data FaQ',
+            'menu' => 'FaQ',
             'data' => $data,
             'peran' => auth()->user()->peran,
         ]);
@@ -64,16 +64,6 @@ class FaqController extends Controller
         return redirect()->route('faq.index')->with('sukses','FaQ berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,7 +77,7 @@ class FaqController extends Controller
         $idUser = auth()->user()->id;
         $data = $this->user->getUser($idUser);
         return view('admin.faq.edit',$data=[
-            'menu' => 'Data Master',
+            'menu' => 'FaQ',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataFaq' => $dataFaq

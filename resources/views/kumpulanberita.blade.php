@@ -62,7 +62,7 @@
                                     <ul class="post-meta">
                                         <li>
                                             <i class="fa fa-calendar"></i>
-                                            {{ $item->rilis }}
+                                            {{ date('d F Y', strtotime($item->rilis)) }}
                                         </li>
                                     </ul>
 
@@ -105,7 +105,8 @@
             </div>
         </section>
 
-        <div class="col-lg-12 col-md-12">
+        {{-- pagination --}}
+        {{-- <div class="col-lg-12 col-md-12">
             <div class="pagination-area">
                 <a href="#" class="prev page-numbers">
                     <i class="fa fa-chevron-left"></i>
@@ -118,7 +119,7 @@
                     <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
-        </div>
+        </div> --}}
         <!-- End Blog Area -->
 
 @endsection

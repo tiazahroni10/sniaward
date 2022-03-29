@@ -31,7 +31,7 @@ class BeritaController extends Controller
         $dataBerita = Berita::all();
         $data = $this->user->getUser($id);
         return view('admin.berita.index', $data = [
-            'menu' => 'Berita',
+            'menu' => 'Berita & Acara',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataBerita' => $dataBerita
@@ -48,7 +48,7 @@ class BeritaController extends Controller
         $id = auth()->user()->id;
         $data = $this->user->getUser($id);
         return view('admin.berita.create', $data = [
-            'menu' => 'Berita',
+            'menu' => 'Berita & Acara',
             'data' => $data,
             'peran' => auth()->user()->peran
         ]);
@@ -80,29 +80,13 @@ class BeritaController extends Controller
         return redirect()->route('berita.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         $berita = Berita::find($id);
         $data = $this->user->getUser($id);
         return view('admin.berita.edit', [
-            'menu' => 'Berita',
+            'menu' => 'Berita & Acara',
             'data' => $data,
             'berita' => $berita,
             'peran' => auth()->user()->peran
@@ -154,6 +138,9 @@ class BeritaController extends Controller
                 ->addColumn('action', function(Berita $berita) {
                     return '<a href="/admin/detailberita/'.$berita->slug.'"><span class="badge badge-info">Info</span></a>';
                 })
+                ->editColumn('rilis', function (Berita $berita) {
+                    return date('d F Y', strtotime($berita->rilis)); // human readable format
+                })
                 ->toJson(); 
     }
 
@@ -163,7 +150,7 @@ class BeritaController extends Controller
         $data = $this->user->getUser($id);
         $berita = Berita::where('slug',$slug)->get()->first();
         return view('admin.berita.show', $data = [
-            'menu' => 'Berita',
+            'menu' => 'Berita & Acara',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'berita' => $berita

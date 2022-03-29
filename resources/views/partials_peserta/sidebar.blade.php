@@ -6,7 +6,7 @@
 				<ul class="metismenu" id="menu">
                     <li><a class="" href="{{ route('dashboard') }}" aria-expanded="false">
 							<i class="flaticon-381-networking"></i>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text">Beranda</span>
 						</a>
                     </li>
                     <li><a class="" href="{{ route('lampiran.index') }}" aria-expanded="false">
@@ -15,8 +15,7 @@
 						</a>
                     </li>
 				<div class="copyright">
-					<p><strong>SNI AWARD</strong> © 2022 All Rights Reserved</p>
-					
+					<p>Copyright © SNI AWARD {{ date("Y"); }}</a></p>
 				</div>
 			</div>
         </div>

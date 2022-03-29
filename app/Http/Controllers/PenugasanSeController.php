@@ -32,7 +32,7 @@ class PenugasanSeController extends Controller
         $data = $this->user->getUser($id);
         $dataSe = PenugasanSe::all();
         return view('admin.penugasanse.index', $data = [
-            'menu' => 'Penjadwalan Acara',
+            'menu' => 'Penjadwalan Se',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'dataPenugasanSe' => $dataSe
@@ -90,7 +90,7 @@ class PenugasanSeController extends Controller
         $counPenugasan = count($dataPenugasanSe);
 		$dataSniPeserta = $this->sniPeserta->getSniPeserta($user_id);
 		return view('admin.penugasanse.show', $data = [
-			'menu' => 'Peserta',
+			'menu' => 'Penjadwalan Se',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
 			'dataPeserta' => $dataPeserta,
@@ -111,7 +111,7 @@ class PenugasanSeController extends Controller
         // $dataEvaluator = Evaluator::where('flag_complated',1)->get();
         // $dataPenugasanSe = $this->penugsanSe->getPenugasanWithEvaluator($id);
 		return view('evaluator.penugasanse.index', $data = [
-			'menu' => 'Peserta',
+			'menu' => 'Tugas Se',
 			'data' => $data,
 			'peran' => auth()->user()->peran,
             'jadwalAcara' => $jadwalAcara,
@@ -147,7 +147,7 @@ class PenugasanSeController extends Controller
         $data = $this->user->getUser($evaluator_id);
         $riwayatSe = $this->penugasanSe->historyPenugasanSeByEvaluator($evaluator_id);
         return view('evaluator.penugasanse.tabelriwayatse', $data=[
-            'menu' => 'Riwat SE',
+            'menu' => 'Riwayat SE',
             'data' => $data,
             'peran' => auth()->user()->peran,
             'jadwalAcara'=> $jadwalAcara,

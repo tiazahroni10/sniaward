@@ -25,16 +25,5 @@ class MasterKotaKabupatenController extends Controller
             echo "<option value='$kab->id'>$kab->nama</option>";
         }
     }
-    // public function getKabupatenn(Request $request)
-    // {
-    //     $region_id = 11000000;
-    //     $subs = Str::substr($region_id, 0, 2);
-    //     $kabupaten = DB::table('master_kota_kabupaten')
-    //             ->where('region_id', 'like', $subs.'%')
-    //             ->get();
-    //     foreach($kabupaten as $kab){
-    //         echo "<option value='$kab->id'>$kab->nama</option>";
-    //     }
-    // }
-
+    
 }
