@@ -22,7 +22,7 @@
             <div class="profile-head">
               <div class="profile-info">
                 <div class="profile-photo mt-0">
-                  <img src="@if($evaluator->gambar) /storage/{{ $evaluator->gambar }} @else images/profile/profile.png @endif" class="img-fluid rounded-circle" width="60px" height="60px" alt="">
+                  <img src="@if($evaluator->gambar) /storage/{{ $evaluator->gambar }} @else images/profile/profile.png @endif" class="img rounded-circle" width="60px" height="60px" alt="">
                 </div>
                 <div class="profile-details">
                   <div class="profile-name px-3 pt-2">
@@ -32,7 +32,7 @@
                   </div>
                   <div class="dropdown ml-auto">
                     <button type="button" data-toggle="modal" data-target="#edit-profile-modal" onclick="showModal()" class="btn btn-sm btn-warning text-white mr-2">
-                      Edit Profile
+                      Edit Profil
                     </button>
                     {{-- <button class="btn btn-sm btn-info">Pdf</button> --}}
                   </div>

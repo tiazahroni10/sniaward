@@ -98,11 +98,7 @@
 											@endforeach
 										</ul>
 									</div>
-<<<<<<< HEAD
                                     <a class="all-notification" href="javascript:void(0)">Pemberitahuan lainnya<i class="ti-arrow-right"></i></a>
-=======
-                                    <a class="all-notification" href="javascript:void(0)">Lihat Semua <i class="ti-arrow-right"></i></a>
->>>>>>> perbaikan
                                 </div>
                             </li>
 							
