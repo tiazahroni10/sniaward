@@ -35,7 +35,7 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th width="70px" class="pl-5 text-center">Nama dokumen</th>
+                      <th width="300px" class="pl-5 text-left">Nama dokumen</th>
                       <th width="70px" class="pl-5 text-center">Tanggal Publish</th>
                       <th width="70px" class="pl-5 text-center">Aksi</th>
                     </tr>
@@ -51,9 +51,9 @@
                             </div>
                           </a>
                         </td>
-                        <td width="70px" class="py-2 pl-5 wspace-no text-justify"><a href="/storage/{{ $persyaratan->nama_dokumen }}"
-                            class="text-primary">{{ $persyaratan->nama_file }}</a></td>
-                        <td class="py-2 pl-5 wspace-no text-center">{{ $persyaratan->created_at }}</td>
+                        <td width="300px" class="pl-5 text-justify"><a href="/storage/{{ $persyaratan->nama_dokumen }}"
+                            class="text-warning text-white">{{ $persyaratan->nama_file }}</a></td>
+                        <td class="pl-5 text-center">{{ $persyaratan->created_at }}</td>
                         <td class="py-2 text-center">
                           <a href="{{ route('persyaratan.edit', $persyaratan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>

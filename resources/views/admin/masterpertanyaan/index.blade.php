@@ -35,7 +35,7 @@
                       
                       <th>No</th>
                       <th class="pl-5 text-left">Tipe Pertanyaan</th>
-                      <th width="100px" class="pl-5 text-left">Pertanyaan</th>
+                      <th width="300px" class="pl-0 text-center">Pertanyaan</th>
                       <th class="pl-5 text-center">Aksi</th>
                     </tr>
                   </thead>
@@ -50,8 +50,8 @@
                             </div>
                           </a>
                         </td>
-                        <td class="py-2 pl-5 wspace-no text-left"><a href="mailto:ricky@example.com">{{ $pertanyaan->tipe_pertanyaan }}</a></td>
-                        <td width="100px" class="pl-5 text-justify">{{ $pertanyaan->pertanyaan }}</td>
+                        <td class=" pl-5 text-left"><a href="mailto:ricky@example.com">{{ $pertanyaan->tipe_pertanyaan }}</a></td>
+                        <td width="300px" class="pl-0 text-justify">{{ $pertanyaan->pertanyaan }}</td>
                         <td class="py-2 text-center">
                           <a href="{{ route('masterpertanyaan.edit', $pertanyaan->id) }}" type="submit" class="badge badge-warning text-white"><span>Ubah</span>
                           </a>

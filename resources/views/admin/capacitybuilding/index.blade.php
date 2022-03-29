@@ -37,7 +37,7 @@
                     <tr>
                     
                       <th>No</th>
-                      <th width="70px"class="pl-5 text-center">Nama dokumen</th>
+                      <th width="300px"class="pl-5 text-left">Nama dokumen</th>
                       <th width="70px"class="pl-5 text-center">Tanggal Publish</th>
                       <th width="70px"class="pl-5 text-center">Aksi</th>
                     </tr>
@@ -53,9 +53,9 @@
                             </div>
                           </a>
                         </td>
-                        <td width="70px" class="pl-5 text-justify"><a href="/storage/{{ $capacityBuilding->nama_dokumen }}"
+                        <td width="300px" class="pl-5 text-justify"><a href="/storage/{{ $capacityBuilding->nama_dokumen }}"
                             class="text-warning text-white">{{ $capacityBuilding->nama_file }}</a></td>
-                        <td class="py-2 pl-5 wspace-no text-center">{{ $capacityBuilding->created_at }}</td>
+                        <td class="pl-5 text-center">{{ $capacityBuilding->created_at }}</td>
                         <td class="py-2 text-center">
                           <a href="{{ route('capacitybuilding.edit', $capacityBuilding->id) }}" type="submit"
                             class="badge badge-warning text-white"><span>Ubah</span>
