@@ -67,13 +67,13 @@ class DatabaseSeeder extends Seeder
         User::create([
             'email' => 'admin@gmail.com',
             'password'=>bcrypt('1111'),
-            'peran' => 'admin' ,
+            'peran' => 'Admin' ,
             'status'=> true
         ]);
         User::create([
             'email' => 'admin1@gmail.com',
             'password'=>bcrypt('1111'),
-            'peran' => 'admin' ,
+            'peran' => 'Admin' ,
             'status'=> true
         ]);
         MasterDokumen::create([
