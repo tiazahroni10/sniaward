@@ -20,6 +20,7 @@ class CreatePenugasanSeTable extends Migration
             $table->foreignId('peserta_id')->nullable()->constrained('users');
             $table->string('kategori',50)->nullable();
             $table->string('file_penilaian',255)->nullable();
+            $table->string('umpan_balik',255)->nullable();
             $table->boolean('status')->nullable()->comment('1 untuk terverifikasi, 0 untuk tertuna, 2 untuk selesai');
             $table->date('mulai')->nullable();
             $table->date('hingga')->nullable();

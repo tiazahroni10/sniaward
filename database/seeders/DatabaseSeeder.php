@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
         Frontpage::create([
             'judul' => 'Selamat Datang Di Website SNI Award 2022',
             'gambar_judul' => '/assets/img/satu.png',
-            'ket_judul' => '/SNI Award dicanangkan sebagai The National Quality Award of Indonesia sejak tahun 2005',
+            'ket_judul' => 'SNI Award dicanangkan sebagai The National Quality Award of Indonesia sejak tahun 2005',
             'tentang_sniaward' =>'Tentang SNI Awards',
             'ket_sniaward'=> 'SNI Award merupakan sebuah pemberian penghargaan tertinggi dari Pemerintah Repubik Indonesia bagi organisasi yang menerapkan Standar Nasional Indonesia (SNI) secara konsisten, berkinerja tinggi, memiliki kemampuan mengelola dinamisasi perubahan dan melakukan transformasi yang diperlukan secara tepat.',
             'berita' => 'Berita',

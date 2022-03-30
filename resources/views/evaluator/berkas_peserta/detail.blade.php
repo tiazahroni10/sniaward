@@ -15,7 +15,7 @@
         </div>
       @endif
       @if (session()->has('lengkapi'))
-        <div class="alert alert-warning solid alert-dismissible fade show">
+        <div class="alert alert-warning text-white solid alert-dismissible fade show">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
             class="mr-2">
             <polyline points="9 11 12 14 22 4"></polyline>
