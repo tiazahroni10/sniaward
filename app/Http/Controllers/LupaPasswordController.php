@@ -39,10 +39,11 @@ class LupaPasswordController extends Controller
     public function updatePassword(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'password' => ['required','min:8','max:12'],
+            'password_' => ['required','min:8','max:12'],
             'konfirmasi_password' => ['required','min:8','max:12'],
             'token' => ['required']
         ]);
+        $validatedData['password'] = $validatedData['password_'];
         $user = User::find($id);
         $verifikasi = TokenPassword::where('email',$user->email)->orderByDesc('created_at')->get()->first();
         if ($validatedData['password'] == $validatedData['konfirmasi_password']) {

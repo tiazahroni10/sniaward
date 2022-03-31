@@ -20,6 +20,8 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   {{-- trix editor --}}
   <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css">
   <script type="text/javascript" src="/assets/js/trix.js"></script>
 
   

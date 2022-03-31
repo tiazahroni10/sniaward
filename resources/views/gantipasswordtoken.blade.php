@@ -44,18 +44,33 @@
                                                     <label for="password" class="pe-3 m-3 text-white">Password Baru</label>
                                                     <input type="password" class="form-control @error('password') is-invalid  @enderror" name="password " id="password">
                                                 </div>
+                                                <div class="invalid-feedback">
+                                                    @error('password')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
                                                 
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="konfirmasi_password" class="pe-3 m-3 text-white">Konfirmasi Password</label>
                                                     <input type="password" class="form-control @error('konfirmasi_password') is-invalid  @enderror" name="konfirmasi_password" id="konfirmasi_password">
+                                                    <div class="invalid-feedback">
+                                                    @error('konfirmasi_password')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <label for="token" class="pe-3 m-3 text-white">Token</label>
                                                     <input type="text" class="form-control @error('token') is-invalid  @enderror" name="token" id="token">
+                                                    <div class="invalid-feedback">
+                                                    @error('token')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </div>
                                                 </div>
                                             </div>
                                             <button type="submit" class="m-3 btn btn-coklat">Submit</button>
